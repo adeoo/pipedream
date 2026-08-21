@@ -28,7 +28,7 @@ for p in paras:
     if p.startswith('>'):
         quote = ' '.join(l.lstrip('> ').strip() for l in p.splitlines())
         html_parts.append(f'<blockquote style="margin:0 0 16px;padding:12px 18px;border-left:4px solid #b22222;background:#faf6f2;font-family:Georgia,serif;font-size:16px;line-height:1.65;color:#4a3f38;font-style:italic;">{inline(quote)}</blockquote>')
-        text_parts.append('    "' + strip_md(quote) + '"')
+        text_parts.append('    ' + strip_md(quote))
     elif p.startswith('\U0001F4DC'):  # context box
         html_parts.append(f'<div style="margin:0 0 20px;padding:14px 18px;background:#f4efe8;border-radius:6px;"><p style="{P}margin:0;">{inline(p)}</p></div>')
         text_parts.append(strip_md(p))
@@ -42,7 +42,7 @@ for p in paras:
         html_parts.append(f'<ol style="{P}padding-left:22px;">{items}</ol>')
         text_parts.append(strip_md(p))
     else:
-        html_parts.append(f'<p style="{P}">{inline(p)}</p>')
+        html_parts.append(f'<p style="{P}">' + inline(p).replace(chr(10), '<br>') + '</p>')
         text_parts.append(strip_md(p))
 
 title = re.sub(r'^☭\s*', '', meta['subject'])

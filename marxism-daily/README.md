@@ -3,7 +3,7 @@
 Automated daily email course. See `PROGRAM.md` for syllabus, voice, and email format.
 
 ## How it works
-- **Weekly writer** (Claude Routine, Thursdays 12:00 UTC): a fresh session that
+- **Weekly writer** (Claude Routine `trig_01MjchH1dTpTJgZJSttVwct9`, Thursdays 12:00 UTC): fires into the founding Claude session (self-bind, so it keeps the Resend connector), which then
   1. Checks out branch `claude/scheduled-tasks-status-xr0587` of `adeoo/pipedream`.
   2. Reads `PROGRAM.md`, `state.json`, and the previous week's lessons in `lessons/` for continuity.
   3. Writes the next 7 lessons as `lessons/weekNN/dayNN.md` (front matter: `subject`, `send_date`).
