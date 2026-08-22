@@ -10,7 +10,8 @@ Automated daily email course. See `PROGRAM.md` for syllabus, voice, and email fo
   4. Sends each via the Resend connector (`send-email`) with `scheduledAt` set to `<send_date>T06:00:00-03:00`, from `Daily Marxism <onboarding@resend.dev>` to `moussaadel97@gmail.com`, with both `html` and `text` bodies rendered per PROGRAM.md style. Use an `idempotencyKey` of `marxism-dayNN` per lesson.
   5. Verifies last week's emails actually delivered (`list-emails`); re-sends any that failed.
   6. Updates `state.json`, commits, pushes to the same branch.
-- **Sending**: there is no daily task — Resend's scheduled sends deliver each email at 6am Brasília.
+- **Sending**: Resend's scheduled sends (`scheduledAt`) deliver each email at 6am Brasília.
+- **Delivery check** (Claude Routine `trig_016cewnP9Tnrd14sQNZa2W9x`, daily 09:10 UTC, self-bind into the founding session): verifies today's lesson delivered and immediately re-sends it if the scheduled send failed. Added after the Day 1 incident (2026-08-22): the scheduled email flipped to `failed` at fire time while immediate sends work fine, so every scheduled send is treated as unreliable until proven otherwise. If scheduled sends keep failing, switch the architecture to sending directly from this daily 09:10 UTC routine and stop using `scheduledAt`.
 
 ## State
 `state.json` tracks the next day number, next week number, and the first send date of the next batch.
