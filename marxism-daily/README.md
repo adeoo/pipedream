@@ -21,8 +21,9 @@ Automated daily email course. See `PROGRAM.md` for syllabus, voice, and email fo
 | 3 | 2026-08-24 | delivered | no action needed |
 | 4 | 2026-08-25 | failed | re-sent by check routine, delivered |
 | 5 | 2026-08-26 | failed | re-sent by check routine, delivered |
+| 6 | 2026-08-27 | failed | re-sent by check routine, delivered |
 
-Running tally: 4 of 5 scheduled sends failed at fire time (80%). The check routine has rescued every one of them within ~13 minutes, so lessons still arrive each morning — just at ~06:13 instead of 06:00 on a failed day. Keep both mechanisms: the scheduled send costs nothing when it fails, and dropping it would leave the routine as a single point of failure.
+Running tally: 5 of 6 scheduled sends failed at fire time (83%). Treat a scheduled send as unlikely to fire; the check routine is the de facto delivery mechanism. The check routine has rescued every one of them within ~13 minutes, so lessons still arrive each morning — just at ~06:13 instead of 06:00 on a failed day. Keep both mechanisms: the scheduled send costs nothing when it fails, and dropping it would leave the routine as a single point of failure.
 
 ## State
 `state.json` tracks the next day number, next week number, and the first send date of the next batch.
