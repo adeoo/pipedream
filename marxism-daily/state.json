@@ -1,7 +1,7 @@
 {
-  "next_day": 8,
-  "next_week": 2,
-  "next_batch_first_send_date": "2026-08-29",
-  "last_batch_written": "2026-08-21",
-  "notes": "Week 1 (days 1-7, 2026-08-22..2026-08-28) written and scheduled in Resend by the founding session."
+  "next_day": 15,
+  "next_week": 3,
+  "next_batch_first_send_date": "2026-09-05",
+  "last_batch_written": "2026-08-27",
+  "notes": "Week 2 (days 8-14, 2026-08-29..2026-09-04) written and scheduled in Resend. Week 1 all delivered (days 1,2,4,5,6 needed the check-routine rescue; day 3 sent on schedule; day 7 still queued for 2026-08-28)."
 }
