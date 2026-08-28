@@ -1,7 +1,7 @@
 {
-  "next_day": 1,
-  "next_week": 1,
-  "next_batch_first_send_date": "2026-08-29",
-  "last_batch_written": null,
-  "notes": "Course reset 2026-08-28 under PROGRAM.md v2 (new voice, plain design, mixed weekly rhythm, PT-BR version for Carol). All v1 lessons deleted; v1 Resend queue for days 8-14 already canceled. Writer starts fresh at Week 1 Day 1, reading only PROGRAM.md v2."
+  "next_day": 8,
+  "next_week": 2,
+  "next_batch_first_send_date": "2026-09-05",
+  "last_batch_written": "2026-08-28",
+  "notes": "Week 1 (days 1-7, 2026-08-29..2026-09-04) written under PROGRAM.md v2, bilingual, pushed. Transport migrated to Inkbox 2026-08-28: daily send Routine trig_018T2b8WrCRB2nZJxudgZoE8 delivers each lesson at 06:00 Sao Paulo (EN to Moussa, PT-BR to Carol) from adeosagent@inkboxmail.com; weekly writer is now trig_01FwcGbF9PbBj7cSdHn5BpCq; Resend retired, v1 Routines disabled. See README.md."
 }

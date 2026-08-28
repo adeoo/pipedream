@@ -2,18 +2,26 @@
 
 Automated daily email course. See `PROGRAM.md` for syllabus, voice, and email format.
 
-## How it works
-- **Weekly writer** (Claude Routine `trig_01MjchH1dTpTJgZJSttVwct9`, Thursdays 12:00 UTC): fires into the founding Claude session (self-bind, so it keeps the Resend connector), which then
-  1. Checks out branch `claude/scheduled-tasks-status-xr0587` of `adeoo/pipedream`.
-  2. Reads `PROGRAM.md`, `state.json`, and the previous week's lessons in `lessons/` for continuity.
-  3. Writes the next 7 lessons as `lessons/weekNN/dayNN.md` (front matter: `subject`, `send_date`).
-  4. Sends each via the Resend connector (`send-email`) with `scheduledAt` set to `<send_date>T06:00:00-03:00`, from `Daily Marxism <onboarding@resend.dev>` to `moussaadel97@gmail.com`, with both `html` and `text` bodies rendered per PROGRAM.md style. Use an `idempotencyKey` of `marxism-dayNN` per lesson.
-  5. Verifies last week's emails actually delivered (`list-emails`); re-sends any that failed.
-  6. Updates `state.json`, commits, pushes to the same branch.
-- **Sending**: Resend's scheduled sends (`scheduledAt`) deliver each email at 6am Brasília.
-- **Delivery check** (Claude Routine `trig_016cewnP9Tnrd14sQNZa2W9x`, daily 09:10 UTC, self-bind into the founding session): verifies today's lesson delivered and immediately re-sends it if the scheduled send failed. Added after the Day 1 incident (2026-08-22): the scheduled email flipped to `failed` at fire time while immediate sends work fine, so every scheduled send is treated as unreliable until proven otherwise. Scheduled sends turn out to be **intermittent**, not uniformly broken — observed so far: Day 1 (08-22) failed, Day 2 (08-23) failed, Day 3 (08-24) delivered on its own. So keep using `scheduledAt` and keep this check as the safety net; only if failures become near-total should the architecture switch to sending directly from this routine.
+## How it works (v2 transport, since 2026-08-28)
 
-### Delivery log
+Sending migrated from Resend to Inkbox on 2026-08-28. Resend is retired: nothing is scheduled there and no Routine touches it anymore.
+
+- **Weekly writer** (Claude Routine `trig_01FwcGbF9PbBj7cSdHn5BpCq`, Thursdays 12:00 UTC, self-bind into the v2 operations session):
+  1. Checks out branch `claude/scheduled-tasks-status-xr0587` of `adeoo/pipedream`.
+  2. Reads `PROGRAM.md` (v2), `state.json`, and the previous week's lessons for continuity.
+  3. Writes the next 7 bilingual lessons as `lessons/weekNN/dayNN.md` (front matter: `subject`, `subject_pt`, `send_date`; English lesson, then `=== PT-BR ===`, then the Portuguese version).
+  4. Verifies each file renders with `render.py`, updates `state.json`, commits, pushes. It does NOT send or schedule email.
+- **Daily send** (Claude Routine `trig_018T2b8WrCRB2nZJxudgZoE8`, daily 09:00 UTC = 06:00 América/São Paulo, self-bind into the same session, which holds the Inkbox connector):
+  1. Finds the lesson whose `send_date` is today (São Paulo time).
+  2. Renders it with `render.py` and sends via Inkbox from `adeosagent@inkboxmail.com` ("Daily Marxism"): the English version to `moussaadel97@gmail.com`, the PT-BR version to `ana.ruberrime@gmail.com`.
+  3. Idempotent: checks Inkbox sent mail first and only sends whichever language version has not gone out today.
+  4. Verifies both sends; on failure retries once, then reports the error in the session.
+
+There is no pre-scheduled queue anymore: each morning's Routine run is the send. This replaced Resend's `scheduledAt` queue, whose scheduled sends failed at fire time 6 times out of 7 in week 1 of v1 and were rescued by a separate check routine (see log below, kept as history).
+
+- **Retired** (disabled, kept for history): v1 writer Routine `trig_01MjchH1dTpTJgZJSttVwct9` and v1 delivery-check Routine `trig_016cewnP9Tnrd14sQNZa2W9x`, both bound to the founding session and Resend-based.
+
+### v1 delivery log (course later reset; kept as transport history)
 | Day | Date | Scheduled send | Outcome |
 |---|---|---|---|
 | 1 | 2026-08-22 | failed | re-sent by hand, delivered |
@@ -24,10 +32,8 @@ Automated daily email course. See `PROGRAM.md` for syllabus, voice, and email fo
 | 6 | 2026-08-27 | failed | re-sent by check routine, delivered |
 | 7 | 2026-08-28 | failed | re-sent by check routine, delivered |
 
-Running tally: 6 of 7 scheduled sends failed at fire time (86%) — Week 1 complete, every lesson delivered. Treat a scheduled send as unlikely to fire; the check routine is the de facto delivery mechanism. The check routine has rescued every one of them within ~13 minutes, so lessons still arrive each morning — just at ~06:13 instead of 06:00 on a failed day. Keep both mechanisms: the scheduled send costs nothing when it fails, and dropping it would leave the routine as a single point of failure.
-
 ## State
 `state.json` tracks the next day number, next week number, and the first send date of the next batch.
 
 ## Changing the course
-Moussa can ask any session to change cadence, themes, or style: edit `PROGRAM.md` and/or the Routine (via `list_triggers`/`update_trigger`), commit, push.
+Moussa can ask any session to change cadence, themes, or style: edit `PROGRAM.md` and/or the Routines (via `list_triggers`/`update_trigger`), commit, push.
