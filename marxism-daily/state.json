@@ -1,7 +1,7 @@
 {
-  "next_day": 15,
-  "next_week": 3,
-  "next_batch_first_send_date": "2026-09-05",
-  "last_batch_written": "2026-08-27",
-  "notes": "Week 2 (days 8-14, 2026-08-29..2026-09-04) written and scheduled in Resend. Week 1 all delivered (days 1,2,4,5,6 needed the check-routine rescue; day 3 sent on schedule; day 7 still queued for 2026-08-28)."
+  "next_day": 1,
+  "next_week": 1,
+  "next_batch_first_send_date": "2026-08-29",
+  "last_batch_written": null,
+  "notes": "Course reset 2026-08-28 under PROGRAM.md v2 (new voice, plain design, mixed weekly rhythm, PT-BR version for Carol). All v1 lessons deleted; v1 Resend queue for days 8-14 already canceled. Writer starts fresh at Week 1 Day 1, reading only PROGRAM.md v2."
 }
