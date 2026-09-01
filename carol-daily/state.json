@@ -1,0 +1,24 @@
+{
+  "next_day": 2,
+  "recipient": "ana.ruberrime@gmail.com",
+  "sender": "adeosagent@inkboxmail.com",
+  "covered": [
+    {
+      "day": 1,
+      "send_date": "2026-09-01",
+      "theme": 1,
+      "title": "Towards a More-than-Human Approach to Smart and Sustainable Urban Development: Designing for Multispecies Justice",
+      "authors": "Fieuw; Foth; Caldwell",
+      "year": 2022,
+      "venue": "Sustainability, v. 14, n. 2, art. 948",
+      "doi": "10.3390/su14020948",
+      "note": "Teste/estreia enviado fora da rotação (tema 2 no slot do dia 1) por ser a porta de entrada ideal: revisão de horizonte em acesso aberto no cruzamento exato da tese. A rotação normal vale a partir do dia 2."
+    }
+  ],
+  "already_in_thesis": [
+    "HOUSTON, Donna et al. Make kin, not cities! Multispecies entanglements and 'becoming-world' in planning theory. Planning Theory, v. 17, n. 2, p. 190-212, 2018.",
+    "SHEIKH, Hira; FOTH, Marcus; MITCHELL, Peta. More-than-human city-region foresight. Regional Studies, v. 57, n. 4, p. 642-655, 2023. DOI 10.1080/00343404.2022.2045266.",
+    "SHEIKH, Hira; MITCHELL, Peta; FOTH, Marcus. Reparative futures of smart urban governance. Futures, v. 154, art. 103266, 2023. DOI 10.1016/j.futures.2023.103266."
+  ],
+  "notes": "Dia 1 enviado como teste na estreia (2026-08-31 ~21:37 São Paulo / 2026-09-01 00:36 UTC, Inkbox id bd2c2e8c). Routine diária trig_015byv2MPNvWcut1cJpBcafg dispara às 09:00 UTC (06:00 América/São_Paulo) na sessão criadora e faz pesquisa+escrita+envio+push na mesma manhã; primeiro disparo agendado 2026-09-01 (dia 2)."
+}
