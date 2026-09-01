@@ -1,5 +1,5 @@
 {
-  "next_day": 2,
+  "next_day": 3,
   "recipient": "ana.ruberrime@gmail.com",
   "sender": "adeosagent@inkboxmail.com",
   "covered": [
@@ -13,6 +13,17 @@
       "venue": "Sustainability, v. 14, n. 2, art. 948",
       "doi": "10.3390/su14020948",
       "note": "Teste/estreia enviado fora da rotação (tema 2 no slot do dia 1) por ser a porta de entrada ideal: revisão de horizonte em acesso aberto no cruzamento exato da tese. A rotação normal vale a partir do dia 2."
+    },
+    {
+      "day": 2,
+      "send_date": "2026-09-01",
+      "theme": 2,
+      "title": "The more-than-human right to the city: A multispecies reevaluation",
+      "authors": "Shingne",
+      "year": 2022,
+      "venue": "Journal of Urban Affairs, v. 44, n. 2, p. 137-155 (dossiê Animals in the City)",
+      "doi": "10.1080/07352166.2020.1734014",
+      "note": "Acesso fechado (avisado no e-mail, com alternativas). Ponte direito à cidade → insurgente/multiespécies/ecofeminismo. Enviado 2026-09-01 11:43 UTC, Inkbox id 530ffd97."
     }
   ],
   "already_in_thesis": [
@@ -20,5 +31,5 @@
     "SHEIKH, Hira; FOTH, Marcus; MITCHELL, Peta. More-than-human city-region foresight. Regional Studies, v. 57, n. 4, p. 642-655, 2023. DOI 10.1080/00343404.2022.2045266.",
     "SHEIKH, Hira; MITCHELL, Peta; FOTH, Marcus. Reparative futures of smart urban governance. Futures, v. 154, art. 103266, 2023. DOI 10.1016/j.futures.2023.103266."
   ],
-  "notes": "Dia 1 enviado como teste na estreia (2026-08-31 ~21:37 São Paulo / 2026-09-01 00:36 UTC, Inkbox id bd2c2e8c). Routine diária trig_015byv2MPNvWcut1cJpBcafg dispara às 09:00 UTC (06:00 América/São_Paulo) na sessão criadora e faz pesquisa+escrita+envio+push na mesma manhã; primeiro disparo agendado 2026-09-01 (dia 2)."
+  "notes": "Dias 1-2 enviados. Routine diária trig_015byv2MPNvWcut1cJpBcafg dispara às 09:00 UTC (06:00 América/São_Paulo) na sessão criadora e faz pesquisa+escrita+envio+push na mesma manhã. Próximo: dia 3, tema 3 (ecofeminismo queer)."
 }
