@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 · The Anatomy of a Frame</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+<header class="lesson-header">
+  <p class="kicker">Bike Frame Craft · Lesson 1</p>
+  <h1>The Anatomy of a Frame</h1>
+  <p class="lede">Before you can design a frame, you need to speak its language.
+  Today you learn the eight parts of the classic diamond frame — and why that
+  shape has survived 130 years almost unchanged.</p>
+</header>
+
+<h2>Why every frame is two triangles</h2>
+
+<p>Look at almost any bike — including the touring bike you'll one day design —
+and you'll see the same skeleton: the
+<a href="https://en.wikipedia.org/wiki/Bicycle_frame">diamond frame</a>.
+It's really two triangles sharing an edge. Triangles are the strongest simple
+shape in engineering: push on a corner, and the sides can only stretch or
+squash — they can't fold. That's why bridges are built from triangles, and why
+your frame can weigh under 2&nbsp;kg yet carry you, your groceries, and a
+month of touring luggage.</p>
+
+<figure>
+<svg viewBox="0 0 720 420" role="img" aria-label="Labeled diagram of a diamond bicycle frame"
+     style="width:100%;height:auto;font-family:'Gill Sans','Helvetica Neue',Arial,sans-serif;">
+  <!-- wheels -->
+  <circle cx="130" cy="310" r="97" fill="none" stroke="#d8d5cb" stroke-width="7"/>
+  <circle cx="610" cy="310" r="97" fill="none" stroke="#d8d5cb" stroke-width="7"/>
+  <circle cx="130" cy="310" r="4" fill="#6b6b64"/>
+  <circle cx="610" cy="310" r="4" fill="#6b6b64"/>
+  <!-- triangle tints -->
+  <polygon points="275,130 555,120 575,188 330,335" fill="#f4e3d3" opacity="0.75"/>
+  <polygon points="275,130 330,335 130,310" fill="#e3ecdf" opacity="0.85"/>
+  <!-- rear triangle -->
+  <line x1="330" y1="335" x2="130" y2="310" stroke="#2e6e3e" stroke-width="7" stroke-linecap="round"/>
+  <line x1="275" y1="130" x2="130" y2="310" stroke="#2e6e3e" stroke-width="6" stroke-linecap="round"/>
+  <!-- front triangle -->
+  <line x1="330" y1="335" x2="275" y2="130" stroke="#b5541c" stroke-width="8" stroke-linecap="round"/>
+  <line x1="275" y1="130" x2="555" y2="120" stroke="#b5541c" stroke-width="8" stroke-linecap="round"/>
+  <line x1="330" y1="335" x2="575" y2="188" stroke="#b5541c" stroke-width="9" stroke-linecap="round"/>
+  <line x1="555" y1="120" x2="575" y2="188" stroke="#b5541c" stroke-width="11" stroke-linecap="round"/>
+  <!-- fork, cockpit, saddle -->
+  <path d="M575,188 C588,235 598,272 610,310" fill="none" stroke="#6b6b64" stroke-width="6" stroke-linecap="round"/>
+  <line x1="555" y1="120" x2="547" y2="92" stroke="#6b6b64" stroke-width="5" stroke-linecap="round"/>
+  <line x1="547" y1="92" x2="575" y2="86" stroke="#6b6b64" stroke-width="5" stroke-linecap="round"/>
+  <line x1="275" y1="130" x2="264" y2="96" stroke="#6b6b64" stroke-width="5" stroke-linecap="round"/>
+  <line x1="238" y1="92" x2="296" y2="88" stroke="#6b6b64" stroke-width="7" stroke-linecap="round"/>
+  <!-- bottom bracket -->
+  <circle cx="330" cy="335" r="11" fill="#fffef9" stroke="#1a1a18" stroke-width="4"/>
+  <!-- labels -->
+  <g font-size="15" fill="#1a1a18">
+    <text x="400" y="100">Top tube</text>
+    <line x1="415" y1="106" x2="415" y2="120" stroke="#6b6b64" stroke-width="1"/>
+    <text x="598" y="146">Head tube</text>
+    <line x1="596" y1="150" x2="570" y2="155" stroke="#6b6b64" stroke-width="1"/>
+    <text x="478" y="300">Down tube</text>
+    <line x1="490" y1="288" x2="465" y2="270" stroke="#6b6b64" stroke-width="1"/>
+    <text x="192" y="248">Seat tube</text>
+    <line x1="262" y1="243" x2="298" y2="238" stroke="#6b6b64" stroke-width="1"/>
+    <text x="88" y="178">Seat stays</text>
+    <line x1="140" y1="184" x2="196" y2="222" stroke="#6b6b64" stroke-width="1"/>
+    <text x="160" y="372">Chain stays</text>
+    <line x1="210" y1="360" x2="232" y2="330" stroke="#6b6b64" stroke-width="1"/>
+    <text x="298" y="392">Bottom bracket shell</text>
+    <line x1="332" y1="378" x2="330" y2="350" stroke="#6b6b64" stroke-width="1"/>
+    <text x="638" y="240">Fork</text>
+    <line x1="634" y1="243" x2="598" y2="248" stroke="#6b6b64" stroke-width="1"/>
+  </g>
+</svg>
+<figcaption>The diamond frame: front triangle in bronze, rear triangle in green.
+The fork (grey) steers, but isn't part of the frame itself.</figcaption>
+</figure>
+
+<h2>The grand tour: eight parts</h2>
+
+<p>The <strong>front triangle</strong> (bronze above) is made of four members —
+we'll get to that little scandal in a moment:</p>
+
+<ul>
+  <li><strong>Head tube</strong> — the short stub at the front. The fork's
+      steerer spins inside it; it literally holds your steering
+      (<a href="https://www.sheldonbrown.com/gloss_ha-i.html">Sheldon Brown</a>).</li>
+  <li><strong>Top tube</strong> — connects head tube to seat tube. The one you
+      swing your leg over.</li>
+  <li><strong>Down tube</strong> — head tube down to the bottom bracket. The
+      biggest, hardest-working tube in the frame.</li>
+  <li><strong>Seat tube</strong> — bottom bracket up to the saddle clamp. Your
+      seatpost slides into it.</li>
+</ul>
+
+<p>The <strong>rear triangle</strong> (green) is the seat tube plus two
+<em>pairs</em> of skinny tubes, one on each side of the rear wheel:</p>
+
+<ul>
+  <li><strong>Chain stays</strong> — from the bottom bracket straight back to
+      the rear wheel. Every watt you pedal travels through these.</li>
+  <li><strong>Seat stays</strong> — from the top of the seat tube down to the
+      rear wheel, completing the triangle
+      (<a href="https://www.sheldonbrown.com/gloss_sa-o.html">Sheldon Brown</a>).</li>
+</ul>
+
+<p>Two more small parts complete the vocabulary:</p>
+
+<ul>
+  <li><strong>Bottom bracket shell</strong> — the stubby cylinder where seat
+      tube, down tube and chain stays all meet. The crank axle spins inside it.
+      It's the heart of the frame: nearly every design measurement starts here.</li>
+  <li><strong>Dropouts</strong> — the small slotted plates at the very ends of
+      the stays where the rear wheel bolts in.</li>
+</ul>
+
+<div class="callout">
+<p><strong>The scandal:</strong> the "front triangle" has <em>four</em> sides —
+head tube, top tube, down tube, seat tube. Framebuilders call it a triangle
+anyway, because the short head tube barely counts. Knowing this earns you a
+knowing nod on any framebuilding forum.</p>
+</div>
+
+<h2>Why this matters for <em>your</em> touring frame</h2>
+
+<p>Per your <a href="../MISSION.md">mission</a>, everything we learn points at a
+city/touring frame. These eight parts are where all your future design
+decisions live: how long the chain stays are decides whether panniers hit your
+heels; the head tube's angle decides how the bike steers with a load; the seat
+tube's angle and length decide how the bike fits <em>you</em>. Learn the names
+now, and every geometry chart you meet in Lesson 2 will read like a sentence
+instead of a spreadsheet.</p>
+
+<h2>Check yourself</h2>
+
+<p>Answer from memory — scroll the diagram out of view first. Getting it wrong
+and retrying is the point; that effort is what makes it stick.</p>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "Which tube runs from the bottom bracket up to the saddle clamp?",
+  "options": ["Head tube", "Seat tube", "Down tube", "Top tube"],
+  "answer": 1,
+  "explain": "The seat tube holds the seatpost, and its length is the classic measure of frame size." }
+</script>
+</div>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "Which pair of tubes carries your pedaling force back to the rear wheel?",
+  "options": ["Seat stays", "Fork blades", "Chain stays", "Head tubes"],
+  "answer": 2,
+  "explain": "Chain stays run from the bottom bracket to the rear dropouts — right alongside the chain, hence the name." }
+</script>
+</div>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "The fork's steerer spins inside which tube of the frame?",
+  "options": ["Down tube", "Seat tube", "Top tube", "Head tube"],
+  "answer": 3,
+  "explain": "The head tube is the frame's steering bearing housing — the fork rotates inside it." }
+</script>
+</div>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "How many sides does the so-called front triangle really have?",
+  "options": ["Three", "Four", "Five", "Six"],
+  "answer": 1,
+  "explain": "Head tube, top tube, down tube, seat tube — a quadrilateral that everyone politely calls a triangle." }
+</script>
+</div>
+
+<h2>Your real-world assignment</h2>
+
+<p>Go to your own bike. Touch each of the eight parts and say its name out
+loud, without looking anything up. It takes ninety seconds and it moves these
+names from "just read it" to "know it" — spoken retrieval beats rereading
+every time. Tomorrow, do it once more.</p>
+
+<h2>Go deeper</h2>
+
+<p><strong>Primary source for this lesson:</strong>
+<a href="https://www.sheldonbrown.com/frames.html">Sheldon Brown's articles on
+bicycle frames</a> — the most trusted free bicycle reference on the internet.
+Skim the frame materials piece; don't study it yet.</p>
+
+<p>When you want a peek at where this whole journey leads, the free
+<a href="https://theframebuilders.com/wp-content/uploads/2020/10/The-Paterek-Manual.pdf">Paterek
+Manual</a> is the canonical text on building steel frames by hand — just
+browse the photos for now.</p>
+
+<p>Keep the <a href="../reference/frame-anatomy.html">frame anatomy cheat
+sheet</a> handy; every later lesson assumes these names.</p>
+
+<footer class="lesson-footer">
+<p>Stuck or curious? Ask your teacher — me, in the chat — anything at all:
+"why are stays paired but tubes aren't?", "what's a lug?", "is my bike a
+diamond frame?". No question is too small; that's what I'm here for.</p>
+</footer>
+
+</div>
+</body>
+</html>
