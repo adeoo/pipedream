@@ -4,7 +4,207 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reference · Geometry Chart Cheat Sheet</title>
-<link rel="stylesheet" href="../assets/course.css">
+<style>
+/* Shared stylesheet for the Bike Frame Craft course — CANONICAL SOURCE.
+   Lessons and references are opened as standalone files on the user's
+   phone, so each document embeds an inline COPY of this file in a
+   <style> tag. Edit here first, then refresh the inline copies.
+   Phone-first: ~380px screens, sparse text, big touch targets. */
+
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;      /* brazed-bronze orange */
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.page {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 1.6rem 1.1rem 4rem;
+}
+
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 1.8rem;
+  padding-bottom: 1rem;
+}
+
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+
+h1 {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  font-weight: normal;
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  font-style: italic;
+  margin: 2.2rem 0 0.7rem;
+}
+
+p { margin: 0 0 1rem; }
+
+.lede {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0;
+}
+
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+
+figure { margin: 1.6rem 0; }
+figcaption {
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+
+/* Measurement / term cards: the phone-friendly replacement for
+   dense bullet lists. One card = one concept, one line of prose. */
+.cards { margin: 1.4rem 0; }
+.card {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  margin: 0.7rem 0;
+  background: #fbfaf4;
+}
+.card h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+}
+.card h3 .val { color: var(--accent); font-weight: 600; }
+.card .tag {
+  display: inline-block;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  margin: 0.35rem 0 0.3rem;
+  background: var(--accent-soft);
+  color: #8a3f13;
+}
+.card .tag.behavior { background: #e3ecdf; color: var(--good); }
+.card p { margin: 0.25rem 0 0; font-size: 0.97rem; }
+
+/* Any table wider than its container scrolls sideways instead of
+   squeezing — wrap tables in this. */
+.table-scroll { overflow-x: auto; margin: 1.4rem 0; }
+.table-scroll table.ref { margin: 0; }
+
+table.ref {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.4rem 0;
+  font-size: 0.95rem;
+}
+table.ref th, table.ref td {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.ref th {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Quiz widget (rendered by assets/quiz.js) */
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.1rem 1.1rem;
+  margin: 1.6rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz button.q-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;   /* thumb-sized */
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+.quiz button.q-opt:hover { border-color: var(--accent); }
+.quiz button.q-opt.correct { border-color: var(--good); background: #edf6ee; }
+.quiz button.q-opt.wrong { border-color: var(--bad); background: #faeceb; }
+.quiz .q-feedback { margin-top: 0.7rem; font-size: 0.95rem; }
+.quiz .q-feedback.good { color: var(--good); }
+.quiz .q-feedback.bad { color: var(--bad); }
+
+footer.lesson-footer {
+  margin-top: 2.6rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.1rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+@media print {
+  .quiz button.q-opt { border: 1px solid #999; }
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
+
+</style>
 </head>
 <body>
 <div class="page">
@@ -12,65 +212,77 @@
 <header class="lesson-header">
   <p class="kicker">Bike Frame Craft · Reference</p>
   <h1>Geometry Chart Cheat Sheet</h1>
-  <p class="lede">How to read any frame's table of numbers. Taught in
-  <a href="../lessons/0002-reading-a-geometry-chart.html">Lesson 2</a>;
-  example values are the 56cm
-  <a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Surly
+  <p class="lede">How to read any frame's table of numbers. Example values:
+  the 56cm <a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Surly
   Disc Trucker</a>, a benchmark steel touring bike.</p>
 </header>
 
 <div class="callout">
-<p><strong>The method:</strong> find your size column, then sort every row into
-one of two jobs — <em>fit</em> (serves the rider's body, grows with size) or
-<em>behavior</em> (serves the ride feel, often constant across sizes).
-Lengths are millimeters; angles are degrees from horizontal.</p>
+<p><strong>The method:</strong> find your size column, then sort every row
+into one of two jobs — <em>fit</em> (serves the rider's body, grows with
+size) or <em>behavior</em> (serves the ride feel, often constant across
+sizes). Lengths are mm; angles are degrees from horizontal.</p>
 </div>
 
-<table class="ref">
-  <tr><th>Row</th><th>Measured</th><th>Job</th><th>Trucker 56cm</th><th>First-look meaning</th></tr>
-  <tr><td><strong>Seat tube length</strong></td>
-      <td>Bottom bracket → top of seat tube</td>
-      <td>Fit</td><td>560&nbsp;mm</td>
-      <td>The classic "frame size" — how tall the frame stands</td></tr>
-  <tr><td><strong>Effective top tube</strong></td>
-      <td>Head tube → seat tube, measured level (not along a sloping tube)</td>
-      <td>Fit</td><td>575&nbsp;mm</td>
-      <td>How stretched-out you sit; the key fit length</td></tr>
-  <tr><td><strong>Seat tube angle</strong></td>
-      <td>Seat tube's lean from horizontal</td>
-      <td>Fit</td><td>73°</td>
-      <td>Places hips over the pedals; steeper = further forward</td></tr>
-  <tr><td><strong>Head tube angle</strong></td>
-      <td>Head tube's (= steering axis') lean from horizontal</td>
-      <td>Behavior</td><td>72°</td>
-      <td>Steering personality; slacker = calmer</td></tr>
-  <tr><td><strong>Chainstay length</strong></td>
-      <td>Bottom bracket → rear dropout</td>
-      <td>Behavior</td><td>450&nbsp;mm</td>
-      <td>Long = stable, heel-room for panniers (race ≈ 410&nbsp;mm)</td></tr>
-  <tr><td><strong>Wheelbase</strong></td>
-      <td>Front axle → rear axle</td>
-      <td>Behavior</td><td>1051&nbsp;mm</td>
-      <td>Sum of all choices; long = steady ship (&gt;1m = touring)</td></tr>
-</table>
+<div class="cards">
+  <div class="card">
+    <h3>Seat tube length · <span class="val">560 mm</span></h3>
+    <span class="tag">Fit</span>
+    <p>Bottom bracket → top of seat tube. The classic "frame size".</p>
+  </div>
+  <div class="card">
+    <h3>Effective top tube · <span class="val">575 mm</span></h3>
+    <span class="tag">Fit</span>
+    <p>Head tube → seat tube, measured <em>level</em> (not along a sloping
+    tube). The key stretched-out-ness number.</p>
+  </div>
+  <div class="card">
+    <h3>Seat tube angle · <span class="val">73°</span></h3>
+    <span class="tag">Fit</span>
+    <p>Seat tube's lean from horizontal. Places hips over the pedals;
+    steeper = further forward.</p>
+  </div>
+  <div class="card">
+    <h3>Head tube angle · <span class="val">72°</span></h3>
+    <span class="tag behavior">Behavior</span>
+    <p>Steering axis' lean. Steering personality; slacker = calmer.</p>
+  </div>
+  <div class="card">
+    <h3>Chainstay length · <span class="val">450 mm</span></h3>
+    <span class="tag behavior">Behavior</span>
+    <p>Bottom bracket → rear dropout. Long = stable + heel room for
+    panniers (race ≈ 410&nbsp;mm).</p>
+  </div>
+  <div class="card">
+    <h3>Wheelbase · <span class="val">1051 mm</span></h3>
+    <span class="tag behavior">Behavior</span>
+    <p>Front axle → rear axle; the sum of all choices. Long = steady ship
+    (&gt;1&nbsp;m = touring).</p>
+  </div>
+</div>
 
 <h2>Rows you'll meet soon</h2>
 
-<table class="ref">
-  <tr><th>Row</th><th>One-line preview</th><th>Taught in</th></tr>
-  <tr><td><strong>Bottom bracket drop</strong></td>
-      <td>How far the crank axle sits below the wheel axles (Trucker: 80&nbsp;mm)</td>
-      <td>upcoming lesson</td></tr>
-  <tr><td><strong>Fork offset / rake</strong></td>
-      <td>How far the front hub sits ahead of the steering axis (Trucker: 45&nbsp;mm)</td>
-      <td>upcoming lesson</td></tr>
-  <tr><td><strong>Trail</strong></td>
-      <td>The number head angle + offset conspire to create; steering stability itself</td>
-      <td>upcoming lesson</td></tr>
-  <tr><td><strong>Stack &amp; reach</strong></td>
-      <td>Modern fit coordinates: bottom bracket → top of head tube, vertical &amp; horizontal</td>
-      <td>upcoming lesson</td></tr>
-</table>
+<div class="cards">
+  <div class="card">
+    <h3>Bottom bracket drop · <span class="val">80 mm</span></h3>
+    <p>How far the crank axle sits below the wheel axles.</p>
+  </div>
+  <div class="card">
+    <h3>Fork offset / rake · <span class="val">45 mm</span></h3>
+    <p>How far the front hub sits ahead of the steering axis.</p>
+  </div>
+  <div class="card">
+    <h3>Trail</h3>
+    <p>What head angle + offset conspire to create: steering stability
+    itself.</p>
+  </div>
+  <div class="card">
+    <h3>Stack &amp; reach</h3>
+    <p>Modern fit coordinates: bottom bracket → top of head tube,
+    vertical &amp; horizontal.</p>
+  </div>
+</div>
 
 <h2>Sources</h2>
 <ul>

@@ -4,8 +4,275 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lesson 1 · The Anatomy of a Frame</title>
-<link rel="stylesheet" href="../assets/course.css">
-<script src="../assets/quiz.js" defer></script>
+<style>
+/* Shared stylesheet for the Bike Frame Craft course — CANONICAL SOURCE.
+   Lessons and references are opened as standalone files on the user's
+   phone, so each document embeds an inline COPY of this file in a
+   <style> tag. Edit here first, then refresh the inline copies.
+   Phone-first: ~380px screens, sparse text, big touch targets. */
+
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;      /* brazed-bronze orange */
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.page {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 1.6rem 1.1rem 4rem;
+}
+
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 1.8rem;
+  padding-bottom: 1rem;
+}
+
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+
+h1 {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  font-weight: normal;
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  font-style: italic;
+  margin: 2.2rem 0 0.7rem;
+}
+
+p { margin: 0 0 1rem; }
+
+.lede {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0;
+}
+
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+
+figure { margin: 1.6rem 0; }
+figcaption {
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+
+/* Measurement / term cards: the phone-friendly replacement for
+   dense bullet lists. One card = one concept, one line of prose. */
+.cards { margin: 1.4rem 0; }
+.card {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  margin: 0.7rem 0;
+  background: #fbfaf4;
+}
+.card h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+}
+.card h3 .val { color: var(--accent); font-weight: 600; }
+.card .tag {
+  display: inline-block;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  margin: 0.35rem 0 0.3rem;
+  background: var(--accent-soft);
+  color: #8a3f13;
+}
+.card .tag.behavior { background: #e3ecdf; color: var(--good); }
+.card p { margin: 0.25rem 0 0; font-size: 0.97rem; }
+
+/* Any table wider than its container scrolls sideways instead of
+   squeezing — wrap tables in this. */
+.table-scroll { overflow-x: auto; margin: 1.4rem 0; }
+.table-scroll table.ref { margin: 0; }
+
+table.ref {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.4rem 0;
+  font-size: 0.95rem;
+}
+table.ref th, table.ref td {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.ref th {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Quiz widget (rendered by assets/quiz.js) */
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.1rem 1.1rem;
+  margin: 1.6rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz button.q-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;   /* thumb-sized */
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+.quiz button.q-opt:hover { border-color: var(--accent); }
+.quiz button.q-opt.correct { border-color: var(--good); background: #edf6ee; }
+.quiz button.q-opt.wrong { border-color: var(--bad); background: #faeceb; }
+.quiz .q-feedback { margin-top: 0.7rem; font-size: 0.95rem; }
+.quiz .q-feedback.good { color: var(--good); }
+.quiz .q-feedback.bad { color: var(--bad); }
+
+footer.lesson-footer {
+  margin-top: 2.6rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.1rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+@media print {
+  .quiz button.q-opt { border: 1px solid #999; }
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
+
+</style>
+<script>
+/* Reusable retrieval-practice quiz widget for the Bike Frame Craft course.
+   A lesson declares quizzes as JSON in a <script type="application/json"
+   class="quiz-data"> block inside a .quiz container:
+
+   { "question": "...",
+     "options": ["A", "B", "C", "D"],
+     "answer": 1,
+     "explain": "Shown after any click." }
+
+   Feedback is immediate — click an option, see right/wrong plus the
+   explanation. Wrong answers stay clickable so the learner can retrieve
+   again rather than being told the answer. */
+
+(function () {
+  function renderQuiz(container, data, index) {
+    var title = document.createElement('h3');
+    title.textContent = 'Check yourself · ' + index;
+    container.appendChild(title);
+
+    var q = document.createElement('p');
+    q.className = 'q-text';
+    q.textContent = data.question;
+    container.appendChild(q);
+
+    var feedback = document.createElement('p');
+    feedback.className = 'q-feedback';
+
+    data.options.forEach(function (opt, i) {
+      var btn = document.createElement('button');
+      btn.className = 'q-opt';
+      btn.type = 'button';
+      btn.textContent = opt;
+      btn.addEventListener('click', function () {
+        if (i === data.answer) {
+          btn.classList.add('correct');
+          feedback.className = 'q-feedback good';
+          feedback.textContent = '✓ Right. ' + (data.explain || '');
+          container.querySelectorAll('.q-opt').forEach(function (b) {
+            b.disabled = true;
+            if (b !== btn) b.classList.remove('wrong');
+          });
+        } else {
+          btn.classList.add('wrong');
+          btn.disabled = true;
+          feedback.className = 'q-feedback bad';
+          feedback.textContent = '✗ Not that one — try again from memory.';
+        }
+        if (!feedback.parentNode) container.appendChild(feedback);
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.quiz').forEach(function (container, idx) {
+      var dataEl = container.querySelector('.quiz-data');
+      if (!dataEl) return;
+      try {
+        renderQuiz(container, JSON.parse(dataEl.textContent), idx + 1);
+      } catch (e) {
+        container.textContent = 'Quiz failed to load.';
+      }
+    });
+  });
+})();
+
+</script>
 </head>
 <body>
 <div class="page">

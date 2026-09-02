@@ -15,6 +15,12 @@ already covered.
 - Likes a TL;DR up front in chat replies.
 - Wants to be asked questions when things are unclear.
 - No artifacts unless a specific file is requested — deliver lessons as workspace files.
+- READS ON HIS PHONE (2026-09-02): lessons must be fully self-contained
+  (inline style/script — no ../assets/ links, they break in Claude's viewer)
+  and phone-first: short paragraphs, cards over dense bullets, <500 words of
+  prose, big quiz buttons, big SVG labels. He hated the desktop-dense v1 of
+  lesson 0002. Full rules recorded in .claude/skills/teach/SKILL.md
+  ("Delivery" section). Send each lesson via SendUserFile (render).
 
 ## Learner profile (2026-09-01)
 - Rides bikes; has never wrenched or done metalwork. Total beginner on the craft side.
@@ -37,6 +43,10 @@ already covered.
 - Lesson 0001 (frame anatomy) delivered 2026-09-01. Quiz results not yet observed —
   do not write a learning record until he reports back or answers retrieval
   questions in chat.
+- 2026-09-02: he read lesson 0002 v1 on his phone — broken render (external
+  asset links) and too wordy. Rewrote 0002 phone-first + self-contained,
+  retrofitted 0001 and both reference sheets, added Delivery rules to the
+  teach SKILL.md. All future documents must follow those rules.
 - Lesson 0002 (reading a geometry chart) delivered 2026-09-02, using the Surly
   Disc Trucker 700c 56/58cm chart (verified against surlybikes.com: 560/575mm,
   73°/72°, 450mm stays, 1051mm wheelbase, BB drop 80mm, offset 45mm). Opens

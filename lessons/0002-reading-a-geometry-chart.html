@@ -4,8 +4,275 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lesson 2 · Reading a Geometry Chart</title>
-<link rel="stylesheet" href="../assets/course.css">
-<script src="../assets/quiz.js" defer></script>
+<style>
+/* Shared stylesheet for the Bike Frame Craft course — CANONICAL SOURCE.
+   Lessons and references are opened as standalone files on the user's
+   phone, so each document embeds an inline COPY of this file in a
+   <style> tag. Edit here first, then refresh the inline copies.
+   Phone-first: ~380px screens, sparse text, big touch targets. */
+
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;      /* brazed-bronze orange */
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.page {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 1.6rem 1.1rem 4rem;
+}
+
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 1.8rem;
+  padding-bottom: 1rem;
+}
+
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+
+h1 {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  font-weight: normal;
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  font-style: italic;
+  margin: 2.2rem 0 0.7rem;
+}
+
+p { margin: 0 0 1rem; }
+
+.lede {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0;
+}
+
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+
+figure { margin: 1.6rem 0; }
+figcaption {
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+
+/* Measurement / term cards: the phone-friendly replacement for
+   dense bullet lists. One card = one concept, one line of prose. */
+.cards { margin: 1.4rem 0; }
+.card {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  margin: 0.7rem 0;
+  background: #fbfaf4;
+}
+.card h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+}
+.card h3 .val { color: var(--accent); font-weight: 600; }
+.card .tag {
+  display: inline-block;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  margin: 0.35rem 0 0.3rem;
+  background: var(--accent-soft);
+  color: #8a3f13;
+}
+.card .tag.behavior { background: #e3ecdf; color: var(--good); }
+.card p { margin: 0.25rem 0 0; font-size: 0.97rem; }
+
+/* Any table wider than its container scrolls sideways instead of
+   squeezing — wrap tables in this. */
+.table-scroll { overflow-x: auto; margin: 1.4rem 0; }
+.table-scroll table.ref { margin: 0; }
+
+table.ref {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.4rem 0;
+  font-size: 0.95rem;
+}
+table.ref th, table.ref td {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.ref th {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Quiz widget (rendered by assets/quiz.js) */
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.1rem 1.1rem;
+  margin: 1.6rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz button.q-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;   /* thumb-sized */
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+.quiz button.q-opt:hover { border-color: var(--accent); }
+.quiz button.q-opt.correct { border-color: var(--good); background: #edf6ee; }
+.quiz button.q-opt.wrong { border-color: var(--bad); background: #faeceb; }
+.quiz .q-feedback { margin-top: 0.7rem; font-size: 0.95rem; }
+.quiz .q-feedback.good { color: var(--good); }
+.quiz .q-feedback.bad { color: var(--bad); }
+
+footer.lesson-footer {
+  margin-top: 2.6rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.1rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+@media print {
+  .quiz button.q-opt { border: 1px solid #999; }
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
+
+</style>
+<script>
+/* Reusable retrieval-practice quiz widget for the Bike Frame Craft course.
+   A lesson declares quizzes as JSON in a <script type="application/json"
+   class="quiz-data"> block inside a .quiz container:
+
+   { "question": "...",
+     "options": ["A", "B", "C", "D"],
+     "answer": 1,
+     "explain": "Shown after any click." }
+
+   Feedback is immediate — click an option, see right/wrong plus the
+   explanation. Wrong answers stay clickable so the learner can retrieve
+   again rather than being told the answer. */
+
+(function () {
+  function renderQuiz(container, data, index) {
+    var title = document.createElement('h3');
+    title.textContent = 'Check yourself · ' + index;
+    container.appendChild(title);
+
+    var q = document.createElement('p');
+    q.className = 'q-text';
+    q.textContent = data.question;
+    container.appendChild(q);
+
+    var feedback = document.createElement('p');
+    feedback.className = 'q-feedback';
+
+    data.options.forEach(function (opt, i) {
+      var btn = document.createElement('button');
+      btn.className = 'q-opt';
+      btn.type = 'button';
+      btn.textContent = opt;
+      btn.addEventListener('click', function () {
+        if (i === data.answer) {
+          btn.classList.add('correct');
+          feedback.className = 'q-feedback good';
+          feedback.textContent = '✓ Right. ' + (data.explain || '');
+          container.querySelectorAll('.q-opt').forEach(function (b) {
+            b.disabled = true;
+            if (b !== btn) b.classList.remove('wrong');
+          });
+        } else {
+          btn.classList.add('wrong');
+          btn.disabled = true;
+          feedback.className = 'q-feedback bad';
+          feedback.textContent = '✗ Not that one — try again from memory.';
+        }
+        if (!feedback.parentNode) container.appendChild(feedback);
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.quiz').forEach(function (container, idx) {
+      var dataEl = container.querySelector('.quiz-data');
+      if (!dataEl) return;
+      try {
+        renderQuiz(container, JSON.parse(dataEl.textContent), idx + 1);
+      } catch (e) {
+        container.textContent = 'Quiz failed to load.';
+      }
+    });
+  });
+})();
+
+</script>
 </head>
 <body>
 <div class="page">
@@ -13,92 +280,79 @@
 <header class="lesson-header">
   <p class="kicker">Bike Frame Craft · Lesson 2</p>
   <h1>Reading a Geometry Chart</h1>
-  <p class="lede">Every frame ever designed can be written down as a small table
-  of numbers. Today you learn to open that table — a real one, from a real
-  touring bike — and read it like a sentence instead of a spreadsheet.</p>
+  <p class="lede">Every frame can be written down as a small table of numbers.
+  Today you learn to read one — from a real touring bike.</p>
 </header>
 
-<h2>Warm-up: retrieve before you build</h2>
+<h2>Warm-up</h2>
 
-<p>Two quick questions from <a href="0001-anatomy-of-a-frame.html">Lesson 1</a>,
-from memory — no peeking at the <a href="../reference/frame-anatomy.html">cheat
-sheet</a>. Pulling a name out of your head a day later is exactly what locks it
-in for good.</p>
+<p>Two questions from Lesson 1, from memory. Wrong first try is fine — the
+effort is what makes it stick.</p>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
-{ "question": "Warm-up: which part is the stubby cylinder where the seat tube, down tube and chain stays all meet?",
+{ "question": "Which part is the stubby cylinder where seat tube, down tube and chain stays all meet?",
   "options": ["Head tube junction", "Bottom bracket shell", "Rear dropout plate", "Seat stay bridge"],
   "answer": 1,
-  "explain": "The bottom bracket shell is the heart of the frame — and, as you'll see today, several chart numbers are measured from it." }
+  "explain": "The heart of the frame — several chart numbers are measured from it." }
 </script>
 </div>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
-{ "question": "Warm-up: which pair of tubes runs from the bottom bracket back to the rear dropouts?",
+{ "question": "Which pair of tubes runs from the bottom bracket back to the rear dropouts?",
   "options": ["The seat stays", "The fork blades", "The chain stays", "The head tubes"],
   "answer": 2,
-  "explain": "Chain stays — and today you'll meet their length as a number: 450mm on the touring bike below." }
+  "explain": "Chain stays — today you'll meet their length as a number: 450 mm." }
 </script>
 </div>
 
-<h2>What a geometry chart is</h2>
+<h2>What a chart is</h2>
 
-<p>A geometry chart is the bike industry's way of writing a frame down on
-paper. It's a table: <strong>one column per frame size, one row per
-measurement</strong>. Lengths are in millimeters, angles in degrees. Nothing
-more mysterious than that — the intimidating part is only that there are a
-dozen rows and you don't yet know which ones matter.</p>
+<p>A geometry chart is a frame written down as a table: <strong>one column per
+size, one row per measurement</strong>. Lengths in millimeters, angles in
+degrees. That's all it is.</p>
 
-<p>Here's the good news for a future framebuilder: the chart isn't just a
-shopping aid. It is, quite literally, a <em>compressed design</em>. When you
-draw your own touring frame in the capstone, your finished design will
-<strong>be</strong> a geometry chart plus a full-scale drawing. Learning to
-read charts now is learning to read the documents you'll one day write.</p>
+<p>And here's why it matters to <em>you</em>: your final touring-frame design
+will literally be one of these tables, plus a drawing. Reading charts now is
+practice for writing one later.</p>
 
 <h2>A real one: the Surly Disc Trucker</h2>
 
-<p>The <a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Surly
-Disc Trucker</a> is one of the best-known steel touring bikes in the world —
-close cousin to the kind of frame you want to build. Below is a slice of
-Surly's official chart: two sizes, six rows. (The full chart has more of both;
-we're starting with the rows you can already name from Lesson 1.)</p>
+<p>The <a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Disc
+Trucker</a> is one of the world's best-known steel touring bikes — a close
+cousin of the frame you want to build. Six rows of Surly's official chart,
+two sizes:</p>
 
+<div class="table-scroll">
 <table class="ref">
   <tr><th>Measurement</th><th>56cm</th><th>58cm</th></tr>
-  <tr><td><strong>Seat tube length</strong></td><td>560&nbsp;mm</td><td>580&nbsp;mm</td></tr>
-  <tr><td><strong>Effective top tube</strong></td><td>575&nbsp;mm</td><td>590&nbsp;mm</td></tr>
-  <tr><td><strong>Seat tube angle</strong></td><td>73°</td><td>72.5°</td></tr>
-  <tr><td><strong>Head tube angle</strong></td><td>72°</td><td>72°</td></tr>
-  <tr><td><strong>Chainstay length</strong></td><td>450&nbsp;mm</td><td>450&nbsp;mm</td></tr>
-  <tr><td><strong>Wheelbase</strong></td><td>1051&nbsp;mm</td><td>1060&nbsp;mm</td></tr>
+  <tr><td>Seat tube length</td><td>560&nbsp;mm</td><td>580&nbsp;mm</td></tr>
+  <tr><td>Effective top tube</td><td>575&nbsp;mm</td><td>590&nbsp;mm</td></tr>
+  <tr><td>Seat tube angle</td><td>73°</td><td>72.5°</td></tr>
+  <tr><td>Head tube angle</td><td>72°</td><td>72°</td></tr>
+  <tr><td>Chainstay length</td><td>450&nbsp;mm</td><td>450&nbsp;mm</td></tr>
+  <tr><td>Wheelbase</td><td>1051&nbsp;mm</td><td>1060&nbsp;mm</td></tr>
 </table>
+</div>
 
-<p>Two things to notice before we decode the rows:</p>
+<div class="callout">
+<p><strong>Notice two things.</strong> "56cm" is a real measurement — the seat
+tube is 560&nbsp;mm. And from 56 to 58 the tubes grow, but the chainstays and
+head angle <em>don't budge</em>. Hold that thought.</p>
+</div>
 
-<ul>
-  <li><strong>The size name is a real measurement.</strong> "56cm" isn't a
-      T-shirt size — it's the seat tube length, 560&nbsp;mm. That's the classic
-      way frames are sized.</li>
-  <li><strong>Not everything grows with size.</strong> Going from 56 to 58,
-      the tubes get longer — but the chainstays stay 450&nbsp;mm and the head
-      angle stays 72°. Some numbers serve the <em>rider's body</em>; others
-      serve the <em>bike's behavior</em>. Separating those two jobs is the
-      key insight of this whole week.</li>
-</ul>
-
-<h2>Where each number lives on the frame</h2>
+<h2>Where the numbers live</h2>
 
 <figure>
-<svg viewBox="0 0 720 440" role="img" aria-label="Diamond frame with geometry measurements marked"
+<svg viewBox="0 0 720 480" role="img" aria-label="Diamond frame with geometry measurements marked"
      style="width:100%;height:auto;font-family:'Gill Sans','Helvetica Neue',Arial,sans-serif;">
   <!-- wheels -->
   <circle cx="130" cy="310" r="97" fill="none" stroke="#d8d5cb" stroke-width="7"/>
   <circle cx="610" cy="310" r="97" fill="none" stroke="#d8d5cb" stroke-width="7"/>
   <circle cx="130" cy="310" r="4" fill="#6b6b64"/>
   <circle cx="610" cy="310" r="4" fill="#6b6b64"/>
-  <!-- frame -->
+  <!-- frame in light grey -->
   <line x1="330" y1="335" x2="130" y2="310" stroke="#c9c6ba" stroke-width="6" stroke-linecap="round"/>
   <line x1="275" y1="130" x2="130" y2="310" stroke="#c9c6ba" stroke-width="5" stroke-linecap="round"/>
   <line x1="330" y1="335" x2="275" y2="130" stroke="#c9c6ba" stroke-width="7" stroke-linecap="round"/>
@@ -107,150 +361,137 @@ we're starting with the rows you can already name from Lesson 1.)</p>
   <line x1="555" y1="120" x2="575" y2="188" stroke="#c9c6ba" stroke-width="10" stroke-linecap="round"/>
   <path d="M575,188 C588,235 598,272 610,310" fill="none" stroke="#c9c6ba" stroke-width="5" stroke-linecap="round"/>
   <circle cx="330" cy="335" r="10" fill="#fffef9" stroke="#6b6b64" stroke-width="3"/>
-  <!-- ground line -->
+  <!-- ground -->
   <line x1="20" y1="407" x2="700" y2="407" stroke="#d8d5cb" stroke-width="2"/>
-  <!-- seat tube length: along seat tube, bronze -->
-  <line x1="330" y1="335" x2="275" y2="130" stroke="#b5541c" stroke-width="3"/>
-  <circle cx="330" cy="335" r="4" fill="#b5541c"/>
-  <circle cx="275" cy="130" r="4" fill="#b5541c"/>
-  <text x="232" y="228" font-size="14" fill="#b5541c">560 mm</text>
-  <text x="196" y="245" font-size="12" fill="#6b6b64">seat tube</text>
-  <!-- effective top tube: horizontal dashed -->
-  <line x1="275" y1="120" x2="555" y2="120" stroke="#2e6e3e" stroke-width="2.5" stroke-dasharray="7 5"/>
-  <circle cx="275" cy="120" r="4" fill="#2e6e3e"/>
-  <circle cx="555" cy="120" r="4" fill="#2e6e3e"/>
-  <text x="360" y="110" font-size="14" fill="#2e6e3e">575 mm — level, not along the tube</text>
-  <!-- seat tube angle arc -->
-  <path d="M 390 320 A 62 62 0 0 0 348 273" fill="none" stroke="#b5541c" stroke-width="2"/>
-  <text x="384" y="296" font-size="14" fill="#b5541c">73°</text>
-  <!-- head tube angle: extend head tube line to ground -->
-  <line x1="555" y1="120" x2="648" y2="407" stroke="#2e6e3e" stroke-width="1.5" stroke-dasharray="5 5"/>
-  <path d="M 600 407 A 46 46 0 0 0 634 364" fill="none" stroke="#2e6e3e" stroke-width="2"/>
-  <text x="586" y="390" font-size="14" fill="#2e6e3e">72°</text>
-  <!-- chainstay length -->
-  <line x1="330" y1="352" x2="130" y2="327" stroke="#b5541c" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="176" y="368" font-size="14" fill="#b5541c">450 mm</text>
-  <text x="240" y="368" font-size="12" fill="#6b6b64">chainstay</text>
+  <!-- effective top tube (green, dashed, level) -->
+  <line x1="275" y1="120" x2="555" y2="120" stroke="#2e6e3e" stroke-width="3" stroke-dasharray="8 6"/>
+  <circle cx="275" cy="120" r="5" fill="#2e6e3e"/>
+  <circle cx="555" cy="120" r="5" fill="#2e6e3e"/>
+  <text x="250" y="80" font-size="24" fill="#2e6e3e">top tube 575 (level)</text>
+  <!-- seat tube (bronze) -->
+  <line x1="330" y1="335" x2="275" y2="130" stroke="#b5541c" stroke-width="4"/>
+  <circle cx="330" cy="335" r="5" fill="#b5541c"/>
+  <circle cx="275" cy="130" r="5" fill="#b5541c"/>
+  <text x="30" y="180" font-size="24" fill="#b5541c">seat tube 560</text>
+  <line x1="185" y1="188" x2="290" y2="215" stroke="#b5541c" stroke-width="1.5"/>
+  <!-- seat tube angle -->
+  <path d="M 392 322 A 64 64 0 0 0 348 273" fill="none" stroke="#b5541c" stroke-width="2.5"/>
+  <text x="392" y="290" font-size="24" fill="#b5541c">73°</text>
+  <!-- head tube angle: axis extended to ground -->
+  <line x1="555" y1="120" x2="648" y2="407" stroke="#2e6e3e" stroke-width="2" stroke-dasharray="6 6"/>
+  <path d="M 594 407 A 52 52 0 0 0 632 358" fill="none" stroke="#2e6e3e" stroke-width="2.5"/>
+  <text x="540" y="385" font-size="24" fill="#2e6e3e">72°</text>
+  <!-- chainstay -->
+  <line x1="330" y1="354" x2="130" y2="329" stroke="#b5541c" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="60" y="378" font-size="24" fill="#b5541c">chainstay 450</text>
   <!-- wheelbase -->
-  <line x1="130" y1="428" x2="610" y2="428" stroke="#6b6b64" stroke-width="2"/>
-  <line x1="130" y1="310" x2="130" y2="428" stroke="#d8d5cb" stroke-width="1"/>
-  <line x1="610" y1="310" x2="610" y2="428" stroke="#d8d5cb" stroke-width="1"/>
-  <text x="310" y="422" font-size="14" fill="#1a1a18">wheelbase 1051 mm</text>
+  <line x1="130" y1="450" x2="610" y2="450" stroke="#6b6b64" stroke-width="2.5"/>
+  <line x1="130" y1="315" x2="130" y2="450" stroke="#d8d5cb" stroke-width="1"/>
+  <line x1="610" y1="315" x2="610" y2="450" stroke="#d8d5cb" stroke-width="1"/>
+  <text x="255" y="442" font-size="24" fill="#1a1a18">wheelbase 1051</text>
 </svg>
-<figcaption>The 56cm Disc Trucker's numbers, drawn where they live. Angles are
-measured from the horizontal; both length "rulers" that matter most for
-handling (chainstay, wheelbase) run between the wheel axles.</figcaption>
+<figcaption>The 56cm Trucker's numbers, drawn where they live. Angles are
+measured from the horizontal; all lengths in mm.</figcaption>
 </figure>
 
-<h2>The six rows, decoded</h2>
+<h2>The six rows, one line each</h2>
 
-<ul>
-  <li><strong>Seat tube length (560&nbsp;mm)</strong> — bottom bracket up to
-      the top of the seat tube. Job: <em>fit</em>. It's the "size" of the frame
-      and sets how tall the frame stands under you.</li>
-  <li><strong>Effective top tube (575&nbsp;mm)</strong> — head tube to seat
-      tube, measured <em>level with the ground</em>, not along the actual tube.
-      Job: <em>fit</em> — it's the biggest factor in how stretched-out you are.
-      Why "effective"? Many modern top tubes slope downward; measuring
-      horizontally lets you compare a sloping frame with a classic level one
-      (<a href="https://www.sheldonbrown.com/frame-sizing.html">Sheldon Brown
-      on frame sizing</a>).</li>
-  <li><strong>Seat tube angle (73°)</strong> — how far the seat tube leans
-      back from horizontal. Job: <em>fit</em> — it places your hips relative to
-      the pedals. Steeper = further forward.</li>
-  <li><strong>Head tube angle (72°)</strong> — the lean of the head tube,
-      which is the lean of your steering axis. Job: <em>behavior</em> — it's
-      the single biggest personality number on the chart. Slacker (smaller
-      number) = calmer steering. We give it its own lesson soon.</li>
-  <li><strong>Chainstay length (450&nbsp;mm)</strong> — bottom bracket to rear
-      dropout. Job: <em>behavior</em> — long stays put the rear wheel further
-      back: more stability, more heel room for panniers. Racing bikes run about
-      410&nbsp;mm; the Trucker's 450&nbsp;mm is the touring signature.</li>
-  <li><strong>Wheelbase (1051&nbsp;mm)</strong> — front axle to rear axle, the
-      sum of all the other choices. Job: <em>behavior</em> — a long wheelbase
-      is a long, steady ship. Over a meter, like here, is firmly touring
-      territory.</li>
-</ul>
+<div class="cards">
+  <div class="card">
+    <h3>Seat tube · <span class="val">560 mm</span></h3>
+    <span class="tag">Fit</span>
+    <p>The frame's "size" — how tall it stands under you.</p>
+  </div>
+  <div class="card">
+    <h3>Effective top tube · <span class="val">575 mm</span></h3>
+    <span class="tag">Fit</span>
+    <p>How stretched-out you sit. Measured <em>level</em>, not along the tube —
+    so sloping frames can be compared with classic ones
+    (<a href="https://www.sheldonbrown.com/frame-sizing.html">Sheldon Brown</a>).</p>
+  </div>
+  <div class="card">
+    <h3>Seat tube angle · <span class="val">73°</span></h3>
+    <span class="tag">Fit</span>
+    <p>Places your hips over the pedals. Steeper = further forward.</p>
+  </div>
+  <div class="card">
+    <h3>Head tube angle · <span class="val">72°</span></h3>
+    <span class="tag behavior">Behavior</span>
+    <p>The lean of your steering axis — the chart's biggest personality number.
+    Slacker = calmer. It gets its own lesson soon.</p>
+  </div>
+  <div class="card">
+    <h3>Chainstay length · <span class="val">450 mm</span></h3>
+    <span class="tag behavior">Behavior</span>
+    <p>Long stays = stability and heel room for panniers. Race bikes run
+    ~410&nbsp;mm; 450 is the touring signature.</p>
+  </div>
+  <div class="card">
+    <h3>Wheelbase · <span class="val">1051 mm</span></h3>
+    <span class="tag behavior">Behavior</span>
+    <p>Axle to axle — the sum of all the other choices. A long ship is a
+    steady ship; over a meter means touring.</p>
+  </div>
+</div>
 
 <div class="callout">
-<p><strong>The one-sentence skill:</strong> to read any chart, find your size
-column, then ask of each row — "does this number serve the rider's
-<em>body</em>, or the bike's <em>behavior</em>?" Fit numbers change with
-size; behavior numbers are the designer's opinion about how the bike should
-ride, and often stay the same across sizes.</p>
+<p><strong>The one-sentence skill:</strong> for each row ask — does this serve
+the rider's <em>body</em> (fit) or the bike's <em>behavior</em>? Fit numbers
+grow with size. Behavior numbers are the designer's opinion — that's why the
+Trucker's chainstays stay 450&nbsp;mm at every size.</p>
 </div>
 
 <h2>Check yourself</h2>
 
-<p>From memory — scroll the table and diagram out of view first.</p>
+<p>From memory — scroll the cards out of view first.</p>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
-{ "question": "On a geometry chart, \"56cm\" traditionally names the length of which measurement?",
+{ "question": "\"56cm\" traditionally names the length of which measurement?",
   "options": ["The seat tube", "The top tube", "The chain stays", "The wheelbase"],
   "answer": 0,
-  "explain": "Classic frame sizing is the seat tube length — the 56cm Trucker's seat tube is 560mm." }
+  "explain": "Classic frame sizing = seat tube length. The 56cm Trucker's is 560 mm." }
 </script>
 </div>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
-{ "question": "Why is the top tube row usually labeled \"effective\" top tube?",
-  "options": ["It is measured level, even when the real tube slopes", "It is measured along the tube, ignoring any slope", "It includes the stem length added onto the tube", "It is an average of the seat and head tube lengths"],
+{ "question": "Why is the top tube row labeled \"effective\"?",
+  "options": ["It is measured level, even on a sloping tube", "It is measured along the tube, slope included", "It adds the stem length onto the tube", "It averages the seat and head tube lengths"],
   "answer": 0,
-  "explain": "Measuring horizontally lets you compare sloping and level frames fairly — the number that matters for how stretched-out you sit." }
+  "explain": "Measured horizontally so sloping and level frames compare fairly." }
 </script>
 </div>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
-{ "question": "Going from the 56cm to the 58cm Trucker, the chainstays stay at 450mm. Why would a designer keep them the same?",
-  "options": ["Chainstays serve the bike's behavior, not the rider's height", "Longer chainstays would not fit inside a bigger frame", "The factory only produces one single length of chainstay", "Chainstays must always equal the effective top tube length"],
+{ "question": "The chainstays stay 450 mm on every size of Trucker. Why?",
+  "options": ["They serve behavior, not the rider's height", "Longer stays would not fit bigger frames", "The factory makes only one stay length", "Stays must match the top tube length"],
   "answer": 0,
-  "explain": "Stability and heel clearance are wanted at every size — chainstay length is a behavior number, so it needn't grow with the rider." }
+  "explain": "Stability and heel clearance are wanted at every size — a behavior number needn't grow with the rider." }
 </script>
 </div>
 
-<div class="quiz">
-<script type="application/json" class="quiz-data">
-{ "question": "The Disc Trucker's wheelbase is 1051mm; a racing bike's is under 990mm. What does the longer wheelbase buy a loaded tourer?",
-  "options": ["Steadier, calmer handling under luggage", "Quicker, sharper cornering on descents", "Lighter overall weight for the climbs", "Stiffer frame tubes for full sprinting"],
-  "answer": 0,
-  "explain": "A longer ship is a steadier ship — exactly what you want with 20kg of panniers, and exactly what a race bike gives up for agility." }
-</script>
-</div>
+<h2>Your assignment</h2>
 
-<h2>Your real-world assignment</h2>
-
-<p>Find the geometry chart for <strong>your own bike</strong> (search its make,
-model and "geometry" — or measure the seat tube and chainstays yourself with a
-tape measure). Write down its six numbers next to the Trucker's and note the
-two biggest differences. Bring them to our next chat — they'll tell us a lot
-about what your bike is designed to do, and it's your first act of chart
+<p>Find your own bike's geometry chart (search its make + model +
+"geometry"). Write down its six numbers next to the Trucker's, and bring the
+two biggest differences to our next chat. That's your first act of chart
 criticism.</p>
 
 <h2>Go deeper</h2>
 
-<p><strong>Primary source for this lesson:</strong> the
+<p><strong>Primary source:</strong> the
 <a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Surly
-Disc Trucker page</a> — scroll to the full geometry chart and skim the rows we
-skipped (bottom bracket drop, fork offset, stack, reach). Don't study them;
-just notice they exist. They're the stars of the next lessons.</p>
+Disc Trucker chart</a> — skim the rows we skipped. They're next.</p>
 
-<p>For comparing many bikes side by side,
-<a href="https://geometrygeeks.bike/">Geometry Geeks</a> is a handy
-community-maintained database — great for browsing, but always trust the
-manufacturer's own chart for exact numbers.</p>
-
-<p>New cheat sheet for your binder: the
-<a href="../reference/geometry-chart.html">geometry chart reference</a>, and
-the <a href="../reference/frame-anatomy.html">frame anatomy sheet</a> from
-Lesson 1.</p>
+<p><a href="https://geometrygeeks.bike/">Geometry Geeks</a> is handy for
+comparing bikes side by side. Your course binder also has a new geometry
+cheat sheet (<code>reference/geometry-chart.html</code> in the workspace).</p>
 
 <footer class="lesson-footer">
-<p>Stuck or curious? Ask your teacher — me, in the chat — anything: "what's
-stack and reach?", "why 73° and not 74°?", "my bike's chart lists BB drop,
-what's that?". Bring your own bike's numbers and we'll read them together.</p>
+<p>Stuck or curious? Ask me in the chat — "what's stack and reach?", "why 73°
+and not 74°?". Bring your bike's numbers and we'll read them together.</p>
 </footer>
 
 </div>

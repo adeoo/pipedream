@@ -52,9 +52,16 @@ A lesson should be **beautiful**, with clean, readable typography and layout, si
 
 The lesson should be short, and completable very quickly. Learners' working memory is very small, and we need to stay within it. But each lesson should give the user a single tangible win that they can build on. It should be directly tied to the mission, and should be in the user's zone of proximal development.
 
-If possible, open the lesson file for the user by running a CLI command.
+### Delivery: phone-first, self-contained (learned 2026-09-02)
 
-Each lesson should link via HTML anchors to other lessons and reference documents.
+This user reads lessons **on their phone**, opened one file at a time in Claude's file viewer or a mobile browser. Two hard rules follow:
+
+1. **Every lesson and reference document must be fully self-contained.** Inline all CSS in a `<style>` tag and all JS in a `<script>` tag inside the file. A `<link rel="stylesheet">` or `<script src>` pointing at `../assets/` silently fails when the file is opened alone, and the lesson renders as unstyled text and dead links — this happened and the user hated it. `./assets/` remains the canonical source of truth for shared components: edit components there, then copy them inline into each lesson. Never let a lesson depend on a sibling file at view time.
+2. **Design for a ~380px screen, not a desktop page.** The user found a desktop-density lesson "very crowded with words". Concretely: paragraphs of 1–3 short sentences; prefer cards, callouts and short lists over long paragraphs and dense bullet lists; total prose well under ~500 words; generous spacing and large touch targets on quiz buttons; no table wider than 3 narrow columns (wrap any wider table in a horizontally scrollable container); SVG text must stay legible when the diagram is ~380px wide (use large font sizes relative to the viewBox, few labels).
+
+Relative links between workspace files (other lessons, reference sheets, MISSION.md) do not resolve when a single file is viewed on the phone. Keep at most a couple, clearly labeled as workspace files, and never rely on them to carry content. External web citations work fine and are still encouraged.
+
+After writing a lesson, send the file to the user for inline viewing (e.g. `SendUserFile` with `display: render`) — do not rely on the user finding it in the repo.
 
 Each lesson should recommend a primary source for the user to read or watch. This should be the most high-quality, high-trust resource you found on the topic.
 
@@ -64,9 +71,11 @@ Each lesson should contain a reminder to ask followup questions to the agent. Th
 
 Lessons are built from reusable **components**, stored in `./assets/`: stylesheets, quiz widgets, simulators, diagram helpers, and anything else a second lesson could reuse.
 
-Reuse is the default, not the exception. Before authoring a lesson, read `./assets/` and build from the components already there. When a lesson needs something new and reusable, write it as a component in `./assets/` and link to it; never inline code a future lesson would duplicate.
+Reuse is the default, not the exception. Before authoring a lesson, read `./assets/` and build from the components already there. When a lesson needs something new and reusable, author it as a component in `./assets/` first — that stays the single source of truth a future lesson copies from.
 
-A shared stylesheet is the first component every workspace earns: every lesson links it, so the lessons look like one consistent course rather than a pile of one-offs. As the workspace grows, so should the component library.
+A shared stylesheet is the first component every workspace earns: every lesson uses it, so the lessons look like one consistent course rather than a pile of one-offs. As the workspace grows, so should the component library.
+
+**But reuse by copying, not by linking:** because lessons are opened as standalone files on the user's phone (see Delivery above), each lesson embeds an inline copy of the components it uses. When a component in `./assets/` changes in a way that matters, refresh the inline copy in documents the user still actively uses.
 
 ## The Mission
 
