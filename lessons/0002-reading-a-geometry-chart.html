@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2 · Reading a Geometry Chart</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+<header class="lesson-header">
+  <p class="kicker">Bike Frame Craft · Lesson 2</p>
+  <h1>Reading a Geometry Chart</h1>
+  <p class="lede">Every frame ever designed can be written down as a small table
+  of numbers. Today you learn to open that table — a real one, from a real
+  touring bike — and read it like a sentence instead of a spreadsheet.</p>
+</header>
+
+<h2>Warm-up: retrieve before you build</h2>
+
+<p>Two quick questions from <a href="0001-anatomy-of-a-frame.html">Lesson 1</a>,
+from memory — no peeking at the <a href="../reference/frame-anatomy.html">cheat
+sheet</a>. Pulling a name out of your head a day later is exactly what locks it
+in for good.</p>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "Warm-up: which part is the stubby cylinder where the seat tube, down tube and chain stays all meet?",
+  "options": ["Head tube junction", "Bottom bracket shell", "Rear dropout plate", "Seat stay bridge"],
+  "answer": 1,
+  "explain": "The bottom bracket shell is the heart of the frame — and, as you'll see today, several chart numbers are measured from it." }
+</script>
+</div>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "Warm-up: which pair of tubes runs from the bottom bracket back to the rear dropouts?",
+  "options": ["The seat stays", "The fork blades", "The chain stays", "The head tubes"],
+  "answer": 2,
+  "explain": "Chain stays — and today you'll meet their length as a number: 450mm on the touring bike below." }
+</script>
+</div>
+
+<h2>What a geometry chart is</h2>
+
+<p>A geometry chart is the bike industry's way of writing a frame down on
+paper. It's a table: <strong>one column per frame size, one row per
+measurement</strong>. Lengths are in millimeters, angles in degrees. Nothing
+more mysterious than that — the intimidating part is only that there are a
+dozen rows and you don't yet know which ones matter.</p>
+
+<p>Here's the good news for a future framebuilder: the chart isn't just a
+shopping aid. It is, quite literally, a <em>compressed design</em>. When you
+draw your own touring frame in the capstone, your finished design will
+<strong>be</strong> a geometry chart plus a full-scale drawing. Learning to
+read charts now is learning to read the documents you'll one day write.</p>
+
+<h2>A real one: the Surly Disc Trucker</h2>
+
+<p>The <a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Surly
+Disc Trucker</a> is one of the best-known steel touring bikes in the world —
+close cousin to the kind of frame you want to build. Below is a slice of
+Surly's official chart: two sizes, six rows. (The full chart has more of both;
+we're starting with the rows you can already name from Lesson 1.)</p>
+
+<table class="ref">
+  <tr><th>Measurement</th><th>56cm</th><th>58cm</th></tr>
+  <tr><td><strong>Seat tube length</strong></td><td>560&nbsp;mm</td><td>580&nbsp;mm</td></tr>
+  <tr><td><strong>Effective top tube</strong></td><td>575&nbsp;mm</td><td>590&nbsp;mm</td></tr>
+  <tr><td><strong>Seat tube angle</strong></td><td>73°</td><td>72.5°</td></tr>
+  <tr><td><strong>Head tube angle</strong></td><td>72°</td><td>72°</td></tr>
+  <tr><td><strong>Chainstay length</strong></td><td>450&nbsp;mm</td><td>450&nbsp;mm</td></tr>
+  <tr><td><strong>Wheelbase</strong></td><td>1051&nbsp;mm</td><td>1060&nbsp;mm</td></tr>
+</table>
+
+<p>Two things to notice before we decode the rows:</p>
+
+<ul>
+  <li><strong>The size name is a real measurement.</strong> "56cm" isn't a
+      T-shirt size — it's the seat tube length, 560&nbsp;mm. That's the classic
+      way frames are sized.</li>
+  <li><strong>Not everything grows with size.</strong> Going from 56 to 58,
+      the tubes get longer — but the chainstays stay 450&nbsp;mm and the head
+      angle stays 72°. Some numbers serve the <em>rider's body</em>; others
+      serve the <em>bike's behavior</em>. Separating those two jobs is the
+      key insight of this whole week.</li>
+</ul>
+
+<h2>Where each number lives on the frame</h2>
+
+<figure>
+<svg viewBox="0 0 720 440" role="img" aria-label="Diamond frame with geometry measurements marked"
+     style="width:100%;height:auto;font-family:'Gill Sans','Helvetica Neue',Arial,sans-serif;">
+  <!-- wheels -->
+  <circle cx="130" cy="310" r="97" fill="none" stroke="#d8d5cb" stroke-width="7"/>
+  <circle cx="610" cy="310" r="97" fill="none" stroke="#d8d5cb" stroke-width="7"/>
+  <circle cx="130" cy="310" r="4" fill="#6b6b64"/>
+  <circle cx="610" cy="310" r="4" fill="#6b6b64"/>
+  <!-- frame -->
+  <line x1="330" y1="335" x2="130" y2="310" stroke="#c9c6ba" stroke-width="6" stroke-linecap="round"/>
+  <line x1="275" y1="130" x2="130" y2="310" stroke="#c9c6ba" stroke-width="5" stroke-linecap="round"/>
+  <line x1="330" y1="335" x2="275" y2="130" stroke="#c9c6ba" stroke-width="7" stroke-linecap="round"/>
+  <line x1="275" y1="130" x2="555" y2="120" stroke="#c9c6ba" stroke-width="7" stroke-linecap="round"/>
+  <line x1="330" y1="335" x2="575" y2="188" stroke="#c9c6ba" stroke-width="8" stroke-linecap="round"/>
+  <line x1="555" y1="120" x2="575" y2="188" stroke="#c9c6ba" stroke-width="10" stroke-linecap="round"/>
+  <path d="M575,188 C588,235 598,272 610,310" fill="none" stroke="#c9c6ba" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="330" cy="335" r="10" fill="#fffef9" stroke="#6b6b64" stroke-width="3"/>
+  <!-- ground line -->
+  <line x1="20" y1="407" x2="700" y2="407" stroke="#d8d5cb" stroke-width="2"/>
+  <!-- seat tube length: along seat tube, bronze -->
+  <line x1="330" y1="335" x2="275" y2="130" stroke="#b5541c" stroke-width="3"/>
+  <circle cx="330" cy="335" r="4" fill="#b5541c"/>
+  <circle cx="275" cy="130" r="4" fill="#b5541c"/>
+  <text x="232" y="228" font-size="14" fill="#b5541c">560 mm</text>
+  <text x="196" y="245" font-size="12" fill="#6b6b64">seat tube</text>
+  <!-- effective top tube: horizontal dashed -->
+  <line x1="275" y1="120" x2="555" y2="120" stroke="#2e6e3e" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <circle cx="275" cy="120" r="4" fill="#2e6e3e"/>
+  <circle cx="555" cy="120" r="4" fill="#2e6e3e"/>
+  <text x="360" y="110" font-size="14" fill="#2e6e3e">575 mm — level, not along the tube</text>
+  <!-- seat tube angle arc -->
+  <path d="M 390 320 A 62 62 0 0 0 348 273" fill="none" stroke="#b5541c" stroke-width="2"/>
+  <text x="384" y="296" font-size="14" fill="#b5541c">73°</text>
+  <!-- head tube angle: extend head tube line to ground -->
+  <line x1="555" y1="120" x2="648" y2="407" stroke="#2e6e3e" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <path d="M 600 407 A 46 46 0 0 0 634 364" fill="none" stroke="#2e6e3e" stroke-width="2"/>
+  <text x="586" y="390" font-size="14" fill="#2e6e3e">72°</text>
+  <!-- chainstay length -->
+  <line x1="330" y1="352" x2="130" y2="327" stroke="#b5541c" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="176" y="368" font-size="14" fill="#b5541c">450 mm</text>
+  <text x="240" y="368" font-size="12" fill="#6b6b64">chainstay</text>
+  <!-- wheelbase -->
+  <line x1="130" y1="428" x2="610" y2="428" stroke="#6b6b64" stroke-width="2"/>
+  <line x1="130" y1="310" x2="130" y2="428" stroke="#d8d5cb" stroke-width="1"/>
+  <line x1="610" y1="310" x2="610" y2="428" stroke="#d8d5cb" stroke-width="1"/>
+  <text x="310" y="422" font-size="14" fill="#1a1a18">wheelbase 1051 mm</text>
+</svg>
+<figcaption>The 56cm Disc Trucker's numbers, drawn where they live. Angles are
+measured from the horizontal; both length "rulers" that matter most for
+handling (chainstay, wheelbase) run between the wheel axles.</figcaption>
+</figure>
+
+<h2>The six rows, decoded</h2>
+
+<ul>
+  <li><strong>Seat tube length (560&nbsp;mm)</strong> — bottom bracket up to
+      the top of the seat tube. Job: <em>fit</em>. It's the "size" of the frame
+      and sets how tall the frame stands under you.</li>
+  <li><strong>Effective top tube (575&nbsp;mm)</strong> — head tube to seat
+      tube, measured <em>level with the ground</em>, not along the actual tube.
+      Job: <em>fit</em> — it's the biggest factor in how stretched-out you are.
+      Why "effective"? Many modern top tubes slope downward; measuring
+      horizontally lets you compare a sloping frame with a classic level one
+      (<a href="https://www.sheldonbrown.com/frame-sizing.html">Sheldon Brown
+      on frame sizing</a>).</li>
+  <li><strong>Seat tube angle (73°)</strong> — how far the seat tube leans
+      back from horizontal. Job: <em>fit</em> — it places your hips relative to
+      the pedals. Steeper = further forward.</li>
+  <li><strong>Head tube angle (72°)</strong> — the lean of the head tube,
+      which is the lean of your steering axis. Job: <em>behavior</em> — it's
+      the single biggest personality number on the chart. Slacker (smaller
+      number) = calmer steering. We give it its own lesson soon.</li>
+  <li><strong>Chainstay length (450&nbsp;mm)</strong> — bottom bracket to rear
+      dropout. Job: <em>behavior</em> — long stays put the rear wheel further
+      back: more stability, more heel room for panniers. Racing bikes run about
+      410&nbsp;mm; the Trucker's 450&nbsp;mm is the touring signature.</li>
+  <li><strong>Wheelbase (1051&nbsp;mm)</strong> — front axle to rear axle, the
+      sum of all the other choices. Job: <em>behavior</em> — a long wheelbase
+      is a long, steady ship. Over a meter, like here, is firmly touring
+      territory.</li>
+</ul>
+
+<div class="callout">
+<p><strong>The one-sentence skill:</strong> to read any chart, find your size
+column, then ask of each row — "does this number serve the rider's
+<em>body</em>, or the bike's <em>behavior</em>?" Fit numbers change with
+size; behavior numbers are the designer's opinion about how the bike should
+ride, and often stay the same across sizes.</p>
+</div>
+
+<h2>Check yourself</h2>
+
+<p>From memory — scroll the table and diagram out of view first.</p>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "On a geometry chart, \"56cm\" traditionally names the length of which measurement?",
+  "options": ["The seat tube", "The top tube", "The chain stays", "The wheelbase"],
+  "answer": 0,
+  "explain": "Classic frame sizing is the seat tube length — the 56cm Trucker's seat tube is 560mm." }
+</script>
+</div>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "Why is the top tube row usually labeled \"effective\" top tube?",
+  "options": ["It is measured level, even when the real tube slopes", "It is measured along the tube, ignoring any slope", "It includes the stem length added onto the tube", "It is an average of the seat and head tube lengths"],
+  "answer": 0,
+  "explain": "Measuring horizontally lets you compare sloping and level frames fairly — the number that matters for how stretched-out you sit." }
+</script>
+</div>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "Going from the 56cm to the 58cm Trucker, the chainstays stay at 450mm. Why would a designer keep them the same?",
+  "options": ["Chainstays serve the bike's behavior, not the rider's height", "Longer chainstays would not fit inside a bigger frame", "The factory only produces one single length of chainstay", "Chainstays must always equal the effective top tube length"],
+  "answer": 0,
+  "explain": "Stability and heel clearance are wanted at every size — chainstay length is a behavior number, so it needn't grow with the rider." }
+</script>
+</div>
+
+<div class="quiz">
+<script type="application/json" class="quiz-data">
+{ "question": "The Disc Trucker's wheelbase is 1051mm; a racing bike's is under 990mm. What does the longer wheelbase buy a loaded tourer?",
+  "options": ["Steadier, calmer handling under luggage", "Quicker, sharper cornering on descents", "Lighter overall weight for the climbs", "Stiffer frame tubes for full sprinting"],
+  "answer": 0,
+  "explain": "A longer ship is a steadier ship — exactly what you want with 20kg of panniers, and exactly what a race bike gives up for agility." }
+</script>
+</div>
+
+<h2>Your real-world assignment</h2>
+
+<p>Find the geometry chart for <strong>your own bike</strong> (search its make,
+model and "geometry" — or measure the seat tube and chainstays yourself with a
+tape measure). Write down its six numbers next to the Trucker's and note the
+two biggest differences. Bring them to our next chat — they'll tell us a lot
+about what your bike is designed to do, and it's your first act of chart
+criticism.</p>
+
+<h2>Go deeper</h2>
+
+<p><strong>Primary source for this lesson:</strong> the
+<a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Surly
+Disc Trucker page</a> — scroll to the full geometry chart and skim the rows we
+skipped (bottom bracket drop, fork offset, stack, reach). Don't study them;
+just notice they exist. They're the stars of the next lessons.</p>
+
+<p>For comparing many bikes side by side,
+<a href="https://geometrygeeks.bike/">Geometry Geeks</a> is a handy
+community-maintained database — great for browsing, but always trust the
+manufacturer's own chart for exact numbers.</p>
+
+<p>New cheat sheet for your binder: the
+<a href="../reference/geometry-chart.html">geometry chart reference</a>, and
+the <a href="../reference/frame-anatomy.html">frame anatomy sheet</a> from
+Lesson 1.</p>
+
+<footer class="lesson-footer">
+<p>Stuck or curious? Ask your teacher — me, in the chat — anything: "what's
+stack and reach?", "why 73° and not 74°?", "my bike's chart lists BB drop,
+what's that?". Bring your own bike's numbers and we'll read them together.</p>
+</footer>
+
+</div>
+</body>
+</html>

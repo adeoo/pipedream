@@ -20,6 +20,16 @@
 - [Reference: Wikipedia — Bicycle frame](https://en.wikipedia.org/wiki/Bicycle_frame)
   Well-cited overview of the diamond frame and its variations.
   Use for: quick fact-checking of terms and history.
+- [Chart: Surly Disc Trucker 700c — official geometry chart](https://surlybikes.com/products/disc-trucker-700c-hi-viz-black)
+  Benchmark steel touring bike; the course's worked example of a geometry chart.
+  Use for: real touring numbers when teaching geometry (lesson 0002 onward).
+- [Tool: Geometry Geeks — community geometry database](https://geometrygeeks.bike/)
+  Side-by-side geometry comparison of thousands of bikes; community-entered, so
+  verify exact numbers against the manufacturer's own chart.
+  Use for: browsing and comparing geometries across bike categories.
+- [Guide: Sheldon Brown — Frame Sizing](https://www.sheldonbrown.com/frame-sizing.html)
+  Trusted explanation of seat tube sizing conventions and effective top tube.
+  Use for: sizing lessons (week 2) and the effective-top-tube gotcha.
 
 ## Wisdom (Communities)
 
