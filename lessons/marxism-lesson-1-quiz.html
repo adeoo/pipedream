@@ -5,482 +5,512 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily Marxism · Week 1 Workbook</title>
 <style>
-  :root {
-    --paper: #faf6ef;
-    --card: #ffffff;
-    --ink: #33302b;
-    --soft: #6f6a61;
-    --accent: #b23a48;
-    --accent-soft: #f7e3e5;
-    --leaf: #3d7a52;
-    --leaf-soft: #e4f1e8;
-    --sun: #f4ede0;
-    --line: #e7dfd2;
-    --think: #7a5f9e;
-    --think-soft: #efe9f7;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: Georgia, 'Times New Roman', serif;
-    line-height: 1.65;
-    font-size: 17px;
-  }
-  .page { max-width: 720px; margin: 0 auto; padding: 40px 20px 90px; }
+/* Mirror of ../assets/course.css so this file also renders correctly when
+   opened standalone (email attachment, chat preview). The <link> below is
+   loaded after this block, so inside the repo the shared stylesheet wins. */
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+.page { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
+}
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.15; font-weight: normal; margin: 0 0 0.5rem; }
+h2 { font-size: 1.35rem; font-weight: normal; font-style: italic; margin: 2.4rem 0 0.8rem; }
+.lede { font-size: 1.15rem; font-style: italic; color: var(--muted); margin: 0; }
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+footer.lesson-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+@media print {
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
 
-  .kicker {
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 12px;
-    color: var(--accent);
-    margin: 0 0 8px;
-  }
-  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 14px; }
-  .lede { color: var(--soft); font-size: 18px; margin: 0 0 10px; }
+/* ---- Workbook widgets, in the course's design language ---- */
+.part-head {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.4rem;
+  margin: 2.8rem 0 0.5rem;
+}
+.part-note { color: var(--muted); font-style: italic; font-size: 0.98rem; margin: 0 0 1.4rem; }
 
-  .part {
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-size: 13px;
-    color: var(--accent);
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 6px;
-    margin: 50px 0 8px;
-  }
-  .part-note { color: var(--soft); font-size: 15.5px; font-style: italic; margin: 0 0 24px; }
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz .q-hint { margin: -0.5rem 0 0.9rem; font-size: 0.95rem; font-style: italic; color: var(--muted); }
 
-  .promise {
-    background: var(--sun);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin: 26px 0 10px;
-    font-size: 16px;
-  }
-  .promise strong { color: var(--accent); }
+.opts { display: flex; flex-direction: column; gap: 0.4rem; }
+.opts.row { flex-direction: row; flex-wrap: wrap; }
+button.q-opt {
+  display: block;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.opts.row button.q-opt {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.92rem;
+}
+/* High-specificity overrides so course.css's full-width q-opt rule
+   doesn't stack the one-word drill options vertically. */
+.quiz .opts button.q-opt { width: 100%; margin: 0; }
+.quiz .opts.row button.q-opt { width: auto; }
+button.q-opt:hover:not(:disabled) { border-color: var(--accent); }
+button.q-opt:disabled { cursor: default; opacity: 0.55; }
+button.q-opt.correct { border-color: var(--good); background: #edf6ee; opacity: 1; font-weight: bold; }
+button.q-opt.wrong { border-color: var(--bad); background: #faeceb; opacity: 1; }
 
-  .q {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 24px 24px 20px;
-    margin-bottom: 28px;
-    box-shadow: 0 1px 3px rgba(60,50,30,.06);
-  }
-  .q-num {
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--soft);
-    margin: 0 0 6px;
-  }
-  .q h2 { font-size: 20px; margin: 0 0 6px; line-height: 1.4; }
-  .warmup { font-style: italic; color: var(--soft); font-size: 15px; margin: 0 0 16px; }
+.q-feedback {
+  margin-top: 0.8rem;
+  font-size: 0.97rem;
+  border-radius: 0 6px 6px 0;
+  padding: 0.7rem 0.9rem;
+  display: none;
+}
+.q-feedback.show { display: block; }
+.q-feedback.good { border-left: 4px solid var(--good); background: #edf6ee; }
+.q-feedback.bad { border-left: 4px solid var(--bad); background: #faeceb; }
+.q-feedback .fb-label {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.q-feedback.good .fb-label { color: var(--good); }
+.q-feedback.bad .fb-label { color: var(--bad); }
 
-  .opts { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-  .opts.row { flex-direction: row; flex-wrap: wrap; }
-  .opt {
-    text-align: left;
-    font: inherit;
-    font-size: 16px;
-    background: var(--paper);
-    border: 1.5px solid var(--line);
-    border-radius: 10px;
-    padding: 12px 16px;
-    cursor: pointer;
-    transition: border-color .15s, background .15s;
-    color: var(--ink);
-  }
-  .opts.row .opt {
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-    font-size: 14.5px;
-    padding: 10px 16px;
-  }
-  .opt:hover:not(:disabled) { border-color: var(--accent); background: #fff; }
-  .opt:disabled { cursor: default; opacity: .55; }
-  .opt.picked-right { background: var(--leaf-soft); border-color: var(--leaf); opacity: 1; font-weight: bold; }
-  .opt.picked-almost { background: var(--accent-soft); border-color: var(--accent); opacity: 1; }
+button.q-retry {
+  margin-top: 0.7rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  color: var(--muted);
+  display: none;
+}
+button.q-retry.show { display: inline-block; }
+button.q-retry:hover { border-color: var(--accent); color: var(--accent); }
 
-  .feedback {
-    margin-top: 14px;
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-size: 15.5px;
-    display: none;
-  }
-  .feedback.show { display: block; }
-  .feedback.right { background: var(--leaf-soft); border-left: 4px solid var(--leaf); }
-  .feedback.almost { background: var(--accent-soft); border-left: 4px solid var(--accent); }
-  .feedback .label {
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 6px;
-  }
-  .feedback.right .label { color: var(--leaf); }
-  .feedback.almost .label { color: var(--accent); }
+.exercise {
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.exercise h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.exercise textarea {
+  width: 100%;
+  min-height: 7rem;
+  font: inherit;
+  font-size: 0.98rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+  resize: vertical;
+  margin-top: 0.8rem;
+}
+.exercise textarea:focus { outline: none; border-color: var(--accent); }
+button.reveal-btn {
+  margin-top: 0.8rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+button.reveal-btn:hover { background: #8a3f13; }
+.reveal-text {
+  display: none;
+  margin-top: 0.9rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.97rem;
+}
+.reveal-text.show { display: block; }
 
-  .retry {
-    margin-top: 12px;
-    font: inherit;
-    font-size: 14px;
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-    background: none;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 7px 14px;
-    cursor: pointer;
-    color: var(--soft);
-    display: none;
-  }
-  .retry.show { display: inline-block; }
-  .retry:hover { border-color: var(--accent); color: var(--accent); }
+.summary {
+  display: none;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.4rem 1.5rem;
+  margin-top: 2.4rem;
+  background: #fbfaf4;
+}
+.summary.show { display: block; }
+.summary h2 { margin-top: 0; }
+.summary .tally { font-weight: bold; }
 
-  .thinkbox { border-color: var(--think); border-width: 1.5px; }
-  .thinkbox textarea {
-    width: 100%;
-    min-height: 110px;
-    font: inherit;
-    font-size: 15.5px;
-    border: 1.5px solid var(--line);
-    border-radius: 10px;
-    padding: 12px 14px;
-    background: var(--paper);
-    resize: vertical;
-    margin-top: 12px;
-  }
-  .thinkbox textarea:focus { outline: none; border-color: var(--think); background: #fff; }
-  .reveal-btn {
-    margin-top: 12px;
-    font: inherit;
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-    font-size: 14px;
-    background: var(--think);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 9px 18px;
-    cursor: pointer;
-  }
-  .reveal-btn:hover { background: #654e85; }
-  .reveal-text {
-    display: none;
-    margin-top: 14px;
-    background: var(--think-soft);
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-size: 15.5px;
-  }
-  .reveal-text.show { display: block; }
-  .reveal-text ul { margin: 8px 0 0; padding-left: 20px; }
-  .reveal-text li { margin-bottom: 6px; }
+button.finish-btn {
+  display: block;
+  margin: 2.4rem auto 0;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+}
+button.finish-btn:hover { background: #8a3f13; }
 
-  .summary {
-    display: none;
-    background: var(--card);
-    border: 1.5px solid var(--accent);
-    border-radius: 14px;
-    padding: 28px;
-    margin-top: 40px;
-  }
-  .summary.show { display: block; }
-  .summary h2 { margin-top: 0; }
-  .summary .tally { font-size: 18px; }
-
-  .finish-btn {
-    display: block;
-    margin: 40px auto 0;
-    font: inherit;
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-    font-size: 16px;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 28px;
-    cursor: pointer;
-  }
-  .finish-btn:hover { background: #92303b; }
-
-  footer { margin-top: 60px; text-align: center; color: var(--soft); font-size: 14px; font-style: italic; }
+@media print { button.q-opt { border: 1px solid #999; } }
 </style>
+<link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
 <div class="page">
 
-<header>
+<header class="lesson-header">
   <p class="kicker">Daily Marxism · Week 1 Workbook</p>
-  <h1>The emails gave you tools. This is the workshop.</h1>
-  <p class="lede">Three kinds of exercise, none of them "pick the paragraph that sounds right": rapid classification under pressure, hunting the one flawed sentence in otherwise sound analysis, and writing your own — with model answers to argue with afterwards.</p>
+  <h1>The emails gave you the tools. This page is the workshop.</h1>
+  <p class="lede">This workbook has three parts. Part 1 is a classification drill. Part 2 is an error hunt. Part 3 is writing practice, with model answers.</p>
 </header>
 
-<div class="promise">
-  <strong>Format notes, since you earned them:</strong> answer options are now one or two words,
-  or full sentences of equal weight — length tells you nothing. Several cases are genuine
-  borderlands where the honest answer is "contradictory," and one drill answer is defensible
-  two ways (the feedback says so). Still no grades; the writing exercises are the real spine
-  of this page, and nothing checks them but you. ☕
+<div class="callout">
+  <p><strong>Notes about the format.</strong> The answer options are short. The length of an option does not show the correct answer.
+  Some cases are true border cases. For these, "Grey zone" is the correct choice. One drill has two defensible answers, and its
+  feedback says so. There are no grades and no timers. You can try again after each wrong answer.</p>
 </div>
 
-<p class="part">Part 1 · Classification under fire</p>
-<p class="part-note">Eight people, four labels, no hints. The relation, not the income, the diploma, the effort, or the sympathy the person deserves. Expect traps in both directions.</p>
+<p class="part-head">Part 1 · Classification drill</p>
+<p class="part-note">Eight persons, four labels. Use only the relation to production. Do not use income, diplomas, effort, or sympathy. There are traps in both directions.</p>
 
 <!-- D1 -->
-<div class="q" data-q>
-  <p class="q-num">Drill 1 of 8</p>
-  <h2>A motoboy who owns his motorcycle outright and delivers full-time for one app, which sets his fees and routes.</h2>
+<div class="quiz" data-q>
+  <h3>Drill 1 of 8</h3>
+  <p class="q-text">A motoboy owns his motorcycle. He delivers full-time for one app. The app sets his fees and his routes.</p>
   <div class="opts row">
-    <button class="opt" data-correct data-fb="Sharp. The motorcycle is his, but nothing he owns is something anyone else needs in order to work — while the app sets the price of his day and takes its cut from every delivery. He lives by selling his working day; the fee is a wage in costume.">Working class</button>
-    <button class="opt" data-fb="The tempting read — he owns his means of production, no? But petty bourgeois means living from your own property and labour on your own terms: setting prices, choosing customers. The app does both here. Ownership of a tool you use under someone else's command doesn't change which way the living flows.">Petty bourgeois</button>
-    <button class="opt" data-fb="He employs no one and skims no one's labour — nothing here puts him on the owning side of the relation. Look at who profits from his hours.">Owner</button>
-    <button class="opt" data-fb="Understandable instinct, but this one isn't actually borderline once you apply the test: does he live by selling his working day on terms set by another? Yes, entirely. Save 'grey zone' for cases that pull both ways at once — two are coming.">Grey zone</button>
+    <button class="q-opt" data-correct data-fb="Correct. The motorcycle is his property. But no other person needs his motorcycle to do work. The app sets the price of his day. The app takes a part of each delivery. He lives because he sells his working day. The fee is a wage with a different name.">Working class</button>
+    <button class="q-opt" data-fb="Not correct, but this is the usual first guess. A petty bourgeois works with his own property, on his own terms. He sets his prices and selects his customers. The motoboy does not. The app commands his work. Ownership of a tool does not change the direction of the money.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct. He employs no person. He takes no part of the labour of another person. Ask this question: who gets a profit from his hours?">Owner</button>
+    <button class="q-opt" data-fb="Not correct. This case is not a border case. Apply the test: does he sell his working day on terms set by another? Yes, fully. Keep 'Grey zone' for cases with two pulls at the same time. Two of those cases come later.">Grey zone</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- D2 -->
-<div class="q" data-q>
-  <p class="q-num">Drill 2 of 8</p>
-  <h2>The owner of two franchised burger restaurants with thirty employees; he visits weekly but doesn't work the counter.</h2>
+<div class="quiz" data-q>
+  <h3>Drill 2 of 8</h3>
+  <p class="q-text">A man owns two franchised burger restaurants. Thirty employees work there. He visits weekly. He does not work the counter.</p>
   <div class="opts row">
-    <button class="opt" data-fb="Thirty people's labour feeds him and he doesn't work the line — whatever the franchise paperwork says, he isn't selling his working day to anyone.">Working class</button>
-    <button class="opt" data-fb="Close, and defensible for a one-shop owner working the counter beside two helpers. But this man lives entirely from thirty people's employed labour without working himself — that's past the petty-bourgeois line, where your own labour is still the core of the living.">Petty bourgeois</button>
-    <button class="opt" data-correct data-fb="Right — he lives from employed labour, full stop. The interesting wrinkle you might have noticed: the franchisor skims him too, through fees and mandated suppliers. Capital has layers, and a small capitalist can be squeezed from above while extracting from below. Both things are true at once; his class position is set by the second.">Owner</button>
-    <button class="opt" data-fb="There's a real tension in his position (the franchisor extracts from him), but tension isn't the same as a contradictory class location. His living comes from one direction only: the labour of his thirty employees.">Grey zone</button>
+    <button class="q-opt" data-fb="Not correct. He sells his working day to no person. The labour of thirty persons pays for his life.">Working class</button>
+    <button class="q-opt" data-fb="Near, and correct for a different case. An owner of one shop, who works the counter with two helpers, is petty bourgeois. This man does not work in his shops. His full income comes from employed labour. That is past the line.">Petty bourgeois</button>
+    <button class="q-opt" data-correct data-fb="Correct. He lives from the labour of his thirty employees. Note one more thing: the franchisor also takes money from him, through fees and obligatory suppliers. Capital has layers. A small capitalist can pay above and collect below at the same time. His class comes from the second relation.">Owner</button>
+    <button class="q-opt" data-fb="Not correct. There is tension in his position, because the franchisor takes from him. But tension is not a contradictory location. His income comes from one direction only: the labour of his employees.">Grey zone</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- D3 -->
-<div class="q" data-q>
-  <p class="q-num">Drill 3 of 8</p>
-  <h2>A public-school teacher with twenty years' service and civil-service job stability.</h2>
+<div class="quiz" data-q>
+  <h3>Drill 3 of 8</h3>
+  <p class="q-text">A public-school teacher has twenty years of service. Her position has civil-service stability.</p>
   <div class="opts row">
-    <button class="opt" data-correct data-fb="Yes — and if the stability made you waver, note what it changes: the conditions of the relation, not the relation. She lives by selling her labour power; her employer happens to be the state, and firing her is merely harder. A protected working class is still a working class — which is exactly why those protections keep coming under attack.">Working class</button>
-    <button class="opt" data-fb="She owns no means of production — not the school, not the curriculum, not her schedule. A diploma and a stable statute are conditions of sale for her labour power, not property that others need in order to work.">Petty bourgeois</button>
-    <button class="opt" data-fb="Nobody's labour flows to her. If the state-as-employer confused things: the state here occupies the employer's chair, it doesn't hand her a share of it.">Owner</button>
-    <button class="opt" data-fb="Stability and a public employer make her situation feel special, but run the test: she sells her working day on terms set by another. That's one clean pull, not two — no contradiction in the location itself.">Grey zone</button>
+    <button class="q-opt" data-correct data-fb="Correct. The stability changes the conditions of the relation. It does not change the relation. She sells her labour power. Her employer is the state. Her dismissal is only more difficult, not impossible. A protected working class is a working class. This is why the protections are always under attack.">Working class</button>
+    <button class="q-opt" data-fb="Not correct. She owns no means of production. She does not own the school, the curriculum, or her schedule. A diploma is a condition of sale for her labour. It is not property that other persons need for their work.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct. The labour of no person flows to her. The state sits in the employer's chair. The state does not give her a part of that chair.">Owner</button>
+    <button class="q-opt" data-fb="Not correct. Her case feels special, but the test is simple. She sells her working day on terms set by another. That is one pull, not two.">Grey zone</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- D4 -->
-<div class="q" data-q>
-  <p class="q-num">Drill 4 of 8</p>
-  <h2>A law-firm partner who bills clients for her own hours and takes a share of the billings of forty salaried associates.</h2>
+<div class="quiz" data-q>
+  <h3>Drill 4 of 8</h3>
+  <p class="q-text">A law-firm partner bills clients for her own hours. She also takes a share of the billings of forty salaried associates.</p>
   <div class="opts row">
-    <button class="opt" data-fb="Half of her, yes — the half that bills her own hours is selling skilled labour. But follow the other half of her income: a slice of forty working days she didn't work. One label can't hold both halves.">Working class</button>
-    <button class="opt" data-fb="She does own a share of a practice, but the petty bourgeois lives from own property plus own labour — not from forty other people's billed hours. That second income stream is the tell.">Petty bourgeois</button>
-    <button class="opt" data-fb="Also only half of her — the half that skims the associates. But unlike the franchise owner, her own billed labour remains a real pillar of the living. Drop her own hours and the position collapses; that's not true of a pure owner.">Owner</button>
-    <button class="opt" data-correct data-fb="Exactly — and calling it grey is the rigorous answer here, not the evasive one. She sells labour AND appropriates others' surplus, and both are load-bearing. Analysts after Marx call these contradictory class locations, and they matter politically: people pulled both ways can be won both ways.">Grey zone</button>
+    <button class="q-opt" data-fb="Half correct. The hours she bills herself are sold labour. But follow the second income: a share of forty working days that she did not work. One label cannot hold the two halves.">Working class</button>
+    <button class="q-opt" data-fb="Not correct. A petty bourgeois lives from own property plus own labour. She lives partly from the billed hours of forty other persons. That second income is the signal.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Half correct. The share of the associates' billings is an owner's income. But her own billed labour is also a pillar. Remove her own hours, and the position falls. That is not true for a pure owner.">Owner</button>
+    <button class="q-opt" data-correct data-fb="Correct. Here 'grey' is the precise answer, not the weak answer. She sells her own labour. She also takes surplus from forty other persons. The two incomes are both important. Writers after Marx call this a contradictory class location. It is important in politics: a person with two pulls can be won by two sides.">Grey zone</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- D5 -->
-<div class="q" data-q>
-  <p class="q-num">Drill 5 of 8</p>
-  <h2>A retired metalworker living on the pension from his thirty-five years at the plant.</h2>
+<div class="quiz" data-q>
+  <h3>Drill 5 of 8</h3>
+  <p class="q-text">A retired metalworker lives on his pension. He worked thirty-five years at the plant.</p>
   <div class="opts row">
-    <button class="opt" data-correct data-fb="Right — the pension is deferred wage: his own sold labour, paid back late. He's no longer selling his working day, but nothing he lives on comes from anyone else's. Class trajectory doesn't evaporate at 65 — which is why pension 'reform' is always a class question, fought over who really owns those thirty-five years.">Working class</button>
-    <button class="opt" data-fb="He owns no productive property — a pension entitlement isn't a workshop. It's his own past labour coming back in monthly installments.">Petty bourgeois</button>
-    <button class="opt" data-fb="If pension-fund investments crossed your mind, that's genuinely clever — but he controls none of it and lives at the benefit's mercy, not from command over anyone's labour. The fund owns; he receives what his past work purchased.">Owner</button>
-    <button class="opt" data-fb="A reasonable hesitation — he's outside the wage relation now. But grey should mean pulled by both poles, and nothing pulls him toward the owning one. His income is his own past labour, deferred; the relation that defined his life still defines its residue.">Grey zone</button>
+    <button class="q-opt" data-correct data-fb="Correct. A pension is a deferred wage. It is his own sold labour, paid back late. He does not sell his working day now. But no part of his income comes from the labour of other persons. Class does not stop at age 65. This is why pension reform is always a class question.">Working class</button>
+    <button class="q-opt" data-fb="Not correct. A pension right is not a workshop. He owns no productive property.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct, but a smart thought if you saw the pension funds. He controls no investments. He receives what his past work paid for.">Owner</button>
+    <button class="q-opt" data-fb="A reasonable doubt, but not correct. He is out of the wage relation now. But 'grey' must mean two pulls, one to each pole. No pull moves him to the owner pole. His income is his own past labour, deferred.">Grey zone</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- D6 -->
-<div class="q" data-q>
-  <p class="q-num">Drill 6 of 8</p>
-  <h2>A family farmer working her own twelve hectares with her husband and sons; no hired labour, sells the harvest to a cooperative.</h2>
+<div class="quiz" data-q>
+  <h3>Drill 6 of 8</h3>
+  <p class="q-text">A farmer works her own twelve hectares with her husband and sons. The family hires no labour. She sells the harvest to a cooperative.</p>
   <div class="opts row">
-    <button class="opt" data-fb="She sells a product, never her working day — no one sets her hours or extracts her time. Selling what your labour made is a different relation from selling the labour itself.">Working class</button>
-    <button class="opt" data-correct data-fb="Textbook — and a useful reminder that 'petty bourgeois' is a position, not an insult. Own property plus own labour, employing no one: the classic small-ownership class, squeezed from both sides (input suppliers and buyers above, the pull of proletarianization below). That double squeeze is why this class swings politically — a thread your course will pull hard when it reaches the countryside.">Petty bourgeois</button>
-    <button class="opt" data-fb="Owning land matters, but she extracts nobody's labour with it — the family works it themselves. The owning class lives from others' labour; she lives from her own, on her own soil.">Owner</button>
-    <button class="opt" data-fb="Her position is squeezed, precarious, and politically volatile — but it isn't contradictory: one consistent relation (own property, own labour) defines it. Pressure from two sides isn't the same as belonging to two sides.">Grey zone</button>
+    <button class="q-opt" data-fb="Not correct. She sells a product, not her working day. No person sets her hours. The sale of a thing your labour made is a different relation from the sale of the labour.">Working class</button>
+    <button class="q-opt" data-correct data-fb="Correct. This is the classic case: own property plus own labour, with no employees. Note: 'petty bourgeois' is a position, not an insult. This class gets pressure from two sides. Suppliers and buyers press from above. The loss of the land pulls from below. This is why the class moves in politics. Your course will return to this.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct. The land takes labour from no other person. The family works it. An owner lives from the labour of others. She lives from her own labour.">Owner</button>
+    <button class="q-opt" data-fb="Not correct. Her position has pressure, but no contradiction. One relation defines it: own property, own labour. Pressure from two sides is not membership of two sides.">Grey zone</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- D7 -->
-<div class="q" data-q>
-  <p class="q-num">Drill 7 of 8</p>
-  <h2>A driver who rents a car by the week from a fleet owner in order to drive for an app.</h2>
+<div class="quiz" data-q>
+  <h3>Drill 7 of 8</h3>
+  <p class="q-text">A driver rents a car each week from a fleet owner. He drives for an app.</p>
   <div class="opts row">
-    <button class="opt" data-correct data-fb="Yes — and did you notice he's in the relation twice? He sells his working day to the platform's terms like any worker, AND pays rent for access to the very tool he works with. Surplus flows out of his week in two directions, to the app and to the fleet owner. Compare him with Drill 1's motoboy: owning versus renting the vehicle changed his costs, not his class.">Working class</button>
-    <button class="opt" data-fb="He owns nothing productive at all — even the car is rented. This is the opposite pole from small ownership: paying for the privilege of access to means of production.">Petty bourgeois</button>
-    <button class="opt" data-fb="You may have flipped the rental relation: he's the one paying rent, not collecting it. The fleet owner from Drill 2's family is on the other end of this arrangement.">Owner</button>
-    <button class="opt" data-fb="No second pull here — both of his relations (to the app, to the fleet owner) drain in the same direction. Doubly squeezed isn't contradictory; it's emphatically one-sided.">Grey zone</button>
+    <button class="q-opt" data-correct data-fb="Correct. He is in the relation two times. He sells his working day on the app's terms. He also pays rent for the tool of his work. Money flows out of his week in two directions: to the app and to the fleet owner. Compare him with Drill 1. Ownership of the vehicle changes the costs, not the class.">Working class</button>
+    <button class="q-opt" data-fb="Not correct. He owns no productive property. Even the car is rented.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct. Check the direction of the rent. He pays it. The fleet owner receives it.">Owner</button>
+    <button class="q-opt" data-fb="Not correct. His two relations pull in the same direction. Two drains are not two opposite pulls.">Grey zone</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- D8 -->
-<div class="q" data-q>
-  <p class="q-num">Drill 8 of 8 · the hardest one</p>
-  <h2>The salaried CEO of a multinational, paid a wage plus stock options, dismissible by the board.</h2>
+<div class="quiz" data-q>
+  <h3>Drill 8 of 8 · The most difficult one</h3>
+  <p class="q-text">A multinational pays its CEO a salary plus stock options. The board can dismiss him.</p>
   <div class="opts row">
-    <button class="opt" data-fb="Formally he sells labour and can be fired — that's why this answer isn't stupid. But ask what his 'labour' consists of: commanding everyone else's, in the owners' interest, priced accordingly. The wage-form here is a costume worn by the other side of the relation.">Working class</button>
-    <button class="opt" data-fb="Nothing small-ownership about him — he neither works his own property nor lives from his own direct labour. The petty bourgeoisie is the one class he's definitely not in.">Petty bourgeois</button>
-    <button class="opt" data-fb="Honestly defensible — many Marxists file him exactly here, as capital personified. If you reasoned it that way, take the point. The workbook's answer is 'grey' only because the board can genuinely dismiss him, which no pure owner suffers; but the disagreement between your answer and mine is a real one in the literature, not an error.">Owner</button>
-    <button class="opt" data-correct data-fb="The workbook's answer — with a caveat that 'Owner' earns nearly full credit. He's a contradictory location at the top: wage-form and dismissibility on one side; on the other, his function IS the command of labour for capital, his options make him an owner in installments, and his interests are wired to the share price. A grey zone, but grey like smoke over a fire — you can tell which way it's drifting.">Grey zone</button>
+    <button class="q-opt" data-fb="Not correct, but not a stupid answer. In form, he sells labour, and the board can dismiss him. But examine his 'labour': it is the command of the labour of all others, in the owners' interest. The wage form is a costume here.">Working class</button>
+    <button class="q-opt" data-fb="Not correct. He does not work his own property. He does not live from his own direct labour. This is the one class he is surely not in.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Defensible. Many Marxists put him here: capital in person. If that was your reasoning, take the point. The workbook says 'grey' for one reason only: the board can dismiss him, and no pure owner can be dismissed. This disagreement is real in the literature. It is not an error.">Owner</button>
+    <button class="q-opt" data-correct data-fb="The workbook's answer. But 'Owner' also gets almost full credit. On one side: a wage form, and the board can dismiss him. On the other side: his function is the command of labour for capital. His stock options make him an owner in installments. His interests follow the share price. The zone is grey, but the drift has one direction.">Grey zone</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
-<p class="part">Part 2 · Spot the slip</p>
-<p class="part-note">Each passage is a four-sentence analysis that uses the week's method — except for exactly one sentence that quietly breaks it. Click the sentence that slips. The other three are sound, so wrong guesses teach too.</p>
+<p class="part-head">Part 2 · Find the error</p>
+<p class="part-note">Each passage has four sentences. Three sentences use the method of week 1 correctly. One sentence breaks it. Click the sentence that breaks it. A wrong click also teaches: the feedback tells you why that sentence is correct.</p>
 
 <!-- S1 -->
-<div class="q" data-q>
-  <p class="q-num">Passage 1 · A strike</p>
-  <h2>Find the sentence that breaks the method.</h2>
+<div class="quiz" data-q>
+  <h3>Passage 1 · A strike</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
   <div class="opts">
-    <button class="opt" data-fb="This one is sound — it's the material starting point, wages against fares, conditions before opinions. The slip is elsewhere.">"The metro workers struck after two years of frozen wages while fares and profits rose."</button>
-    <button class="opt" data-fb="Sound — in fact it's a Day 4 observation working properly: the vocabulary taking a side within hours. Keep hunting.">"The strike halted the city, and by morning the headlines had found their word for it: hostage-taking."</button>
-    <button class="opt" data-correct data-fb="Caught it. 'Greedy men' explains a structure by the character of its occupants — the exact move Day 3 closed off. Replace these directors with generous ones and the company still resists the raise, because every real conceded to wages is subtracted from profit and from its standing against competitors. The analysis was doing fine until it reached for a villain.">"The company fought the raise so hard because its directors are unusually greedy men."</button>
-    <button class="opt" data-fb="Sound — it's the other half of the Day 4 point: the frozen wages never got a word like 'hostage-taking', or any word at all. The asymmetry of naming is the observation, and it holds.">"Meanwhile, the same newspapers had never once found a word for the two frozen years."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It gives the material starting point: wages against fares and profits. The error is in a different sentence.">"The metro workers struck after two years of frozen wages while fares and profits rose."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It shows the vocabulary taking a side within hours. That is the Day 4 observation at work. Continue the search.">"The strike halted the city, and by morning the headlines had found their word for it: hostage-taking."</button>
+    <button class="q-opt" data-correct data-fb="Correct, you found it. 'Greedy men' explains a structure with the character of persons. Day 3 closed that door. Put generous directors in the same chairs. The company resists the raise again. Each unit of money given to wages is subtracted from profit. The analysis failed when it looked for a villain.">"The company fought the raise so hard because its directors are unusually greedy men."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It shows the other half of the Day 4 point. The frozen wages got no name at all. The asymmetry of names is the finding.">"Meanwhile, the same newspapers had never once found a word for the two frozen years."</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- S2 -->
-<div class="q" data-q>
-  <p class="q-num">Passage 2 · An uprising</p>
-  <h2>Find the sentence that breaks the method.</h2>
+<div class="quiz" data-q>
+  <h3>Passage 2 · An uprising</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
   <div class="opts">
-    <button class="opt" data-fb="Sound — this is the accumulation, patiently stated: rents, informality, a decade of quantitative pressure. The slip is elsewhere.">"For a decade, rents climbed while informal work quietly replaced steady jobs across the city."</button>
-    <button class="opt" data-fb="Sound — noting who shared the streets in week one is just accurate observation of a cross-class alliance, and it sets up the last sentence honestly.">"In the first weeks, small merchants and workers shared the same streets and the same chants."</button>
-    <button class="opt" data-correct data-fb="Caught it — and it's subtle, because the sentence wears the analysis's own clothes ('therefore'!). But Day 2 says the decree caused nothing: it was the threshold where the decade in sentence one changed state. Promote the spark to a cause and everything downstream goes wrong — you'd predict that cancelling the decree ends the uprising, and it never does.">"The fuel-price decree was therefore the cause of the uprising that followed."</button>
-    <button class="opt" data-fb="Sound — painfully so. It's the 1848 pattern arriving on schedule: the propertied wing of the alliance making its separate peace with order. That sentence is the method predicting correctly.">"Within a year, the merchants had made their peace with the new government of order."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It states the accumulation: rents, informal work, ten years of pressure. The error is in a different sentence.">"For a decade, rents climbed while informal work quietly replaced steady jobs across the city."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It reports who was in the streets. It prepares the last sentence honestly.">"In the first weeks, small merchants and workers shared the same streets and the same chants."</button>
+    <button class="q-opt" data-correct data-fb="Correct, and this one is subtle. The word 'therefore' wears the clothes of analysis. But Day 2 says: the decree caused nothing. The decree was the threshold where ten years of pressure changed state. Make the spark a cause, and your predictions fail. Example: cancel the decree, and the uprising must stop. It never stops.">"The fuel-price decree was therefore the cause of the uprising that followed."</button>
+    <button class="q-opt" data-fb="This sentence is correct, and painful. It is the 1848 pattern on schedule. The owners of property make a separate peace with order. Here the method predicts correctly.">"Within a year, the merchants had made their peace with the new government of order."</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
 <!-- S3 -->
-<div class="q" data-q>
-  <p class="q-num">Passage 3 · A newsroom</p>
-  <h2>Find the sentence that breaks the method.</h2>
+<div class="quiz" data-q>
+  <h3>Passage 3 · A newsroom</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
   <div class="opts">
-    <button class="opt" data-fb="Sound — the material base of the channel, stated without drama. Who pays for the airtime is where the analysis should start.">"The channel depends on bank and property advertising for most of its revenue."</button>
-    <button class="opt" data-fb="Sound — this is selection doing its quiet work: careers built on a sense of what airs well, belt-tightening as the eternal question. No slip here; this is the mechanism described correctly.">"Its editors, promoted over the years for a sound sense of what airs well, ask nightly how families can tighten their belts."</button>
-    <button class="opt" data-correct data-fb="Caught it. 'Proves' and 'telephone' turn a structural account into a conspiracy — and the conspiracy version is weaker, not stronger: it collapses the moment no phone call is found. Day 4's whole force is that no call is needed; sentence two already explained the outcome. The slip isn't that owners never interfere (sometimes they do) — it's claiming the system requires it.">"This proves the owners telephone the newsroom each morning with instructions."</button>
-    <button class="opt" data-fb="Sound — it's the horizon, the unasked question: a nightly show about family debt that never asks who holds the debt. That silence is the finding, and the sentence states it precisely.">"The question of who holds the debt those families owe has never once made the rundown."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It gives the material base of the channel. The analysis must start there.">"The channel depends on bank and property advertising for most of its revenue."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It shows selection at work: careers built on a feel for what airs well. No error here.">"Its editors, promoted over the years for a sound sense of what airs well, ask nightly how families can tighten their belts."</button>
+    <button class="q-opt" data-correct data-fb="Correct, you found it. 'Proves' and 'telephone' change a structural account into a conspiracy. The conspiracy version is weaker, not stronger. Find no telephone call, and it falls. Day 4 needs no call. Sentence two already explains the result. Owners sometimes interfere, yes. But the system does not need it.">"This proves the owners telephone the newsroom each morning with instructions."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It names the horizon: a program about family debt that never asks who holds the debt. That silence is the finding.">"The question of who holds the debt those families owe has never once made the rundown."</button>
   </div>
-  <div class="feedback"></div>
-  <button class="retry">↺ Try again</button>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
 </div>
 
-<p class="part">Part 3 · Your own analysis</p>
-<p class="part-note">The part that can't be gamed. Write first — really write, the model answers are only useful as something to argue with. Nobody sees this box but you.</p>
+<p class="part-head">Part 3 · Your own analysis</p>
+<p class="part-note">This part has no shortcuts. Write your answer first. Then compare it with the model answer. Only you see your text.</p>
 
 <!-- W1 -->
-<div class="q thinkbox">
-  <p class="q-num">Exercise 1 · Two accounts of one fact</p>
-  <h2>In fifteen years, "entrepreneur" became the dream job of young people in the urban peripheries — where their parents dreamed of a carteira assinada. Write BOTH accounts: the idealist one, then the materialist one.</h2>
+<div class="exercise">
+  <h3>Exercise 1 · Two accounts of one fact</h3>
+  <p class="q-text">In fifteen years, "entrepreneur" became the dream job of young people in the urban peripheries. The dream of their parents was a carteira assinada. Write the two accounts: first the idealist account, then the materialist account.</p>
   <textarea placeholder="Idealist account: ...&#10;&#10;Materialist account: ..."></textarea>
-  <button class="reveal-btn">Compare with model answers</button>
+  <button class="reveal-btn">Compare with the model answers</button>
   <div class="reveal-text">
-    <strong>One idealist model:</strong> a new culture arrived — self-help books, business influencers, prosperity preaching —
-    and changed what young people value: independence over security, hustle over stability. Minds changed, so dreams changed.<br><br>
-    <strong>One materialist model:</strong> the carteira assinada dream died where the formal jobs died. Factories left, outsourcing
-    and apps replaced contracts, and "entrepreneur" arrived as the name for what remained — selling on Instagram, driving,
-    delivering — a word that turns necessity into aspiration and each unemployed person into a failed business. The influencers
-    didn't create the dream; they gave a dignified vocabulary to conditions already in place. (Notice the Day 4 bonus: whom does
-    it serve if precarity is called freedom?)<br><br>
-    <strong>Check your version:</strong> did your materialist account explain the <em>timing</em> — why this generation and not
-    the parents'? That's the test the idealist account keeps failing.
+    <strong>One idealist model:</strong> a new culture arrived — self-help books, business influencers, prosperity preaching.
+    The culture changed the values of young people. Independence replaced security. New minds made new dreams.<br><br>
+    <strong>One materialist model:</strong> the dream of the carteira assinada died with the formal jobs. The factories left.
+    Apps and outsourcing replaced contracts. "Entrepreneur" became the name of what remained: sales on Instagram, driving, delivery.
+    The word changes necessity into ambition. It makes each unemployed person a failed business. The influencers did not create
+    the dream. They gave a good vocabulary to conditions already in place. Day 4 bonus question: who wins when precarity has
+    the name of freedom?<br><br>
+    <strong>Test your version with one question:</strong> does your materialist account explain the timing?
+    Why this generation, and not the parents? The idealist account fails that test.
   </div>
 </div>
 
 <!-- W2 -->
-<div class="q thinkbox">
-  <p class="q-num">Exercise 2 · Predict, then check against history</p>
-  <h2>Sudan, 2019. Bread prices triple; months of protests led by a professionals' association, joined by workers, students and merchants, topple a thirty-year dictator. The army steps in "temporarily" and signs a power-sharing deal with civilians. Using Day 5 strictly, write your prediction for the next three years — then check.</h2>
-  <p class="warmup">Commit to the prediction in writing before revealing. That's the discipline.</p>
-  <textarea placeholder="My 1848-based prediction: ..."></textarea>
+<div class="exercise">
+  <h3>Exercise 2 · Predict, then check against history</h3>
+  <p class="q-text">Sudan, 2019. The bread price triples. Protests continue for months. A professionals' association leads them. Workers, students and merchants join. The dictator of thirty years falls. The army makes a "temporary" power-sharing agreement with civilians. Use Day 5 strictly. Write your prediction for the next three years. Then check.</p>
+  <p class="q-hint">Write the prediction before you look. That is the discipline.</p>
+  <textarea placeholder="My prediction, based on 1848: ..."></textarea>
   <button class="reveal-btn">Check against what happened</button>
   <div class="reveal-text">
-    <strong>What happened:</strong> in October 2021, with the rotation of the power-sharing council about to pass to civilians,
-    the generals staged a coup and dissolved the civilian government. Much of the business establishment accommodated itself to
-    "stability"; the neighbourhood resistance committees — the movement's working-class base — fought on largely alone, and in 2023
-    the armed factions turned on each other with the country in between.<br><br>
-    <strong>The 1848 rhyme, if your prediction found it:</strong> the alliance held while the demand was liberty (removing the
-    dictator costs the propertied nothing) and broke when the question became property and power itself. The armed guardians of
-    order played Cavaignac's part; the propertied chose them.<br><br>
-    <strong>And the honest caveat:</strong> if your prediction differed and you can say which Sudanese condition the 1848 template
-    misses — the army's own business empire, the foreign backers — that's not failure, that's analysis. A template that fits
-    everything explains nothing; knowing <em>where</em> it strains is the skill.
+    <strong>What happened:</strong> October 2021. The rotation of the council to civilian control comes near. The generals make
+    a coup. They dissolve the civilian government. A large part of the business class accepts "stability". The resistance
+    committees of the neighbourhoods — the working-class base of the movement — continue almost alone. In 2023, the two armed
+    factions start a war against each other.<br><br>
+    <strong>The 1848 pattern, if your prediction found it:</strong> the alliance holds while the demand is liberty.
+    The removal of the dictator costs the owners nothing. The alliance breaks when the question becomes property and power.
+    The armed guards of order play the part of Cavaignac. The owners select them.<br><br>
+    <strong>An honest note:</strong> your prediction can be different and still be good analysis. Name the Sudanese condition
+    that the 1848 template misses — the army's own companies, or the foreign backers. That is analysis, not failure.
+    A template that fits everything explains nothing.
   </div>
 </div>
 
 <!-- W3 -->
-<div class="q thinkbox">
-  <p class="q-num">Exercise 3 · Make the concepts work on each other</p>
-  <h2>Day 2 says arrangements crack from internal contradiction. Day 5 shows the February alliance cracking in June. Write the February alliance's contradiction in Day 2's exact form: "It needed ___, and it needed ___, and it could not have both."</h2>
+<div class="exercise">
+  <h3>Exercise 3 · Make the concepts work on each other</h3>
+  <p class="q-text">Day 2 says: arrangements break from internal contradiction. Day 5 shows the February alliance break in June. Write the contradiction of the February alliance in the Day 2 form: "It needed ___, and it needed ___, and it could not have both."</p>
   <textarea placeholder="The February alliance needed... and it needed... and it could not have both, because..."></textarea>
   <button class="reveal-btn">Compare with a model answer</button>
   <div class="reveal-text">
-    <strong>One way to write it:</strong> the alliance needed the workers' numbers on the barricades to defeat the kings —
-    and it needed to guarantee property against those same numbers to keep its bourgeois wing. Every step that armed and
-    organized the workers to win February prepared the confrontation of June; the alliance's victory ripened its own split.
-    That is why the breakup wasn't a betrayal that better character could have avoided — it was the contradiction resolving,
-    which is Day 2's whole claim about how arrangements end.<br><br>
-    <strong>If yours differs but names two genuine opposed necessities inside the alliance</strong> — not an outside enemy,
-    not anyone's bad faith — it's doing the work. You just used one week-1 tool to explain the output of another,
-    which is the moment a set of lessons becomes a method.
+    <strong>One model:</strong> the alliance needed the numbers of the workers on the barricades, to defeat the kings.
+    It also needed to protect property against those same numbers, to keep its bourgeois wing. Each step that armed the workers
+    for February prepared the conflict of June. The victory of the alliance ripened its own split. The breakup was not a betrayal.
+    Better persons could not prevent it. It was the contradiction in resolution. That is the Day 2 claim about how arrangements end.<br><br>
+    <strong>Your answer can be different.</strong> Test it: does it name two opposed necessities inside the alliance?
+    Not an outside enemy. Not bad faith. If yes, your answer does the work. You used one tool of week 1 to explain the
+    result of another. At that moment, a set of lessons becomes a method.
   </div>
 </div>
 
-<button class="finish-btn">I'm done — how did it go?</button>
+<button class="finish-btn">I am done — show the result</button>
 
 <div class="summary">
   <h2>Workbook: closed ✔</h2>
   <p class="tally"></p>
   <p class="summary-note"></p>
-  <p>What each part was training: <strong>Part 1</strong>, seeing relations through every costume — job titles, legal wrappers,
-  salaries, sympathy; <strong>Part 2</strong>, quality control on analysis itself, because the method's worst enemies (the villain,
-  the spark, the conspiracy) all wear its uniform; <strong>Part 3</strong>, production — the only part that predicts whether
-  you can use any of this outside a quiz. If your Sudan prediction found the rhyme before the reveal, the week did its job.</p>
+  <p>What each part trains. <strong>Part 1:</strong> see the relation through each costume — titles, legal wrappers, salaries,
+  sympathy. <strong>Part 2:</strong> quality control on analysis itself. The method's worst enemies wear its uniform: the villain,
+  the spark, the conspiracy. <strong>Part 3:</strong> production. Only production shows that you can use the method outside a quiz.
+  If your Sudan prediction found the pattern before the reveal, the week did its work.</p>
 </div>
 
-<footer>Companion workbook to your Daily Marxism emails · Week 1 · Still no timers, still nobody watching</footer>
+<footer class="lesson-footer">
+  A companion to the Daily Marxism emails · Week 1 · No timers, and only you see your answers
+</footer>
 
 </div>
 
 <script>
 (function () {
   document.querySelectorAll('[data-q]').forEach(function (q) {
-    var opts = q.querySelectorAll('.opt');
-    var fb = q.querySelector('.feedback');
-    var retry = q.querySelector('.retry');
+    var opts = q.querySelectorAll('.q-opt');
+    var fb = q.querySelector('.q-feedback');
+    var retry = q.querySelector('.q-retry');
 
     opts.forEach(function (opt) {
       opt.addEventListener('click', function () {
         var right = opt.hasAttribute('data-correct');
-        opts.forEach(function (o) { o.disabled = true; o.classList.remove('picked-right', 'picked-almost'); });
-        opt.classList.add(right ? 'picked-right' : 'picked-almost');
-        fb.className = 'feedback show ' + (right ? 'right' : 'almost');
-        fb.innerHTML = '<span class="label">' +
-          (right ? 'Clean read' : 'Not this one — here\'s why') +
+        opts.forEach(function (o) { o.disabled = true; o.classList.remove('correct', 'wrong'); });
+        opt.classList.add(right ? 'correct' : 'wrong');
+        fb.className = 'q-feedback show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = '<span class="fb-label">' +
+          (right ? '✓ Correct' : '✗ Not this one') +
           '</span>' + opt.getAttribute('data-fb');
         retry.classList.toggle('show', !right);
         q.dataset.answered = right ? 'right' : 'almost';
@@ -488,8 +518,8 @@
     });
 
     retry.addEventListener('click', function () {
-      opts.forEach(function (o) { o.disabled = false; o.classList.remove('picked-right', 'picked-almost'); });
-      fb.className = 'feedback';
+      opts.forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
+      fb.className = 'q-feedback';
       fb.innerHTML = '';
       retry.classList.remove('show');
       delete q.dataset.answered;
@@ -515,16 +545,16 @@
     var note = summary.querySelector('.summary-note');
 
     if (tried === 0) {
-      tally.textContent = 'You went straight to the writing — honestly, that\'s the most important part anyway. The drills will wait.';
+      tally.textContent = 'You went directly to the writing part. That part is the most important. The drills will wait for you.';
       note.textContent = '';
     } else {
-      tally.textContent = 'Drills and passages: ' + right + ' of ' + qs.length + ' on the first read' + (tried < qs.length ? ' (' + (qs.length - tried) + ' untouched)' : '') + '.';
+      tally.textContent = 'Drills and passages: ' + right + ' of ' + qs.length + ' correct on the first try' + (tried < qs.length ? ' (' + (qs.length - tried) + ' not answered)' : '') + '.';
       if (right === qs.length) {
-        note.textContent = 'Every classification and every slip, first try — including the CEO and the law partner. The concepts are load-bearing now; next week can lean on them.';
+        note.textContent = 'All correct on the first try, including the CEO and the law partner. The concepts are solid now. Week 2 can build on them.';
       } else if (right >= Math.ceil(qs.length * 0.6)) {
-        note.textContent = 'Solid — and check which ones caught you: if it was the grey zones, that\'s the frontier for everyone. The feedback on your misses names the exact distinction each one was guarding.';
+        note.textContent = 'A good result. Check which drills caught you. If the grey zones caught you, know this: they catch everyone. The feedback on each miss names the exact distinction to study.';
       } else {
-        note.textContent = 'These drills compress a week of theory into single sentences, so misses here are information, not verdicts. Reread the feedback where you slipped — each one is a distinction worth owning before week 2 builds on it.';
+        note.textContent = 'These drills compress a week of theory into single sentences. A miss here is information, not a verdict. Read the feedback on each miss again. Each one names a distinction to learn before week 2.';
       }
     }
     summary.classList.add('show');
