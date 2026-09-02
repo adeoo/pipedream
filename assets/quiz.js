@@ -43,7 +43,7 @@
           btn.classList.add('wrong');
           btn.disabled = true;
           feedback.className = 'q-feedback bad';
-          feedback.textContent = '✗ Not that one — try again from memory.';
+          feedback.textContent = '✗ Not that one. Try again from memory.';
         }
         if (!feedback.parentNode) container.appendChild(feedback);
       });

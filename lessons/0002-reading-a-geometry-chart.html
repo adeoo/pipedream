@@ -251,7 +251,7 @@ footer.lesson-footer {
           btn.classList.add('wrong');
           btn.disabled = true;
           feedback.className = 'q-feedback bad';
-          feedback.textContent = '✗ Not that one — try again from memory.';
+          feedback.textContent = '✗ Not that one. Try again from memory.';
         }
         if (!feedback.parentNode) container.appendChild(feedback);
       });
@@ -280,21 +280,21 @@ footer.lesson-footer {
 <header class="lesson-header">
   <p class="kicker">Bike Frame Craft · Lesson 2</p>
   <h1>Reading a Geometry Chart</h1>
-  <p class="lede">Every frame can be written down as a small table of numbers.
-  Today you learn to read one — from a real touring bike.</p>
+  <p class="lede">A frame design is a small table of numbers. Today you read
+  a real one, from a real touring bike.</p>
 </header>
 
 <h2>Warm-up</h2>
 
-<p>Two questions from Lesson 1, from memory. Wrong first try is fine — the
-effort is what makes it stick.</p>
+<p>Two questions from Lesson 1, from memory. A wrong first try is fine.
+The effort makes the names stick.</p>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
-{ "question": "Which part is the stubby cylinder where seat tube, down tube and chain stays all meet?",
+{ "question": "Which part is the short cylinder where the seat tube, the down tube and the chain stays meet?",
   "options": ["Head tube junction", "Bottom bracket shell", "Rear dropout plate", "Seat stay bridge"],
   "answer": 1,
-  "explain": "The heart of the frame — several chart numbers are measured from it." }
+  "explain": "The heart of the frame. Several chart numbers start from it." }
 </script>
 </div>
 
@@ -303,26 +303,26 @@ effort is what makes it stick.</p>
 { "question": "Which pair of tubes runs from the bottom bracket back to the rear dropouts?",
   "options": ["The seat stays", "The fork blades", "The chain stays", "The head tubes"],
   "answer": 2,
-  "explain": "Chain stays — today you'll meet their length as a number: 450 mm." }
+  "explain": "Chain stays. Today you meet their length as a number: 450 mm." }
 </script>
 </div>
 
 <h2>What a chart is</h2>
 
-<p>A geometry chart is a frame written down as a table: <strong>one column per
-size, one row per measurement</strong>. Lengths in millimeters, angles in
-degrees. That's all it is.</p>
+<p>A geometry chart is a frame written as a table. One column for each size.
+One row for each measurement. Lengths are in millimeters. Angles are in
+degrees. That is all.</p>
 
-<p>And here's why it matters to <em>you</em>: your final touring-frame design
-will literally be one of these tables, plus a drawing. Reading charts now is
-practice for writing one later.</p>
+<p>The chart also matters to your mission. Your final touring frame design
+will be a table like this, plus a drawing. When you read charts now, you
+practice for the table you will write later.</p>
 
 <h2>A real one: the Surly Disc Trucker</h2>
 
 <p>The <a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Disc
-Trucker</a> is one of the world's best-known steel touring bikes — a close
-cousin of the frame you want to build. Six rows of Surly's official chart,
-two sizes:</p>
+Trucker</a> is one of the most famous steel touring bikes in the world. It is
+a close cousin of the frame you want to build. Here are six rows of Surly's
+official chart, in two sizes:</p>
 
 <div class="table-scroll">
 <table class="ref">
@@ -337,9 +337,10 @@ two sizes:</p>
 </div>
 
 <div class="callout">
-<p><strong>Notice two things.</strong> "56cm" is a real measurement — the seat
-tube is 560&nbsp;mm. And from 56 to 58 the tubes grow, but the chainstays and
-head angle <em>don't budge</em>. Hold that thought.</p>
+<p><strong>Notice two things.</strong> First, "56cm" is a real measurement:
+the seat tube is 560&nbsp;mm long. Second, from size 56 to size 58 the tubes
+grow, but the chainstays and the head angle do not change. Hold that
+thought.</p>
 </div>
 
 <h2>Where the numbers live</h2>
@@ -390,8 +391,8 @@ head angle <em>don't budge</em>. Hold that thought.</p>
   <line x1="610" y1="315" x2="610" y2="450" stroke="#d8d5cb" stroke-width="1"/>
   <text x="255" y="442" font-size="24" fill="#1a1a18">wheelbase 1051</text>
 </svg>
-<figcaption>The 56cm Trucker's numbers, drawn where they live. Angles are
-measured from the horizontal; all lengths in mm.</figcaption>
+<figcaption>The numbers of the 56cm Trucker, drawn where they live. The
+angles are measured from the horizontal. All lengths are in mm.</figcaption>
 </figure>
 
 <h2>The six rows, one line each</h2>
@@ -400,98 +401,104 @@ measured from the horizontal; all lengths in mm.</figcaption>
   <div class="card">
     <h3>Seat tube · <span class="val">560 mm</span></h3>
     <span class="tag">Fit</span>
-    <p>The frame's "size" — how tall it stands under you.</p>
+    <p>The "size" of the frame. It sets how tall the frame stands under
+    you.</p>
   </div>
   <div class="card">
     <h3>Effective top tube · <span class="val">575 mm</span></h3>
     <span class="tag">Fit</span>
-    <p>How stretched-out you sit. Measured <em>level</em>, not along the tube —
-    so sloping frames can be compared with classic ones
-    (<a href="https://www.sheldonbrown.com/frame-sizing.html">Sheldon Brown</a>).</p>
+    <p>How stretched out you sit. It is measured level, not along the tube.
+    Thus a sloped frame and a classic frame compare fairly
+    (<a href="https://www.sheldonbrown.com/frame-sizing.html">Sheldon
+    Brown</a>).</p>
   </div>
   <div class="card">
     <h3>Seat tube angle · <span class="val">73°</span></h3>
     <span class="tag">Fit</span>
-    <p>Places your hips over the pedals. Steeper = further forward.</p>
+    <p>It puts your hips above the pedals. A steeper angle moves you
+    forward.</p>
   </div>
   <div class="card">
     <h3>Head tube angle · <span class="val">72°</span></h3>
     <span class="tag behavior">Behavior</span>
-    <p>The lean of your steering axis — the chart's biggest personality number.
-    Slacker = calmer. It gets its own lesson soon.</p>
+    <p>The lean of your steering axis. This is the number with the most
+    personality. A smaller angle (more "slack") gives calmer steering. It
+    gets its own lesson soon.</p>
   </div>
   <div class="card">
     <h3>Chainstay length · <span class="val">450 mm</span></h3>
     <span class="tag behavior">Behavior</span>
-    <p>Long stays = stability and heel room for panniers. Race bikes run
-    ~410&nbsp;mm; 450 is the touring signature.</p>
+    <p>Long stays give stability, and heel room for panniers. Race bikes use
+    about 410&nbsp;mm. 450&nbsp;mm is the touring signature.</p>
   </div>
   <div class="card">
     <h3>Wheelbase · <span class="val">1051 mm</span></h3>
     <span class="tag behavior">Behavior</span>
-    <p>Axle to axle — the sum of all the other choices. A long ship is a
-    steady ship; over a meter means touring.</p>
+    <p>The distance from axle to axle. It is the sum of all the other
+    choices. A long ship is a steady ship. More than one meter means
+    touring.</p>
   </div>
 </div>
 
 <div class="callout">
-<p><strong>The one-sentence skill:</strong> for each row ask — does this serve
-the rider's <em>body</em> (fit) or the bike's <em>behavior</em>? Fit numbers
-grow with size. Behavior numbers are the designer's opinion — that's why the
-Trucker's chainstays stay 450&nbsp;mm at every size.</p>
+<p><strong>The skill, in one question:</strong> does this row serve the
+rider's body (fit), or the ride feel (behavior)? Fit numbers grow with the
+size. Behavior numbers are the designer's opinion. That is why the
+chainstays stay at 450&nbsp;mm in every size.</p>
 </div>
 
 <h2>Check yourself</h2>
 
-<p>From memory — scroll the cards out of view first.</p>
+<p>Answer from memory. First scroll the cards out of view.</p>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
 { "question": "\"56cm\" traditionally names the length of which measurement?",
   "options": ["The seat tube", "The top tube", "The chain stays", "The wheelbase"],
   "answer": 0,
-  "explain": "Classic frame sizing = seat tube length. The 56cm Trucker's is 560 mm." }
+  "explain": "Classic frame sizing is the seat tube length. The 56cm Trucker has a 560 mm seat tube." }
 </script>
 </div>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
 { "question": "Why is the top tube row labeled \"effective\"?",
-  "options": ["It is measured level, even on a sloping tube", "It is measured along the tube, slope included", "It adds the stem length onto the tube", "It averages the seat and head tube lengths"],
+  "options": ["It is measured level, even on a sloped tube", "It is measured along the tube, slope included", "It adds the stem length onto the tube", "It averages the seat and head tube lengths"],
   "answer": 0,
-  "explain": "Measured horizontally so sloping and level frames compare fairly." }
+  "explain": "The measurement is level. Thus a sloped frame and a level frame compare fairly." }
 </script>
 </div>
 
 <div class="quiz">
 <script type="application/json" class="quiz-data">
-{ "question": "The chainstays stay 450 mm on every size of Trucker. Why?",
+{ "question": "The chainstays stay 450 mm in every size of Trucker. Why?",
   "options": ["They serve behavior, not the rider's height", "Longer stays would not fit bigger frames", "The factory makes only one stay length", "Stays must match the top tube length"],
   "answer": 0,
-  "explain": "Stability and heel clearance are wanted at every size — a behavior number needn't grow with the rider." }
+  "explain": "The rider wants stability and heel room at every size. A behavior number does not grow with the rider." }
 </script>
 </div>
 
 <h2>Your assignment</h2>
 
-<p>Find your own bike's geometry chart (search its make + model +
-"geometry"). Write down its six numbers next to the Trucker's, and bring the
-two biggest differences to our next chat. That's your first act of chart
-criticism.</p>
+<p>Find the geometry chart of your own bike. Search for its make, its model,
+and the word "geometry". Write its six numbers next to the Trucker's numbers.
+Then bring the two largest differences to our next chat. This is your first
+piece of chart criticism.</p>
 
 <h2>Go deeper</h2>
 
 <p><strong>Primary source:</strong> the
 <a href="https://surlybikes.com/products/disc-trucker-700c-hi-viz-black">Surly
-Disc Trucker chart</a> — skim the rows we skipped. They're next.</p>
+Disc Trucker chart</a>. Skim the rows that we skipped. They come next.</p>
 
-<p><a href="https://geometrygeeks.bike/">Geometry Geeks</a> is handy for
-comparing bikes side by side. Your course binder also has a new geometry
-cheat sheet (<code>reference/geometry-chart.html</code> in the workspace).</p>
+<p><a href="https://geometrygeeks.bike/">Geometry Geeks</a> is a useful site
+to compare bikes side by side. Your course binder also has a new cheat sheet:
+<code>reference/geometry-chart.html</code> in the workspace.</p>
 
 <footer class="lesson-footer">
-<p>Stuck or curious? Ask me in the chat — "what's stack and reach?", "why 73°
-and not 74°?". Bring your bike's numbers and we'll read them together.</p>
+<p>Stuck or curious? Ask me in the chat. For example: "what is stack and
+reach?", or "why 73° and not 74°?". Bring the numbers of your bike and we
+will read them together.</p>
 </footer>
 
 </div>

@@ -21,6 +21,11 @@ already covered.
   prose, big quiz buttons, big SVG labels. He hated the desktop-dense v1 of
   lesson 0002. Full rules recorded in .claude/skills/teach/SKILL.md
   ("Delivery" section). Send each lesson via SendUserFile (render).
+- WRITING STYLE (2026-09-02): all lesson and reference prose follows the
+  asd-ste100 skill, STE-flavored layer 1. Short sentences, simple words,
+  active voice, no contractions, no em dashes, no phrasal verbs, keep the
+  articles. Lesson 0002 is the model. Lesson 0001 prose predates this rule;
+  restyle it the next time it needs an edit.
 
 ## Learner profile (2026-09-01)
 - Rides bikes; has never wrenched or done metalwork. Total beginner on the craft side.
