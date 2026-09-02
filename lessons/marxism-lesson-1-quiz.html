@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marxism · First Lessons Check-in</title>
+<style>
+  :root {
+    --paper: #faf6ef;
+    --card: #ffffff;
+    --ink: #33302b;
+    --soft: #6f6a61;
+    --accent: #b23a48;
+    --accent-soft: #f7e3e5;
+    --leaf: #3d7a52;
+    --leaf-soft: #e4f1e8;
+    --sun: #f4ede0;
+    --line: #e7dfd2;
+    --think: #7a5f9e;
+    --think-soft: #efe9f7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .page { max-width: 720px; margin: 0 auto; padding: 40px 20px 90px; }
+
+  .kicker {
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 14px; }
+  .lede { color: var(--soft); font-size: 18px; margin: 0 0 10px; }
+
+  .promise {
+    background: var(--sun);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 26px 0 40px;
+    font-size: 16px;
+  }
+  .promise strong { color: var(--accent); }
+
+  .q {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 24px 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 3px rgba(60,50,30,.06);
+  }
+  .q-num {
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin: 0 0 6px;
+  }
+  .q h2 { font-size: 21px; margin: 0 0 6px; line-height: 1.35; }
+  .warmup { font-style: italic; color: var(--soft); font-size: 15px; margin: 0 0 16px; }
+
+  .opts { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .opt {
+    text-align: left;
+    font: inherit;
+    font-size: 16px;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    color: var(--ink);
+  }
+  .opt:hover:not(:disabled) { border-color: var(--accent); background: #fff; }
+  .opt:disabled { cursor: default; opacity: .55; }
+  .opt.picked-right { background: var(--leaf-soft); border-color: var(--leaf); opacity: 1; font-weight: bold; }
+  .opt.picked-almost { background: var(--accent-soft); border-color: var(--accent); opacity: 1; }
+
+  .feedback {
+    margin-top: 14px;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 15.5px;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.right { background: var(--leaf-soft); border-left: 4px solid var(--leaf); }
+  .feedback.almost { background: var(--accent-soft); border-left: 4px solid var(--accent); }
+  .feedback .label {
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .feedback.right .label { color: var(--leaf); }
+  .feedback.almost .label { color: var(--accent); }
+
+  .ponder {
+    margin-top: 12px;
+    background: var(--think-soft);
+    border-left: 4px solid var(--think);
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 15px;
+    font-style: italic;
+    display: none;
+  }
+  .ponder.show { display: block; }
+  .ponder .label {
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--think);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .retry {
+    margin-top: 12px;
+    font: inherit;
+    font-size: 14px;
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 14px;
+    cursor: pointer;
+    color: var(--soft);
+    display: none;
+  }
+  .retry.show { display: inline-block; }
+  .retry:hover { border-color: var(--accent); color: var(--accent); }
+
+  .thinkbox { border-color: var(--think); border-width: 1.5px; }
+  .thinkbox textarea {
+    width: 100%;
+    min-height: 90px;
+    font: inherit;
+    font-size: 15.5px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    background: var(--paper);
+    resize: vertical;
+    margin-top: 12px;
+  }
+  .thinkbox textarea:focus { outline: none; border-color: var(--think); background: #fff; }
+  .reveal-btn {
+    margin-top: 12px;
+    font: inherit;
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    font-size: 14px;
+    background: var(--think);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 18px;
+    cursor: pointer;
+  }
+  .reveal-btn:hover { background: #654e85; }
+  .reveal-text {
+    display: none;
+    margin-top: 14px;
+    background: var(--think-soft);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 15.5px;
+  }
+  .reveal-text.show { display: block; }
+
+  .summary {
+    display: none;
+    background: var(--card);
+    border: 1.5px solid var(--accent);
+    border-radius: 14px;
+    padding: 28px;
+    margin-top: 40px;
+  }
+  .summary.show { display: block; }
+  .summary h2 { margin-top: 0; }
+  .summary .tally { font-size: 18px; }
+
+  .finish-btn {
+    display: block;
+    margin: 40px auto 0;
+    font: inherit;
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    font-size: 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 28px;
+    cursor: pointer;
+  }
+  .finish-btn:hover { background: #92303b; }
+
+  footer { margin-top: 60px; text-align: center; color: var(--soft); font-size: 14px; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <p class="kicker">Marxism · Lesson 1 Check-in</p>
+  <h1>So, what did Marx actually say?</h1>
+  <p class="lede">A friendly check-in on your first lessons — the big ideas, in plain words.</p>
+</header>
+
+<div class="promise">
+  <strong>House rules:</strong> there are no grades here, and nothing is timed.
+  A wrong pick isn't a mistake — it's usually a <em>very sensible</em> guess that shows you
+  what makes each idea tricky. Read the explanations, use the "try again" button freely,
+  and take the thinking prompts slowly. That's where the real learning happens. ☕
+</div>
+
+<!-- Q1 -->
+<div class="q" data-q>
+  <p class="q-num">Question 1 · The engine of history</p>
+  <h2>According to Marx, what mainly drives historical change?</h2>
+  <p class="warmup">Before you pick: what do <em>you</em> think changed the world more — the printing press, or the ideas printed on it?</p>
+  <div class="opts">
+    <button class="opt" data-fb="Tempting! Ideas matter a lot — but Marx argued the opposite: it's not our ideas that shape our material life, it's our material life that shapes our ideas. He called flipping this around his big break with earlier philosophers.">The great ideas of philosophers and thinkers</button>
+    <button class="opt" data-correct data-fb="Yes — this is historical materialism, the foundation of everything else. How people produce what they need to live (farming, factories, etc.) shapes their laws, politics, and even their beliefs. Change how production works, and eventually everything else shifts too.">The material conditions of life — how people produce food, shelter, and goods</button>
+    <button class="opt" data-fb="This is the 'great man theory' of history — and Marx pushed back on it hard. Kings and generals ride the wave, he'd say, but the wave itself is made of economic forces and ordinary people producing things.">Powerful individuals — kings, generals, geniuses</button>
+    <button class="opt" data-fb="Marx would smile at this one — he thought history looks chaotic on the surface but has an underlying logic, driven by how societies organize work and production.">Pure chance and random events</button>
+  </div>
+  <div class="feedback"></div>
+  <button class="retry">↺ Clear and try again</button>
+  <div class="ponder">
+    <span class="label">Something to chew on</span>
+    Think of one belief that's common today (say, "hard work pays off"). Can you imagine how the way our economy works might make that belief popular?
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="q" data-q>
+  <p class="q-num">Question 2 · The famous opening line</p>
+  <h2>The Communist Manifesto opens: "The history of all hitherto existing society is the history of…"</h2>
+  <div class="opts">
+    <button class="opt" data-fb="A good guess — revolutions matter to Marx, but they're the boiling point, not the everyday condition. The famous line is about the slower, constant tension underneath.">…revolutions</button>
+    <button class="opt" data-fb="Close in spirit! Economic progress is part of the story, but the famous phrase names the conflict between groups of people, not progress itself.">…economic progress</button>
+    <button class="opt" data-correct data-fb="That's the one: 'the history of class struggles.' Patrician vs. plebeian, lord vs. serf, and in Marx's own day, bourgeoisie vs. proletariat. The idea: every era has groups whose interests clash because of their different positions in the economy.">…class struggles</button>
+    <button class="opt" data-fb="Marx actually thought war between nations often masked the deeper conflict — the one between classes inside every society.">…wars between nations</button>
+  </div>
+  <div class="feedback"></div>
+  <button class="retry">↺ Clear and try again</button>
+  <div class="ponder">
+    <span class="label">Something to chew on</span>
+    Can you think of a conflict in the news lately that could be read as a class conflict rather than, say, a cultural or national one? Does that reading fit, or does it feel forced?
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="q" data-q>
+  <p class="q-num">Question 3 · The two main characters</p>
+  <h2>In Marx's picture of capitalism, what separates the bourgeoisie from the proletariat?</h2>
+  <div class="opts">
+    <button class="opt" data-fb="It often looks that way in practice — but for Marx, income is a symptom, not the definition. A well-paid worker is still a worker. The real dividing line is about what you own.">How much money each group earns</button>
+    <button class="opt" data-correct data-fb="Exactly. The bourgeoisie owns the means of production (factories, land, machines, capital). The proletariat owns essentially one thing: their ability to work, which they must sell to survive. Everything else in Marx's analysis flows from this relationship.">Whether they own the means of production, or only their own labor power</button>
+    <button class="opt" data-fb="Education and manners often follow class, Marx would say, but they don't define it. A self-taught factory owner is still bourgeois; a well-read weaver is still proletarian.">Their level of education and refinement</button>
+    <button class="opt" data-fb="Marx was very insistent that class isn't about attitude or lifestyle — it's about your actual position in the system of production. You can love your job and still be proletarian.">How they feel about work</button>
+  </div>
+  <div class="feedback"></div>
+  <button class="retry">↺ Clear and try again</button>
+  <div class="ponder">
+    <span class="label">Something to chew on</span>
+    A freelance designer owns her own laptop — her "means of production." A gig driver owns his car. Where would Marx put them? (Spoiler: people still argue about this. That's what makes it fun.)
+  </div>
+</div>
+
+<!-- Think 1 -->
+<div class="q thinkbox">
+  <p class="q-num">Pause &amp; think · No wrong answers</p>
+  <h2>"The philosophers have only interpreted the world, in various ways. The point, however, is to change it."</h2>
+  <p class="warmup">This is Marx's famous 11th thesis on Feuerbach. In your own words — what do you think he's getting at? Jot a sentence or two, then compare.</p>
+  <textarea placeholder="Your thoughts... (nobody sees this but you)"></textarea>
+  <button class="reveal-btn">Compare with a common reading</button>
+  <div class="reveal-text">
+    <strong>One common reading:</strong> Marx is saying philosophy shouldn't just be armchair analysis —
+    understanding the world and transforming it belong together. Theory that never touches practice is incomplete;
+    for Marx, ideas prove themselves in action. <em>Your reading doesn't have to match this one.</em>
+    If you saw something different in it, that's a genuine interpretation — hold onto it and test it against what you learn next.
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="q" data-q>
+  <p class="q-num">Question 4 · Base and superstructure</p>
+  <h2>Marx describes society as having a "base" and a "superstructure." Which belongs to the base?</h2>
+  <div class="opts">
+    <button class="opt" data-fb="Laws are actually part of the superstructure — the layer of institutions and ideas that, in Marx's view, rises up from and tends to protect the economic base underneath.">The legal system and courts</button>
+    <button class="opt" data-fb="Religion sits in the superstructure for Marx — one of the ways a society explains and justifies itself. The base is more concrete: it's about production.">Religion and shared beliefs</button>
+    <button class="opt" data-correct data-fb="Right — the base is the economic foundation: the forces of production (tools, technology, labor) plus the relations of production (who owns what, who works for whom). Law, politics, religion, and culture form the superstructure built on top of it.">The economy — tools, technology, and the relations between owners and workers</button>
+    <button class="opt" data-fb="Art and culture are classic superstructure — shaped (though not rigidly determined) by the economic arrangements underneath. The base is where production happens.">Art, literature, and the media</button>
+  </div>
+  <div class="feedback"></div>
+  <button class="retry">↺ Clear and try again</button>
+  <div class="ponder">
+    <span class="label">Something to chew on</span>
+    Here's the debate that never ends: does the base really shape culture, or can culture push back and reshape the economy? Can you think of one example pointing each way?
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="q" data-q>
+  <p class="q-num">Question 5 · Where does profit come from?</p>
+  <h2>A worker produces $200 of value in a day and is paid $80. Marx has a name for that $120 gap. What is it?</h2>
+  <div class="opts">
+    <button class="opt" data-fb="Reasonable guess! But 'exchange value' is what a commodity fetches when traded. The gap between what workers produce and what they're paid has its own special name — it's the heart of Marx's theory of profit.">Exchange value</button>
+    <button class="opt" data-correct data-fb="That's it — surplus value. For Marx, this is where profit comes from: workers produce more value than they receive in wages, and the owner keeps the difference. It's the core of his claim that capitalism runs on exploitation — not as an insult, but as a technical description of the arrangement.">Surplus value</button>
+    <button class="opt" data-fb="Marx did write about wages, but the gap itself isn't a wage — it's precisely what doesn't get paid as wages. It's the value the worker creates beyond their paycheck.">The iron wage</button>
+    <button class="opt" data-fb="'Use value' is how useful a thing is — bread's use value is that you can eat it. The $120 gap is something else: the extra value the worker created but didn't take home.">Use value</button>
+  </div>
+  <div class="feedback"></div>
+  <button class="retry">↺ Clear and try again</button>
+  <div class="ponder">
+    <span class="label">Something to chew on</span>
+    A defender of capitalism might reply: "the owner took the risk, organized everything, and bought the machines — the $120 is payment for that." How do you think Marx would answer? Which side do you find more convincing right now?
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="q" data-q>
+  <p class="q-num">Question 6 · Alienation</p>
+  <h2>Marx says workers under capitalism become "alienated." What does he mean, at heart?</h2>
+  <p class="warmup">Hint: think about the difference between a carpenter making a chair for a neighbor, and a worker gluing chair leg #4,000 on an assembly line.</p>
+  <div class="opts">
+    <button class="opt" data-fb="It can feel that way, but alienation isn't primarily about loneliness or disliking your coworkers. It's something deeper about your relationship to the work itself and what you make.">Workers feel lonely and don't make friends at work</button>
+    <button class="opt" data-fb="Low pay is part of exploitation, but alienation is a different idea — you could be paid decently and still be alienated. It's about estrangement, not just money.">Workers are paid too little</button>
+    <button class="opt" data-correct data-fb="Yes — workers become estranged from what they make (it belongs to someone else), from the act of working (it's controlled by someone else), from other people (who become competitors), and even from their own creative human nature — what Marx called our 'species-being.' Work stops being an expression of yourself and becomes just a means to survive.">Workers are separated from the product of their labor, the process, other people, and their own creative nature</button>
+    <button class="opt" data-fb="Actually almost the reverse — Marx thought machines themselves aren't the enemy. The problem is who controls them and how work is organized around them.">Workers hate machines and technology</button>
+  </div>
+  <div class="feedback"></div>
+  <button class="retry">↺ Clear and try again</button>
+  <div class="ponder">
+    <span class="label">Something to chew on</span>
+    Have you ever done work that felt like an expression of you — and work that felt like renting yourself out by the hour? What was actually different between the two?
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="q" data-q>
+  <p class="q-num">Question 7 · Commodity fetishism</p>
+  <h2>What is Marx pointing at with the odd phrase "commodity fetishism"?</h2>
+  <div class="opts">
+    <button class="opt" data-fb="Very understandable guess — it does sound like it means shopping addiction! But Marx meant something subtler about how commodities appear to us, not how much we crave them.">People's obsessive love of shopping and luxury goods</button>
+    <button class="opt" data-correct data-fb="Exactly. When you buy a phone, you see a price and an object — but hidden inside it are thousands of human relationships: miners, assemblers, shippers, coders. Commodity fetishism is how relations between people show up disguised as relations between things. The price tag hides the people.">The way social relationships between people get hidden inside objects and prices</button>
+    <button class="opt" data-fb="Advertising came later as a big force — Marx was writing in the 1860s. His point was about something built into commodities themselves: the way they hide the human labor inside them.">Companies tricking us with advertising</button>
+    <button class="opt" data-fb="Marx actually thought commodities are anything but magical — the 'fetish' is our mistake of treating them as if they had value by themselves, forgetting the human work that made them.">The belief that some objects are literally magical</button>
+  </div>
+  <div class="feedback"></div>
+  <button class="retry">↺ Clear and try again</button>
+  <div class="ponder">
+    <span class="label">Something to chew on</span>
+    Pick one object within arm's reach of you right now. Try to list five kinds of human work hidden inside it. How far back can you trace the chain?
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="q" data-q>
+  <p class="q-num">Question 8 · Marx and Hegel</p>
+  <h2>Marx said he found Hegel's dialectic "standing on its head" and turned it right side up. What did he change?</h2>
+  <div class="opts">
+    <button class="opt" data-fb="Marx actually kept the dialectic — the idea that things develop through internal contradictions and conflict. What he flipped was where the process happens.">He rejected the idea of contradiction and conflict entirely</button>
+    <button class="opt" data-correct data-fb="Right. Hegel saw history as driven by the development of ideas ('Spirit'), with the material world following along. Marx kept the dialectical engine — development through contradiction — but grounded it in material, economic life. Ideas ride on top; production drives underneath. Same dance, opposite dancer leading.">He kept the dialectical method but grounded it in material conditions instead of ideas</button>
+    <button class="opt" data-fb="Quite the opposite — Marx openly credited Hegel as a great thinker and borrowed his method. He just disagreed about what the method should be applied to first.">He proved Hegel was entirely wrong and useless</button>
+    <button class="opt" data-fb="Marx was a philosopher through and through — he didn't abandon philosophy, he tried to fuse it with economics and history so it could explain (and change) the real world.">He gave up on philosophy in favor of pure economics</button>
+  </div>
+  <div class="feedback"></div>
+  <button class="retry">↺ Clear and try again</button>
+  <div class="ponder">
+    <span class="label">Something to chew on</span>
+    Dialectics says change comes from tensions <em>inside</em> a system, not from outside shocks. Can you spot an internal tension in today's economy that might be quietly pushing it somewhere new?
+  </div>
+</div>
+
+<!-- Think 2 -->
+<div class="q thinkbox">
+  <p class="q-num">Pause &amp; think · Your turn to push back</p>
+  <h2>What's your strongest doubt so far?</h2>
+  <p class="warmup">Good students of Marx — including his sharpest critics — engage rather than memorize. What's one thing from your lessons that you're not convinced by, or that seems not to fit the world you see? Write it down.</p>
+  <textarea placeholder="My honest doubt is..."></textarea>
+  <button class="reveal-btn">See why this question matters</button>
+  <div class="reveal-text">
+    <strong>Why this matters:</strong> whatever you wrote is your best study guide. Marx has been debated
+    for 150+ years precisely because smart people found real puzzles in his work — about the middle class,
+    about why capitalism adapted, about whether the labor theory of value holds up. Chasing your own doubt
+    through the reading will teach you more than agreeing with everything ever could. Keep it; revisit it after lesson two.
+  </div>
+</div>
+
+<button class="finish-btn">I'm done — how did the thinking go?</button>
+
+<div class="summary">
+  <h2>The check-in, checked ✔</h2>
+  <p class="tally"></p>
+  <p class="summary-note"></p>
+  <p>Whatever the count, here's the real takeaway: the five ideas you just wrestled with —
+  <strong>historical materialism, class struggle, surplus value, alienation, and commodity fetishism</strong> —
+  are the load-bearing walls of everything else in Marx. If any felt shaky, reread just that one explanation.
+  Then go back to the two writing prompts: those are yours, and they're the part no quiz can grade.</p>
+</div>
+
+<footer>Made for a curious student · No timers were used in the making of this quiz</footer>
+
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-q]').forEach(function (q) {
+    var opts = q.querySelectorAll('.opt');
+    var fb = q.querySelector('.feedback');
+    var ponder = q.querySelector('.ponder');
+    var retry = q.querySelector('.retry');
+
+    opts.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var right = opt.hasAttribute('data-correct');
+        opts.forEach(function (o) { o.disabled = true; o.classList.remove('picked-right', 'picked-almost'); });
+        opt.classList.add(right ? 'picked-right' : 'picked-almost');
+        fb.className = 'feedback show ' + (right ? 'right' : 'almost');
+        fb.innerHTML = '<span class="label">' +
+          (right ? 'Nicely reasoned' : 'A sensible guess — here\'s the twist') +
+          '</span>' + opt.getAttribute('data-fb');
+        ponder.classList.add('show');
+        retry.classList.toggle('show', !right);
+        q.dataset.answered = right ? 'right' : 'almost';
+      });
+    });
+
+    retry.addEventListener('click', function () {
+      opts.forEach(function (o) { o.disabled = false; o.classList.remove('picked-right', 'picked-almost'); });
+      fb.className = 'feedback';
+      fb.innerHTML = '';
+      retry.classList.remove('show');
+      delete q.dataset.answered;
+    });
+  });
+
+  document.querySelectorAll('.reveal-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.nextElementSibling.classList.add('show');
+      btn.style.display = 'none';
+    });
+  });
+
+  document.querySelector('.finish-btn').addEventListener('click', function () {
+    var qs = document.querySelectorAll('[data-q]');
+    var right = 0, tried = 0;
+    qs.forEach(function (q) {
+      if (q.dataset.answered) tried++;
+      if (q.dataset.answered === 'right') right++;
+    });
+    var summary = document.querySelector('.summary');
+    var tally = summary.querySelector('.tally');
+    var note = summary.querySelector('.summary-note');
+
+    if (tried === 0) {
+      tally.textContent = 'You skipped straight to the end — bold move! Scroll up whenever you\'re ready; the questions will wait patiently.';
+      note.textContent = '';
+    } else {
+      tally.textContent = 'You landed ' + right + ' of the ' + qs.length + ' questions on the first idea that stuck' + (tried < qs.length ? ' (with ' + (qs.length - tried) + ' still waiting for you)' : '') + '.';
+      if (right === qs.length) {
+        note.textContent = 'A clean sweep — your first lessons clearly landed. The thinking prompts are where you go deeper from here.';
+      } else if (right >= Math.ceil(qs.length * 0.6)) {
+        note.textContent = 'A strong showing. The ones that tripped you up are exactly the ideas worth ten more minutes with — that\'s not a weakness, that\'s a map.';
+      } else {
+        note.textContent = 'These ideas are genuinely slippery on a first pass — everyone mixes them up at the start. Use the "try again" buttons, reread the explanations, and this will click faster than you think.';
+      }
+    }
+    summary.classList.add('show');
+    summary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
