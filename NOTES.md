@@ -1,5 +1,13 @@
 # Teaching Notes
 
+## Resuming in a fresh session
+This teaching workspace lives ONLY on branch
+`claude/bike-frame-design-geometry-tcr8l3`. If /teach is invoked and MISSION.md
+is missing from the working directory, DO NOT restart the mission interview —
+fetch and check out that branch first, then read MISSION.md, this file, and the
+latest lesson in ./lessons/ to find where the course left off. Continue the
+month arc below; do not re-teach material already covered.
+
 ## User preferences
 - Friendly tone, plain language — avoid technical gibberish; introduce jargon gently, one term at a time.
 - Likes a TL;DR up front in chat replies.
