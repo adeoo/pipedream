@@ -2,14 +2,15 @@
 
 A daily email course on Marxism for Moussa, taught seriously from within the tradition. Personalized: Moussa is Lebanese and Paraguayan, living in São Paulo. Palestine, Lebanon and Latin America are central threads of the whole course, never side notes and never special episodes. Each lesson also goes out in Brazilian Portuguese to Carol.
 
-This file is the single source of truth. The weekly writer reads this file, the state file, and the previous week's lessons, then writes. Nothing written under the old program (v1) may be sent or reused; if an old-style lesson file is ever found, keep only its topic and rewrite it from scratch under these rules.
+This file is the single source of truth. The weekly writer reads this file, the state file, and the previous week's lessons, then writes the lessons and the Sunday quiz. Nothing written under the old program (v1) may be sent or reused; if an old-style lesson file is ever found, keep only its topic and rewrite it from scratch under these rules.
 
 ## Delivery
 
 - English version to moussaadel97@gmail.com. Brazilian Portuguese version to ana.ruberrime@gmail.com (Carol), with the Portuguese subject line.
-- One lesson per day, morning delivery around 06:00 America/Sao_Paulo. Transport is defined in README.md (currently Resend scheduled sends plus the daily delivery-check routine; an Inkbox migration is being handled separately and does not change this program).
+- One lesson per day from Monday to Saturday, morning delivery around 06:00 America/Sao_Paulo. Sunday is quiz day: no lesson, one quiz email instead (see "Sunday quiz" below). Normal lessons return on Monday. Transport is defined in README.md (Inkbox, one daily send Routine).
 - Subject lines: intriguing and specific. No emoji, no dashes, no "Day X" prefix, ever. Style reference: "The fishermen of Sidon". Week and day info goes only in the footer.
 - Footer: a single small line at the end of the lesson body, in italics: *Week W, Day N. Daily Marxism.* (PT: *Semana W, Dia N. Daily Marxism.*)
+- Calendar: from week 2 on, a week runs Monday to Sunday. Six lessons Monday to Saturday, the quiz on Sunday. No lesson ever carries a Sunday send_date.
 
 ## The reader
 
@@ -61,7 +62,7 @@ Simple text-only visuals are encouraged when they carry meaning: arrow chains (A
 Before the footer, always:
 
 1. **The argument in five lines.** The whole lesson compressed into a chain of 3 to 5 short lines connected by arrows, plain text. The reader's map.
-2. **Before you close this.** One writing task of a single sentence, answerable in 30 seconds from the lesson itself. On review days it can instead ask the reader to rebuild the arrow chain from memory.
+2. **Before you close this.** One writing task of a single sentence, answerable in 30 seconds from the lesson itself.
 
 Keep both blocks shorter than they want to be.
 
@@ -73,11 +74,11 @@ Plain and phone-friendly: plain text on white, one font, a title, flowing paragr
 
 The course spine is three equal pillars: core theory (Marx's actual concepts), history (revolutions and movements, what happened and why), and Lebanon, Palestine and Latin America.
 
-Every week has the same rhythm: 4 theory days, 1 history day, 1 region day, 1 review day. The review day rebuilds the week's ideas in a new arrangement, never a full re-explanation. Region material appears across all weeks as examples and cases inside theory days too; the region day is simply the day it leads. Thinkers like Mahdi Amel, Ghassan Kanafani, Frantz Fanon and Mariátegui appear when they genuinely connect. Debates between Marxists appear in small doses; the main thread stays clear.
+Every week has the same rhythm: 4 theory days, 1 history day, 1 region day, then the Sunday quiz. There is no review lesson anymore; the Sunday quiz replaced it. Region material appears across all weeks as examples and cases inside theory days too; the region day is simply the day it leads. Thinkers like Mahdi Amel, Ghassan Kanafani, Frantz Fanon and Mariátegui appear when they genuinely connect. Debates between Marxists appear in small doses; the main thread stays clear.
 
 ## Syllabus, 12 weeks
 
-Each week lists the theory spine, the history day and the region day. The writer sets the day order and exact titles, keeping the 4 theory, 1 history, 1 region, 1 review rhythm.
+Each week lists the theory spine, the history day and the region day. The writer sets the day order and exact titles, keeping the 4 theory, 1 history, 1 region rhythm (six lessons, Monday to Saturday). The Sunday quiz is not a lesson and has no place in the syllabus list.
 
 1. **The materialist starting point.** Theory: materialism vs idealism; dialectics in plain terms; class as a relation, not an income bracket; ideology and the ruling ideas. History: 1848 and the moment of the Manifesto. Region: Lebanon's sectarian system read as a class system (first meeting with Mahdi Amel).
 2. **Value.** Theory: the commodity; use value vs exchange value; socially necessary labour time; labour power as a commodity. History: enclosures and primitive accumulation, how wage labour was created in England. Region: informal work in São Paulo through the value lens.
@@ -90,7 +91,59 @@ Each week lists the theory spine, the history day and the region day. The writer
 9. **Socialism from the soil.** Theory: Mariátegui's seven essays; indigenous socialism and the ayllu; "ni calco ni copia"; the agrarian question; myth and revolutionary will. History: land and indigenous communities from colonial Peru to Mariátegui's time. Region: the MST in Brazil, land occupation as living politics.
 10. **Building socialism.** Theory: the transition problem; planning vs market; Che and the hombre nuevo debate; the USSR-China split as an argument about how to build socialism. History: Cuba from Moncada to the Sierra Maestra. Region: Cuban internationalism (Angola, the doctors) and socialism under blockade, told honestly from within.
 11. **Brazil.** Theory: slavery and Brazilian capitalism, race and class; Freire's pedagogy as politics; liberation theology and Marxism; the limits of reformism. History: from abolition to Vargas, the making of Brazilian labour. Region: the PT experience, gains and limits.
-12. **Marxism now.** Theory: neoliberalism; ecology and Marxism; the pink tide and its aftermath. History: the fall of the USSR and what Marxists learned from it. Region: Palestine solidarity as today's internationalism. Plus a full-course review and where the reader goes from here.
+12. **Marxism now.** Theory: neoliberalism; ecology and Marxism; the pink tide and its aftermath. History: the fall of the USSR and what Marxists learned from it. Region: Palestine solidarity as today's internationalism. The final Sunday quiz covers the last week as usual; a short closing recap goes out as one extra lesson on the Monday after it, with where the reader goes from here.
+
+## Sunday quiz
+
+Sunday is quiz day. Instead of a lesson, the reader gets a quiz: one self-contained interactive HTML file, sent as an email attachment. The quiz replaced the old weekly review lesson.
+
+- **Coverage.** Each Sunday quiz covers all lessons sent after the previous quiz. In the normal rhythm that is the six lessons of the same week, Monday to Saturday. The first quiz covers every day not yet tested (days 1 to 8). Never test a lesson that has not been sent yet.
+- **Format.** Built with the `test-workbook` skill (`.claude/skills/test-workbook/SKILL.md`). Three parts: a classification drill, a find-the-error hunt, and written analysis with model answers. Transfer, not recall: new cases, no quotes from the lessons, no reuse of their examples. No grades, no timers, "try again" on every drill. The reference example is `marxism-daily/quizzes/REFERENCE-week1-workbook.html`; copy its page structure, CSS and JavaScript, replace only the content.
+- **Style.** Prose in ASD-STE100 style (short sentences, one idea per sentence, active voice, plain words). No em dashes, no emojis. The quiz keeps the course's visual identity from the reference file. The stylesheet link is `../../assets/course.css`; the inline mirror of it stays in the file, so the file also works alone.
+- **Two languages, two files.** English for Moussa and a natural PT-BR rewrite for Carol, same rules as the lessons. Both are complete, standalone files.
+- **Files.** All in `marxism-daily/quizzes/`:
+  - `quizNN.html`: the English quiz.
+  - `quizNN.pt.html`: the PT-BR quiz.
+  - `quizNN.json`: metadata the daily sender reads.
+
+```
+{
+  "quiz": 1,
+  "send_date": "2026-09-06",
+  "covers_days": "1-8",
+  "covers_dates": "2026-08-29 to 2026-09-05",
+  "covers_dates_pt": "29/08 a 05/09/2026",
+  "subject": "Eight days, one test",
+  "subject_pt": "Oito dias, uma prova",
+  "file": "quiz01.html",
+  "file_pt": "quiz01.pt.html"
+}
+```
+
+- **Subject lines** follow the lesson rules: intriguing and specific, no emoji, no dashes, no "Quiz N" prefix.
+- **Footer** inside the quiz page: *Quiz N, covering days X to Y. Daily Marxism.* (PT: *Prova N, dias X a Y. Daily Marxism.*)
+- **Email.** The daily sender attaches the HTML file. It never pastes the quiz into the email body, because mail clients remove scripts and the interactive parts die. The body is short, in STE style, and tells the reader to open the attachment in a browser. The body text lives in the daily send Routine.
+
+## Weekly batch and calendar
+
+The weekly writer runs on Thursdays. In the normal rhythm one batch is six lessons plus one Sunday quiz file:
+
+1. The quiz for the coming Sunday. It covers the six lessons of the current week, which the previous batch wrote and which are going out Monday to Saturday.
+2. The six lessons of the next week, Monday to Saturday.
+
+`state.json` gives the exact numbers: `next_day`, `next_week`, `next_batch_first_send_date` (always a Monday from week 3 on), `next_quiz`, `next_quiz_send_date` (a Sunday) and `next_quiz_covers_days`. If `state.json` contains a `transition` field, that field wins over the normal rhythm for that one batch.
+
+Transition from the old calendar (week 1 started on Saturday 2026-08-29):
+
+| What | Send date | Content |
+|---|---|---|
+| Days 1 to 7 | 2026-08-29 to 2026-09-04 (Sat to Fri) | Week 1 as already written, including its day 7 review lesson |
+| Day 8 | 2026-09-05 (Sat) | One more week 1 lesson, inside week 1's theme, not a review (footer: *Week 1, Day 8*) |
+| Quiz 1 | 2026-09-06 (Sun) | Covers days 1 to 8 |
+| Days 9 to 14 | 2026-09-07 to 2026-09-12 (Mon to Sat) | Week 2 |
+| Quiz 2 | 2026-09-13 (Sun) | Covers days 9 to 14 |
+
+From week 2 on, every week is Monday to Sunday and every batch is six lessons plus one quiz.
 
 ## Portuguese version
 
@@ -117,3 +170,7 @@ optional quote as a > blockquote, the two end blocks, then the footer line
 ```
 
 Writers may adjust day-level topics within a week's theme, but keep the weekly arc and the rhythm. If Moussa requests changes in any session, update this file and commit.
+
+## Change log
+
+- 2026-09-02: Sunday quiz replaces the weekly review lesson. Lessons Monday to Saturday, quiz on Sunday, weeks Monday to Sunday from week 2. Program branch is now `claude/marxism-sunday-quiz-8q6xax`.

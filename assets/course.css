@@ -1,0 +1,159 @@
+/* Shared stylesheet for the Bike Frame Craft course.
+   Every lesson and reference document links this file so the course
+   reads as one consistent, print-friendly set of documents. */
+
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;      /* brazed-bronze orange */
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+.page {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
+}
+
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+
+h1 {
+  font-size: 2.1rem;
+  line-height: 1.15;
+  font-weight: normal;
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: normal;
+  font-style: italic;
+  margin: 2.4rem 0 0.8rem;
+}
+
+.lede {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0;
+}
+
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+
+figure {
+  margin: 2rem 0;
+}
+figcaption {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+
+table.ref {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.4rem 0;
+  font-size: 0.98rem;
+}
+table.ref th, table.ref td {
+  text-align: left;
+  padding: 0.45rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.ref th {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Quiz widget (rendered by assets/quiz.js) */
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz button.q-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  margin: 0.4rem 0;
+  cursor: pointer;
+}
+.quiz button.q-opt:hover { border-color: var(--accent); }
+.quiz button.q-opt.correct { border-color: var(--good); background: #edf6ee; }
+.quiz button.q-opt.wrong { border-color: var(--bad); background: #faeceb; }
+.quiz .q-feedback { margin-top: 0.7rem; font-size: 0.95rem; }
+.quiz .q-feedback.good { color: var(--good); }
+.quiz .q-feedback.bad { color: var(--bad); }
+
+footer.lesson-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+@media print {
+  .quiz button.q-opt { border: 1px solid #999; }
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
