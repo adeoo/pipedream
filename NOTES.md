@@ -11,6 +11,18 @@
 - Goal: hobby craftsman building steel city/touring frames; first milestone is a frame for himself.
 - No workshop — sequence all early lessons as paper/screen work (anatomy → geometry → fit → drawing → materials), leave brazing/tooling until workshop access exists.
 
+## Month curriculum arc (agreed 2026-09-02, ~1 short lesson/day, 1 in 5 days review)
+- Week 1 — Speak the language: anatomy (0001 done) → reading a geometry chart →
+  the core measures (seat/head angle, top tube, wheelbase, chainstays, BB drop).
+- Week 2 — Numbers to ride feel: wheelbase/trail/steering intuition, touring
+  stability, body measurements → frame size; measure own bike + self.
+- Week 3 — Materials & joints: why steel, butted tubing, real tubesets
+  (Reynolds/Columbus), lugs vs fillet vs TIG.
+- Week 4 — Capstone: full geometry table + drawing of his own touring frame,
+  clearance checks (toe overlap, heels, fenders), build plan and community
+  critique. End state: complete defensible design; hand skills deferred until
+  workshop access.
+
 ## Working notes
 - Lesson 0001 (frame anatomy) delivered 2026-09-01. Quiz results not yet observed —
   do not write a learning record until he reports back or answers retrieval
