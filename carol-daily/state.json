@@ -1,0 +1,57 @@
+{
+  "next_day": 5,
+  "recipient": "ana.ruberrime@gmail.com",
+  "sender": "adeosagent@inkboxmail.com",
+  "covered": [
+    {
+      "day": 1,
+      "send_date": "2026-09-01",
+      "theme": 1,
+      "title": "Towards a More-than-Human Approach to Smart and Sustainable Urban Development: Designing for Multispecies Justice",
+      "authors": "Fieuw; Foth; Caldwell",
+      "year": 2022,
+      "venue": "Sustainability, v. 14, n. 2, art. 948",
+      "doi": "10.3390/su14020948",
+      "note": "Teste/estreia enviado fora da rotação (tema 2 no slot do dia 1) por ser a porta de entrada ideal: revisão de horizonte em acesso aberto no cruzamento exato da tese. A rotação normal vale a partir do dia 2."
+    },
+    {
+      "day": 2,
+      "send_date": "2026-09-01",
+      "theme": 2,
+      "title": "The more-than-human right to the city: A multispecies reevaluation",
+      "authors": "Shingne",
+      "year": 2022,
+      "venue": "Journal of Urban Affairs, v. 44, n. 2, p. 137-155 (dossiê Animals in the City)",
+      "doi": "10.1080/07352166.2020.1734014",
+      "note": "Acesso fechado (avisado no e-mail, com alternativas). Ponte direito à cidade → insurgente/multiespécies/ecofeminismo. Enviado 2026-09-01 11:43 UTC, Inkbox id 530ffd97."
+    },
+    {
+      "day": 3,
+      "send_date": "2026-09-02",
+      "theme": 3,
+      "title": "Toward a queer ecofeminism",
+      "authors": "Gaard",
+      "year": 1997,
+      "venue": "Hypatia, v. 12, n. 1, p. 114-137",
+      "doi": "10.1111/j.1527-2001.1997.tb00174.x",
+      "note": "Texto fundador do eixo 3. Acesso fechado (avisado, com alternativas). Citação verificada no resumo da Cambridge Core. Enviado 2026-09-02 10:40 UTC, Inkbox id 1de71fcd."
+    },
+    {
+      "day": 4,
+      "send_date": "2026-09-03",
+      "theme": 4,
+      "title": "Perspectives on urban transformation research: transformations in, of, and by cities",
+      "authors": "Hölscher; Frantzeskaki",
+      "year": 2021,
+      "venue": "Urban Transformations, v. 3, art. 2",
+      "doi": "10.1186/s42854-021-00019-z",
+      "note": "Acesso aberto. Tríade na/da/pela cidade como esqueleto do Cap. 2; lacuna de agência insurgente/não humana para o Cap. 5. Citação verificada na página da Springer. Enviado 2026-09-03 09:17 UTC sem prompt (allowlist .claude/settings.json funcionou), Inkbox id dea99e66."
+    }
+  ],
+  "already_in_thesis": [
+    "HOUSTON, Donna et al. Make kin, not cities! Multispecies entanglements and 'becoming-world' in planning theory. Planning Theory, v. 17, n. 2, p. 190-212, 2018.",
+    "SHEIKH, Hira; FOTH, Marcus; MITCHELL, Peta. More-than-human city-region foresight. Regional Studies, v. 57, n. 4, p. 642-655, 2023. DOI 10.1080/00343404.2022.2045266.",
+    "SHEIKH, Hira; MITCHELL, Peta; FOTH, Marcus. Reparative futures of smart urban governance. Futures, v. 154, art. 103266, 2023. DOI 10.1016/j.futures.2023.103266."
+  ],
+  "notes": "Dias 1-4 enviados. Routine diária trig_015byv2MPNvWcut1cJpBcafg dispara às 09:00 UTC (06:00 América/São_Paulo) na sessão criadora e faz pesquisa+escrita+envio+push na mesma manhã; desde o dia 4 roda sem prompts graças ao .claude/settings.json no branch. Próximo: dia 5, tema 5 (convergências e tensões entre os conceitos)."
+}
