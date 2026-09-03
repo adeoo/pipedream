@@ -1,0 +1,36 @@
+[Daily Marxism daily send: 09:00 UTC firing] Deliver today's Daily Marxism email via Inkbox: a lesson from Monday to Saturday, the quiz on Sunday. You have context from this session. The repo may have been recycled, so re-clone if needed.
+
+1. git fetch origin claude/marxism-sunday-quiz-8q6xax (adeoo/pipedream) and check out / fast-forward to it. This branch replaced claude/scheduled-tasks-status-xr0587 on 2026-09-02. Do not use the old branch.
+2. Compute today's date and weekday in America/Sao_Paulo (UTC-3).
+3. MONDAY TO SATURDAY, lesson day: find the lesson file marxism-daily/lessons/weekNN/dayNN.md whose front-matter send_date equals today. If no such file exists, report clearly that no lesson exists for today (the Thursday writer Routine likely failed) so Moussa sees it here, and stop. Do not write a lesson yourself. Idempotency: search Inkbox sent mail (inkbox_emails_search / inkbox_emails_list) for emails already sent today with this lesson's subjects. If both language versions already went out, stop with a no-op note. Send only whichever is missing. Render the lesson: python3 marxism-daily/render.py <file>. The JSON gives subject/html/text (English) and subject_pt/html_pt/text_pt (Portuguese). Send from the adeosagent identity mailbox adeosagent@inkboxmail.com, display name "Daily Marxism" if supported: the English version (subject, html, text) to moussaadel97@gmail.com, and the PT-BR version (subject_pt, html_pt, text_pt) to ana.ruberrime@gmail.com.
+4. SUNDAY, quiz day: do not send a lesson. If a lesson file carries today's date, report that as an error and skip it. Find the file marxism-daily/quizzes/quizNN.json whose send_date equals today. It gives the quiz number (quiz), the covered days (covers_days), the covered dates (covers_dates, covers_dates_pt), the subjects (subject, subject_pt) and the file names (file = the English HTML, file_pt = the PT-BR HTML, both in marxism-daily/quizzes/). If no such file exists, report clearly that no quiz exists for today and stop. Idempotency as in step 3, with the quiz subjects. Send two emails from adeosagent@inkboxmail.com, display name "Daily Marxism": the English email to moussaadel97@gmail.com with subject and the English HTML file ATTACHED, and the PT-BR email to ana.ruberrime@gmail.com with subject_pt and the PT-BR HTML file ATTACHED. The quiz HTML goes only as an attachment, never in the email body: mail clients remove scripts and the interactive parts die. The body is plain text. Fill in the values in braces from the json.
+
+English body:
+Good morning, Moussa.
+
+Today there is no lesson. There is a quiz. It covers the lessons from {covers_dates} (days {covers_days}).
+
+The quiz is the attached file, {file}. Save the file, then open it in a browser (Chrome, Safari or Firefox). It works on a phone too. It does not work inside the email.
+
+The quiz has three parts: a classification drill, an error hunt, and writing practice with model answers. There are no grades and no timers. Take about 30 minutes.
+
+Normal lessons return on Monday.
+
+Quiz {quiz}. Daily Marxism.
+
+PT-BR body:
+Bom dia, Carol.
+
+Hoje não tem aula. Tem uma prova. Ela cobre as aulas de {covers_dates_pt} (dias {covers_days}).
+
+A prova é o arquivo anexo, {file_pt}. Salve o arquivo e abra em um navegador (Chrome, Safari ou Firefox). Funciona no celular também. Dentro do e-mail a prova não funciona.
+
+A prova tem três partes: um exercício de classificação, uma caça ao erro e uma prática de escrita com respostas modelo. Não tem nota nem cronômetro. Reserve uns 30 minutos.
+
+As aulas normais voltam na segunda-feira.
+
+Prova {quiz}. Daily Marxism.
+
+If the Inkbox send tool cannot attach a file, do not paste the HTML into the body. Send the body above with one extra line at the end: "The quiz file could not be attached. It is in the repo adeoo/pipedream, branch claude/marxism-sunday-quiz-8q6xax, at marxism-daily/quizzes/{file}." (PT: "Não foi possível anexar o arquivo da prova. Ele está no repositório adeoo/pipedream, branch claude/marxism-sunday-quiz-8q6xax, em marxism-daily/quizzes/{file_pt}."). Then report the exact limitation here so Moussa sees it.
+5. Verify all sends succeeded. If one fails, retry it once. If it still fails, report the exact error so Moussa sees it here.
+Do not modify the repo, do not write lessons or quizzes, do not change any Routine.
