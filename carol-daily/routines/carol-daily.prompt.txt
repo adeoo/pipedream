@@ -1,0 +1,11 @@
+[Carol Daily — disparo diário 09:00 UTC / 06:00 São Paulo] Esta é uma sessão NOVA, sem memória de execuções anteriores. Toda a informação necessária está no repositório adeoo/pipedream (clonado em /home/user/pipedream; se não estiver, clone-o) na branch claude/daily-programs. Sua tarefa: pesquisar, escrever e enviar o Artigo do Dia para a Carol.
+
+1. git fetch origin claude/daily-programs e faça checkout / fast-forward dessa branch.
+2. Leia carol-daily/PROGRAM.md (formato, voz e regras) e carol-daily/state.json. O dia de hoje é state.json → next_day; o tema vem da rotação ((day-1)%7)+1 definida no PROGRAM.md. Leia também o fichamento do dia anterior (carol-daily/fichamentos/) para manter continuidade de tom.
+3. Pesquise um artigo científico REAL para o tema (Tavily search; WebSearch como reserva), confira contra covered e already_in_thesis no state.json, e VERIFIQUE extraindo o texto da página do artigo (Tavily extract / WebFetch). A citação do e-mail deve constar literalmente no texto extraído; se não conseguir extrair, escolha outro artigo. Prefira acesso aberto.
+4. Escreva carol-daily/fichamentos/dayNN.md no formato do PROGRAM.md (PT-BR, seções: abertura, Referência ABNT, Trecho para guardar com tradução, Discussão com convergência E tensão/lacuna, Como citar no texto, Pistas para aprofundar, rodapé). Valide: python3 carol-daily/render.py <arquivo> deve emitir subject/html/text sem erro.
+5. Idempotência: confira nos enviados do Inkbox (inkbox_emails_list / busca) se um e-mail com o subject de hoje já saiu; se sim, pare com nota de no-op.
+6. Envie via Inkbox de adeosagent@inkboxmail.com para ana.ruberrime@gmail.com (body_html + body_text do render). Se falhar, tente mais uma vez.
+7. Atualize state.json (next_day+1, artigo em covered), commit e git push -u origin claude/daily-programs (retry com backoff em erro de rede). Sem pull request.
+
+Não altere marxism-daily/ nem nenhuma Routine. Termine a resposta com UMA linha de status: "OK: <subject enviado>" se tudo deu certo, ou "FALHA: <erro exato e em que passo>" se algo falhou. Essa linha final é o que chega ao Moussa como notificação, então seja claro e curto.

@@ -4,14 +4,14 @@ Automated daily email course. See `PROGRAM.md` for syllabus, voice, and email fo
 
 ## Branch
 
-Since 2026-09-02 the program lives on branch `claude/marxism-sunday-quiz-8q6xax` (before: `claude/scheduled-tasks-status-xr0587`). Both Routines read from and push to the new branch.
+Since 2026-09-02 the program lives on branch `claude/daily-programs` (before: `claude/daily-programs`). Both Routines read from and push to the new branch.
 
 ## How it works (v2 transport, since 2026-08-28; Sunday quiz since 2026-09-02)
 
 Sending migrated from Resend to Inkbox on 2026-08-28. Resend is retired: nothing is scheduled there and no Routine touches it anymore.
 
 - **Weekly writer** (Claude Routine `trig_01FwcGbF9PbBj7cSdHn5BpCq`, Thursdays 12:00 UTC, self-bind into the v2 operations session):
-  1. Checks out branch `claude/marxism-sunday-quiz-8q6xax` of `adeoo/pipedream`.
+  1. Checks out branch `claude/daily-programs` of `adeoo/pipedream`.
   2. Reads `PROGRAM.md` (v2), `state.json`, and the previous week's lessons for continuity.
   3. Writes one batch: the quiz for the coming Sunday (`quizzes/quizNN.html`, `quizNN.pt.html`, `quizNN.json`, built with the `test-workbook` skill) plus the next week's 6 bilingual lessons, Monday to Saturday, as `lessons/weekNN/dayNN.md` (front matter: `subject`, `subject_pt`, `send_date`; English lesson, then `=== PT-BR ===`, then the Portuguese version). A `transition` field in `state.json` overrides this for one batch.
   4. Verifies each lesson renders with `render.py`, updates `state.json`, commits, pushes. It does NOT send or schedule email.

@@ -51,10 +51,10 @@ Direta, quente e sem enrolação — como uma colega de orientação que leu o a
 
 ## Mecânica diária (o que a Routine faz)
 
-1. `git fetch origin claude/carol-daily-article-emailer-eub1jz` e checkout/fast-forward (re-clonar se o contêiner foi reciclado).
+1. `git fetch origin claude/daily-programs` e checkout/fast-forward (re-clonar se o contêiner foi reciclado).
 2. Ler `PROGRAM.md` e `state.json`; tema do dia pela rotação.
 3. Pesquisar, escolher e **verificar** o artigo (extração de texto obrigatória).
 4. Escrever `fichamentos/dayNN.md` e validar: `python3 carol-daily/render.py <arquivo>` deve emitir subject/html/text sem erro.
 5. Idempotência: conferir nos enviados do Inkbox se o subject do dia já saiu; se sim, parar.
 6. Enviar via Inkbox de `adeosagent@inkboxmail.com` para `ana.ruberrime@gmail.com` (html + text). Verificar sucesso; uma nova tentativa em caso de falha; se falhar de novo, relatar o erro exato na sessão.
-7. Atualizar `state.json` (próximo dia, artigo coberto), commit e `git push -u origin claude/carol-daily-article-emailer-eub1jz` (retry com backoff em erro de rede). Sem pull request.
+7. Atualizar `state.json` (próximo dia, artigo coberto), commit e `git push -u origin claude/daily-programs` (retry com backoff em erro de rede). Sem pull request.

@@ -173,4 +173,4 @@ Writers may adjust day-level topics within a week's theme, but keep the weekly a
 
 ## Change log
 
-- 2026-09-02: Sunday quiz replaces the weekly review lesson. Lessons Monday to Saturday, quiz on Sunday, weeks Monday to Sunday from week 2. Program branch is now `claude/marxism-sunday-quiz-8q6xax`.
+- 2026-09-02: Sunday quiz replaces the weekly review lesson. Lessons Monday to Saturday, quiz on Sunday, weeks Monday to Sunday from week 2. Program branch is now `claude/daily-programs`.

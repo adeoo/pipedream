@@ -9,4 +9,4 @@ Irmão do `marxism-daily/`: todo dia às 06:00 (América/São_Paulo) a Carol (an
 
 Diferença estrutural para o marxism-daily: aqui **não há** rotina semanal de escrita — a Routine diária pesquisa, verifica, escreve, envia e faz commit na mesma manhã, porque cada e-mail depende de pesquisa fresca.
 
-Branch fonte da verdade: `claude/carol-daily-article-emailer-eub1jz`. Transporte: Inkbox, de `adeosagent@inkboxmail.com`.
+Branch fonte da verdade: `claude/daily-programs`. Transporte: Inkbox, de `adeosagent@inkboxmail.com`.
