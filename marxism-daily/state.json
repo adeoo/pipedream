@@ -1,11 +1,10 @@
 {
-  "next_day": 8,
-  "next_week": 2,
-  "next_batch_first_send_date": "2026-09-05",
-  "next_quiz": 1,
-  "next_quiz_send_date": "2026-09-06",
-  "next_quiz_covers_days": "1-8",
-  "last_batch_written": "2026-08-28",
-  "transition": "One-time batch for the Thursday 2026-09-03 writer run, replacing the normal rhythm for this batch only: (a) day 8 as lessons/week01/day08.md, send_date 2026-09-05 (Saturday), footer Week 1, Day 8, a new lesson inside week 1's theme, not a review; (b) quiz 1 as quizzes/quiz01.html + quiz01.pt.html + quiz01.json, send_date 2026-09-06 (Sunday), covering days 1 to 8; (c) week 2, days 9 to 14, as lessons/week02/day09.md to day14.md, send_dates 2026-09-07 to 2026-09-12 (Monday to Saturday), rhythm 4 theory, 1 history, 1 region, no review. Quiz 2 (2026-09-13, days 9 to 14) belongs to the 2026-09-10 run. After this batch set: next_day 15, next_week 3, next_batch_first_send_date 2026-09-14, next_quiz 2, next_quiz_send_date 2026-09-13, next_quiz_covers_days 9-14, and delete this transition field.",
-  "notes": "Week 1 (days 1-7, 2026-08-29..2026-09-04) written under PROGRAM.md v2, bilingual, pushed. 2026-09-02: Sunday quiz replaces the weekly review lesson; program branch is now claude/daily-programs (see PROGRAM.md, 'Sunday quiz' and 'Weekly batch and calendar'). Transport: daily send Routine trig_018T2b8WrCRB2nZJxudgZoE8 delivers each lesson at 06:00 Sao Paulo (EN to Moussa, PT-BR to Carol) from adeosagent@inkboxmail.com, and on Sundays sends the quiz as an HTML attachment; weekly writer is trig_01FwcGbF9PbBj7cSdHn5BpCq; Resend retired, v1 Routines disabled. See README.md."
+  "next_day": 15,
+  "next_week": 3,
+  "next_batch_first_send_date": "2026-09-14",
+  "next_quiz": 2,
+  "next_quiz_send_date": "2026-09-13",
+  "next_quiz_covers_days": "9-14",
+  "last_batch_written": "2026-09-05",
+  "notes": "Week 1 (days 1-7, 2026-08-29..2026-09-04) and the transition batch (day 8 on 2026-09-05, quiz 1 on 2026-09-06 covering days 1-8, week 2 days 9-14 on 2026-09-07..12) written under PROGRAM.md v2, bilingual. The transition batch was written by hand on 2026-09-05 because the Thursday writer Routine of 2026-09-03 ran without the repository attached and could not push. Delivery history: days 1-6 sent on time; day 7 (2026-09-04) and day 8 (2026-09-05) were sent by hand on the evening of 2026-09-05 for the same reason. Routines: daily sender trig_013J1Y22YKk49GeqW1XJ9YRj (09:00 UTC, fresh session), weekly writer trig_012MfVR5ARzo3EcThuMqofkR (Thursdays 12:00 UTC, fresh session). Both need the repo adeoo/pipedream attached in claude.ai/code/routines, plus the allowlist .claude/settings.json (on master and on this branch), to run without approval prompts. Program branch: claude/daily-programs. See README.md."
 }

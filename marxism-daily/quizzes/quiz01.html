@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Marxism · Quiz 1</title>
+<style>
+/* Mirror of ../../assets/course.css so this file also renders correctly when
+   opened standalone (email attachment, chat preview). The <link> below is
+   loaded after this block, so inside the repo the shared stylesheet wins. */
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+.page { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
+}
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.15; font-weight: normal; margin: 0 0 0.5rem; }
+h2 { font-size: 1.35rem; font-weight: normal; font-style: italic; margin: 2.4rem 0 0.8rem; }
+.lede { font-size: 1.15rem; font-style: italic; color: var(--muted); margin: 0; }
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+footer.lesson-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+@media print {
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
+
+/* ---- Workbook widgets, in the course's design language ---- */
+.part-head {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.4rem;
+  margin: 2.8rem 0 0.5rem;
+}
+.part-note { color: var(--muted); font-style: italic; font-size: 0.98rem; margin: 0 0 1.4rem; }
+
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz .q-hint { margin: -0.5rem 0 0.9rem; font-size: 0.95rem; font-style: italic; color: var(--muted); }
+
+.opts { display: flex; flex-direction: column; gap: 0.4rem; }
+.opts.row { flex-direction: row; flex-wrap: wrap; }
+button.q-opt {
+  display: block;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.opts.row button.q-opt {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.92rem;
+}
+/* High-specificity overrides so course.css's full-width q-opt rule
+   doesn't stack the one-word drill options vertically. */
+.quiz .opts button.q-opt { width: 100%; margin: 0; }
+.quiz .opts.row button.q-opt { width: auto; }
+button.q-opt:hover:not(:disabled) { border-color: var(--accent); }
+button.q-opt:disabled { cursor: default; opacity: 0.55; }
+button.q-opt.correct { border-color: var(--good); background: #edf6ee; opacity: 1; font-weight: bold; }
+button.q-opt.wrong { border-color: var(--bad); background: #faeceb; opacity: 1; }
+
+.q-feedback {
+  margin-top: 0.8rem;
+  font-size: 0.97rem;
+  border-radius: 0 6px 6px 0;
+  padding: 0.7rem 0.9rem;
+  display: none;
+}
+.q-feedback.show { display: block; }
+.q-feedback.good { border-left: 4px solid var(--good); background: #edf6ee; }
+.q-feedback.bad { border-left: 4px solid var(--bad); background: #faeceb; }
+.q-feedback .fb-label {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.q-feedback.good .fb-label { color: var(--good); }
+.q-feedback.bad .fb-label { color: var(--bad); }
+
+button.q-retry {
+  margin-top: 0.7rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  color: var(--muted);
+  display: none;
+}
+button.q-retry.show { display: inline-block; }
+button.q-retry:hover { border-color: var(--accent); color: var(--accent); }
+
+.exercise {
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.exercise h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.exercise textarea {
+  width: 100%;
+  min-height: 7rem;
+  font: inherit;
+  font-size: 0.98rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+  resize: vertical;
+  margin-top: 0.8rem;
+}
+.exercise textarea:focus { outline: none; border-color: var(--accent); }
+button.reveal-btn {
+  margin-top: 0.8rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+button.reveal-btn:hover { background: #8a3f13; }
+.reveal-text {
+  display: none;
+  margin-top: 0.9rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.97rem;
+}
+.reveal-text.show { display: block; }
+
+.summary {
+  display: none;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.4rem 1.5rem;
+  margin-top: 2.4rem;
+  background: #fbfaf4;
+}
+.summary.show { display: block; }
+.summary h2 { margin-top: 0; }
+.summary .tally { font-weight: bold; }
+
+button.finish-btn {
+  display: block;
+  margin: 2.4rem auto 0;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+}
+button.finish-btn:hover { background: #8a3f13; }
+
+@media print { button.q-opt { border: 1px solid #999; } }
+</style>
+<link rel="stylesheet" href="../../assets/course.css">
+</head>
+<body>
+<div class="page">
+
+<header class="lesson-header">
+  <p class="kicker">Daily Marxism · Quiz 1</p>
+  <h1>Eight days of tools. Now use them on cases you did not see.</h1>
+  <p class="lede">This quiz has three parts. Part 1 is a classification drill, in two sets. Part 2 is an error hunt. Part 3 is written analysis, with model answers.</p>
+</header>
+
+<div class="callout">
+  <p><strong>Notes about the format.</strong> The answer options are short. The length of an option does not show the correct answer.
+  Some cases are true border cases. For these, "Grey zone" is the correct choice. Two drills have two defensible answers, and their
+  feedback says so. There are no grades and no timers. You can try again after each wrong answer. Only you see your text.</p>
+</div>
+
+<p class="part-head">Part 1 · Classification drill</p>
+<p class="part-note">Set A: five explanations, four labels. Ask where each explanation starts. Does it start from conditions, from ideas, or from a hidden plan? "Grey zone" is for an explanation that starts from two places at the same time.</p>
+
+<!-- A1 -->
+<div class="quiz" data-q>
+  <h3>Drill 1 of 10</h3>
+  <p class="q-text">Every year, thousands of young people leave the Paraguayan countryside for Asunción or Buenos Aires. Explanation: soy needs much land and few hands. Small plots cannot compete with soy. A young person there finds no land and no wage.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Correct. The explanation starts from production: what the land produces, who owns it, how many hands it needs. The wish to leave comes after. Note the order. A survey of young people would find the wish. The wish is real. But the explanation does not stop at the wish. It asks what made the wish.">Materialist</button>
+    <button class="q-opt" data-fb="Not correct. An idealist explanation would say: the young want city life, or television changed their dreams. This explanation says nothing about wishes. It names land, crops and wages.">Idealist</button>
+    <button class="q-opt" data-fb="Not correct. Nobody in this explanation plans anything in secret. Soy farms need few workers, in the open. The result follows from the production, not from a plot.">Conspiratorial</button>
+    <button class="q-opt" data-fb="Not correct. The explanation has one starting point: production. Keep Grey zone for an explanation that starts from ideas and from conditions at the same time.">Grey zone</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- A2 -->
+<div class="quiz" data-q>
+  <h3>Drill 2 of 10</h3>
+  <p class="q-text">After the Beirut port explosion of August 2020, tens of thousands of Lebanese professionals emigrated. Explanation: the Lebanese are a people of emigrants. They have left for the Americas and Africa since the 1800s. It is in their culture.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. The explanation names no condition: no wage, no bank, no price. It names a culture. A materialist would ask why the culture became active in 2020 and not in 2015.">Materialist</button>
+    <button class="q-opt" data-correct data-fb="Correct. The explanation starts from a trait of mind, a culture, and treats it as a constant. But a constant cannot explain a change. The Lebanese did not leave in these numbers in 2015. What changed between 2015 and 2020? The banks froze the deposits. Salaries lost most of their value in dollars. Hospitals could not pay doctors. Start there, and the culture becomes what it is: an old network that new conditions put to use.">Idealist</button>
+    <button class="q-opt" data-fb="Not correct. Nobody plans anything in this explanation. It is not a plot. It is a story about a national character.">Conspiratorial</button>
+    <button class="q-opt" data-fb="Not correct. There is no second starting point here. The culture explains everything, and the explosion is only a date. Grey zone needs conditions and ideas together.">Grey zone</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- A3 -->
+<div class="quiz" data-q>
+  <h3>Drill 3 of 10</h3>
+  <p class="q-text">In the Paraguayan interior, many poor workers vote for the party that governed for most of the last seventy years. Explanation: the party gives public jobs, medicines and school kits through its local bosses. A voter who leaves the party loses the boss. A voter who stays keeps a channel to the state.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Correct. The explanation starts from what the voter needs and from who controls it. It does not call the voter stupid. It does not call him loyal. It shows a channel to the state that runs through one person. This is the vertical dependence that Mahdi Amel described in Lebanon, in a Paraguayan form. Day 4 adds one thing: the voter can believe in the party sincerely. A sincere belief and a material channel are not opposites.">Materialist</button>
+    <button class="q-opt" data-fb="Not correct, but this is what people mean when they say 'party loyalty' or 'tradition'. Those words describe the surface. This explanation goes under it. It names jobs, medicines and kits. Those are conditions.">Idealist</button>
+    <button class="q-opt" data-fb="Not correct, and this is the tempting one. The word 'bosses' sounds like a plot. But nothing here is secret. The kits arrive in the open. The jobs are public. A conspiracy needs hidden hands. Patronage works in daylight, and that is why it is stable.">Conspiratorial</button>
+    <button class="q-opt" data-fb="Not correct. The explanation has one starting point: the channel of goods and jobs. The belief of the voter is not in the explanation at all, so there is no second starting point.">Grey zone</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- A4 -->
+<div class="quiz" data-q>
+  <h3>Drill 4 of 10 · Two defensible answers</h3>
+  <p class="q-text">In December 1987 the first intifada began in Gaza and the West Bank. On the strike days that the leaflets of the uprising named, most of the workers who crossed into Israel each morning stayed home. Explanation: the leaflets reached every town, the call was clear, and the workers obeyed it.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Half correct. The strike was material. The leaflets became a material force. But the explanation, as written, starts from the leaflets and stops. It does not ask why the same leaflets would have failed ten years earlier. A materialist account names the shared position first: a whole population used as day labour without rights. Then the leaflets.">Materialist</button>
+    <button class="q-opt" data-fb="Defensible, and you get credit. The explanation begins from the leaflets and ends at obedience. Ideas cause action: that is the idealist shape. The quiz says Grey zone for one reason. An idea that moves a whole population in days is already a material force, in the exact words of Day 1. The explanation is idealist in form and touches something material in fact. Two pulls, so grey.">Idealist</button>
+    <button class="q-opt" data-fb="Not correct, though many newspapers said so at the time: hidden leaders, orders from outside. The leaflets were public. Everyone read them. A call obeyed in the open is organization, not conspiracy. Day 8 gives the word: organization.">Conspiratorial</button>
+    <button class="q-opt" data-correct data-fb="The quiz's answer, and Idealist gets nearly full credit. On one side: the explanation starts from a call, a text, an idea. That is the idealist order. On the other side: the call gripped a whole population in days. Day 1 says an idea that grips millions becomes a material force. The leaflets were that. What the explanation misses is the ground: one population, one position, day labour without rights across a fence. The call worked because the position was shared. Write that sentence, and the account becomes materialist.">Grey zone</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- A5 -->
+<div class="quiz" data-q>
+  <h3>Drill 5 of 10</h3>
+  <p class="q-text">Paraguay collects very little tax on rural land. Explanation: the legislators are lazy and corrupt, and they do not care about the poor.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. The explanation names no interest, no property, no money. It names laziness and corruption. Those are traits of mind. A materialist asks who owns the land that would pay the tax, and who pays for the campaigns.">Materialist</button>
+    <button class="q-opt" data-correct data-fb="Correct. The explanation starts from the character of persons. Day 3 closed that door. Put honest legislators in the same seats. Most of them still own land, or depend on those who do, and soy money pays for the party lists. The tax stays low. Character explains why one legislator is honest. It does not explain why the law stays the same under lazy and hard-working congresses alike.">Idealist</button>
+    <button class="q-opt" data-fb="Near, but not correct. Corruption sounds like a plot. But the explanation describes no plan. It describes a character. A conspiracy version would say: the landowners meet in secret and buy the votes. The character version says: the legislators are bad men. Both miss the open, legal relation: a congress of owners taxes its own land.">Conspiratorial</button>
+    <button class="q-opt" data-fb="Not correct. The explanation has only one starting point, the character of the legislators. It says nothing about conditions. There is no second pull.">Grey zone</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<p class="part-note">Set B: five persons, five labels. Use only the relation to production. Do not use income, a diploma, a contract form or a nationality. There are traps in both directions.</p>
+
+<!-- B1 -->
+<div class="quiz" data-q>
+  <h3>Drill 6 of 10</h3>
+  <p class="q-text">A man from a village near Bethlehem crosses the checkpoint at dawn with a work permit. He lays bricks on a building site inside Israel. A labour contractor holds the permit and keeps a third of his pay.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Correct. He sells his working day. The site owner sets the hours and the pay. The contractor takes a third, and the permit gives the contractor power over him. Those are two drains, not two directions. The permit, the checkpoint and the nationality are conditions of the sale. They make the sale worse. They do not change what is sold.">Working class</button>
+    <button class="q-opt" data-fb="Not correct. He owns no property that other persons need for their work. He sells labour, not a product.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct. Follow the money. A third of his pay goes to the contractor. Nothing comes to him from the labour of others.">Owner</button>
+    <button class="q-opt" data-fb="Not correct. He has two burdens, the site and the contractor, but both pull in the same direction. Grey zone needs one pull to each pole.">Grey zone</button>
+    <button class="q-opt" data-fb="Not correct. Some permits are issued as if the worker were a contractor himself. That is the costume, not the relation. Ask who sets his hours and who takes from his day. The answer to both questions is: other persons.">Self-employed worker</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- B2 -->
+<div class="quiz" data-q>
+  <h3>Drill 7 of 10</h3>
+  <p class="q-text">A woman in Ciudad del Este owns a stall in the market. She sells imported phones. She stands at the stall eleven hours a day. Her two nephews help her for a small wage.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. Nobody sets her hours. Nobody pays her a wage. She sells a product, not her working day. Her long hours look like the hours of a worker, but the direction of the money differs.">Working class</button>
+    <button class="q-opt" data-correct data-fb="Correct. She lives from her own property and her own labour, plus a small amount of employed labour. This is the classic middle position. Note what pulls at her from two sides. The importers and the owner of the market take from above. The wages of the nephews cost her below. When the border closes, she has no salary to fall back on. Petty bourgeois is a position, not an insult.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct. Two nephews at a small wage do not make her an owner. Remove her own eleven hours, and the stall closes. An owner lives from the labour of others. She lives from her own labour, with help.">Owner</button>
+    <button class="q-opt" data-fb="Not correct. Her position has pressure from two sides but no contradiction inside. One relation defines it: own stall, own labour. Pressure is not membership.">Grey zone</button>
+    <button class="q-opt" data-fb="Not correct, but this is what her tax form says. The form describes a legal status, not a relation. She owns the stall, the stock and the place. She hires. A self-employed person who owns and hires is a petty bourgeois with a different name on the form.">Self-employed worker</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- B3 -->
+<div class="quiz" data-q>
+  <h3>Drill 8 of 10</h3>
+  <p class="q-text">A man in Beirut owns four apartments in Jounieh. He rents them out in dollars. He does no other work.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. He sells nothing of his own day. He sells the use of what he owns.">Working class</button>
+    <button class="q-opt" data-fb="Near, and the most common answer. The petty bourgeois lives from own property plus own labour. Take away the labour, and the middle position disappears. This man does no work. Only the property remains. Small property without labour is ownership, not the middle.">Petty bourgeois</button>
+    <button class="q-opt" data-correct data-fb="Correct. He lives from ownership alone. Four apartments are small capital. But the scale is not the question. The direction is. Each month, money made by the labour of other persons, his tenants, comes to him because he owns what they need. He adds no labour of his own. That is the relation of an owner, in a small size. A note for Lebanon: after 2019, rent in dollars and wages in lira separated owners like him from their tenants. They stood on opposite sides of the crisis, whatever their sect.">Owner</button>
+    <button class="q-opt" data-fb="Not correct. There is only one pull here. His whole income comes from what he owns.">Grey zone</button>
+    <button class="q-opt" data-fb="Not correct. Self-employed means that you sell your own labour or your own product without an employer. He sells neither. He sells the use of his property.">Self-employed worker</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- B4 -->
+<div class="quiz" data-q>
+  <h3>Drill 9 of 10</h3>
+  <p class="q-text">A plant manager at a meatpacking company in Mato Grosso earns a high salary. He hires and dismisses workers. He sets their shifts. The head office in São Paulo can dismiss him. He owns no shares.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Half correct. He does sell his labour, and he can be dismissed. But look at what his labour is: the dismissal, the shift, the discipline of others. Remove him, and the owners must hire a person for the same job. His wage buys command. One label cannot hold both halves.">Working class</button>
+    <button class="q-opt" data-fb="Not correct. He works with the property of others, not with his own. The middle position needs own property plus own labour. He has the second only.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct. He owns no shares. He takes no share of the profit. The head office can end his income with a letter. A pure owner cannot be dismissed.">Owner</button>
+    <button class="q-opt" data-correct data-fb="Correct, and this time grey is the precise answer. In form, he sells his labour, and the head office can dismiss him. In function, his labour is the command of the labour of others, for the owners. Day 3 named this position: managers paid to command. Both facts are real. Politics feels the two pulls. In a strike, he stands on the side of the company. In a merger, the head office treats him like any worker. Watch which pull wins when the company cuts costs.">Grey zone</button>
+    <button class="q-opt" data-fb="Not correct. He has one employer, one salary and a boss. Nothing in his position is self-employed.">Self-employed worker</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- B5 -->
+<div class="quiz" data-q>
+  <h3>Drill 10 of 10 · Two defensible answers</h3>
+  <p class="q-text">A family in San Pedro, Paraguay, works four hectares of cassava and corn. In the soy harvest, the father and the eldest son work for wages on a large farm nearby. The wages cover more than half of what the family needs.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Defensible, and you get credit. More than half of the living is a wage, and the land alone cannot feed the family. If your reasoning was 'follow the larger part of the living', that is good method. The quiz says Grey zone for one reason. The four hectares are not nothing. They shape what the family wants and what it fears. Two pulls, so grey.">Working class</button>
+    <button class="q-opt" data-fb="Half correct. The four hectares are own property and own labour. But more than half of the living comes from wages on the land of another person. That second relation is too large to ignore. The petty bourgeois label describes the smaller half.">Petty bourgeois</button>
+    <button class="q-opt" data-fb="Not correct. Four hectares worked by the hands of the family take labour from no other person. The family sells labour to the soy farm. It buys none.">Owner</button>
+    <button class="q-opt" data-correct data-fb="The quiz's answer, and Working class also gets credit. Two pulls act at the same time. The four hectares are own property with own labour: the petty bourgeois relation. The harvest wages are sold labour on the land of another person: the working-class relation. More than half of the living comes from the wage, so the drift has one direction. Marxists have a name for this position: semi-proletarian. It matters in politics. The land makes the family hope for more land. The wage makes the family meet the soy farm as workers. A rural movement must speak to both pulls.">Grey zone</button>
+    <button class="q-opt" data-fb="Not correct. For part of the year the father has a boss and a wage. For the rest he works his own land. Neither part is self-employed in the sense of a free contractor.">Self-employed worker</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<p class="part-head">Part 2 · Find the error</p>
+<p class="part-note">Each passage has four sentences. Three sentences use the method of days 1 to 8 correctly. One sentence breaks it. Click the sentence that breaks it. A wrong click also teaches: the feedback tells you why that sentence is correct.</p>
+
+<!-- S1 -->
+<div class="quiz" data-q>
+  <h3>Passage 1 · A hospital in the north of Lebanon</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="This sentence is correct. It gives the material starting point: the wage and its collapse. Day 1 says that explanation starts here. The error is in a different sentence.">"In 2023 the nurses of a public hospital near Tripoli earned salaries worth less than a tenth of their 2019 value in dollars."</button>
+    <button class="q-opt" data-fb="This sentence is correct, and it is the mechanism of Mahdi Amel in one line. The nurse depends vertically on a patron of her own sect, so she does not act horizontally with the nurses of the other sects. Continue the search.">"Few nurses joined the strike calls, because each one hoped for a transfer, a scholarship or a visa through a politician of her own sect."</button>
+    <button class="q-opt" data-correct data-fb="Correct, you found it. 'Natural' and 'born into' present the sect as an eternal identity, deeper than class. Day 6 reverses the causation. The sect is not what the nurse is before she is a worker. The sect is the channel through which the system reaches her as a worker. Sentence two already explained the loyalty by the channel. Sentence three replaced the channel with nature. That is the exact move that Amel took apart.">"This loyalty is natural, because a Lebanese person is born into a sect long before she belongs to a class."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It shows the class line becoming visible for a moment, across sects. It also shows the ruling ideas at work against it: 'troublemakers'. Both are observations from Day 4 and Day 6. No error here.">"When the hospital closed a ward, nurses of three sects protested together at the gate, and the offices of the politicians called them troublemakers."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- S2 -->
+<div class="quiz" data-q>
+  <h3>Passage 2 · A factory in Santa Catarina</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="This sentence is correct. It gives the accumulation: six years of rising targets against a flat wage. Day 2 says: ask what accumulated beneath the moment. The error is in a different sentence.">"For six years the textile factory raised its production targets each January, while the wages followed the minimum wage and nothing more."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It reports the threshold and the leap: a small change, and a large response the same day. To report a spark is not an error. To make the spark the cause is. Continue the search.">"In March the management moved the lunch break from noon to two in the afternoon, and the same afternoon three hundred workers stopped the lines."</button>
+    <button class="q-opt" data-correct data-fb="Correct, you found it. 'Thus' and 'cause' dress the spark as the cause. Day 2 says the small thing caused nothing. It was the point where six years of pressure changed state. The test is in the next sentence. Management removed the spark, and the strike went on. A cause removed stops its effect. A threshold removed changes nothing, because the accumulation is still there.">"The lunch decision was thus the cause of the strike, because without that decision the lines would have run as usual."</button>
+    <button class="q-opt" data-fb="This sentence is correct, and it is the proof against sentence three. Remove the spark, and the strike continues. The strike was about the targets and the wages, the accumulation of six years. No error here.">"Management restored the old lunch break within a week, and the strike continued for a month over the targets and the wages."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- S3 -->
+<div class="quiz" data-q>
+  <h3>Passage 3 · Forty thousand headsets</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="This sentence is correct. It describes a class in itself: a shared position, a shared wage, a shared exposure. Day 8 starts here. The error is in a different sentence.">"Forty thousand people work in the call centers of one Northeast capital in Brazil, most under thirty, at the minimum wage plus a bonus."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It shows why the position does not speak: the contract, the screen and the bonus separate the workers. A class in itself can be a crowd of rivals. Continue the search.">"Each one signs a contract alone, a screen measures each one alone, and they meet the others mostly as rivals for the monthly bonus."</button>
+    <button class="q-opt" data-correct data-fb="Correct, you found it. 'Will act as a class as soon as' makes the passage automatic. Day 8 says the opposite. The position is given. The consciousness is built, in struggle and in organization, and it can be lost. Worse conditions alone produce more fear and more rivalry as often as they produce action. The sentence skips the whole work of Day 8.">"Because they share one wage and one kind of boss, they will act as a class as soon as conditions get worse."</button>
+    <button class="q-opt" data-fb="This sentence is correct, and painful. Organization came through action, and it was reversible: the network went silent. Both are claims of Day 8. No error here.">"The first joint action came when a group built a message network across three companies, and the network went silent within two years."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<p class="part-head">Part 3 · Your own analysis</p>
+<p class="part-note">This part has no shortcuts. Write your answer first. Then compare it with the model answer. Only you see your text.</p>
+
+<!-- W1 -->
+<div class="exercise">
+  <h3>Exercise 1 · Two accounts of one fact</h3>
+  <p class="q-text">Tens of thousands of Palestinians from the West Bank work in the construction of Israeli settlements. Some of those settlements stand on land taken from their own villages. Write two accounts of this fact. First the idealist account. Then the materialist account.</p>
+  <textarea placeholder="Idealist account: ...&#10;&#10;Materialist account: ..."></textarea>
+  <button class="reveal-btn">Compare with the model answers</button>
+  <div class="reveal-text">
+    <strong>One idealist model:</strong> the workers lost their national feeling. Money matters more to them than the land.
+    Or: the older generation had principles, and the younger one has none. The account explains the fact through the values
+    in the heads of the workers.<br><br>
+    <strong>One materialist model:</strong> start from what the occupation did to production. The settlements and the closures
+    took the land and the water that the villages farmed. The permit system and the checkpoints closed the economy of the
+    West Bank itself. Some days, the only wage within reach of a village is on the site that took the land of that village.
+    The settlement wage is two or three times the wage in the Palestinian towns. The Israeli employer needs the labour,
+    and the Palestinian employer has no market. The same structure that takes the land creates the worker for the site.
+    The feeling is not absent. The worker holds it while he lays the bricks. The occupation counts on one fact: a feeling
+    does not pay rent. Day 4 adds a question: who benefits when this fact is told as a story about values? A story about
+    values asks for no change of conditions.<br><br>
+    <strong>Test your version with one question:</strong> does your materialist account explain why the number of these
+    workers rises and falls with permit quotas and closures, and not with speeches? The idealist account cannot answer,
+    because a national feeling has no calendar.
+  </div>
+</div>
+
+<!-- W2 -->
+<div class="exercise">
+  <h3>Exercise 2 · Predict, then check against history</h3>
+  <p class="q-text">Paraguay, 2008. Fernando Lugo, a former bishop with no party of his own, wins the presidency. His alliance joins landless campesino movements, small left parties and the Liberal Party, a party of landowners, professionals and merchants. His central promise is land reform, in a country where a small number of owners hold most of the farmland. The Colorado Party, in power for sixty-one years, loses for the first time. Use Day 5 and Day 8 strictly. Predict what happens to the alliance when the land question becomes concrete. Then check.</p>
+  <p class="q-hint">Write the prediction before you look. That is the discipline.</p>
+  <textarea placeholder="My prediction, based on 1848 and on class for itself: ..."></textarea>
+  <button class="reveal-btn">Check against what happened</button>
+  <div class="reveal-text">
+    <strong>What happened:</strong> land reform did not advance. In Congress, the Liberals and the Colorados together held
+    most seats, and they blocked the redistribution and a tax on soy. Landless families occupied estates on their own.
+    On 15 June 2012, the police evicted an occupation at Curuguaty, on land claimed by a Colorado businessman. The eviction
+    ended in a shooting that killed eleven campesinos and six police officers. Within one week, Congress impeached Lugo in a trial that lasted about one day.
+    The Liberal Party, his ally of 2008, voted with the Colorados. The Liberal vice president took office the same night.
+    The soy and cattle federations welcomed the return of order.<br><br>
+    <strong>The 1848 pattern, if your prediction found it:</strong> the alliance held while the demand was a change of
+    government. The removal of the Colorados cost the Liberals nothing. The alliance broke when the demand became property:
+    land. The propertied ally chose order. Day 8 adds the other half. The campesino movements were a class in itself with
+    pieces of organization, but with no force able to defend the government in one week. The owning class needed no new
+    organization at all. It already had the congress, the courts and the federations. Its consciousness was built into
+    institutions, and it acted in one day.<br><br>
+    <strong>An honest note:</strong> your prediction can differ and still be good analysis. Name the Paraguayan condition
+    that the template misses. Examples: the impeachment used a legal form, not an army. The two big parties share the same
+    land base, so the ally was never outside the owning class. Lugo had no party of his own, so the working alliance had no
+    political instrument, which is the exact missing piece of Day 5. A template that fits everything explains nothing.
+  </div>
+</div>
+
+<!-- W3 -->
+<div class="exercise">
+  <h3>Exercise 3 · Make the concepts work on each other</h3>
+  <p class="q-text">In many Brazilian municipalities, a school has two kinds of teachers in the same corridor. One passed a public exam and has a stable position. The other works on a temporary contract that the education secretary renews, or does not renew, each year. Both sell their labour power to the same employer. Both teach the same children. They rarely strike together. Use Day 6, vertical dependence, to explain why this class in itself (Day 8) does not become a class for itself. Name who benefits.</p>
+  <textarea placeholder="The temporary teacher depends on... The stable teacher depends on... So each one sees the other as... Who benefits: ..."></textarea>
+  <button class="reveal-btn">Compare with a model answer</button>
+  <div class="reveal-text">
+    <strong>One model:</strong> the temporary teacher depends vertically on the secretary and, behind the secretary, on the
+    mayor. Her renewal is a favor, not a right. She cannot join a strike without a risk to next year. The stable teacher
+    depends on a different channel: the career plan, the union, the law. The two channels run upward, to different points,
+    and never meet sideways. So each half sees the other as the problem. The stable teacher says: the temporary ones break
+    the strike. The temporary teacher says: the stable ones strike with a safe job. That is the mechanism of Amel without
+    sects. Dependence is organized vertically, so persons in one position meet as rivals. Who benefits: the municipality.
+    It pays the temporary teacher less, it keeps the strike small, and it needs no sect to do it. Day 8 closes the loop.
+    Recognition would come through a struggle that includes both halves, for example a strike whose first demand is a
+    stable position for the temporary teachers. Until then, the corridor holds a class in itself.<br><br>
+    <strong>Your answer can be different.</strong> Test it with three questions. Does it name the patron that each half
+    depends on? Does it name who gains from the division? Does it say what a struggle must include to join the halves?
+    If yes, your answer used one tool of the week on the result of another. At that moment, eight lessons become a method.
+  </div>
+</div>
+
+<button class="finish-btn">I am done. Show the result</button>
+
+<div class="summary">
+  <h2>Quiz 1: closed</h2>
+  <p class="tally"></p>
+  <p class="summary-note"></p>
+  <p>What each part trains. <strong>Part 1:</strong> see where an explanation starts, and see the relation through each
+  costume: a permit, a tax form, a salary, a small property. <strong>Part 2:</strong> quality control on analysis itself.
+  The worst enemies of the method wear its uniform: the eternal identity, the spark, the automatic class.
+  <strong>Part 3:</strong> production. Only production shows that you can use the method outside a quiz.
+  If your Paraguay prediction found the pattern before the reveal, the eight days did their work.</p>
+</div>
+
+<footer class="lesson-footer">
+  Quiz 1, covering days 1 to 8. Daily Marxism.
+</footer>
+
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-q]').forEach(function (q) {
+    var opts = q.querySelectorAll('.q-opt');
+    var fb = q.querySelector('.q-feedback');
+    var retry = q.querySelector('.q-retry');
+
+    opts.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var right = opt.hasAttribute('data-correct');
+        opts.forEach(function (o) { o.disabled = true; o.classList.remove('correct', 'wrong'); });
+        opt.classList.add(right ? 'correct' : 'wrong');
+        fb.className = 'q-feedback show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = '<span class="fb-label">' +
+          (right ? '✓ Correct' : '✗ Not this one') +
+          '</span>' + opt.getAttribute('data-fb');
+        retry.classList.toggle('show', !right);
+        q.dataset.answered = right ? 'right' : 'almost';
+      });
+    });
+
+    retry.addEventListener('click', function () {
+      opts.forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
+      fb.className = 'q-feedback';
+      fb.innerHTML = '';
+      retry.classList.remove('show');
+      delete q.dataset.answered;
+    });
+  });
+
+  document.querySelectorAll('.reveal-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.nextElementSibling.classList.add('show');
+      btn.style.display = 'none';
+    });
+  });
+
+  document.querySelector('.finish-btn').addEventListener('click', function () {
+    var qs = document.querySelectorAll('[data-q]');
+    var right = 0, tried = 0;
+    qs.forEach(function (q) {
+      if (q.dataset.answered) tried++;
+      if (q.dataset.answered === 'right') right++;
+    });
+    var summary = document.querySelector('.summary');
+    var tally = summary.querySelector('.tally');
+    var note = summary.querySelector('.summary-note');
+
+    if (tried === 0) {
+      tally.textContent = 'You went directly to the writing part. That part is the most important. The drills will wait for you.';
+      note.textContent = '';
+    } else {
+      tally.textContent = 'Drills and passages: ' + right + ' of ' + qs.length + ' correct on the first try' + (tried < qs.length ? ' (' + (qs.length - tried) + ' not answered)' : '') + '.';
+      if (right === qs.length) {
+        note.textContent = 'All correct on the first try, including the grey zones and the two-answer drills. The concepts are solid now. Week 2 can build on them.';
+      } else if (right >= Math.ceil(qs.length * 0.6)) {
+        note.textContent = 'A good result. Check which drills caught you. If the grey zones caught you, know this: they catch everyone. The feedback on each miss names the exact distinction to study.';
+      } else {
+        note.textContent = 'These drills compress a week of theory into single sentences. A miss here is information, not a verdict. Read the feedback on each miss again. Each one names a distinction to learn before week 2.';
+      }
+    }
+    summary.classList.add('show');
+    summary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Marxism · Prova 1</title>
+<style>
+/* Mirror of ../../assets/course.css so this file also renders correctly when
+   opened standalone (email attachment, chat preview). The <link> below is
+   loaded after this block, so inside the repo the shared stylesheet wins. */
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+.page { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
+}
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.15; font-weight: normal; margin: 0 0 0.5rem; }
+h2 { font-size: 1.35rem; font-weight: normal; font-style: italic; margin: 2.4rem 0 0.8rem; }
+.lede { font-size: 1.15rem; font-style: italic; color: var(--muted); margin: 0; }
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+footer.lesson-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+@media print {
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
+
+/* ---- Workbook widgets, in the course's design language ---- */
+.part-head {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.4rem;
+  margin: 2.8rem 0 0.5rem;
+}
+.part-note { color: var(--muted); font-style: italic; font-size: 0.98rem; margin: 0 0 1.4rem; }
+
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz .q-hint { margin: -0.5rem 0 0.9rem; font-size: 0.95rem; font-style: italic; color: var(--muted); }
+
+.opts { display: flex; flex-direction: column; gap: 0.4rem; }
+.opts.row { flex-direction: row; flex-wrap: wrap; }
+button.q-opt {
+  display: block;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.opts.row button.q-opt {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.92rem;
+}
+/* High-specificity overrides so course.css's full-width q-opt rule
+   doesn't stack the one-word drill options vertically. */
+.quiz .opts button.q-opt { width: 100%; margin: 0; }
+.quiz .opts.row button.q-opt { width: auto; }
+button.q-opt:hover:not(:disabled) { border-color: var(--accent); }
+button.q-opt:disabled { cursor: default; opacity: 0.55; }
+button.q-opt.correct { border-color: var(--good); background: #edf6ee; opacity: 1; font-weight: bold; }
+button.q-opt.wrong { border-color: var(--bad); background: #faeceb; opacity: 1; }
+
+.q-feedback {
+  margin-top: 0.8rem;
+  font-size: 0.97rem;
+  border-radius: 0 6px 6px 0;
+  padding: 0.7rem 0.9rem;
+  display: none;
+}
+.q-feedback.show { display: block; }
+.q-feedback.good { border-left: 4px solid var(--good); background: #edf6ee; }
+.q-feedback.bad { border-left: 4px solid var(--bad); background: #faeceb; }
+.q-feedback .fb-label {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.q-feedback.good .fb-label { color: var(--good); }
+.q-feedback.bad .fb-label { color: var(--bad); }
+
+button.q-retry {
+  margin-top: 0.7rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  color: var(--muted);
+  display: none;
+}
+button.q-retry.show { display: inline-block; }
+button.q-retry:hover { border-color: var(--accent); color: var(--accent); }
+
+.exercise {
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.exercise h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.exercise textarea {
+  width: 100%;
+  min-height: 7rem;
+  font: inherit;
+  font-size: 0.98rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+  resize: vertical;
+  margin-top: 0.8rem;
+}
+.exercise textarea:focus { outline: none; border-color: var(--accent); }
+button.reveal-btn {
+  margin-top: 0.8rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+button.reveal-btn:hover { background: #8a3f13; }
+.reveal-text {
+  display: none;
+  margin-top: 0.9rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.97rem;
+}
+.reveal-text.show { display: block; }
+
+.summary {
+  display: none;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.4rem 1.5rem;
+  margin-top: 2.4rem;
+  background: #fbfaf4;
+}
+.summary.show { display: block; }
+.summary h2 { margin-top: 0; }
+.summary .tally { font-weight: bold; }
+
+button.finish-btn {
+  display: block;
+  margin: 2.4rem auto 0;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+}
+button.finish-btn:hover { background: #8a3f13; }
+
+@media print { button.q-opt { border: 1px solid #999; } }
+</style>
+<link rel="stylesheet" href="../../assets/course.css">
+</head>
+<body>
+<div class="page">
+
+<header class="lesson-header">
+  <p class="kicker">Daily Marxism · Prova 1</p>
+  <h1>Oito dias de ferramentas. Agora use cada uma em casos que você não viu.</h1>
+  <p class="lede">Esta prova tem três partes. A parte 1 é um exercício de classificação, em dois conjuntos. A parte 2 é uma caça ao erro. A parte 3 é análise escrita, com respostas modelo.</p>
+</header>
+
+<div class="callout">
+  <p><strong>Sobre o formato.</strong> As opções de resposta são curtas. O tamanho de uma opção não mostra a resposta certa.
+  Alguns casos são casos de fronteira de verdade. Para eles, "Zona cinzenta" é a escolha certa. Dois exercícios têm duas respostas
+  defensáveis, e o comentário diz isso. Não há notas nem cronômetro. Você pode tentar de novo depois de cada erro. Só você vê o seu texto.</p>
+</div>
+
+<p class="part-head">Parte 1 · Exercício de classificação</p>
+<p class="part-note">Conjunto A: cinco explicações, quatro rótulos. Pergunte de onde cada explicação parte. Ela parte das condições, das ideias ou de um plano escondido? "Zona cinzenta" é para uma explicação que parte de dois lugares ao mesmo tempo.</p>
+
+<!-- A1 -->
+<div class="quiz" data-q>
+  <h3>Exercício 1 de 10</h3>
+  <p class="q-text">Todo ano, milhares de jovens deixam o campo paraguaio rumo a Assunção ou Buenos Aires. Explicação: a soja precisa de muita terra e de poucas mãos. Os lotes pequenos não conseguem competir com a soja. Um jovem de lá não encontra terra nem salário.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Certo. A explicação parte da produção: o que a terra produz, quem é dono dela, quantas mãos ela precisa. A vontade de sair vem depois. Repare na ordem. Uma pesquisa com os jovens encontraria a vontade. A vontade é real. Mas a explicação não para na vontade. Ela pergunta o que produziu a vontade.">Materialista</button>
+    <button class="q-opt" data-fb="Errado. Uma explicação idealista diria: os jovens querem a vida da cidade, ou a televisão mudou os sonhos deles. Esta explicação não fala de vontades. Ela nomeia terra, lavoura e salário.">Idealista</button>
+    <button class="q-opt" data-fb="Errado. Ninguém nesta explicação planeja nada em segredo. As fazendas de soja precisam de poucos trabalhadores, às claras. O resultado vem da produção, não de um complô.">Conspiracionista</button>
+    <button class="q-opt" data-fb="Errado. A explicação tem um único ponto de partida: a produção. Guarde a Zona cinzenta para uma explicação que parte das ideias e das condições ao mesmo tempo.">Zona cinzenta</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- A2 -->
+<div class="quiz" data-q>
+  <h3>Exercício 2 de 10</h3>
+  <p class="q-text">Depois da explosão do porto de Beirute, em agosto de 2020, dezenas de milhares de profissionais libaneses emigraram. Explicação: os libaneses são um povo de emigrantes. Eles partem para as Américas e para a África desde o século XIX. Está na cultura deles.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. A explicação não nomeia nenhuma condição: nenhum salário, nenhum banco, nenhum preço. Ela nomeia uma cultura. Um materialista perguntaria por que a cultura ficou ativa em 2020 e não em 2015.">Materialista</button>
+    <button class="q-opt" data-correct data-fb="Certo. A explicação parte de um traço de mentalidade, uma cultura, e trata esse traço como constante. Mas uma constante não explica uma mudança. Os libaneses não saíram nesses números em 2015. O que mudou entre 2015 e 2020? Os bancos congelaram os depósitos. Os salários perderam quase todo o valor em dólar. Os hospitais não conseguiam pagar os médicos. Comece por aí, e a cultura vira o que ela é: uma rede antiga que as condições novas puseram em uso.">Idealista</button>
+    <button class="q-opt" data-fb="Errado. Ninguém planeja nada nesta explicação. Não é um complô. É uma história sobre caráter nacional.">Conspiracionista</button>
+    <button class="q-opt" data-fb="Errado. Não há um segundo ponto de partida aqui. A cultura explica tudo, e a explosão é só uma data. A Zona cinzenta precisa de condições e ideias juntas.">Zona cinzenta</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- A3 -->
+<div class="quiz" data-q>
+  <h3>Exercício 3 de 10</h3>
+  <p class="q-text">No interior do Paraguai, muitos trabalhadores pobres votam no partido que governou na maior parte dos últimos setenta anos. Explicação: o partido distribui empregos públicos, remédios e kits escolares por meio dos seus chefes locais. Quem sai do partido perde o chefe. Quem fica mantém um canal com o Estado.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Certo. A explicação parte do que o eleitor precisa e de quem controla isso. Ela não chama o eleitor de burro. Não chama de leal. Ela mostra um canal com o Estado que passa por uma única pessoa. É a dependência vertical que Mahdi Amel descreveu no Líbano, em forma paraguaia. O Dia 4 acrescenta uma coisa: o eleitor pode acreditar no partido com sinceridade. Crença sincera e canal material não são opostos.">Materialista</button>
+    <button class="q-opt" data-fb="Errado, mas é o que as pessoas querem dizer quando falam em 'lealdade partidária' ou 'tradição'. Essas palavras descrevem a superfície. Esta explicação vai por baixo dela. Ela nomeia empregos, remédios e kits. Isso são condições.">Idealista</button>
+    <button class="q-opt" data-fb="Errado, e esta é a opção tentadora. A palavra 'chefes' soa como complô. Mas nada aqui é secreto. Os kits chegam às claras. Os empregos são públicos. Um complô precisa de mãos escondidas. O clientelismo funciona à luz do dia, e é por isso que ele é estável.">Conspiracionista</button>
+    <button class="q-opt" data-fb="Errado. A explicação tem um único ponto de partida: o canal de bens e empregos. A crença do eleitor nem aparece na explicação, então não há segundo ponto de partida.">Zona cinzenta</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- A4 -->
+<div class="quiz" data-q>
+  <h3>Exercício 4 de 10 · Duas respostas defensáveis</h3>
+  <p class="q-text">Em dezembro de 1987 começou a primeira intifada, em Gaza e na Cisjordânia. Nos dias de greve que os panfletos do levante marcavam, a maioria dos trabalhadores que cruzavam para Israel toda manhã ficou em casa. Explicação: os panfletos chegaram a todas as cidades, o chamado era claro, e os trabalhadores obedeceram.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Meio certo. A greve foi material. Os panfletos viraram força material. Mas a explicação, como está escrita, parte dos panfletos e para ali. Ela não pergunta por que os mesmos panfletos teriam falhado dez anos antes. Uma explicação materialista nomeia primeiro a posição compartilhada: uma população inteira usada como mão de obra diária sem direitos. Depois, os panfletos.">Materialista</button>
+    <button class="q-opt" data-fb="Defensável, e você ganha o ponto. A explicação começa nos panfletos e termina na obediência. Ideias causam ação: essa é a forma idealista. A prova diz Zona cinzenta por um único motivo. Uma ideia que move uma população inteira em poucos dias já é força material, nas palavras exatas do Dia 1. A explicação é idealista na forma e toca algo material no fato. Duas forças puxando, logo cinzenta.">Idealista</button>
+    <button class="q-opt" data-fb="Errado, embora muitos jornais tenham dito isso na época: líderes ocultos, ordens de fora. Os panfletos eram públicos. Todo mundo lia. Um chamado obedecido às claras é organização, não conspiração. O Dia 8 dá a palavra: organização.">Conspiracionista</button>
+    <button class="q-opt" data-correct data-fb="A resposta da prova, e Idealista ganha quase o ponto inteiro. De um lado: a explicação parte de um chamado, um texto, uma ideia. Essa é a ordem idealista. De outro lado: o chamado tomou conta de uma população inteira em poucos dias. O Dia 1 diz que uma ideia que toma conta de milhões vira força material. Os panfletos foram isso. O que falta na explicação é o chão: uma população, uma posição, trabalho diário sem direitos do outro lado de uma cerca. O chamado funcionou porque a posição era compartilhada. Escreva essa frase, e a explicação vira materialista.">Zona cinzenta</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- A5 -->
+<div class="quiz" data-q>
+  <h3>Exercício 5 de 10</h3>
+  <p class="q-text">O Paraguai arrecada muito pouco imposto sobre a terra rural. Explicação: os deputados são preguiçosos e corruptos, e não se importam com os pobres.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. A explicação não nomeia interesse, propriedade nem dinheiro. Ela nomeia preguiça e corrupção. Isso são traços de mentalidade. Um materialista pergunta quem é dono da terra que pagaria o imposto, e quem paga as campanhas.">Materialista</button>
+    <button class="q-opt" data-correct data-fb="Certo. A explicação parte do caráter das pessoas. O Dia 3 fechou essa porta. Ponha deputados honestos nas mesmas cadeiras. A maioria continua dona de terra, ou depende de quem é, e o dinheiro da soja paga as listas dos partidos. O imposto continua baixo. O caráter explica por que um deputado é honesto. Ele não explica por que a lei fica igual com congressos preguiçosos e com congressos trabalhadores.">Idealista</button>
+    <button class="q-opt" data-fb="Quase, mas errado. Corrupção soa como complô. Mas a explicação não descreve nenhum plano. Ela descreve um caráter. A versão conspiracionista diria: os latifundiários se reúnem em segredo e compram os votos. A versão do caráter diz: os deputados são homens maus. As duas deixam de ver a relação aberta e legal: um congresso de proprietários tributa a própria terra.">Conspiracionista</button>
+    <button class="q-opt" data-fb="Errado. A explicação tem um único ponto de partida, o caráter dos deputados. Ela não diz nada sobre condições. Não há uma segunda força puxando.">Zona cinzenta</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<p class="part-note">Conjunto B: cinco pessoas, cinco rótulos. Use só a relação com a produção. Não use renda, diploma, forma de contrato nem nacionalidade. Há armadilhas nas duas direções.</p>
+
+<!-- B1 -->
+<div class="quiz" data-q>
+  <h3>Exercício 6 de 10</h3>
+  <p class="q-text">Um homem de uma aldeia perto de Belém cruza o posto de controle de madrugada com uma permissão de trabalho. Ele assenta tijolos numa obra dentro de Israel. Um empreiteiro de mão de obra segura a permissão e fica com um terço do pagamento dele.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Certo. Ele vende a sua jornada de trabalho. O dono da obra define as horas e o pagamento. O empreiteiro fica com um terço, e a permissão dá ao empreiteiro poder sobre ele. São dois ralos, não duas direções. A permissão, o posto de controle e a nacionalidade são condições da venda. Elas pioram a venda. Elas não mudam o que é vendido.">Classe trabalhadora</button>
+    <button class="q-opt" data-fb="Errado. Ele não possui nenhuma propriedade de que outras pessoas precisem para trabalhar. Ele vende trabalho, não um produto.">Pequeno burguês</button>
+    <button class="q-opt" data-fb="Errado. Siga o dinheiro. Um terço do pagamento dele vai para o empreiteiro. Nada chega até ele vindo do trabalho de outros.">Proprietário</button>
+    <button class="q-opt" data-fb="Errado. Ele tem dois pesos, a obra e o empreiteiro, mas os dois puxam na mesma direção. A Zona cinzenta precisa de uma força puxando para cada polo.">Zona cinzenta</button>
+    <button class="q-opt" data-fb="Errado. Algumas permissões são emitidas como se o trabalhador fosse ele mesmo um empreiteiro. Isso é a fantasia, não a relação. Pergunte quem define as horas dele e quem tira do dia dele. A resposta para as duas perguntas é: outras pessoas.">Trabalhador autônomo</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- B2 -->
+<div class="quiz" data-q>
+  <h3>Exercício 7 de 10</h3>
+  <p class="q-text">Uma mulher em Ciudad del Este é dona de uma banca no mercado. Ela vende celulares importados. Ela fica na banca onze horas por dia. Os dois sobrinhos ajudam por um salário pequeno.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. Ninguém define as horas dela. Ninguém paga salário a ela. Ela vende um produto, não a sua jornada. As horas longas dela parecem as horas de uma trabalhadora, mas a direção do dinheiro é outra.">Classe trabalhadora</button>
+    <button class="q-opt" data-correct data-fb="Certo. Ela vive da própria propriedade e do próprio trabalho, mais um pouco de trabalho contratado. É a posição clássica do meio. Repare no que puxa ela de dois lados. Os importadores e o dono do mercado tiram por cima. Os salários dos sobrinhos custam por baixo. Quando a fronteira fecha, ela não tem salário para se apoiar. Pequeno burguês é uma posição, não um insulto.">Pequeno burguês</button>
+    <button class="q-opt" data-fb="Errado. Dois sobrinhos com salário pequeno não fazem dela uma proprietária. Tire as onze horas dela, e a banca fecha. Um proprietário vive do trabalho dos outros. Ela vive do próprio trabalho, com ajuda.">Proprietário</button>
+    <button class="q-opt" data-fb="Errado. A posição dela sofre pressão de dois lados, mas não tem contradição dentro. Uma única relação define a posição: banca própria, trabalho próprio. Pressão não é pertencimento.">Zona cinzenta</button>
+    <button class="q-opt" data-fb="Errado, mas é o que diz o cadastro dela na receita. O cadastro descreve um status legal, não uma relação. Ela é dona da banca, do estoque e do ponto. Ela contrata. Uma autônoma que é dona e contrata é uma pequena burguesa com outro nome no formulário.">Trabalhador autônomo</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- B3 -->
+<div class="quiz" data-q>
+  <h3>Exercício 8 de 10</h3>
+  <p class="q-text">Um homem em Beirute é dono de quatro apartamentos em Jounieh. Ele aluga os quatro em dólar. Ele não faz nenhum outro trabalho.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. Ele não vende nada do próprio dia. Ele vende o uso do que possui.">Classe trabalhadora</button>
+    <button class="q-opt" data-fb="Quase, e é a resposta mais comum. O pequeno burguês vive de propriedade própria mais trabalho próprio. Tire o trabalho, e a posição do meio desaparece. Este homem não trabalha. Só a propriedade fica. Propriedade pequena sem trabalho é propriedade, não meio.">Pequeno burguês</button>
+    <button class="q-opt" data-correct data-fb="Certo. Ele vive só de propriedade. Quatro apartamentos são um capital pequeno. Mas a escala não é a pergunta. A direção é. Todo mês, dinheiro produzido pelo trabalho de outras pessoas, os inquilinos, chega até ele porque ele possui o que elas precisam. Ele não acrescenta trabalho nenhum. Essa é a relação de proprietário, em tamanho pequeno. Uma nota sobre o Líbano: depois de 2019, o aluguel em dólar e o salário em libra separaram donos como ele dos inquilinos. Eles ficaram em lados opostos da crise, seja qual for a seita de cada um.">Proprietário</button>
+    <button class="q-opt" data-fb="Errado. Aqui só existe uma força puxando. Toda a renda dele vem do que ele possui.">Zona cinzenta</button>
+    <button class="q-opt" data-fb="Errado. Autônomo quer dizer que você vende o próprio trabalho ou o próprio produto sem patrão. Ele não vende nem um nem outro. Ele vende o uso da propriedade.">Trabalhador autônomo</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- B4 -->
+<div class="quiz" data-q>
+  <h3>Exercício 9 de 10</h3>
+  <p class="q-text">Um gerente de planta de um frigorífico no Mato Grosso ganha um salário alto. Ele contrata e demite trabalhadores. Ele define os turnos deles. A matriz em São Paulo pode demitir o gerente. Ele não tem ações da empresa.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Meio certo. Ele vende o próprio trabalho, sim, e pode ser demitido. Mas olhe o que é o trabalho dele: a demissão, o turno, a disciplina dos outros. Tire ele, e os donos precisam contratar alguém para o mesmo cargo. O salário dele compra comando. Um rótulo só não segura as duas metades.">Classe trabalhadora</button>
+    <button class="q-opt" data-fb="Errado. Ele trabalha com a propriedade dos outros, não com a própria. A posição do meio precisa de propriedade própria mais trabalho próprio. Ele só tem o segundo.">Pequeno burguês</button>
+    <button class="q-opt" data-fb="Errado. Ele não tem ações. Ele não fica com parte do lucro. A matriz pode encerrar a renda dele com uma carta. Um proprietário puro não pode ser demitido.">Proprietário</button>
+    <button class="q-opt" data-correct data-fb="Certo, e desta vez cinzenta é a resposta precisa. Na forma, ele vende o próprio trabalho, e a matriz pode demitir ele. Na função, o trabalho dele é comandar o trabalho dos outros, em nome dos donos. O Dia 3 nomeou essa posição: gerentes pagos para comandar. Os dois fatos são reais. A política sente as duas forças. Numa greve, ele fica do lado da empresa. Numa fusão, a matriz trata ele como qualquer trabalhador. Observe qual força vence quando a empresa corta custos.">Zona cinzenta</button>
+    <button class="q-opt" data-fb="Errado. Ele tem um empregador, um salário e um chefe. Nada na posição dele é autônomo.">Trabalhador autônomo</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- B5 -->
+<div class="quiz" data-q>
+  <h3>Exercício 10 de 10 · Duas respostas defensáveis</h3>
+  <p class="q-text">Uma família em San Pedro, no Paraguai, trabalha quatro hectares de mandioca e milho. Na colheita da soja, o pai e o filho mais velho trabalham por salário numa fazenda grande ali perto. Os salários cobrem mais da metade do que a família precisa.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Defensável, e você ganha o ponto. Mais da metade do sustento é salário, e a terra sozinha não alimenta a família. Se o seu raciocínio foi 'siga a parte maior do sustento', isso é bom método. A prova diz Zona cinzenta por um único motivo. Os quatro hectares não são nada desprezível. Eles moldam o que a família quer e o que ela teme. Duas forças puxando, logo cinzenta.">Classe trabalhadora</button>
+    <button class="q-opt" data-fb="Meio certo. Os quatro hectares são propriedade própria e trabalho próprio. Mas mais da metade do sustento vem de salário na terra de outra pessoa. Essa segunda relação é grande demais para ignorar. O rótulo pequeno burguês descreve a metade menor.">Pequeno burguês</button>
+    <button class="q-opt" data-fb="Errado. Quatro hectares trabalhados pelas mãos da própria família não tiram trabalho de ninguém. A família vende trabalho para a fazenda de soja. Ela não compra nenhum.">Proprietário</button>
+    <button class="q-opt" data-correct data-fb="A resposta da prova, e Classe trabalhadora também ganha ponto. Duas forças puxam ao mesmo tempo. Os quatro hectares são propriedade própria com trabalho próprio: a relação do pequeno burguês. Os salários da colheita são trabalho vendido na terra de outra pessoa: a relação da classe trabalhadora. Mais da metade do sustento vem do salário, então a deriva tem uma direção só. Os marxistas têm um nome para essa posição: semiproletário. Isso importa na política. A terra faz a família ter esperança de mais terra. O salário faz a família encontrar a fazenda de soja como trabalhadores. Um movimento rural precisa falar com as duas forças.">Zona cinzenta</button>
+    <button class="q-opt" data-fb="Errado. Numa parte do ano o pai tem chefe e salário. No resto ele trabalha a própria terra. Nenhuma das partes é autônoma no sentido de um contratado livre.">Trabalhador autônomo</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<p class="part-head">Parte 2 · Ache o erro</p>
+<p class="part-note">Cada passagem tem quatro frases. Três frases usam corretamente o método dos dias 1 a 8. Uma frase quebra o método. Clique na frase que quebra. Um clique errado também ensina: o comentário diz por que aquela frase está certa.</p>
+
+<!-- S1 -->
+<div class="quiz" data-q>
+  <h3>Passagem 1 · Um hospital no norte do Líbano</h3>
+  <p class="q-text">Ache a frase que quebra o método.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="Esta frase está certa. Ela dá o ponto de partida material: o salário e o colapso dele. O Dia 1 diz que a explicação começa aqui. O erro está em outra frase.">"Em 2023, as enfermeiras de um hospital público perto de Trípoli recebiam salários que valiam menos de um décimo do valor de 2019 em dólar."</button>
+    <button class="q-opt" data-fb="Esta frase está certa, e ela é o mecanismo de Mahdi Amel numa linha só. A enfermeira depende verticalmente de um patrono da própria seita, então ela não age horizontalmente com as enfermeiras das outras seitas. Continue procurando.">"Poucas enfermeiras aderiram às greves, porque cada uma esperava uma transferência, uma bolsa ou um visto por meio de um político da própria seita."</button>
+    <button class="q-opt" data-correct data-fb="Certo, você achou. 'Natural' e 'nasce dentro' apresentam a seita como identidade eterna, mais funda que a classe. O Dia 6 inverte a causalidade. A seita não é o que a enfermeira é antes de ser trabalhadora. A seita é o canal pelo qual o sistema chega até ela como trabalhadora. A frase dois já explicou a lealdade pelo canal. A frase três trocou o canal pela natureza. É exatamente o movimento que Amel desmontou.">"Essa lealdade é natural, porque uma pessoa no Líbano nasce dentro de uma seita muito antes de pertencer a uma classe."</button>
+    <button class="q-opt" data-fb="Esta frase está certa. Ela mostra a linha de classe ficando visível por um momento, atravessando as seitas. Ela também mostra as ideias dominantes trabalhando contra isso: 'baderneiras'. As duas são observações do Dia 4 e do Dia 6. Não há erro aqui.">"Quando o hospital fechou uma ala, enfermeiras de três seitas protestaram juntas no portão, e os gabinetes dos políticos chamaram elas de baderneiras."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- S2 -->
+<div class="quiz" data-q>
+  <h3>Passagem 2 · Uma fábrica em Santa Catarina</h3>
+  <p class="q-text">Ache a frase que quebra o método.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="Esta frase está certa. Ela dá o acúmulo: seis anos de metas subindo contra um salário parado. O Dia 2 diz: pergunte o que se acumulou embaixo do momento. O erro está em outra frase.">"Durante seis anos a fábrica têxtil aumentou as metas de produção todo janeiro, enquanto os salários seguiam o salário mínimo e nada mais."</button>
+    <button class="q-opt" data-fb="Esta frase está certa. Ela relata o limiar e o salto: uma mudança pequena, e uma resposta grande no mesmo dia. Relatar uma faísca não é erro. Fazer da faísca a causa é. Continue procurando.">"Em março a gerência mudou o almoço do meio-dia para as duas da tarde, e na mesma tarde trezentos trabalhadores pararam as linhas."</button>
+    <button class="q-opt" data-correct data-fb="Certo, você achou. 'Portanto' e 'causa' vestem a faísca de causa. O Dia 2 diz que a coisa pequena não causou nada. Ela foi o ponto em que seis anos de pressão mudaram de estado. O teste está na frase seguinte. A gerência retirou a faísca, e a greve continuou. Uma causa retirada para o efeito. Um limiar retirado não muda nada, porque o acúmulo continua lá.">"A decisão sobre o almoço foi, portanto, a causa da greve, porque sem essa decisão as linhas teriam rodado como sempre."</button>
+    <button class="q-opt" data-fb="Esta frase está certa, e ela é a prova contra a frase três. Tire a faísca, e a greve continua. A greve era pelas metas e pelos salários, o acúmulo de seis anos. Não há erro aqui.">"A gerência devolveu o horário antigo do almoço em uma semana, e a greve continuou por um mês, pelas metas e pelos salários."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- S3 -->
+<div class="quiz" data-q>
+  <h3>Passagem 3 · Quarenta mil fones de ouvido</h3>
+  <p class="q-text">Ache a frase que quebra o método.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="Esta frase está certa. Ela descreve uma classe em si: uma posição compartilhada, um salário compartilhado, uma exposição compartilhada. O Dia 8 começa aqui. O erro está em outra frase.">"Quarenta mil pessoas trabalham nos call centers de uma capital do Nordeste, a maioria com menos de trinta anos, por um salário mínimo mais bônus."</button>
+    <button class="q-opt" data-fb="Esta frase está certa. Ela mostra por que a posição não fala: o contrato, a tela e o bônus separam os trabalhadores. Uma classe em si pode ser uma multidão de rivais. Continue procurando.">"Cada um assina o contrato sozinho, uma tela mede cada um sozinho, e eles encontram os outros quase sempre como rivais pelo bônus do mês."</button>
+    <button class="q-opt" data-correct data-fb="Certo, você achou. 'Vão agir como classe assim que' torna a passagem automática. O Dia 8 diz o contrário. A posição é dada. A consciência é construída, na luta e na organização, e pode se perder. Condições piores, sozinhas, produzem mais medo e mais rivalidade com a mesma frequência com que produzem ação. A frase pula todo o trabalho do Dia 8.">"Como eles dividem o mesmo salário e o mesmo tipo de chefe, vão agir como classe assim que as condições piorarem."</button>
+    <button class="q-opt" data-fb="Esta frase está certa, e dói. A organização veio pela ação, e foi reversível: a rede silenciou. As duas coisas são afirmações do Dia 8. Não há erro aqui.">"A primeira ação conjunta veio quando um grupo montou uma rede de mensagens entre três empresas, e a rede silenciou em menos de dois anos."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<p class="part-head">Parte 3 · A sua própria análise</p>
+<p class="part-note">Esta parte não tem atalho. Escreva a sua resposta primeiro. Depois compare com a resposta modelo. Só você vê o seu texto.</p>
+
+<!-- W1 -->
+<div class="exercise">
+  <h3>Exercício 1 · Duas explicações para um mesmo fato</h3>
+  <p class="q-text">Dezenas de milhares de palestinos da Cisjordânia trabalham na construção de assentamentos israelenses. Alguns desses assentamentos ficam em terra tomada das aldeias deles. Escreva duas explicações para esse fato. Primeiro a explicação idealista. Depois a materialista.</p>
+  <textarea placeholder="Explicação idealista: ...&#10;&#10;Explicação materialista: ..."></textarea>
+  <button class="reveal-btn">Comparar com as respostas modelo</button>
+  <div class="reveal-text">
+    <strong>Um modelo idealista:</strong> os trabalhadores perderam o sentimento nacional. O dinheiro importa mais para eles do que
+    a terra. Ou: a geração mais velha tinha princípios, e a mais nova não tem. A explicação passa pelos valores na cabeça dos
+    trabalhadores.<br><br>
+    <strong>Um modelo materialista:</strong> comece pelo que a ocupação fez com a produção. Os assentamentos e os bloqueios tomaram
+    a terra e a água que as aldeias cultivavam. O sistema de permissões e os postos de controle fecharam a própria economia da
+    Cisjordânia. Em alguns dias, o único salário ao alcance de uma aldeia está na obra que tomou a terra dessa aldeia. O salário
+    do assentamento é duas ou três vezes o salário das cidades palestinas. O empregador israelense precisa da mão de obra, e o
+    empregador palestino não tem mercado. A mesma estrutura que toma a terra cria o trabalhador para a obra. O sentimento não
+    está ausente. O trabalhador carrega o sentimento enquanto assenta os tijolos. A ocupação conta com um fato: sentimento não
+    paga aluguel. O Dia 4 acrescenta uma pergunta: quem ganha quando esse fato é contado como uma história sobre valores? Uma
+    história sobre valores não pede nenhuma mudança de condições.<br><br>
+    <strong>Teste a sua versão com uma pergunta:</strong> a sua explicação materialista explica por que esse número sobe
+    e desce com as cotas de permissão e os bloqueios, e não com discursos? A explicação idealista não
+    responde, porque um sentimento nacional não tem calendário.
+  </div>
+</div>
+
+<!-- W2 -->
+<div class="exercise">
+  <h3>Exercício 2 · Preveja, depois confira com a história</h3>
+  <p class="q-text">Paraguai, 2008. Fernando Lugo, ex-bispo sem partido próprio, vence a eleição presidencial. A aliança dele reúne movimentos de camponeses sem terra, pequenos partidos de esquerda e o Partido Liberal, um partido de fazendeiros, profissionais liberais e comerciantes. A promessa central dele é a reforma agrária, num país onde um número pequeno de donos tem a maior parte da terra agrícola. O Partido Colorado, no poder havia sessenta e um anos, perde pela primeira vez. Use o Dia 5 e o Dia 8 com rigor. Preveja o que acontece com a aliança quando a questão da terra fica concreta. Depois confira.</p>
+  <p class="q-hint">Escreva a previsão antes de olhar. Essa é a disciplina.</p>
+  <textarea placeholder="Minha previsão, com base em 1848 e na classe para si: ..."></textarea>
+  <button class="reveal-btn">Conferir com o que aconteceu</button>
+  <div class="reveal-text">
+    <strong>O que aconteceu:</strong> a reforma agrária não avançou. No Congresso, liberais e colorados juntos tinham a maioria
+    das cadeiras, e eles barraram a redistribuição e um imposto sobre a soja. Famílias sem terra ocuparam fazendas por conta própria.
+    Em 15 de junho de 2012, a polícia despejou uma ocupação em Curuguaty, numa terra reivindicada por um empresário colorado.
+    O despejo terminou num tiroteio que matou onze camponeses e seis policiais. Em menos de uma semana, o Congresso destituiu Lugo num julgamento que durou
+    cerca de um dia. O Partido Liberal, aliado de 2008, votou com os colorados. O vice-presidente liberal tomou posse na mesma
+    noite. As federações da soja e da pecuária saudaram a volta da ordem.<br><br>
+    <strong>O padrão de 1848, se a sua previsão encontrou esse padrão:</strong> a aliança durou enquanto a exigência era uma troca de
+    governo. Tirar os colorados não custava nada aos liberais. A aliança se rompeu quando a exigência virou propriedade: terra.
+    O aliado proprietário escolheu a ordem. O Dia 8 acrescenta a outra metade. Os movimentos camponeses eram uma classe em si
+    com pedaços de organização, mas sem força capaz de defender o governo em uma semana. A classe proprietária não precisou de
+    nenhuma organização nova. Ela já tinha o congresso, os tribunais e as federações. A consciência dela estava embutida nas
+    instituições, e ela agiu em um dia.<br><br>
+    <strong>Uma nota honesta:</strong> a sua previsão pode ser diferente e ainda ser boa análise. Nomeie a condição paraguaia que
+    o modelo deixa de fora. Exemplos: a destituição usou uma forma legal, não um exército. Os dois grandes partidos têm a mesma
+    base na terra, então o aliado nunca esteve fora da classe proprietária. Lugo não tinha partido próprio, então a aliança dos
+    que trabalham não tinha instrumento político, que é exatamente a peça que falta no Dia 5. Um modelo que cabe em tudo não
+    explica nada.
+  </div>
+</div>
+
+<!-- W3 -->
+<div class="exercise">
+  <h3>Exercício 3 · Faça os conceitos trabalharem um sobre o outro</h3>
+  <p class="q-text">Em muitos municípios brasileiros, uma escola tem dois tipos de professor no mesmo corredor. Um passou em concurso e tem cargo estável. O outro trabalha com contrato temporário que a secretaria de educação renova, ou não renova, todo ano. Os dois vendem força de trabalho para o mesmo empregador. Os dois dão aula para as mesmas crianças. Eles raramente fazem greve juntos. Use o Dia 6, a dependência vertical, para explicar por que essa classe em si (Dia 8) não vira classe para si. Diga quem ganha com isso.</p>
+  <textarea placeholder="O professor temporário depende de... O professor concursado depende de... Então cada um vê o outro como... Quem ganha: ..."></textarea>
+  <button class="reveal-btn">Comparar com uma resposta modelo</button>
+  <div class="reveal-text">
+    <strong>Um modelo:</strong> a professora temporária depende verticalmente da secretaria e, atrás da secretaria, do prefeito.
+    A renovação dela é um favor, não um direito. Ela não pode entrar numa greve sem arriscar o ano que vem. A professora
+    concursada depende de outro canal: o plano de carreira, o sindicato, a lei. Os dois canais sobem, para pontos diferentes,
+    e nunca se encontram de lado. Então cada metade vê a outra como o problema. A concursada diz: as temporárias furam a greve.
+    A temporária diz: as concursadas fazem greve com emprego garantido. Esse é o mecanismo de Amel sem seitas. A dependência é
+    organizada na vertical, então pessoas na mesma posição se encontram como rivais. Quem ganha: a prefeitura. Ela paga menos à
+    temporária, mantém a greve pequena, e não precisa de seita nenhuma para isso. O Dia 8 fecha o círculo. O reconhecimento
+    viria por uma luta que incluísse as duas metades, por exemplo uma greve cuja primeira pauta é a efetivação das temporárias.
+    Até lá, o corredor guarda uma classe em si.<br><br>
+    <strong>A sua resposta pode ser diferente.</strong> Teste com três perguntas. Ela nomeia o patrono de quem cada metade
+    depende? Ela nomeia quem ganha com a divisão? Ela diz o que uma luta precisa incluir para juntar as metades? Se sim, a sua
+    resposta usou uma ferramenta da semana sobre o resultado de outra. Nesse momento, oito lições viram um método.
+  </div>
+</div>
+
+<button class="finish-btn">Terminei. Ver o resumo</button>
+
+<div class="summary">
+  <h2>Prova 1: encerrada</h2>
+  <p class="tally"></p>
+  <p class="summary-note"></p>
+  <p>O que cada parte treina. <strong>Parte 1:</strong> ver de onde uma explicação parte, e ver a relação por trás de cada
+  fantasia: uma permissão, um cadastro na receita, um salário, uma propriedade pequena. <strong>Parte 2:</strong> controle de
+  qualidade da própria análise. Os piores inimigos do método usam o uniforme dele: a identidade eterna, a faísca, a classe
+  automática. <strong>Parte 3:</strong> produção. Só a produção mostra que você usa o método fora de uma prova.
+  Se a sua previsão sobre o Paraguai achou o padrão antes de conferir, os oito dias fizeram o trabalho deles.</p>
+</div>
+
+<footer class="lesson-footer">
+  Prova 1, dias 1 a 8. Daily Marxism.
+</footer>
+
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-q]').forEach(function (q) {
+    var opts = q.querySelectorAll('.q-opt');
+    var fb = q.querySelector('.q-feedback');
+    var retry = q.querySelector('.q-retry');
+
+    opts.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var right = opt.hasAttribute('data-correct');
+        opts.forEach(function (o) { o.disabled = true; o.classList.remove('correct', 'wrong'); });
+        opt.classList.add(right ? 'correct' : 'wrong');
+        fb.className = 'q-feedback show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = '<span class="fb-label">' +
+          (right ? '✓ Certo' : '✗ Não é essa') +
+          '</span>' + opt.getAttribute('data-fb');
+        retry.classList.toggle('show', !right);
+        q.dataset.answered = right ? 'right' : 'almost';
+      });
+    });
+
+    retry.addEventListener('click', function () {
+      opts.forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
+      fb.className = 'q-feedback';
+      fb.innerHTML = '';
+      retry.classList.remove('show');
+      delete q.dataset.answered;
+    });
+  });
+
+  document.querySelectorAll('.reveal-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.nextElementSibling.classList.add('show');
+      btn.style.display = 'none';
+    });
+  });
+
+  document.querySelector('.finish-btn').addEventListener('click', function () {
+    var qs = document.querySelectorAll('[data-q]');
+    var right = 0, tried = 0;
+    qs.forEach(function (q) {
+      if (q.dataset.answered) tried++;
+      if (q.dataset.answered === 'right') right++;
+    });
+    var summary = document.querySelector('.summary');
+    var tally = summary.querySelector('.tally');
+    var note = summary.querySelector('.summary-note');
+
+    if (tried === 0) {
+      tally.textContent = 'Você foi direto para a parte escrita. Essa é a parte mais importante. Os exercícios esperam por você.';
+      note.textContent = '';
+    } else {
+      tally.textContent = 'Exercícios e passagens: ' + right + ' de ' + qs.length + ' certos na primeira tentativa' + (tried < qs.length ? ' (' + (qs.length - tried) + ' sem resposta)' : '') + '.';
+      if (right === qs.length) {
+        note.textContent = 'Tudo certo na primeira tentativa, inclusive as zonas cinzentas e os exercícios com duas respostas. Os conceitos estão firmes. A semana 2 pode construir sobre eles.';
+      } else if (right >= Math.ceil(qs.length * 0.6)) {
+        note.textContent = 'Um bom resultado. Veja quais exercícios pegaram você. Se foram as zonas cinzentas, saiba: elas pegam todo mundo. O comentário de cada erro nomeia a distinção exata para estudar.';
+      } else {
+        note.textContent = 'Estes exercícios comprimem uma semana de teoria em frases únicas. Um erro aqui é informação, não veredito. Leia de novo o comentário de cada erro. Cada um nomeia uma distinção para aprender antes da semana 2.';
+      }
+    }
+    summary.classList.add('show');
+    summary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>

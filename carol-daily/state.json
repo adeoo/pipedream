@@ -1,5 +1,5 @@
 {
-  "next_day": 5,
+  "next_day": 6,
   "recipient": "ana.ruberrime@gmail.com",
   "sender": "adeosagent@inkboxmail.com",
   "covered": [
@@ -46,6 +46,17 @@
       "venue": "Urban Transformations, v. 3, art. 2",
       "doi": "10.1186/s42854-021-00019-z",
       "note": "Acesso aberto. Tríade na/da/pela cidade como esqueleto do Cap. 2; lacuna de agência insurgente/não humana para o Cap. 5. Citação verificada na página da Springer. Enviado 2026-09-03 09:17 UTC sem prompt (allowlist .claude/settings.json funcionou), Inkbox id dea99e66."
+    },
+    {
+      "day": 5,
+      "send_date": "2026-09-04",
+      "theme": 5,
+      "title": "Queer ecology: nature, sexuality, and heterotopic alliances",
+      "authors": "Gandy",
+      "year": 2012,
+      "venue": "Environment and Planning D: Society and Space, v. 30, n. 4, p. 727-747",
+      "doi": "10.1068/d10511",
+      "note": "Artigo-ponte (tema 5) entre ecologia queer, direito à cidade lefebvriano e o eixo insurgente; PDF aberto no site do autor. A Routine de 2026-09-04 rodou sem repositório anexado: enviou às 22:16 UTC (19:16 Brasília) em três tentativas (duas com corpo vazio/placeholder, depois 'Correção 2' completa, Inkbox id 12667b07) e não conseguiu fazer commit. Fichamento reconstruído a partir do e-mail enviado em 2026-09-05."
     }
   ],
   "already_in_thesis": [
@@ -53,5 +64,5 @@
     "SHEIKH, Hira; FOTH, Marcus; MITCHELL, Peta. More-than-human city-region foresight. Regional Studies, v. 57, n. 4, p. 642-655, 2023. DOI 10.1080/00343404.2022.2045266.",
     "SHEIKH, Hira; MITCHELL, Peta; FOTH, Marcus. Reparative futures of smart urban governance. Futures, v. 154, art. 103266, 2023. DOI 10.1016/j.futures.2023.103266."
   ],
-  "notes": "Dias 1-4 enviados. Routine diária trig_015byv2MPNvWcut1cJpBcafg dispara às 09:00 UTC (06:00 América/São_Paulo) na sessão criadora e faz pesquisa+escrita+envio+push na mesma manhã; desde o dia 4 roda sem prompts graças ao .claude/settings.json no branch. Próximo: dia 5, tema 5 (convergências e tensões entre os conceitos)."
+  "notes": "Dias 1-5 enviados. Dia 6 (2026-09-05) NÃO foi enviado: a Routine rodou sem repositório anexado. Routine diária trig_01S1c9MS23QnRVreYxj2WwJp (sessão nova a cada disparo, 09:00 UTC = 06:00 São Paulo) pesquisa+escreve+envia+push na mesma manhã. Para rodar sem prompts a Routine precisa do repositório adeoo/pipedream anexado (claude.ai/code/routines) e do allowlist .claude/settings.json (agora também na master). Próximo: dia 6, tema 6 (movimentos sociais e espaços insurgentes, de preferência São Paulo)."
 }
