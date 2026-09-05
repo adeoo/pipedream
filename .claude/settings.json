@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Inkbox__inkbox_email_send",
+      "mcp__Inkbox__inkbox_email_attachment_upload",
+      "mcp__Inkbox__inkbox_emails_list",
+      "mcp__Inkbox__inkbox_email_get",
+      "mcp__Tavily__tavily_search",
+      "mcp__Tavily__tavily_extract",
+      "WebFetch",
+      "WebSearch",
+      "Bash(git fetch *)",
+      "Bash(git checkout *)",
+      "Bash(git pull *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(python3 *)"
+    ]
+  }
+}
