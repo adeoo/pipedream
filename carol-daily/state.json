@@ -1,5 +1,5 @@
 {
-  "next_day": 10,
+  "next_day": 11,
   "recipient": "ana.ruberrime@gmail.com",
   "sender": "adeosagent@inkboxmail.com",
   "covered": [
@@ -101,6 +101,17 @@
       "venue": "Urban Planning, v. 7, n. 3, p. 315-325",
       "doi": "10.17645/up.v7i3.5288",
       "note": "Acesso aberto. Placemaking multiespécies e o Parliament of Species (Oslo); 'stakeholderness' como efeito relacional (Metzger). Enviado 2026-09-09 em duas mensagens (a primeira com um comando de shell no corpo, depois 'Correção', Inkbox id 673087fa). Push falhou; fichamento reconstruído em 2026-09-09."
+    },
+    {
+      "day": 10,
+      "send_date": "2026-09-10",
+      "theme": 3,
+      "title": "Unnatural passions?: notes toward a queer ecology",
+      "authors": "Mortimer-Sandilands",
+      "year": 2005,
+      "venue": "Invisible Culture: An Electronic Journal for Visual Culture, n. 9",
+      "doi": "",
+      "note": "Acesso aberto (revista eletrônica da Univ. de Rochester). Natureza/cidade como dispositivo de regulação sexual e racial; ponte com Houston et al. e com o dia 6. Enviado 2026-09-10 09:07 UTC em UMA mensagem, verificada pelo protocolo de envio (Inkbox id 5d66a207). O push da Routine falhou de novo (sem repositório anexado); fichamento reconstruído a partir do e-mail em 2026-09-10."
     }
   ],
   "already_in_thesis": [
@@ -108,5 +119,5 @@
     "SHEIKH, Hira; FOTH, Marcus; MITCHELL, Peta. More-than-human city-region foresight. Regional Studies, v. 57, n. 4, p. 642-655, 2023. DOI 10.1080/00343404.2022.2045266.",
     "SHEIKH, Hira; MITCHELL, Peta; FOTH, Marcus. Reparative futures of smart urban governance. Futures, v. 154, art. 103266, 2023. DOI 10.1016/j.futures.2023.103266."
   ],
-  "notes": "Dias 1-9 enviados. Os dias 6-9 saíram pela Routine mas não chegaram ao repositório (a sessão rodou sem o repositório anexado e o push falhou); fichamentos e este arquivo foram reconstruídos em 2026-09-09 a partir dos e-mails enviados. Entre 04/09 e 09/09 cada dia saiu em 2 ou 3 mensagens porque o corpo do e-mail era retranscrito à mão na chamada do Inkbox (placeholders, HTML escapado, comando de shell). Desde 2026-09-10 a Routine segue o protocolo de envio: render.py --write gera os arquivos prontos, o corpo é copiado sem alteração, e cada envio é verificado com inkbox_email_get; no máximo uma 'Cópia corrigida'. A Routine também chama add_repo (acesso push) antes do push. Routine diária trig_01S1c9MS23QnRVreYxj2WwJp (sessão nova a cada disparo, 09:00 UTC = 06:00 São Paulo). Próximo: dia 10, tema 3 (ecofeminismo queer)."
+  "notes": "Dias 1-9 enviados. Os dias 6-9 saíram pela Routine mas não chegaram ao repositório (a sessão rodou sem o repositório anexado e o push falhou); fichamentos e este arquivo foram reconstruídos em 2026-09-09 a partir dos e-mails enviados. Entre 04/09 e 09/09 cada dia saiu em 2 ou 3 mensagens porque o corpo do e-mail era retranscrito à mão na chamada do Inkbox (placeholders, HTML escapado, comando de shell). Desde 2026-09-10 a Routine segue o protocolo de envio: render.py --write gera os arquivos prontos, o corpo é copiado sem alteração, e cada envio é verificado com inkbox_email_get; no máximo uma 'Cópia corrigida'. A Routine também chama add_repo (acesso push) antes do push. Routine diária trig_01S1c9MS23QnRVreYxj2WwJp (sessão nova a cada disparo, 09:00 UTC = 06:00 São Paulo). Dia 10 enviado limpo, em uma única mensagem, pelo novo protocolo; o push da Routine ainda falha porque o repositório não está anexado à Routine (add_repo não bastou). Próximo: dia 11, tema 4 (transição sustentável nas cidades)."
 }
