@@ -1,5 +1,5 @@
 {
-  "next_day": 6,
+  "next_day": 10,
   "recipient": "ana.ruberrime@gmail.com",
   "sender": "adeosagent@inkboxmail.com",
   "covered": [
@@ -57,6 +57,50 @@
       "venue": "Environment and Planning D: Society and Space, v. 30, n. 4, p. 727-747",
       "doi": "10.1068/d10511",
       "note": "Artigo-ponte (tema 5) entre ecologia queer, direito à cidade lefebvriano e o eixo insurgente; PDF aberto no site do autor. A Routine de 2026-09-04 rodou sem repositório anexado: enviou às 22:16 UTC (19:16 Brasília) em três tentativas (duas com corpo vazio/placeholder, depois 'Correção 2' completa, Inkbox id 12667b07) e não conseguiu fazer commit. Fichamento reconstruído a partir do e-mail enviado em 2026-09-05."
+    },
+    {
+      "day": 6,
+      "send_date": "2026-09-06",
+      "theme": 6,
+      "title": "Processos e materialização da agricultura urbana como ativismo na cidade de São Paulo: o caso da Horta das Corujas",
+      "authors": "Nagib",
+      "year": 2019,
+      "venue": "Cadernos Metrópole, v. 21, n. 46, p. 715-739",
+      "doi": "10.1590/2236-9996.2019-4602",
+      "note": "Acesso aberto, em português. Caso paradigmático para o Cap. 4 (Horta das Corujas) com o despejo multiespécie escondido na história da praça. Enviado 2026-09-06 09:07 UTC em duas mensagens (a primeira com corpo placeholder, depois 'Correção' completa, Inkbox id 1847cab8). A Routine não conseguiu fazer push; fichamento reconstruído a partir do e-mail em 2026-09-09."
+    },
+    {
+      "day": 7,
+      "send_date": "2026-09-07",
+      "theme": 7,
+      "title": "Insurgência, planejamento e a perspectiva de um urbanismo humano",
+      "authors": "Miraftab",
+      "year": 2016,
+      "venue": "Revista Brasileira de Estudos Urbanos e Regionais, v. 18, n. 3, p. 363-377",
+      "doi": "10.22296/2317-1529.2016v18n3p363",
+      "note": "Coringa: clássico faltante do eixo 1, em português e acesso aberto. Fonte primária do par espaços convidados/inventados e da régua transgressão/contra-hegemonia/imaginação. Enviado 2026-09-07 em três mensagens (placeholder, 'Correção' com HTML como texto literal, 'Correção 2' correta, Inkbox id 8c59bf57). Push falhou; fichamento reconstruído em 2026-09-09."
+    },
+    {
+      "day": 8,
+      "send_date": "2026-09-08",
+      "theme": 1,
+      "title": "Let them speak: insurgent planning and urban justice",
+      "authors": "Hewidy; Harsia",
+      "year": 2025,
+      "venue": "Cities, v. 162, art. 105918",
+      "doi": "10.1016/j.cities.2025.105918",
+      "note": "Acesso aberto (PDF no repositório da Aalto). Testa o vocabulário insurgente (Holston, Miraftab) num Estado de bem-estar do Norte: Kontula Strip Mall, Helsinque. Enviado 2026-09-08 em duas mensagens (a primeira com HTML como texto literal, depois 'Correção', Inkbox id cc8b3faa). Push falhou; fichamento reconstruído em 2026-09-09."
+    },
+    {
+      "day": 9,
+      "send_date": "2026-09-09",
+      "theme": 2,
+      "title": "Co-creation beyond humans: the arts of multispecies placemaking",
+      "authors": "Sachs Olsen",
+      "year": 2022,
+      "venue": "Urban Planning, v. 7, n. 3, p. 315-325",
+      "doi": "10.17645/up.v7i3.5288",
+      "note": "Acesso aberto. Placemaking multiespécies e o Parliament of Species (Oslo); 'stakeholderness' como efeito relacional (Metzger). Enviado 2026-09-09 em duas mensagens (a primeira com um comando de shell no corpo, depois 'Correção', Inkbox id 673087fa). Push falhou; fichamento reconstruído em 2026-09-09."
     }
   ],
   "already_in_thesis": [
@@ -64,5 +108,5 @@
     "SHEIKH, Hira; FOTH, Marcus; MITCHELL, Peta. More-than-human city-region foresight. Regional Studies, v. 57, n. 4, p. 642-655, 2023. DOI 10.1080/00343404.2022.2045266.",
     "SHEIKH, Hira; MITCHELL, Peta; FOTH, Marcus. Reparative futures of smart urban governance. Futures, v. 154, art. 103266, 2023. DOI 10.1016/j.futures.2023.103266."
   ],
-  "notes": "Dias 1-5 enviados. Dia 6 (2026-09-05) NÃO foi enviado: a Routine rodou sem repositório anexado. Routine diária trig_01S1c9MS23QnRVreYxj2WwJp (sessão nova a cada disparo, 09:00 UTC = 06:00 São Paulo) pesquisa+escreve+envia+push na mesma manhã. Para rodar sem prompts a Routine precisa do repositório adeoo/pipedream anexado (claude.ai/code/routines) e do allowlist .claude/settings.json (agora também na master). Próximo: dia 6, tema 6 (movimentos sociais e espaços insurgentes, de preferência São Paulo)."
+  "notes": "Dias 1-9 enviados. Os dias 6-9 saíram pela Routine mas não chegaram ao repositório (a sessão rodou sem o repositório anexado e o push falhou); fichamentos e este arquivo foram reconstruídos em 2026-09-09 a partir dos e-mails enviados. Entre 04/09 e 09/09 cada dia saiu em 2 ou 3 mensagens porque o corpo do e-mail era retranscrito à mão na chamada do Inkbox (placeholders, HTML escapado, comando de shell). Desde 2026-09-10 a Routine segue o protocolo de envio: render.py --write gera os arquivos prontos, o corpo é copiado sem alteração, e cada envio é verificado com inkbox_email_get; no máximo uma 'Cópia corrigida'. A Routine também chama add_repo (acesso push) antes do push. Routine diária trig_01S1c9MS23QnRVreYxj2WwJp (sessão nova a cada disparo, 09:00 UTC = 06:00 São Paulo). Próximo: dia 10, tema 3 (ecofeminismo queer)."
 }
