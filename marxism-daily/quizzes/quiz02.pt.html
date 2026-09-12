@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Marxism · Prova 2</title>
+<style>
+/* Mirror of ../../assets/course.css so this file also renders correctly when
+   opened standalone (email attachment, chat preview). The <link> below is
+   loaded after this block, so inside the repo the shared stylesheet wins. */
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+.page { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
+}
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.15; font-weight: normal; margin: 0 0 0.5rem; }
+h2 { font-size: 1.35rem; font-weight: normal; font-style: italic; margin: 2.4rem 0 0.8rem; }
+.lede { font-size: 1.15rem; font-style: italic; color: var(--muted); margin: 0; }
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+footer.lesson-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+@media print {
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
+
+/* ---- Workbook widgets, in the course's design language ---- */
+.part-head {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.4rem;
+  margin: 2.8rem 0 0.5rem;
+}
+.part-note { color: var(--muted); font-style: italic; font-size: 0.98rem; margin: 0 0 1.4rem; }
+
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz .q-hint { margin: -0.5rem 0 0.9rem; font-size: 0.95rem; font-style: italic; color: var(--muted); }
+
+.opts { display: flex; flex-direction: column; gap: 0.4rem; }
+.opts.row { flex-direction: row; flex-wrap: wrap; }
+button.q-opt {
+  display: block;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.opts.row button.q-opt {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.92rem;
+}
+/* High-specificity overrides so course.css's full-width q-opt rule
+   doesn't stack the one-word drill options vertically. */
+.quiz .opts button.q-opt { width: 100%; margin: 0; }
+.quiz .opts.row button.q-opt { width: auto; }
+button.q-opt:hover:not(:disabled) { border-color: var(--accent); }
+button.q-opt:disabled { cursor: default; opacity: 0.55; }
+button.q-opt.correct { border-color: var(--good); background: #edf6ee; opacity: 1; font-weight: bold; }
+button.q-opt.wrong { border-color: var(--bad); background: #faeceb; opacity: 1; }
+
+.q-feedback {
+  margin-top: 0.8rem;
+  font-size: 0.97rem;
+  border-radius: 0 6px 6px 0;
+  padding: 0.7rem 0.9rem;
+  display: none;
+}
+.q-feedback.show { display: block; }
+.q-feedback.good { border-left: 4px solid var(--good); background: #edf6ee; }
+.q-feedback.bad { border-left: 4px solid var(--bad); background: #faeceb; }
+.q-feedback .fb-label {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.q-feedback.good .fb-label { color: var(--good); }
+.q-feedback.bad .fb-label { color: var(--bad); }
+
+button.q-retry {
+  margin-top: 0.7rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  color: var(--muted);
+  display: none;
+}
+button.q-retry.show { display: inline-block; }
+button.q-retry:hover { border-color: var(--accent); color: var(--accent); }
+
+.exercise {
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.exercise h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.exercise textarea {
+  width: 100%;
+  min-height: 7rem;
+  font: inherit;
+  font-size: 0.98rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+  resize: vertical;
+  margin-top: 0.8rem;
+}
+.exercise textarea:focus { outline: none; border-color: var(--accent); }
+button.reveal-btn {
+  margin-top: 0.8rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+button.reveal-btn:hover { background: #8a3f13; }
+.reveal-text {
+  display: none;
+  margin-top: 0.9rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.97rem;
+}
+.reveal-text.show { display: block; }
+
+.summary {
+  display: none;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.4rem 1.5rem;
+  margin-top: 2.4rem;
+  background: #fbfaf4;
+}
+.summary.show { display: block; }
+.summary h2 { margin-top: 0; }
+.summary .tally { font-weight: bold; }
+
+button.finish-btn {
+  display: block;
+  margin: 2.4rem auto 0;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+}
+button.finish-btn:hover { background: #8a3f13; }
+
+@media print { button.q-opt { border: 1px solid #999; } }
+</style>
+<link rel="stylesheet" href="../../assets/course.css">
+</head>
+<body>
+<div class="page">
+
+<header class="lesson-header">
+  <p class="kicker">Daily Marxism · Prova 2</p>
+  <h1>Seis dias sobre valor. Agora use as ferramentas em casos que você não viu.</h1>
+  <p class="lede">Esta prova tem três partes. A Parte 1 é um exercício de classificação, em dois conjuntos. A Parte 2 é uma caça ao erro. A Parte 3 é análise escrita, com respostas modelo.</p>
+</header>
+
+<div class="callout">
+  <p><strong>Notas sobre o formato.</strong> As opções de resposta são curtas. O tamanho de uma opção não mostra a resposta certa.
+  Alguns casos são casos de fronteira de verdade. Para esses, "Caso limite" é a escolha certa. Dois exercícios têm duas respostas defensáveis, e o feedback diz isso.
+  Não tem nota nem cronômetro. Você pode tentar de novo depois de cada erro. Só você vê o seu texto.</p>
+</div>
+
+<p class="part-head">Parte 1 · Exercício de classificação</p>
+<p class="part-note">Conjunto A: cinco acontecimentos, quatro rótulos. Em cada caso, faça uma única pergunta: o que aconteceu com o tempo de trabalho socialmente necessário da coisa? Se ele mudou, o valor mudou. Se só o dinheiro se moveu, só o preço se moveu. "Caso limite" é para um caso em que o conceito de valor não encaixa direito.</p>
+
+<!-- A1 -->
+<div class="quiz" data-q>
+  <h3>Exercício 1 de 10</h3>
+  <p class="q-text">Em dois anos, a maioria das fábricas de roupa de Bangladesh instala máquinas de corte automático. Uma camisa passa a exigir um terço a menos de trabalho. Uma oficina pequena em Dhaka continua cortando à mão, com as mesmas pessoas e as mesmas horas de antes. O que aconteceu com o valor das camisas feitas nessa oficina pequena?</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Certo. O valor é fixado pelo trabalho de que a sociedade precisa agora para fazer uma camisa, não pelas horas que esta oficina gasta. A média caiu. Então o valor de toda camisa caiu, inclusive das camisas cortadas à mão. A oficina gasta as mesmas horas e recebe menos valor por elas. É a posição do tecelão manual depois do tear mecânico, em outro país e outro século.">Valor caiu</button>
+    <button class="q-opt" data-fb="Errado, mas é um palpite natural: a oficina não mudou, então as camisas dela parecem manter o valor. O valor não mora dentro da oficina. Ele é medido pelo relógio da sociedade. Quando o tempo médio cai, o valor de todas as camisas cai, seja quem for que as fez.">Valor subiu</button>
+    <button class="q-opt" data-fb="Errado. O preço também vai se mover, mas a pergunta é sobre o valor, e o valor mudou. O trabalho de que a sociedade precisa para fazer uma camisa caiu um terço. Isso é uma mudança no centro, não só na oscilação em volta dele.">Só o preço</button>
+    <button class="q-opt" data-fb="Errado. Este é um caso limpo. Uma camisa é mercadoria, o tempo de trabalho socialmente necessário dela caiu, então o valor caiu. Guarde Caso limite para uma coisa cujo valor é difícil de definir.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- A2 -->
+<div class="quiz" data-q>
+  <h3>Exercício 2 de 10</h3>
+  <p class="q-text">Ataques a navios no Mar Vermelho obrigam a carga da Ásia para a Europa a contornar a África. Em Beirute, um quilo de café vietnamita passa a custar trinta por cento a mais em dois meses. Nada mudou nas fazendas nem nas torrefadoras.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. Veja onde a mudança aconteceu. As fazendas e as torrefadoras trabalham como antes. O trabalho necessário para plantar e torrar o café não mudou. O custo a mais está no transporte, que é uma parte pequena do trabalho contido num quilo de café, e temporária.">Valor caiu</button>
+    <button class="q-opt" data-fb="Perto, e um aluno cuidadoso pode argumentar: transporte também é trabalho, e a rota mais longa acrescenta algum. Mas trinta por cento em dois meses não são trinta por cento a mais de trabalho. A maior parte do salto é escassez e medo no preço. O centro se moveu pouco; a oscilação se moveu muito.">Valor subiu</button>
+    <button class="q-opt" data-correct data-fb="Certo. A oferta foi interrompida, então o preço oscilou para cima. O valor, o trabalho de que a sociedade precisa para pôr um quilo de café torrado na prateleira, mudou pouco. Quando a rota reabrir, o preço vai voltar em direção ao centro. O valor explica por que o café sempre custa mais que o arroz; acontecimentos como este explicam as oscilações.">Só o preço</button>
+    <button class="q-opt" data-fb="Errado. Café é uma mercadoria com valor claro. O caso é uma oscilação de preço, e a teoria tem um lugar claro para ela: oferta e demanda movem o preço em torno de um centro que o trabalho fixa.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- A3 -->
+<div class="quiz" data-q>
+  <h3>Exercício 3 de 10 · Duas respostas defensáveis</h3>
+  <p class="q-text">Uma cooperativa de erva-mate em Itapúa, no Paraguai, volta à secagem lenta com lenha, que leva três vezes o trabalho do método industrial. Ela vende a erva como "artesanal" a três vezes o preço comum, e os compradores pagam.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. Nada tornou a erva mais barata de produzir. Se algo mudou, esta erva levou mais trabalho. A direção está errada.">Valor caiu</button>
+    <button class="q-opt" data-fb="Meio certo. Esta erva levou mais trabalho, sim. Mas a regra diz que mais horas do que a média não criam mais valor, a menos que o produto seja outra mercadoria. Pergunte se a erva artesanal é uma mercadoria diferente da erva comum, ou a mesma com uma história. Essa pergunta é o motivo de este exercício ter duas respostas.">Valor subiu</button>
+    <button class="q-opt" data-fb="Defensável, e você ganha o crédito. Se a erva artesanal é a mesma mercadoria que a erva comum, então o método lento é só um jeito mais lento de fazê-la, o valor por quilo não muda, e o preço triplo é um prêmio que os compradores pagam pela história. A prova diz Caso limite porque o próprio mercado ainda não decidiu a primeira pergunta.">Só o preço</button>
+    <button class="q-opt" data-correct data-fb="A resposta da prova, e Só o preço ganha quase o crédito inteiro. Tudo depende de os compradores tratarem a erva artesanal como um valor de uso diferente. Se tratam, é outra mercadoria, com seu próprio tempo de trabalho socialmente necessário, e esse tempo é alto, então o valor é alto. Se não tratam, é erva comum com um método lento e um prêmio de marketing. O mercado não resolveu isso, e enquanto não resolve o preço carrega as duas possibilidades. Repare no que acontece quando uma empresa grande começar a vender erva sapecada em lenha pela metade do preço da cooperativa. A resposta chega aí.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- A4 -->
+<div class="quiz" data-q>
+  <h3>Exercício 4 de 10</h3>
+  <p class="q-text">O Brasil cria uma certificação obrigatória de dois anos para eletricistas industriais. Daqui em diante, ninguém faz o serviço sem ela. Pergunte sobre o valor da força de trabalho de um eletricista, a capacidade de trabalhar que ele vende.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. A certificação acrescenta tempo de trabalho à produção de um eletricista. Dois anos de estudo não saem de graça para a sociedade. Mais trabalho para produzir o trabalhador significa mais valor na força de trabalho, não menos.">Valor caiu</button>
+    <button class="q-opt" data-correct data-fb="Certo. O valor da força de trabalho é o trabalho de que a sociedade precisa para produzir um trabalhador capaz de fazer o serviço. Os dois anos de certificação agora fazem parte desse trabalho. Então o valor da força de trabalho de um eletricista sobe. Se o salário acompanha é uma segunda pergunta, decidida pela correlação de forças, mas o centro em torno do qual ele se move subiu. Repare também no que acontece com as horas do eletricista certificado: cada hora agora conta como mais do que uma hora de trabalho simples, porque a formação é liberada aos poucos em cada uma delas.">Valor subiu</button>
+    <button class="q-opt" data-fb="Errado. Salários se movem por muitos motivos, mas este caso muda o custo de produzir o trabalhador. Isso é mudança de valor, não só de preço.">Só o preço</button>
+    <button class="q-opt" data-fb="Errado. A força de trabalho tem valor como qualquer mercadoria: o trabalho necessário para produzi-la. A formação faz parte desse trabalho. O caso encaixa no conceito direitinho.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- A5 -->
+<div class="quiz" data-q>
+  <h3>Exercício 5 de 10</h3>
+  <p class="q-text">Um terreno vazio na zona oeste de São Paulo foi vendido por certa quantia em 2010. Em 2025, é vendido por seis vezes essa quantia. Ninguém fez nada no terreno. Pergunte sobre o valor do terreno.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. Nada aconteceu com trabalho nenhum, porque não há trabalho num terreno vazio. A direção não é a questão. A questão é se o conceito se aplica.">Valor caiu</button>
+    <button class="q-opt" data-fb="Errado, e esta é a armadilha. O preço subiu seis vezes, então parece que o valor subiu. Mas valor é o trabalho de que a sociedade precisa para produzir uma coisa, e ninguém produz terreno vazio. Não há trabalho nele para subir.">Valor subiu</button>
+    <button class="q-opt" data-fb="Defensável, e você ganha crédito parcial: só o preço se moveu, porque não há mais nada para se mover. Mas dizer que o preço se moveu em torno de um centro seria errado. Não há centro. Por isso a prova diz Caso limite.">Só o preço</button>
+    <button class="q-opt" data-correct data-fb="Certo. Terra que ninguém trabalhou não tem valor, porque nenhum trabalho a produziu. Mas ela tem preço, e o preço sobe com a cidade em volta. Marx observa exatamente isso: coisas que não são produto de trabalho, como a terra ou a honra, podem ter preço sem ter valor. O preço expressa um direito: quem é dono do terreno pode cobrar dos outros pelo direito de construir. É a primeira vez no curso em que preço e valor se separam por completo. Guarde o caso. Ele volta na semana 8 com a palavra renda.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<p class="part-note">Conjunto B: cinco pessoas, quatro rótulos. Em cada caso, pergunte o que a pessoa vende de fato: a capacidade de trabalhar por um período, um produto pronto, ou o uso de algo que ela possui. Ignore o que o contrato, o aplicativo ou o formulário de imposto chamam isso.</p>
+
+<!-- B1 -->
+<div class="quiz" data-q>
+  <h3>Exercício 6 de 10</h3>
+  <p class="q-text">Uma mulher em Osasco limpa um apartamento diferente em cada dia da semana. Cada família paga uma diária fixa em dinheiro. Ela não leva nada além de si mesma; os produtos e as máquinas são do apartamento.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Certo. Ela vende um dia da sua capacidade de trabalhar. A família dirige o serviço, fornece as ferramentas e fica com o resultado, o apartamento limpo. O dinheiro vivo, a falta de contrato e os patrões que mudam são condições da venda. Não mudam o que é vendido. Cinco compradores de um dia cada continuam sendo compradores de força de trabalho.">Força de trabalho</button>
+    <button class="q-opt" data-fb="Errado. Um apartamento limpo não é um produto que ela possui e entrega. O apartamento era da família antes e depois. Ela vendeu as horas que o deixaram limpo.">Um produto</button>
+    <button class="q-opt" data-fb="Errado. Ela não possui nada que a família use. As máquinas e os produtos são deles. O que eles usam é o tempo e o esforço dela.">Aluguel de um bem</button>
+    <button class="q-opt" data-fb="Errado. O caso tem cinco patrões e nenhum papel, mas uma única relação: um dia de capacidade, vendido e dirigido por quem compra. Isso não é fronteira. É a forma comum de uma parte grande da classe trabalhadora.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- B2 -->
+<div class="quiz" data-q>
+  <h3>Exercício 7 de 10</h3>
+  <p class="q-text">Uma recepcionista de clínica em Curitiba faz brigadeiros em casa à noite e vende para as colegas, quarenta caixas por semana. Ela compra os ingredientes, define o preço e fica com o dinheiro.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado para os brigadeiros. De dia ela vende força de trabalho à clínica. À noite ela vende outra coisa. Ninguém dirige as horas dela, ninguém é dono da cozinha dela, e a caixa é dela até ser vendida.">Força de trabalho</button>
+    <button class="q-opt" data-correct data-fb="Certo. Ela vende um produto pronto que lhe pertence. O trabalho dela está dentro do produto, mas o que muda de mãos é a caixa, por um preço que ela definiu. É a posição da pequena produtora: ferramentas próprias, material próprio, produto próprio. Repare que uma pessoa pode ocupar duas posições num mesmo dia. A clínica compra a força de trabalho dela; as colegas compram o produto dela. A relação, não a pessoa, é o que os rótulos descrevem.">Um produto</button>
+    <button class="q-opt" data-fb="Errado. As colegas não usam nada dela. Elas comem os brigadeiros. Um produto consumido não é um bem emprestado.">Aluguel de um bem</button>
+    <button class="q-opt" data-fb="Errado. A venda da noite é limpa: um produto, possuído e vendido. O fato de a mesma pessoa vender força de trabalho de dia não embaralha a relação da noite. Mostra que os rótulos descrevem relações, não pessoas.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- B3 -->
+<div class="quiz" data-q>
+  <h3>Exercício 8 de 10 · Duas respostas defensáveis</h3>
+  <p class="q-text">Um homem em Assunção dirige para um aplicativo de corridas doze horas por dia no próprio carro. O aplicativo define o preço de cada corrida, distribui as corridas e fica com uma parte. Ele paga o combustível e os consertos. O aplicativo o chama de parceiro.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Defensável, e você ganha o crédito. Ele não define o preço, as horas dele são moldadas pelo aplicativo, e ele fica com o que sobra depois que o aplicativo tira a parte dele. O aplicativo compra a capacidade dele de trabalhar, por corrida em vez de por hora. Se o seu raciocínio foi 'quem define o preço e dirige o trabalho', é bom método. A prova diz Caso limite por um único motivo: o carro.">Força de trabalho</button>
+    <button class="q-opt" data-fb="Errado. Uma corrida não é um produto que ele possui e depois vende. O aplicativo é dono do preço, do passageiro e da distribuição. Ele é dono do carro e das horas. O que ele entrega está mais perto de um pedaço do seu dia do que de uma coisa pronta.">Um produto</button>
+    <button class="q-opt" data-fb="Errado, embora o aplicativo gostasse que fosse verdade: um parceiro emprestando o carro a uma plataforma. O passageiro não paga para usar o carro. O passageiro paga para ser levado. O ato de dirigir é a coisa, e dirigir é trabalho.">Aluguel de um bem</button>
+    <button class="q-opt" data-correct data-fb="A resposta da prova, e Força de trabalho ganha quase o crédito inteiro. A relação com o aplicativo é uma venda de capacidade, paga por peça: o aplicativo define o preço, dirige o trabalho e fica com uma parte, que é a posição do trabalhador por produção. Mas ele também é dono do seu meio de trabalho, o carro, e paga pelo desgaste, que é a posição do pequeno produtor. Duas relações numa pessoa só, puxando em direções opostas. O pagamento por corrida faz dele um trabalhador que fiscaliza a própria hora extra. O carro faz dele um pequeno dono que carrega o risco. Os marxistas discutem essa posição há uma década, e a palavra parceiro é a ideologia que impede a discussão de ser resolvida a favor dele.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- B4 -->
+<div class="quiz" data-q>
+  <h3>Exercício 9 de 10</h3>
+  <p class="q-text">Uma desenvolvedora de software em Florianópolis tem uma empresa registrada no próprio nome. A empresa tem um único cliente, emite nota todo mês pelo mesmo valor, e ela trabalha em horário fixo no escritório do cliente, sob o gerente do cliente, nos projetos do cliente.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Certo. Tire a fantasia e olhe a relação. Um único comprador, horário fixo, um gerente que dirige o trabalho, um valor mensal: isso é salário por força de trabalho. A empresa no nome dela é uma forma jurídica que desloca impostos e direitos, não uma mudança no que é vendido. A Justiça do Trabalho tem um nome para esse arranjo, pejotização, e às vezes também enxerga através dele.">Força de trabalho</button>
+    <button class="q-opt" data-fb="Errado, embora a nota fiscal diga isso. Pergunte o que o cliente recebe: não um produto entregue e pago, mas as horas dela, dirigidas como ele quiser, mês após mês. Uma nota fiscal por horas é um holerite com outro cabeçalho.">Um produto</button>
+    <button class="q-opt" data-fb="Errado. Ela não empresta ao cliente nada que possua. O escritório, os projetos e as ferramentas são do cliente. O que o cliente usa é ela.">Aluguel de um bem</button>
+    <button class="q-opt" data-fb="Errado. A forma jurídica é incomum para uma trabalhadora, mas a relação não é mista. Todos os fatos apontam para um lado só: horário fixo, um comprador, um gerente, um valor mensal. Guarde Caso limite para duas relações que puxam uma contra a outra.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- B5 -->
+<div class="quiz" data-q>
+  <h3>Exercício 10 de 10</h3>
+  <p class="q-text">Um aposentado em Trípoli, no Líbano, é dono de uma caminhonete. Um construtor aluga a caminhonete por mês e põe o próprio motorista nela. O dono recebe o aluguel e não faz mais nada.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Errado. Ele não vende tempo nem esforço. Ele não dirige. Outra pessoa dirige, e essa pessoa vende força de trabalho ao construtor, não a ele.">Força de trabalho</button>
+    <button class="q-opt" data-fb="Errado. A caminhonete não é vendida. Ela volta no fim do mês. O que foi vendido foi um mês do uso dela.">Um produto</button>
+    <button class="q-opt" data-correct data-fb="Certo. Ele vende o uso de algo que possui, por um período, e continua dono. É a relação de um proprietário, em escala pequena. Compare com o motorista na mesma cabine: o motorista vende as horas dele ao construtor; o dono vende o mês da caminhonete. Mesmo veículo, duas relações. O aluguel vem para o dono porque ele tem o que o construtor precisa, não porque trabalhou.">Aluguel de um bem</button>
+    <button class="q-opt" data-fb="Errado. Só uma relação está presente: propriedade, emprestada. A idade do aposentado e a escala pequena não fazem disso uma fronteira. Propriedade pequena continua sendo propriedade.">Caso limite</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<p class="part-head">Parte 2 · Caça ao erro</p>
+<p class="part-note">Cada passagem tem quatro frases. Três frases usam o método dos dias 9 a 14 corretamente. Uma frase o quebra. Clique na frase que o quebra. Um clique errado também ensina: o feedback diz por que aquela frase está certa.</p>
+
+<!-- S1 -->
+<div class="quiz" data-q>
+  <h3>Passagem 1 · Uma padaria no Recife</h3>
+  <p class="q-text">Encontre a frase que quebra o método.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="Esta frase está certa. Ela declara o valor da força de trabalho e o comprimento da jornada, e diz que o salário foi pago pelo valor integral. É o ponto de partida honesto da teoria. O erro está em outra frase.">"A padaria contrata uma padeira por oito horas e paga a ela o custo de uma vida normal no Recife, que leva cerca de quatro horas do trabalho da sociedade para ser produzido."</button>
+    <button class="q-opt" data-fb="Esta frase está certa. Farinha, fornos e eletricidade transferem seu valor para o pão e não acrescentam nada além do que foi pago por eles. Só a força de trabalho acrescenta mais do que custa. Continue procurando.">"A farinha, os fornos e a eletricidade transferem seu valor para o pão, mas não acrescentam nada além do que a padaria pagou por eles."</button>
+    <button class="q-opt" data-correct data-fb="Certo, você achou. Esta frase explica o lucro pela venda acima do valor. O dia 11 fechou essa porta. Vender caro desloca valor do cliente para a padaria; não cria valor nenhum, e para todas as padarias juntas se cancela. O a mais já estava lá quando o pão saiu do forno: a padeira produziu em oito horas mais valor do que a força de trabalho dela custou. O lucro não precisa de um cliente ignorante. Precisa de uma jornada mais longa do que a parte necessária.">"O lucro da padaria vem de vender o pão acima do valor, para clientes que não sabem quanto custou fazê-lo."</button>
+    <button class="q-opt" data-fb="Esta frase está certa. Um forno mais rápido adotado pela cidade inteira reduz o trabalho de que a sociedade precisa por pão, então o valor de todo pão cai, inclusive o das padarias que ficaram com os fornos antigos. É o dia 10 exatamente. Não há erro aqui.">"Quando um forno novo que assa na metade do tempo se espalha pela cidade, o valor de todo pão cai, até nas padarias que ficaram com os fornos antigos."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- S2 -->
+<div class="quiz" data-q>
+  <h3>Passagem 2 · O Líbano depois de 2019</h3>
+  <p class="q-text">Encontre a frase que quebra o método.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="Esta frase está certa. Ela relata o fato: a lira desabou e os salários pagos em lira caíram a uma fração pequena do seu valor em dólar. Um fato não é um erro. O erro está em outra frase.">"Depois que a lira desabou, um salário que comprava uma vida normal em 2019 comprava um décimo dela em 2022."</button>
+    <button class="q-opt" data-fb="Esta frase está certa. O valor da força de trabalho é o custo de uma vida normal, e esse custo não caiu; subiu em lira. Então o salário caiu abaixo do valor da força de trabalho. É o conceito do dia 12, aplicado. Continue procurando.">"Como o valor da força de trabalho é o custo de uma vida normal, e esse custo não caiu, os salários tinham caído muito abaixo do valor da força de trabalho."</button>
+    <button class="q-opt" data-correct data-fb="Certo, você achou. Esta frase explica a diferença por uma diferença natural de produtividade entre povos. O dia 10 e o dia 12 dizem outra coisa. O valor da força de trabalho é fixado pelo custo de uma vida normal e pelo que os trabalhadores conquistaram, não por um talento nacional para o trabalho. Uma enfermeira libanesa e uma enfermeira francesa fazendo o mesmo serviço gastam o mesmo trabalho abstrato. A diferença entre os salários delas é uma diferença no custo de vida e na correlação de forças, e o colapso a ampliou sem que ninguém ficasse menos produtivo.">"A diferença mostra que o trabalho libanês vale menos que o europeu, porque o trabalhador libanês produz menos em uma hora."</button>
+    <button class="q-opt" data-fb="Esta frase está certa, e é a dupla liberdade do dia 12 numa linha só. Os trabalhadores que ficaram estavam livres para vender a força de trabalho e livres de qualquer outro meio de viver: sem poupança, porque os bancos a seguraram, e sem terra ou loja para recorrer. Não há erro aqui.">"Quem não conseguiu emigrar aceitou o salário, porque os bancos seguraram as economias e não havia outro jeito de viver."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<!-- S3 -->
+<div class="quiz" data-q>
+  <h3>Passagem 3 · Um vale de cobre no Chile</h3>
+  <p class="q-text">Encontre a frase que quebra o método.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="Esta frase está certa. Ela mostra a despossessão criando trabalhadores: a concessão levou a água, as lavouras morreram, e os agricultores ficaram só com as mãos. É o dia 13, num vale chileno. O erro está em outra frase.">"Uma empresa estrangeira obteve a concessão de mineração, desviou o rio e contratou os agricultores cujos campos tinham secado."</button>
+    <button class="q-opt" data-fb="Esta frase está certa. Ela descreve a venda de força de trabalho pelo preço corrente, por pessoas que assinaram sem uma arma na cabeça. O dia 12 diz que o assalariado é livre nesse sentido. A descrição é exata. Continue procurando.">"A empresa pagou o salário local de sempre, e os agricultores assinaram os contratos livremente."</button>
+    <button class="q-opt" data-correct data-fb="Certo, você achou. Esta frase toma a assinatura livre como prova de que não existe coerção. O dia 12 e o dia 13 separam duas liberdades: livre para vender, e livre de qualquer outro meio de viver. A segunda liberdade foi fabricada pela concessão que secou os campos. Um contrato assinado livremente por uma pessoa sem alternativa é a forma normal da relação, não a prova da inocência dela. A coerção está nas condições, não na assinatura.">"Como os contratos foram assinados livremente, a relação entre a empresa e os mineiros não contém coerção nenhuma."</button>
+    <button class="q-opt" data-fb="Esta frase está certa. Ela apresenta o exército de reserva do dia 14: lavouras que morrem continuam mandando famílias novas para o portão da mina, e a presença delas mantém o salário baixo para quem está dentro. Não há erro aqui.">"Os salários ficaram baixos por anos, porque as lavouras em volta da mina continuaram morrendo e a cada safra mais famílias chegavam procurando serviço."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Tentar de novo</button>
+</div>
+
+<p class="part-head">Parte 3 · Sua própria análise</p>
+<p class="part-note">Esta parte não tem atalho. Escreva a sua resposta primeiro. Depois compare com a resposta modelo. Só você vê o seu texto.</p>
+
+<!-- W1 -->
+<div class="exercise">
+  <h3>Exercício 1 · Duas explicações para um fato</h3>
+  <p class="q-text">Em Boa Vista, no norte do Brasil, migrantes venezuelanos que trabalham na construção e no comércio recebem, em média, bem menos do que brasileiros pelo mesmo serviço. Escreva duas explicações para esse fato. Primeiro a que parte dos próprios migrantes. Depois a que parte do valor da força de trabalho e do dia 14.</p>
+  <textarea placeholder="Primeira explicação: ...&#10;&#10;Segunda explicação: ..."></textarea>
+  <button class="reveal-btn">Comparar com as respostas modelo</button>
+  <div class="reveal-text">
+    <strong>Uma explicação que parte dos migrantes:</strong> eles aceitam menos porque estão desesperados. Ou: estão acostumados
+    a salários mais baixos no país deles. Ou: trabalham mais por menos, o que é injusto com os brasileiros. As três explicam o
+    salário por algo que está no migrante: um estado de espírito, um hábito, uma virtude. Nenhuma delas consegue dizer por que o
+    mesmo migrante, com carteira de trabalho e dois anos de cidade, ganha mais.<br><br>
+    <strong>Uma explicação pela teoria:</strong> o valor da força de trabalho é o custo de uma vida normal mais o que os
+    trabalhadores conquistaram e conseguem defender. Um migrante sem documentos não consegue defender nada: sem Justiça do
+    Trabalho, sem sindicato, sem direito de reclamar. Então a força de trabalho dele é comprada abaixo do valor, do jeito que o
+    dia 14 descreveu para os trabalhadores informais. Ele também é exército de reserva no sentido estrito: milhares atravessam a
+    fronteira todo mês, então qualquer patrão pode substituí-lo amanhã. O patrão não precisa pensar em nada disso. Só precisa
+    oferecer menos e ver que é aceito. O salário é baixo porque as condições da venda são ruins, e as condições foram feitas pela
+    fronteira, pelos documentos e pela fila do abrigo, não pelo caráter de quem vende.<br><br>
+    <strong>Teste a sua versão com uma pergunta:</strong> a sua segunda explicação explica por que a diferença diminui quando o
+    migrante consegue documentos e uma rede, sem que nada mude no caráter dele? A primeira explicação não consegue, porque um
+    estado de espírito não tem número de documento.
+  </div>
+</div>
+
+<!-- W2 -->
+<div class="exercise">
+  <h3>Exercício 2 · Preveja, depois confira com a história</h3>
+  <p class="q-text">Brasil, março de 2020. A pandemia fecha lojas, escritórios e restaurantes. Em semanas, milhões de pessoas perdem trabalho formal ou informal. Os restaurantes passam a entregar, e o número de entregadores cadastrados nos aplicativos cresce rápido. Os aplicativos pagam por entrega. Use o dia 12 e o dia 14 à risca. Preveja o que acontece com o pagamento por entrega e com o comprimento do dia de um entregador nos meses seguintes. Depois confira.</p>
+  <p class="q-hint">Escreva a previsão antes de olhar. Essa é a disciplina.</p>
+  <textarea placeholder="Minha previsão, a partir do valor da força de trabalho e do exército de reserva: ..."></textarea>
+  <button class="reveal-btn">Conferir com o que aconteceu</button>
+  <div class="reveal-text">
+    <strong>O que aconteceu:</strong> o pagamento por entrega não subiu, embora a demanda por entregas tenha explodido. Os
+    entregadores relataram que precisavam ficar on-line dez a doze horas para fazer o que um dia mais curto rendia antes. Em 1º
+    de julho de 2020, entregadores em cidades de todo o Brasil fizeram a primeira greve nacional da categoria, o Breque dos
+    Apps, exigindo pagamento maior por quilômetro, seguro contra acidentes e equipamento de proteção. Uma segunda greve veio no
+    fim do mês. Os aplicativos fizeram concessões pequenas em equipamento e mantiveram a estrutura de pagamento.<br><br>
+    <strong>O padrão, se a sua previsão o encontrou:</strong> a demanda pelo serviço subiu, mas a oferta de força de trabalho
+    subiu mais rápido, porque o exército de reserva do dia 14 cresceu em milhões em poucas semanas. Com milhares de entregadores
+    novos prontos para aceitar qualquer corrida, o aplicativo pôde segurar o pagamento por entrega ou deixá-lo cair. O pagamento
+    por peça fez o resto: cada entregador alongou o próprio dia para chegar ao custo de uma vida normal, que é o trabalhador
+    informal do dia 14 vendendo força de trabalho abaixo do valor ao trabalhar as horas que o corpo não aguenta. A greve é o outro
+    lado da teoria: uma classe em si, milhares de desconhecidos de moto, se encontrando pela primeira vez como classe para si.<br><br>
+    <strong>Uma nota honesta:</strong> uma previsão que acrescenta uma condição que o modelo não vê é análise, não fracasso.
+    Exemplos: os aplicativos também cortaram o pagamento por quilômetro no mesmo momento, então a queda foi decisão, não só
+    efeito de mercado; a greve foi organizada pelos mesmos celulares que os aplicativos usam para controlar o trabalho; e o
+    pagamento por entrega não é salário no papel, então os trabalhadores não tinham lei trabalhista a invocar. Diga o que a sua
+    previsão errou e por quê. Esse é o exercício.
+  </div>
+</div>
+
+<!-- W3 -->
+<div class="exercise">
+  <h3>Exercício 3 · Faça os conceitos trabalharem uns sobre os outros</h3>
+  <p class="q-text">O dia 13 contou como os camponeses ingleses foram separados da terra. O dia 14 disse que os trabalhadores informais empurram para baixo o valor da força de trabalho da classe inteira. Use o conceito do dia 12, o valor da força de trabalho como o custo de uma vida normal, para explicar por que a despossessão foi necessária para o capital e por que o exército de reserva mantém esse valor baixo hoje. Diga o que liga os cercamentos de 1750 às catorze horas da costureira.</p>
+  <textarea placeholder="O valor da força de trabalho é... O cercamento foi necessário porque... O exército de reserva o mantém baixo porque... O que os liga: ..."></textarea>
+  <button class="reveal-btn">Comparar com uma resposta modelo</button>
+  <div class="reveal-text">
+    <strong>Um modelo:</strong> o valor da força de trabalho é o custo de uma vida normal, mas uma pessoa que tem terra, uma
+    vaca e um bosque comum não precisa vender força de trabalho para chegar a esse custo. Ela chega sozinha. Então nenhum
+    capitalista conseguiria comprar a capacidade dela por um preço perto do valor; ela pediria o produto inteiro. O cercamento
+    removeu o outro jeito de viver. Depois dele, o único caminho para uma vida normal passava pela venda, e o comprador podia
+    pagar o custo da vida e ficar com o resto do dia. A despossessão é o que faz do valor da força de trabalho o teto do salário,
+    em vez do piso de uma negociação. O exército de reserva é o mesmo mecanismo mantido em funcionamento. Enquanto houver gente
+    do lado de fora do portão sem outro jeito de viver, o trabalhador de dentro não consegue pedir mais do que o custo de uma vida
+    normal, e muitas vezes recebe menos. As catorze horas da costureira são os cercamentos chegando ao Bom Retiro por meio de uma
+    fronteira, de uma dívida e da ausência de qualquer terra para onde voltar.<br><br>
+    <strong>A sua resposta pode ser diferente.</strong> Teste com três perguntas. Ela diz por que uma pessoa com meios próprios
+    de viver não pode ser comprada pelo valor da força de trabalho? Ela diz o que o exército de reserva faz com o salário de quem
+    já tem emprego? Ela nomeia a coisa que tanto o cercamento quanto a informalidade removem, a alternativa? Se sim, três dias da
+    semana estão trabalhando uns sobre os outros. É para isso que a prova existe.
+  </div>
+</div>
+
+<button class="finish-btn">Terminei. Mostrar o resultado</button>
+
+<div class="summary">
+  <h2>Prova 2: encerrada</h2>
+  <p class="tally"></p>
+  <p class="summary-note"></p>
+  <p>O que cada parte treina. <strong>Parte 1:</strong> as duas perguntas da semana. O que aconteceu com o trabalho de que a
+  sociedade precisa, e o que está sendo vendido de verdade por baixo do contrato, do aplicativo ou da nota fiscal.
+  <strong>Parte 2:</strong> controle de qualidade da análise. Os erros que vestem o uniforme do método nesta semana: lucro por
+  trapaça, salário por caráter nacional, liberdade por assinatura. <strong>Parte 3:</strong> produção. Se a sua previsão sobre os
+  entregadores encontrou o exército de reserva antes da resposta, os seis dias fizeram o trabalho deles. A semana 3 mede a parte
+  não paga do dia.</p>
+</div>
+
+<footer class="lesson-footer">
+  Prova 2, dias 9 a 14. Daily Marxism.
+</footer>
+
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-q]').forEach(function (q) {
+    var opts = q.querySelectorAll('.q-opt');
+    var fb = q.querySelector('.q-feedback');
+    var retry = q.querySelector('.q-retry');
+
+    opts.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var right = opt.hasAttribute('data-correct');
+        opts.forEach(function (o) { o.disabled = true; o.classList.remove('correct', 'wrong'); });
+        opt.classList.add(right ? 'correct' : 'wrong');
+        fb.className = 'q-feedback show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = '<span class="fb-label">' +
+          (right ? '✓ Certo' : '✗ Não é esta') +
+          '</span>' + opt.getAttribute('data-fb');
+        retry.classList.toggle('show', !right);
+        q.dataset.answered = right ? 'right' : 'almost';
+      });
+    });
+
+    retry.addEventListener('click', function () {
+      opts.forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
+      fb.className = 'q-feedback';
+      fb.innerHTML = '';
+      retry.classList.remove('show');
+      delete q.dataset.answered;
+    });
+  });
+
+  document.querySelectorAll('.reveal-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.nextElementSibling.classList.add('show');
+      btn.style.display = 'none';
+    });
+  });
+
+  document.querySelector('.finish-btn').addEventListener('click', function () {
+    var qs = document.querySelectorAll('[data-q]');
+    var right = 0, tried = 0;
+    qs.forEach(function (q) {
+      if (q.dataset.answered) tried++;
+      if (q.dataset.answered === 'right') right++;
+    });
+    var summary = document.querySelector('.summary');
+    var tally = summary.querySelector('.tally');
+    var note = summary.querySelector('.summary-note');
+
+    if (tried === 0) {
+      tally.textContent = 'Você foi direto para a parte escrita. Essa parte é a mais importante. Os exercícios esperam por você.';
+      note.textContent = '';
+    } else {
+      tally.textContent = 'Exercícios e passagens: ' + right + ' de ' + qs.length + ' certos na primeira tentativa' + (tried < qs.length ? ' (' + (qs.length - tried) + ' sem resposta)' : '') + '.';
+      if (right === qs.length) {
+        note.textContent = 'Tudo certo na primeira tentativa, inclusive os casos limite e os exercícios de duas respostas. Valor, força de trabalho e exército de reserva estão firmes. A semana 3 pode construir sobre eles.';
+      } else if (right >= Math.ceil(qs.length * 0.6)) {
+        note.textContent = 'Um bom resultado. Veja quais exercícios pegaram você. Se os casos limite pegaram, saiba: eles pegam todo mundo. O feedback de cada erro nomeia a distinção exata a estudar.';
+      } else {
+        note.textContent = 'Estes exercícios comprimem uma semana de teoria em frases únicas. Um erro aqui é informação, não veredito. Leia de novo o feedback de cada erro. Cada um nomeia uma distinção a aprender antes da semana 3.';
+      }
+    }
+    summary.classList.add('show');
+    summary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>

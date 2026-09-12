@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Marxism · Quiz 2</title>
+<style>
+/* Mirror of ../../assets/course.css so this file also renders correctly when
+   opened standalone (email attachment, chat preview). The <link> below is
+   loaded after this block, so inside the repo the shared stylesheet wins. */
+:root {
+  --ink: #1a1a18;
+  --paper: #fffef9;
+  --accent: #b5541c;
+  --accent-soft: #f4e3d3;
+  --muted: #6b6b64;
+  --rule: #d8d5cb;
+  --good: #2e6e3e;
+  --bad: #a03123;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+.page { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+header.lesson-header {
+  border-bottom: 3px double var(--rule);
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
+}
+.kicker {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.15; font-weight: normal; margin: 0 0 0.5rem; }
+h2 { font-size: 1.35rem; font-weight: normal; font-style: italic; margin: 2.4rem 0 0.8rem; }
+.lede { font-size: 1.15rem; font-style: italic; color: var(--muted); margin: 0; }
+a { color: var(--accent); }
+a:hover { color: #8a3f13; }
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p { margin: 0; }
+footer.lesson-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+@media print {
+  a { color: var(--ink); text-decoration: none; }
+  .page { padding-top: 1rem; }
+}
+
+/* ---- Workbook widgets, in the course's design language ---- */
+.part-head {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.4rem;
+  margin: 2.8rem 0 0.5rem;
+}
+.part-note { color: var(--muted); font-style: italic; font-size: 0.98rem; margin: 0 0 1.4rem; }
+
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.quiz h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quiz .q-text { margin: 0.4rem 0 0.9rem; font-weight: bold; }
+.quiz .q-hint { margin: -0.5rem 0 0.9rem; font-size: 0.95rem; font-style: italic; color: var(--muted); }
+
+.opts { display: flex; flex-direction: column; gap: 0.4rem; }
+.opts.row { flex-direction: row; flex-wrap: wrap; }
+button.q-opt {
+  display: block;
+  text-align: left;
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+.opts.row button.q-opt {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.92rem;
+}
+/* High-specificity overrides so course.css's full-width q-opt rule
+   doesn't stack the one-word drill options vertically. */
+.quiz .opts button.q-opt { width: 100%; margin: 0; }
+.quiz .opts.row button.q-opt { width: auto; }
+button.q-opt:hover:not(:disabled) { border-color: var(--accent); }
+button.q-opt:disabled { cursor: default; opacity: 0.55; }
+button.q-opt.correct { border-color: var(--good); background: #edf6ee; opacity: 1; font-weight: bold; }
+button.q-opt.wrong { border-color: var(--bad); background: #faeceb; opacity: 1; }
+
+.q-feedback {
+  margin-top: 0.8rem;
+  font-size: 0.97rem;
+  border-radius: 0 6px 6px 0;
+  padding: 0.7rem 0.9rem;
+  display: none;
+}
+.q-feedback.show { display: block; }
+.q-feedback.good { border-left: 4px solid var(--good); background: #edf6ee; }
+.q-feedback.bad { border-left: 4px solid var(--bad); background: #faeceb; }
+.q-feedback .fb-label {
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.q-feedback.good .fb-label { color: var(--good); }
+.q-feedback.bad .fb-label { color: var(--bad); }
+
+button.q-retry {
+  margin-top: 0.7rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  color: var(--muted);
+  display: none;
+}
+button.q-retry.show { display: inline-block; }
+button.q-retry:hover { border-color: var(--accent); color: var(--accent); }
+
+.exercise {
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: #fbfaf4;
+}
+.exercise h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.exercise textarea {
+  width: 100%;
+  min-height: 7rem;
+  font: inherit;
+  font-size: 0.98rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+  resize: vertical;
+  margin-top: 0.8rem;
+}
+.exercise textarea:focus { outline: none; border-color: var(--accent); }
+button.reveal-btn {
+  margin-top: 0.8rem;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+button.reveal-btn:hover { background: #8a3f13; }
+.reveal-text {
+  display: none;
+  margin-top: 0.9rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.97rem;
+}
+.reveal-text.show { display: block; }
+
+.summary {
+  display: none;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.4rem 1.5rem;
+  margin-top: 2.4rem;
+  background: #fbfaf4;
+}
+.summary.show { display: block; }
+.summary h2 { margin-top: 0; }
+.summary .tally { font-weight: bold; }
+
+button.finish-btn {
+  display: block;
+  margin: 2.4rem auto 0;
+  font-family: 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+}
+button.finish-btn:hover { background: #8a3f13; }
+
+@media print { button.q-opt { border: 1px solid #999; } }
+</style>
+<link rel="stylesheet" href="../../assets/course.css">
+</head>
+<body>
+<div class="page">
+
+<header class="lesson-header">
+  <p class="kicker">Daily Marxism · Quiz 2</p>
+  <h1>Six days on value. Now use them on cases you did not see.</h1>
+  <p class="lede">This quiz has three parts. Part 1 is a classification drill, in two sets. Part 2 is an error hunt. Part 3 is written analysis, with model answers.</p>
+</header>
+
+<div class="callout">
+  <p><strong>Notes about the format.</strong> The answer options are short. The length of an option does not show the correct answer.
+  Some cases are true border cases. For these, "Border case" is the correct choice. Two drills have two defensible answers, and their
+  feedback says so. There are no grades and no timers. You can try again after each wrong answer. Only you see your text.</p>
+</div>
+
+<p class="part-head">Part 1 · Classification drill</p>
+<p class="part-note">Set A: five events, four labels. In each case, ask one question: what happened to the socially necessary labour time of the thing? If it changed, value changed. If only money moved, only the price moved. "Border case" is for a case where the concept of value does not fit cleanly.</p>
+
+<!-- A1 -->
+<div class="quiz" data-q>
+  <h3>Drill 1 of 10</h3>
+  <p class="q-text">In two years, most garment factories in Bangladesh install automatic cutting machines. A shirt now takes a third less labour to make. A small workshop in Dhaka still cuts by hand, with the same workers and the same hours as before. What happened to the value of the shirts made in that small workshop?</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Correct. Value is set by the labour that society now needs to make a shirt, not by the hours this workshop spends. The average fell. So the value of every shirt fell, including the shirts cut by hand. The workshop spends the same hours and gets less value for them. That is the position of the hand weaver after the power loom, in a new country and a new century.">Value falls</button>
+    <button class="q-opt" data-fb="Not correct, but a natural guess: the workshop has not changed, so its shirts seem to keep their value. Value does not live inside the workshop. It is measured by the clock of society. When the average time falls, the value of all shirts falls, whoever made them.">Value rises</button>
+    <button class="q-opt" data-fb="Not correct. The price will move too, but the question asks about value, and value did change. The labour that society needs to make a shirt fell by a third. That is a change in the centre, not only in the swing around it.">Price moves</button>
+    <button class="q-opt" data-fb="Not correct. This is a clean case. A shirt is a commodity, its socially necessary labour time fell, so its value fell. Keep Border case for a thing whose value is hard to define at all.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- A2 -->
+<div class="quiz" data-q>
+  <h3>Drill 2 of 10</h3>
+  <p class="q-text">Attacks on ships in the Red Sea force cargo from Asia to Europe to sail around Africa. In Beirut, a kilo of Vietnamese coffee costs thirty percent more within two months. Nothing changed on the farms or in the roasting plants.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. Look at where the change happened. The farms and the roasting plants work as before. The labour needed to grow and roast the coffee did not change. The extra cost is in transport, which is a small part of the labour in a kilo of coffee, and a temporary one.">Value falls</button>
+    <button class="q-opt" data-fb="Near, and a careful student can argue it: transport is labour too, and the longer route adds some. But thirty percent in two months is not thirty percent more labour. Most of the jump is scarcity and fear in the price. The centre moved a little; the swing moved a lot.">Value rises</button>
+    <button class="q-opt" data-correct data-fb="Correct. Supply was interrupted, so the price swung up. Value, the labour society needs to put a kilo of roasted coffee on a shelf, changed little. When the route reopens, the price will fall back toward the centre. Value explains why coffee always costs more than rice; events like this explain the swings.">Price moves</button>
+    <button class="q-opt" data-fb="Not correct. Coffee is a commodity with a clear value. The case is about a price swing, and the theory has a clear place for it: supply and demand move the price around a centre that labour sets.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- A3 -->
+<div class="quiz" data-q>
+  <h3>Drill 3 of 10 · Two defensible answers</h3>
+  <p class="q-text">A yerba mate cooperative in Itapúa, Paraguay, goes back to slow wood drying, which takes three times the labour of the industrial method. It sells the yerba as "artisanal" at three times the usual price, and buyers pay it.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. Nothing made yerba cheaper to produce. If anything, this yerba took more labour. The direction is wrong.">Value falls</button>
+    <button class="q-opt" data-fb="Half correct. This yerba did take more labour. But the rule says that more hours than the average do not create more value, unless the product is a different commodity. Ask whether artisanal yerba is a different commodity from ordinary yerba, or the same one with a story. That question is the reason this drill has two answers.">Value rises</button>
+    <button class="q-opt" data-fb="Defensible, and you get credit. If artisanal yerba is the same commodity as ordinary yerba, then the slow method is only a slower way to make it, the value per kilo is unchanged, and the triple price is a premium that buyers pay for the story. The quiz says Border case because the market itself is undecided on the first question.">Price moves</button>
+    <button class="q-opt" data-correct data-fb="The quiz's answer, and Price moves gets nearly full credit. Everything depends on whether buyers treat artisanal yerba as a different use value. If they do, it is a different commodity with its own socially necessary labour time, and that time is high, so its value is high. If they do not, it is ordinary yerba with a slow method and a marketing premium. The market has not settled this, and while it is unsettled the price carries both possibilities. Watch what happens when a large company starts selling smoke-dried yerba at half the cooperative's price. The answer arrives then.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- A4 -->
+<div class="quiz" data-q>
+  <h3>Drill 4 of 10</h3>
+  <p class="q-text">Brazil creates a mandatory two year certification for industrial electricians. From now on, nobody can do the job without it. Ask about the value of an electrician's labour power, the capacity to work that an electrician sells.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. The certification adds labour time to the production of an electrician. Two years of study are not free to society. More labour to produce the worker means more value in the labour power, not less.">Value falls</button>
+    <button class="q-opt" data-correct data-fb="Correct. The value of labour power is the labour society needs to produce a worker able to do the job. The two years of certification are now part of that labour. So the value of an electrician's labour power rises. Whether the wage follows is a second question, decided by the balance of forces, but the centre it moves around has risen. Note also what happens to the hours of the certified electrician: each hour now counts as more than an hour of simple labour, because the training is released a little in each of them.">Value rises</button>
+    <button class="q-opt" data-fb="Not correct. Wages may move for many reasons, but this case changes the cost of producing the worker. That is a change in value, not only in price.">Price moves</button>
+    <button class="q-opt" data-fb="Not correct. Labour power has a value like any commodity: the labour needed to produce it. Training is part of that labour. The case fits the concept cleanly.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- A5 -->
+<div class="quiz" data-q>
+  <h3>Drill 5 of 10</h3>
+  <p class="q-text">A plot of bare land in the west of São Paulo sold for a certain sum in 2010. In 2025 it sells for six times that sum. Nobody did anything to the land. Ask about the value of the plot.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. Nothing happened to any labour, because there is no labour in bare land. The direction is not the issue. The issue is whether the concept applies.">Value falls</button>
+    <button class="q-opt" data-fb="Not correct, and this is the trap. The price rose sixfold, so it feels like the value rose. But value is the labour society needs to produce a thing, and nobody produces bare land. There is no labour in it to rise.">Value rises</button>
+    <button class="q-opt" data-fb="Defensible, and you get partial credit: only the price moved, because there is nothing else to move. But saying that the price moved around a centre would be wrong. There is no centre. That is why the quiz says Border case.">Price moves</button>
+    <button class="q-opt" data-correct data-fb="Correct. Land that nobody worked has no value, because no labour produced it. Yet it has a price, and the price rises with the city around it. Marx notes exactly this: things that are not products of labour, like land or honour, can have a price without having a value. The price expresses a claim: whoever owns the plot can charge others for the right to build. This is the first time in the course that price and value come apart completely. Keep the case. It returns in week 8 with the word rent.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<p class="part-note">Set B: five persons, four labels. In each case, ask what the person actually sells: the capacity to work for a stretch of time, a finished product, or the use of something they own. Ignore what the contract, the app or the tax form calls it.</p>
+
+<!-- B1 -->
+<div class="quiz" data-q>
+  <h3>Drill 6 of 10</h3>
+  <p class="q-text">A woman in Osasco cleans a different flat each day of the week. Each family pays her a fixed day rate in cash. She brings nothing but herself; the products and the machines belong to the flat.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Correct. She sells a day of her capacity to work. The family directs it, provides the tools and keeps the result, a clean flat. The cash, the lack of a contract and the changing employers are conditions of the sale. They do not change what is sold. Five buyers of one day each are still buyers of labour power.">Labour power</button>
+    <button class="q-opt" data-fb="Not correct. A clean flat is not a product she owns and hands over. It was the family's flat before and after. She sold the hours that made it clean.">The product</button>
+    <button class="q-opt" data-fb="Not correct. She owns nothing that the family uses. The machines and the products are theirs. What they use is her time and her effort.">Property use</button>
+    <button class="q-opt" data-fb="Not correct. The case has five employers and no paper, but one relation: a day of capacity, sold and directed by the buyer. That is not a border. It is the ordinary form of a large part of the working class.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- B2 -->
+<div class="quiz" data-q>
+  <h3>Drill 7 of 10</h3>
+  <p class="q-text">A receptionist at a clinic in Curitiba makes brigadeiros at home in the evening and sells them to her colleagues, forty boxes a week. She buys the ingredients, sets the price and keeps the money.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct for the brigadeiros. By day she sells labour power to the clinic. In the evening she sells something else. Nobody directs her hours, nobody owns her kitchen, and the box is hers until it is sold.">Labour power</button>
+    <button class="q-opt" data-correct data-fb="Correct. She sells a finished product that she owns. Her own labour is inside it, but what changes hands is the box, at a price she set. This is the position of the small producer: own tools, own materials, own product. Note that one person can hold two positions in one day. The clinic buys her labour power; her colleagues buy her product. The relation, not the person, is what the labels describe.">The product</button>
+    <button class="q-opt" data-fb="Not correct. Her colleagues do not use anything of hers. They eat the brigadeiros. A product consumed is not property lent.">Property use</button>
+    <button class="q-opt" data-fb="Not correct. The evening sale is clean: a product, owned and sold. The fact that the same person sells labour power by day does not blur the evening relation. It shows that the labels describe relations, not persons.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- B3 -->
+<div class="quiz" data-q>
+  <h3>Drill 8 of 10 · Two defensible answers</h3>
+  <p class="q-text">A man in Asunción drives for a ride app twelve hours a day in his own car. The app sets the price of each ride, assigns the rides and keeps a share. He pays for the fuel and the repairs. The app calls him a partner.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Defensible, and you get credit. He does not set his price, his hours are shaped by the app, and he keeps what is left after the app takes its share. The app buys his capacity to work, by the ride instead of by the hour. If your reasoning was 'who sets the price and directs the work', that is good method. The quiz says Border case for one reason: the car.">Labour power</button>
+    <button class="q-opt" data-fb="Not correct. A ride is not a product he owns and then sells. The app owns the price, the passenger and the assignment. He owns the car and the hours. What he hands over is closer to a stretch of his day than to a finished thing.">The product</button>
+    <button class="q-opt" data-fb="Not correct, though the app would like it to be true: a partner lending his car to a platform. The passenger does not pay to use the car. The passenger pays to be driven. The driving is the thing, and driving is labour.">Property use</button>
+    <button class="q-opt" data-correct data-fb="The quiz's answer, and Labour power gets nearly full credit. The relation to the app is a sale of capacity, paid by the piece: the app sets the price, directs the work and takes a share, which is the position of the piece worker. But he also owns his means of work, the car, and pays for its wear, which is the position of the small producer. Two relations in one person, and they pull in opposite directions. The piece rate makes him a worker who supervises his own overtime. The car makes him a small owner who carries the risk. Marxists have argued about this position for a decade, and the word partner is the ideology that keeps the argument from being settled in his favour.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- B4 -->
+<div class="quiz" data-q>
+  <h3>Drill 9 of 10</h3>
+  <p class="q-text">A software developer in Florianópolis has a company registered in her own name. It has one client, invoices it every month for the same sum, and she works fixed hours in the client's office, under the client's manager, on the client's projects.</p>
+  <div class="opts row">
+    <button class="q-opt" data-correct data-fb="Correct. Strip off the costume and look at the relation. One buyer, fixed hours, a manager who directs the work, a monthly sum: that is a wage for labour power. The company in her name is a legal form that moves taxes and rights, not a change in what is sold. Brazilian labour courts have a word for this arrangement, pejotização, and they sometimes see through it too.">Labour power</button>
+    <button class="q-opt" data-fb="Not correct, though the invoice says so. Ask what the client receives: not a product delivered and paid for, but her hours, directed as they wish, month after month. An invoice for hours is a payslip with a different header.">The product</button>
+    <button class="q-opt" data-fb="Not correct. She lends the client nothing she owns. The office, the projects and the tools are the client's. What the client uses is her.">Property use</button>
+    <button class="q-opt" data-fb="Not correct. The legal form is unusual for a worker, but the relation is not mixed. Every fact points one way: fixed hours, one buyer, a manager, a monthly sum. Keep Border case for two relations that pull against each other.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- B5 -->
+<div class="quiz" data-q>
+  <h3>Drill 10 of 10</h3>
+  <p class="q-text">A retired man in Tripoli, Lebanon, owns a pickup truck. A builder rents it by the month and puts his own driver in it. The owner receives the rent and does nothing else.</p>
+  <div class="opts row">
+    <button class="q-opt" data-fb="Not correct. He sells no time and no effort. He does not drive. Another person drives, and that person sells labour power to the builder, not to him.">Labour power</button>
+    <button class="q-opt" data-fb="Not correct. The truck is not sold. It comes back at the end of the month. What was sold was a month of its use.">The product</button>
+    <button class="q-opt" data-correct data-fb="Correct. He sells the use of something he owns, for a period, and keeps ownership. This is the relation of an owner, on a small scale. Compare it with the driver in the same cabin: the driver sells his hours to the builder; the owner sells the truck's month. Same vehicle, two relations. The rent comes to the owner because he has what the builder needs, not because he worked.">Property use</button>
+    <button class="q-opt" data-fb="Not correct. Only one relation is present: ownership, lent out. The retired man's age and the small scale do not make it a border. Small ownership is still ownership.">Border case</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<p class="part-head">Part 2 · Find the error</p>
+<p class="part-note">Each passage has four sentences. Three sentences use the method of days 9 to 14 correctly. One sentence breaks it. Click the sentence that breaks it. A wrong click also teaches: the feedback tells you why that sentence is correct.</p>
+
+<!-- S1 -->
+<div class="quiz" data-q>
+  <h3>Passage 1 · A bakery in Recife</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="This sentence is correct. It states the value of labour power and the length of the day, and it says the wage was paid at full value. That is the honest starting point of the theory. The error is in a different sentence.">"The bakery hires a baker for eight hours and pays her the cost of a normal life in Recife, which takes about four hours of society's labour to produce."</button>
+    <button class="q-opt" data-fb="This sentence is correct. Flour, ovens and electricity pass their value into the bread and add nothing beyond what was paid for them. Only labour power adds more than it costs. Continue the search.">"The flour, the ovens and the electricity pass their value into the bread, but they add nothing beyond what the bakery paid for them."</button>
+    <button class="q-opt" data-correct data-fb="Correct, you found it. This sentence explains the profit by selling above value. Day 11 closed that door. Selling dear moves value from the customer to the bakery; it creates none, and for all bakeries together it cancels out. The extra was already there when the bread left the oven: the baker produced more value in eight hours than her labour power cost. The profit does not need an ignorant customer. It needs a working day longer than the necessary part.">"The bakery's profit comes from selling the bread above its value, to customers who do not know what it cost to make."</button>
+    <button class="q-opt" data-fb="This sentence is correct. A faster oven adopted across the city lowers the labour society needs per loaf, so the value of every loaf falls, including the loaves of bakeries that kept the old ovens. That is day 10 exactly. No error here.">"When a new oven that bakes in half the time spreads through the city, the value of every loaf falls, even in bakeries that kept the old ovens."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- S2 -->
+<div class="quiz" data-q>
+  <h3>Passage 2 · Lebanon after 2019</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="This sentence is correct. It reports the fact: the lira collapsed and wages paid in lira fell to a small fraction of their dollar value. A fact is not an error. The error is in a different sentence.">"After the lira collapsed, a salary that bought a normal life in 2019 bought a tenth of it by 2022."</button>
+    <button class="q-opt" data-fb="This sentence is correct. The value of labour power is the cost of a normal life, and that cost did not fall; it rose in lira. So the wage fell below the value of labour power. This is the concept of day 12, applied. Continue the search.">"Since the value of labour power is the cost of a normal life, and that cost did not fall, wages had dropped far below the value of labour power."</button>
+    <button class="q-opt" data-correct data-fb="Correct, you found it. This sentence explains the gap by a natural difference in productivity between peoples. Day 10 and day 12 say otherwise. The value of labour power is set by the cost of a normal life and by what workers have won, not by a national talent for work. A Lebanese nurse and a French nurse doing the same work spend the same abstract labour. The gap between their wages is a difference in the cost of life and in the balance of forces, and the collapse widened it without anyone becoming less productive.">"The gap shows that Lebanese labour is worth less than European labour, because Lebanese workers produce less in an hour."</button>
+    <button class="q-opt" data-fb="This sentence is correct, and it is the double freedom of day 12 in one line. The workers who stayed were free to sell their labour power and free of any other way to live: no savings, since the banks held them, and no land or shop to fall back on. No error here.">"Those who could not emigrate accepted the wage, because the banks held their savings and there was no other way to live."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<!-- S3 -->
+<div class="quiz" data-q>
+  <h3>Passage 3 · A copper valley in Chile</h3>
+  <p class="q-text">Find the sentence that breaks the method.</p>
+  <div class="opts">
+    <button class="q-opt" data-fb="This sentence is correct. It shows dispossession creating workers: the concession took the water, the farms failed, and the farmers had only their hands left. That is day 13, in a Chilean valley. The error is in a different sentence.">"A foreign company obtained the mining concession, diverted the river, and hired the farmers whose fields had dried up."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It describes the sale of labour power at the going rate, by people who signed without a gun at their heads. Day 12 says the wage worker is free in this sense. The description is accurate. Continue the search.">"The company paid the usual local wage, and the farmers signed the contracts freely."</button>
+    <button class="q-opt" data-correct data-fb="Correct, you found it. This sentence takes the free signature as proof that no compulsion exists. Day 12 and day 13 separate two freedoms: free to sell, and free of any other way to live. The second freedom was made by the concession that dried the fields. A contract signed freely by a person with no alternative is the normal form of the relation, not the proof of its innocence. The compulsion is in the conditions, not in the signature.">"Because the contracts were signed freely, the relation between the company and the miners contains no compulsion."</button>
+    <button class="q-opt" data-fb="This sentence is correct. It gives the reserve army of day 14: failing farms keep sending new families to the mine gate, and their presence keeps the wage low for those inside. No error here.">"Wages stayed low for years, because the farms around the mine kept failing and each season more families arrived looking for work."</button>
+  </div>
+  <div class="q-feedback"></div>
+  <button class="q-retry">↺ Try again</button>
+</div>
+
+<p class="part-head">Part 3 · Your own analysis</p>
+<p class="part-note">This part has no shortcuts. Write your answer first. Then compare it with the model answer. Only you see your text.</p>
+
+<!-- W1 -->
+<div class="exercise">
+  <h3>Exercise 1 · Two accounts of one fact</h3>
+  <p class="q-text">In Boa Vista, in the north of Brazil, Venezuelan migrants who work in construction and in shops are paid, on average, well below what Brazilians earn for the same work. Write two accounts of this fact. First the account that starts from the migrants themselves. Then the account that starts from the value of labour power and from day 14.</p>
+  <textarea placeholder="First account: ...&#10;&#10;Second account: ..."></textarea>
+  <button class="reveal-btn">Compare with the model answers</button>
+  <div class="reveal-text">
+    <strong>One account that starts from the migrants:</strong> they accept less because they are desperate. Or: they are used to
+    lower wages at home. Or: they work harder for less, which is unfair to Brazilians. All three explain the wage by something in
+    the migrant: a state of mind, a habit, a virtue. None of them can say why the same migrant, with a Brazilian work card and
+    two years in the city, earns more.<br><br>
+    <strong>One account from the theory:</strong> the value of labour power is the cost of a normal life plus what workers have
+    won and can defend. A migrant without papers can defend nothing: no labour court, no union, no right to complain. So his
+    labour power is bought below its value, the way day 14 described for informal workers. He is also a reserve army in the
+    strict sense: thousands more cross the border each month, so any employer can replace him tomorrow. The employer does not
+    need to think any of this. He only needs to offer less and see that it is accepted. The wage is low because the conditions
+    of the sale are bad, and the conditions were made by the border, the papers and the queue at the shelter, not by the
+    character of the person selling.<br><br>
+    <strong>Test your version with one question:</strong> does your second account explain why the gap narrows when the migrant
+    obtains papers and a network, without anything changing in his character? The first account cannot, because a state of mind
+    has no document number.
+  </div>
+</div>
+
+<!-- W2 -->
+<div class="exercise">
+  <h3>Exercise 2 · Predict, then check against history</h3>
+  <p class="q-text">Brazil, March 2020. The pandemic closes shops, offices and restaurants. Within weeks, millions of people lose formal or informal work. Restaurants switch to delivery, and the number of couriers registered on the delivery apps grows fast. The apps pay per delivery. Use day 12 and day 14 strictly. Predict what happens to the pay per delivery and to the length of a courier's day over the following months. Then check.</p>
+  <p class="q-hint">Write the prediction before you look. That is the discipline.</p>
+  <textarea placeholder="My prediction, based on the value of labour power and the reserve army: ..."></textarea>
+  <button class="reveal-btn">Check against what happened</button>
+  <div class="reveal-text">
+    <strong>What happened:</strong> the pay per delivery did not rise, though demand for deliveries exploded. Couriers reported
+    that they had to stay online ten to twelve hours to make what a shorter day had made before. On 1 July 2020, couriers in
+    cities across Brazil held the first national delivery strike, the Breque dos Apps, demanding higher pay per kilometre,
+    accident insurance and protective equipment. A second strike followed at the end of the month. The apps made small
+    concessions on equipment and kept the pay structure.<br><br>
+    <strong>The pattern, if your prediction found it:</strong> demand for the service rose, but the supply of labour power rose
+    faster, because the reserve army of day 14 grew by millions in a few weeks. With thousands of new couriers ready to take any
+    ride, the app could hold the pay per delivery flat or let it fall. Pay per piece then did the rest: each courier lengthened
+    his own day to reach the cost of a normal life, which is the informal worker of day 14 selling labour power below its value
+    by working the hours a body cannot sustain. The strike is the other side of the theory: a class in itself, thousands of
+    strangers on motorbikes, meeting for the first time as a class for itself.<br><br>
+    <strong>An honest note:</strong> a prediction that adds a condition the template misses is analysis, not failure. Examples:
+    the apps also cut pay per kilometre at the same moment, so the fall was a decision, not only a market effect; the strike
+    was organized through the same phones that the apps use to control the work; and the pay per delivery is not a wage on
+    paper, so the workers had no labour law to invoke. Name what your prediction got wrong and why. That is the exercise.
+  </div>
+</div>
+
+<!-- W3 -->
+<div class="exercise">
+  <h3>Exercise 3 · Make the concepts work on each other</h3>
+  <p class="q-text">Day 13 told how English peasants were separated from the land. Day 14 said that informal workers press down the value of labour power for the whole class. Use the concept of day 12, the value of labour power as the cost of a normal life, to explain why dispossession was necessary for capital and why the reserve army keeps that value low today. Say what connects the enclosures of 1750 to the seamstress's fourteen hours.</p>
+  <textarea placeholder="The value of labour power is... Enclosure was necessary because... The reserve army keeps it low because... What connects them: ..."></textarea>
+  <button class="reveal-btn">Compare with a model answer</button>
+  <div class="reveal-text">
+    <strong>One model:</strong> the value of labour power is the cost of a normal life, but a person who has land, a cow and a
+    common wood does not need to sell labour power to reach that cost. She reaches it herself. So no capitalist could buy her
+    capacity at any price near its value; she would ask for the whole product. Enclosure removed the other way to live. After
+    it, the only route to a normal life ran through the sale, and the buyer could pay the cost of the life and keep the rest
+    of the day. Dispossession is what makes the value of labour power the ceiling of the wage instead of the floor of a
+    negotiation. The reserve army is the same mechanism kept running. As long as there are people outside the gate with no other
+    way to live, the worker inside cannot ask for more than the cost of a normal life, and often gets less. The seamstress's
+    fourteen hours are the enclosures arriving in Bom Retiro by way of a border, a debt and the absence of any land to go back to.<br><br>
+    <strong>Your answer can be different.</strong> Test it with three questions. Does it say why a person with her own means of
+    living cannot be bought at the value of labour power? Does it say what the reserve army does to the wage of the worker who
+    already has a job? Does it name the thing that both enclosure and informality remove, the alternative? If yes, three days of
+    the week are working on each other. That is what the quiz is for.
+  </div>
+</div>
+
+<button class="finish-btn">I am done. Show the result</button>
+
+<div class="summary">
+  <h2>Quiz 2: closed</h2>
+  <p class="tally"></p>
+  <p class="summary-note"></p>
+  <p>What each part trains. <strong>Part 1:</strong> the two questions of the week. What happened to the labour society needs,
+  and what is really being sold under the contract, the app or the invoice. <strong>Part 2:</strong> quality control on
+  analysis. The errors that wear the uniform of the method this week: profit from cheating, wages from national character,
+  freedom from a signature. <strong>Part 3:</strong> production. If your delivery prediction found the reserve army before the
+  reveal, the six days did their work. Week 3 measures the unpaid part of the day.</p>
+</div>
+
+<footer class="lesson-footer">
+  Quiz 2, covering days 9 to 14. Daily Marxism.
+</footer>
+
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-q]').forEach(function (q) {
+    var opts = q.querySelectorAll('.q-opt');
+    var fb = q.querySelector('.q-feedback');
+    var retry = q.querySelector('.q-retry');
+
+    opts.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var right = opt.hasAttribute('data-correct');
+        opts.forEach(function (o) { o.disabled = true; o.classList.remove('correct', 'wrong'); });
+        opt.classList.add(right ? 'correct' : 'wrong');
+        fb.className = 'q-feedback show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = '<span class="fb-label">' +
+          (right ? '✓ Correct' : '✗ Not this one') +
+          '</span>' + opt.getAttribute('data-fb');
+        retry.classList.toggle('show', !right);
+        q.dataset.answered = right ? 'right' : 'almost';
+      });
+    });
+
+    retry.addEventListener('click', function () {
+      opts.forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
+      fb.className = 'q-feedback';
+      fb.innerHTML = '';
+      retry.classList.remove('show');
+      delete q.dataset.answered;
+    });
+  });
+
+  document.querySelectorAll('.reveal-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.nextElementSibling.classList.add('show');
+      btn.style.display = 'none';
+    });
+  });
+
+  document.querySelector('.finish-btn').addEventListener('click', function () {
+    var qs = document.querySelectorAll('[data-q]');
+    var right = 0, tried = 0;
+    qs.forEach(function (q) {
+      if (q.dataset.answered) tried++;
+      if (q.dataset.answered === 'right') right++;
+    });
+    var summary = document.querySelector('.summary');
+    var tally = summary.querySelector('.tally');
+    var note = summary.querySelector('.summary-note');
+
+    if (tried === 0) {
+      tally.textContent = 'You went directly to the writing part. That part is the most important. The drills will wait for you.';
+      note.textContent = '';
+    } else {
+      tally.textContent = 'Drills and passages: ' + right + ' of ' + qs.length + ' correct on the first try' + (tried < qs.length ? ' (' + (qs.length - tried) + ' not answered)' : '') + '.';
+      if (right === qs.length) {
+        note.textContent = 'All correct on the first try, including the border cases and the two-answer drills. Value, labour power and the reserve army are solid now. Week 3 can build on them.';
+      } else if (right >= Math.ceil(qs.length * 0.6)) {
+        note.textContent = 'A good result. Check which drills caught you. If the border cases caught you, know this: they catch everyone. The feedback on each miss names the exact distinction to study.';
+      } else {
+        note.textContent = 'These drills compress a week of theory into single sentences. A miss here is information, not a verdict. Read the feedback on each miss again. Each one names a distinction to learn before week 3.';
+      }
+    }
+    summary.classList.add('show');
+    summary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>

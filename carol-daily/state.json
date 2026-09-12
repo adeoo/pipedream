@@ -1,5 +1,5 @@
 {
-  "next_day": 11,
+  "next_day": 13,
   "recipient": "ana.ruberrime@gmail.com",
   "sender": "adeosagent@inkboxmail.com",
   "covered": [
@@ -112,6 +112,28 @@
       "venue": "Invisible Culture: An Electronic Journal for Visual Culture, n. 9",
       "doi": "",
       "note": "Acesso aberto (revista eletrônica da Univ. de Rochester). Natureza/cidade como dispositivo de regulação sexual e racial; ponte com Houston et al. e com o dia 6. Enviado 2026-09-10 09:07 UTC em UMA mensagem, verificada pelo protocolo de envio (Inkbox id 5d66a207). O push da Routine falhou de novo (sem repositório anexado); fichamento reconstruído a partir do e-mail em 2026-09-10."
+    },
+    {
+      "day": 11,
+      "send_date": "2026-09-11",
+      "theme": 4,
+      "title": "Ambientalização das lutas sociais: o caso do movimento por justiça ambiental",
+      "authors": "Acselrad",
+      "year": 2010,
+      "venue": "Estudos Avançados, v. 24, n. 68, p. 103-119",
+      "doi": "10.1590/S0103-40142010000100010",
+      "note": "Acesso aberto (SciELO). Razão utilitária x justiça ambiental; ponte com Miraftab (dia 7) e Nagib (dia 6). Enviado 2026-09-11 09:07 UTC em UMA mensagem, verificada (Inkbox id cedc7219). Push da Routine falhou; fichamento reconstruído em 2026-09-12."
+    },
+    {
+      "day": 12,
+      "send_date": "2026-09-12",
+      "theme": 4,
+      "title": "Just sustainability transitions: politics, power, and prefiguration in transformative change toward justice and sustainability",
+      "authors": "Avelino et al.",
+      "year": 2024,
+      "venue": "Annual Review of Environment and Resources, v. 49, n. 1, p. 519-547",
+      "doi": "10.1146/annurev-environ-112321-081722",
+      "note": "Acesso aberto. JUSTRAs, justiça planetária e mais-que-humano. Enviado 2026-09-12 09:08 UTC em UMA mensagem, verificada (Inkbox id 79b3dd5f), mas ROTULADO como 'Dia 11' e no tema 4 de novo, porque a Routine rodou com o state.json desatualizado (o push do dia 11 tinha falhado). Fichamento guardado como dia 12; reconstruído em 2026-09-12."
     }
   ],
   "already_in_thesis": [
@@ -119,5 +141,5 @@
     "SHEIKH, Hira; FOTH, Marcus; MITCHELL, Peta. More-than-human city-region foresight. Regional Studies, v. 57, n. 4, p. 642-655, 2023. DOI 10.1080/00343404.2022.2045266.",
     "SHEIKH, Hira; MITCHELL, Peta; FOTH, Marcus. Reparative futures of smart urban governance. Futures, v. 154, art. 103266, 2023. DOI 10.1016/j.futures.2023.103266."
   ],
-  "notes": "Dias 1-9 enviados. Os dias 6-9 saíram pela Routine mas não chegaram ao repositório (a sessão rodou sem o repositório anexado e o push falhou); fichamentos e este arquivo foram reconstruídos em 2026-09-09 a partir dos e-mails enviados. Entre 04/09 e 09/09 cada dia saiu em 2 ou 3 mensagens porque o corpo do e-mail era retranscrito à mão na chamada do Inkbox (placeholders, HTML escapado, comando de shell). Desde 2026-09-10 a Routine segue o protocolo de envio: render.py --write gera os arquivos prontos, o corpo é copiado sem alteração, e cada envio é verificado com inkbox_email_get; no máximo uma 'Cópia corrigida'. A Routine também chama add_repo (acesso push) antes do push. Routine diária trig_01S1c9MS23QnRVreYxj2WwJp (sessão nova a cada disparo, 09:00 UTC = 06:00 São Paulo). Dia 10 enviado limpo, em uma única mensagem, pelo novo protocolo; o push da Routine ainda falha porque o repositório não está anexado à Routine (add_repo não bastou). Próximo: dia 11, tema 4 (transição sustentável nas cidades)."
+  "notes": "Dias 1-9 enviados. Os dias 6-9 saíram pela Routine mas não chegaram ao repositório (a sessão rodou sem o repositório anexado e o push falhou); fichamentos e este arquivo foram reconstruídos em 2026-09-09 a partir dos e-mails enviados. Entre 04/09 e 09/09 cada dia saiu em 2 ou 3 mensagens porque o corpo do e-mail era retranscrito à mão na chamada do Inkbox (placeholders, HTML escapado, comando de shell). Desde 2026-09-10 a Routine segue o protocolo de envio: render.py --write gera os arquivos prontos, o corpo é copiado sem alteração, e cada envio é verificado com inkbox_email_get; no máximo uma 'Cópia corrigida'. A Routine também chama add_repo (acesso push) antes do push. Routine diária trig_01S1c9MS23QnRVreYxj2WwJp (sessão nova a cada disparo, 09:00 UTC = 06:00 São Paulo). Dia 10 enviado limpo, em uma única mensagem, pelo novo protocolo; o push da Routine ainda falha porque o repositório não está anexado à Routine (add_repo não bastou). Dias 11 e 12 enviados limpos pelo protocolo, mas os pushes falharam de novo e o dia 12 saiu rotulado como 'Dia 11' (tema 4 repetido). Reconstruídos em 2026-09-12. Enquanto o repositório não for anexado à Routine em claude.ai/code/routines, cada manhã precisa ser restaurada à mão. Próximo: dia 13, tema 6 (movimentos sociais e espaços insurgentes)."
 }
