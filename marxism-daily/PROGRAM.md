@@ -11,6 +11,7 @@ This file is the single source of truth. The weekly writer reads this file, the 
 - Subject lines: intriguing and specific. No emoji, no dashes, no "Day X" prefix, ever. Style reference: "The fishermen of Sidon". Week and day info goes only in the footer.
 - Footer: a single small line at the end of the lesson body, in italics: *Week W, Day N. Daily Marxism.* (PT: *Semana W, Dia N. Daily Marxism.*)
 - Calendar: from week 2 on, a week runs Monday to Sunday. Six lessons Monday to Saturday, the quiz on Sunday. No lesson ever carries a Sunday send_date.
+- Order before calendar: the course can be paused and resumed at any time. Delivery follows a cursor, not the calendar, so the reader always gets the next lesson he has not seen, however long the break was. `send_date` still carries the weekly rhythm, and a resume re-dates everything still unsent. See README.md, section "Pausing and resuming".
 
 ## The reader
 
@@ -174,3 +175,4 @@ Writers may adjust day-level topics within a week's theme, but keep the weekly a
 ## Change log
 
 - 2026-09-02: Sunday quiz replaces the weekly review lesson. Lessons Monday to Saturday, quiz on Sunday, weeks Monday to Sunday from week 2. Program branch is now `claude/daily-programs`.
+- 2026-09-17: Course paused at Moussa's request, after day 17. Delivery became cursor-based (`marxism-daily/queue.py`, `state.json` → `delivery`): the sender asks the queue what is next instead of matching today against `send_date`, so a pause of any length never skips or repeats a lesson. `queue.py resume` re-dates everything unsent and restores the Monday-to-Sunday rhythm.
