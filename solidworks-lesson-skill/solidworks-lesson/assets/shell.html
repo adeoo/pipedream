@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --text:#1d2330; --muted:#5f6b7d; --line:#dde2ea;
+  --accent:#2f6fde; --accent-soft:#e7efff; --ok:#1f8a4c; --ok-soft:#e8f6ee;
+  --warn:#b4600a; --warn-soft:#fdf1e0; --ex:#7a3fc4; --ex-soft:#f3ecfc;
+  --chip:#f0f3f8; --code:#eef1f6; --paper:#ffffff;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12151b; --card:#1b2029; --text:#e6e9ef; --muted:#9aa6b8; --line:#2c3440;
+    --accent:#6b9cff; --accent-soft:#1f2c47; --ok:#4cc783; --ok-soft:#16301f;
+    --warn:#e0a35c; --warn-soft:#2e2313; --ex:#b58cf0; --ex-soft:#2a2040;
+    --chip:#232a35; --code:#222936; --paper:#f4f5f7;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:840px;margin:0 auto;padding:16px 16px 60px}
+header h1{font-size:1.35rem;margin:6px 0 2px}
+header .sub{color:var(--muted);margin:0 0 10px;font-size:.93rem}
+.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.progress div{height:100%;width:0;background:var(--accent);transition:width .25s}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+.steps button{font-size:.78rem;padding:5px 10px;border-radius:99px;background:var(--chip);
+  color:var(--muted);border:0;cursor:pointer;font-weight:600}
+.steps button.on{background:var(--accent);color:#fff}
+.steps button.done{background:var(--accent-soft);color:var(--accent)}
+.cbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:8px 12px;margin:0 0 18px;font-size:.9rem}
+.cbar .count{font-weight:700}
+.cbar .msg{color:var(--ok);font-weight:600}
+.part{display:none}
+.part.show{display:block}
+.part h2{font-size:1.25rem;margin:0 0 2px}
+.part .mins{color:var(--muted);font-size:.88rem;margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 14px}
+.card h3{font-size:1.02rem;margin:0 0 6px}
+.key,.tip,.warn,.ex{border-radius:12px;padding:12px 14px;margin:0 0 14px;border:1px solid var(--line)}
+.key{background:var(--accent-soft);border-color:var(--accent)}
+.tip{background:var(--ok-soft);border-color:var(--ok)}
+.warn{background:var(--warn-soft);border-color:var(--warn)}
+.ex{background:var(--ex-soft);border-color:var(--ex)}
+.lbl{display:block;margin-bottom:4px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.key .lbl{color:var(--accent)} .tip .lbl{color:var(--ok)} .warn .lbl{color:var(--warn)} .ex .lbl{color:var(--ex)}
+.mission{background:var(--card);border:2px solid var(--ex);border-radius:12px;padding:14px 16px;margin:0 0 14px}
+.mission .lbl{color:var(--ex)}
+.do{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:12px;padding:12px 14px;margin:0 0 14px}
+.do .lbl{color:var(--accent)}
+.learn{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin:0 0 14px}
+.learn .lbl{color:var(--accent)}
+.check{background:var(--ok-soft);border:1px solid var(--ok);border-radius:12px;padding:12px 14px;margin:0 0 14px}
+.check .lbl{color:var(--ok)}
+.src{background:var(--chip);border:1px dashed var(--muted);border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:.93rem}
+.src .lbl{color:var(--muted)}
+.stepno{display:inline-block;min-width:1.8em;padding:0 6px;margin-right:6px;border-radius:99px;background:var(--accent);color:#fff;font-weight:700;text-align:center}
+.prac{background:var(--card);border:2px dashed var(--accent);border-radius:12px;padding:14px 16px;margin:0 0 14px}
+.prac .lbl{color:var(--accent)}
+.ex h4{margin:12px 0 2px;font-size:.95rem}
+.ex ol,.ex ul{margin-top:2px}
+.num{font-variant-numeric:tabular-nums;font-weight:700}
+figure{margin:0 0 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+figure .pic{background:var(--paper);border-radius:8px;overflow-x:auto}
+figure .pic svg{display:block;width:100%;height:auto;min-width:540px}
+.swipe{display:none;font-size:.78rem;color:var(--muted);margin-top:4px}
+@media (max-width:600px){.pic.sv + .swipe{display:block}}
+figure img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair img{width:100%;height:220px;object-fit:contain;background:var(--paper)}
+@media (max-width:600px){.pair{grid-template-columns:1fr}.pair img{height:auto}}
+figcaption{color:var(--muted);font-size:.88rem;margin-top:8px}
+.credit{display:block;font-size:.74rem;color:var(--muted);margin-top:3px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 14px}
+details summary{cursor:pointer;font-weight:600;color:var(--accent)}
+details summary::marker{content:"+ "}
+details[open] summary::marker{content:"- "}
+details .in{padding-top:8px}
+code,.path{background:var(--code);border-radius:6px;font-size:.9em}
+code{padding:1px 5px}
+.path{display:block;padding:8px 10px;margin:6px 0;font-family:ui-monospace,Consolas,monospace}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--chip)}
+.scroll{overflow-x:auto}
+ol,ul{padding-left:22px;margin:6px 0}
+li{margin:4px 0}
+.pt{color:var(--muted);font-style:italic}
+.word{background:var(--chip);border-radius:6px;padding:0 5px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
+button.b{font:inherit;font-weight:600;border:0;border-radius:10px;padding:11px 18px;cursor:pointer}
+.primary{background:var(--accent);color:#fff}
+.ghost{background:var(--chip);color:var(--text)}
+button.b:disabled{opacity:.4;cursor:default}
+button.sm{font:inherit;font-size:.85rem;font-weight:600;border:0;border-radius:8px;padding:6px 12px;cursor:pointer}
+.cbtn{display:inline-block;margin-top:8px;font:inherit;font-size:.78rem;font-weight:600;color:var(--muted);
+  background:transparent;border:1px solid var(--line);border-radius:99px;padding:2px 10px;cursor:pointer}
+.cbtn.has{color:var(--accent);border-color:var(--accent)}
+.cbox{display:none;margin-top:8px}
+.cbox.open{display:block}
+.cbox textarea{width:100%;min-height:70px;font:inherit;font-size:.92rem;padding:8px;border-radius:8px;
+  border:1px solid var(--accent);background:var(--card);color:var(--text)}
+.cbox .hint{font-size:.78rem;color:var(--muted)}
+#copyout{display:none;width:100%;min-height:160px;margin-top:8px;font:inherit;font-size:.85rem;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px}
+a{color:var(--accent)}
+.sources{font-size:.88rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>{{TITLE}}</h1>
+  <p class="sub">{{SUBTITLE}}</p>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="steps" id="steps"></div>
+</header>
+<div class="cbar">
+  <span>My comments: <span class="count" id="ccount">0</span></span>
+  <button class="sm primary" type="button" id="copyTop">Copy my comments</button>
+  <span class="msg" id="cmsg"></span>
+  <span class="pt" style="font-size:.8rem">Every box has a Comment button. Write what is not clear, then copy and paste it into the chat.</span>
+</div>
+<textarea id="copyout" readonly></textarea>
+<main id="main">
+{{PARTS}}
+</main>
+<div class="nav">
+  <button class="b ghost" id="back" type="button">Back</button>
+  <button class="b primary" id="next" type="button">Next</button>
+</div>
+<div class="cbar" style="margin-top:18px">
+  <span>My comments: <span class="count" id="ccount2">0</span></span>
+  <button class="sm primary" type="button" id="copyBottom">Copy my comments</button>
+  <span class="msg" id="cmsg2"></span>
+</div>
+</div>
+
+<script>
+(function(){
+  var parts = Array.prototype.slice.call(document.querySelectorAll(".part"));
+  var stepsEl = document.getElementById("steps");
+  var bar = document.getElementById("bar");
+  var back = document.getElementById("back");
+  var next = document.getElementById("next");
+  var cur = 0;
+
+  parts.forEach(function(p, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = p.getAttribute("data-title");
+    b.onclick = function(){ go(i); };
+    stepsEl.appendChild(b);
+  });
+
+  function go(i){
+    if(i < 0 || i >= parts.length) return;
+    cur = i;
+    parts.forEach(function(p, k){ p.classList.toggle("show", k === i); });
+    var chips = stepsEl.children;
+    for(var j = 0; j < chips.length; j++){
+      chips[j].className = j === i ? "on" : (j < i ? "done" : "");
+    }
+    bar.style.width = Math.round((i + 1) / parts.length * 100) + "%";
+    back.disabled = i === 0;
+    next.disabled = i === parts.length - 1;
+    next.textContent = i === parts.length - 2 ? "Next: last part" : "Next";
+    window.scrollTo(0, 0);
+  }
+  back.onclick = function(){ go(cur - 1); };
+  next.onclick = function(){ go(cur + 1); };
+
+  /* ---------- comments: kept in page memory only ---------- */
+  var boxes = [];
+  function words(s, n){
+    s = s.replace(/\s+/g, " ").trim();
+    var w = s.split(" ");
+    return w.slice(0, n).join(" ") + (w.length > n ? "..." : "");
+  }
+  function boxName(el){
+    if(el.getAttribute("data-box")) return el.getAttribute("data-box");
+    var h = el.querySelector("h3");
+    if(h) return h.textContent.trim();
+    var l = el.querySelector(".lbl");
+    if(l) return l.textContent.trim();
+    return words(el.textContent, 6);
+  }
+  parts.forEach(function(p){
+    var partName = p.getAttribute("data-title");
+    var els = p.querySelectorAll(".card, .key, .tip, .warn, .ex, .prac, .mission, .do, .learn, .check, .src, figure, details");
+    Array.prototype.forEach.call(els, function(el){
+      if(el.parentElement.closest(".card, .key, .tip, .warn, .ex, .prac, .mission, .do, .learn, .check, .src, figure, details")) return;
+      var rec = {part: partName, box: boxName(el), text: ""};
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "cbtn"; btn.textContent = "Comment";
+      var wrap = document.createElement("div"); wrap.className = "cbox";
+      var ta = document.createElement("textarea");
+      ta.placeholder = "Write your question or comment about this box...";
+      var hint = document.createElement("div"); hint.className = "hint";
+      hint.textContent = "Saved in this page while it is open. Use Copy my comments before you close the page.";
+      wrap.appendChild(ta); wrap.appendChild(hint);
+      btn.onclick = function(e){
+        e.preventDefault(); e.stopPropagation();
+        wrap.classList.toggle("open");
+        if(wrap.classList.contains("open")) ta.focus();
+      };
+      ta.addEventListener("input", function(){
+        rec.text = ta.value;
+        btn.classList.toggle("has", ta.value.trim() !== "");
+        btn.textContent = ta.value.trim() ? "Comment (written)" : "Comment";
+        update();
+      });
+      if(el.tagName === "DETAILS"){
+        el.parentNode.insertBefore(btn, el.nextSibling);
+        el.parentNode.insertBefore(wrap, btn.nextSibling);
+        btn.style.margin = "-8px 0 14px";
+      } else {
+        el.appendChild(btn); el.appendChild(wrap);
+      }
+      boxes.push(rec);
+    });
+  });
+
+  function update(){
+    var n = boxes.filter(function(r){ return r.text.trim() !== ""; }).length;
+    document.getElementById("ccount").textContent = n;
+    document.getElementById("ccount2").textContent = n;
+  }
+  function buildText(){
+    var out = [];
+    boxes.forEach(function(r){
+      if(r.text.trim() === "") return;
+      out.push("[" + r.part + " > " + r.box + "]\n" + r.text.trim());
+    });
+    if(!out.length) return "";
+    return "My comments on " + document.title + "\n\n" + out.join("\n\n");
+  }
+  function say(msg){
+    document.getElementById("cmsg").textContent = msg;
+    document.getElementById("cmsg2").textContent = msg;
+    setTimeout(function(){
+      document.getElementById("cmsg").textContent = "";
+      document.getElementById("cmsg2").textContent = "";
+    }, 4000);
+  }
+  function fallback(t){
+    var o = document.getElementById("copyout");
+    o.value = t; o.style.display = "block";
+    o.focus(); o.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch(e) {}
+    say(ok ? "Copied. Paste it into the chat." : "Select the text in the box above and copy it.");
+    if(!ok) window.scrollTo(0, 0);
+  }
+  function copyAll(){
+    var t = buildText();
+    if(!t){ say("No comments yet. Click a Comment button first."); return; }
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(t).then(function(){ say("Copied. Paste it into the chat."); },
+        function(){ fallback(t); });
+    } else { fallback(t); }
+  }
+  document.getElementById("copyTop").onclick = copyAll;
+  document.getElementById("copyBottom").onclick = copyAll;
+
+  go(0);
+})();
+</script>
+</body>
+</html>

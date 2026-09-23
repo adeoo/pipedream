@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-dws" viewBox="0 0 760 605" width="760" height="605" role="img" aria-label="Dowel pin in two plates, section view, with engagement depth">
+<title>Dowel pin in two plates, section view, with engagement depth</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-dws" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-dws" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-dws" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-dws" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-dws" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<pattern id="hR-dws" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-60)"><rect width="5" height="5" fill="#f4f5f7"/><line x1="0" y1="0" x2="0" y2="5" stroke="#1f2733" stroke-width="0.9"/></pattern>
+<marker id="dot-dws" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-dws" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-dws" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-dws" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-dws" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="605" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Dowel pin Ø8 in a fixture plate and a base, section (corte)</text>
+<path d="M60,125 H229 V233 H60 Z M301,125 H470 V233 H301 Z" fill="url(#hA-dws)" stroke="#1f2733" stroke-width="2"/>
+<path d="M60,233 H229 V413 H60 Z M301,233 H470 V413 H301 Z" fill="url(#hB-dws)" stroke="#1f2733" stroke-width="2"/>
+<path d="M235,143 H295 L301,149 V317 L295,323 H235 L229,317 V149 Z" fill="#d9dde4" stroke="#1f2733" stroke-width="2"/>
+<line class="g-cl" x1="265" y1="105" x2="265" y2="433" />
+<line class="g-thin" x1="305" y1="143" x2="508" y2="143" />
+<line class="g-thin" x1="305" y1="233" x2="508" y2="233" />
+<line class="g-thin" x1="305" y1="323" x2="508" y2="323" />
+<line class="g-thin" x1="500" y1="143" x2="500" y2="233" marker-start="url(#arrs-dws)" marker-end="url(#arr-dws)"/>
+<line class="g-thin" x1="500" y1="233" x2="500" y2="323" marker-start="url(#arrs-dws)" marker-end="url(#arr-dws)"/>
+<text class="g-b" x="514" y="184.0" text-anchor="start" >10 mm in the top plate</text>
+<text class="g-t" x="514" y="202.0" text-anchor="start" >1 to 1.5 x d = 8 to 12 mm</text>
+<text class="g-b" x="514" y="274.0" text-anchor="start" >10 mm in the base</text>
+<text class="g-t" x="514" y="292.0" text-anchor="start" >1 to 1.5 x d = 8 to 12 mm</text>
+<line class="g-thin" x1="229" y1="421" x2="229" y2="459" /><line class="g-thin" x1="301" y1="421" x2="301" y2="459" />
+<line class="g-thin" x1="229" y1="451" x2="301" y2="451" marker-start="url(#arrs-dws)" marker-end="url(#arr-dws)"/>
+<polyline class="g-thin" points="120,155 40,105" marker-start="url(#dot-dws)"/>
+<text class="g-b" x="30" y="97" text-anchor="start" >Fixture plate, 12 mm</text>
+<polyline class="g-thin" points="120,373 40,453" marker-start="url(#dot-dws)"/>
+<text class="g-b" x="30" y="471" text-anchor="start" >Base, 20 mm</text>
+<text class="g-s g-pt" x="30" y="490" text-anchor="start" >base / placa</text>
+<polyline class="g-thin" points="265,183 360,61 380,61" marker-start="url(#dot-dws)"/>
+<text class="g-b" x="386" y="57" text-anchor="start" >Pin Ø8 m6, ISO 8734</text>
+<text class="g-t" x="386" y="75" text-anchor="start" >8.006 to 8.015 mm</text>
+<text class="g-s g-pt" x="386" y="93" text-anchor="start" >pino de guia, temperado e retificado</text>
+<polyline class="g-thin" points="301,383 400,483 420,483" marker-start="url(#dot-dws)"/>
+<text class="g-b" x="426" y="479" text-anchor="start" >Holes Ø8 H7, reamed through</text>
+<text class="g-t" x="426" y="497" text-anchor="start" >8.000 to 8.015 mm</text>
+<text class="g-s g-pt" x="426" y="515" text-anchor="start" >furo alargado, passante</text>
+<text class="g-b" x="265" y="483" text-anchor="middle" >d = 8</text>
+<text class="g-s" x="30" y="590" text-anchor="start" >The pin is not hatched: by drawing rules, pins and shafts cut along their axis are drawn plain.</text>
+</svg>

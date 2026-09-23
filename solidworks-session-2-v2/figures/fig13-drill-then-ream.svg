@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-drm" viewBox="0 0 760 500" width="760" height="500" role="img" aria-label="Drill undersize, then ream to H7">
+<title>Drill undersize, then ream to H7</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-drm" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-drm" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-drm" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-drm" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-drm" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<pattern id="hR-drm" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-60)"><rect width="5" height="5" fill="#f4f5f7"/><line x1="0" y1="0" x2="0" y2="5" stroke="#1f2733" stroke-width="0.9"/></pattern>
+<marker id="dot-drm" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-drm" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-drm" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-drm" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-drm" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="500" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Drill, then ream: how the shop makes an Ø8 H7 hole</text>
+<path d="M30,250 H114 L113,250 L116,260 L113,270 L116,280 L113,290 L116,300 L113,310 L116,320 L113,330 L116,340 L113,350 L116,360 L114,360 H30 Z" fill="url(#hA-drm)" stroke="#1f2733" stroke-width="2"/>
+<path d="M250,250 H166 L167,250 L164,260 L167,270 L164,280 L167,290 L164,300 L167,310 L164,320 L167,330 L164,340 L167,350 L164,360 L166,360 H250 Z" fill="url(#hA-drm)" stroke="#1f2733" stroke-width="2"/>
+<line class="g-cl" x1="140" y1="60" x2="140" y2="375" />
+<path d="M116,70 V300 L140,322 L164,300 V70 Z" fill="#c9ced8" stroke="#1f2733" stroke-width="1.8"/>
+<path d="M116,80 L164,104" stroke="#1f2733" stroke-width="1.4"/>
+<path d="M116,112 L164,136" stroke="#1f2733" stroke-width="1.4"/>
+<path d="M116,144 L164,168" stroke="#1f2733" stroke-width="1.4"/>
+<path d="M116,176 L164,200" stroke="#1f2733" stroke-width="1.4"/>
+<path d="M116,208 L164,232" stroke="#1f2733" stroke-width="1.4"/>
+<path d="M116,240 L164,264" stroke="#1f2733" stroke-width="1.4"/>
+<path d="M116,272 L164,296" stroke="#1f2733" stroke-width="1.4"/>
+<text class="g-b" x="140" y="395" text-anchor="middle" >Step 1: drill Ø7.8</text>
+<text class="g-t" x="140" y="414" text-anchor="middle" >0.2 mm under size</text>
+<text class="g-t" x="140" y="433" text-anchor="middle" >rough wall, size not exact</text>
+<text class="g-t" x="140" y="452" text-anchor="middle" >(about IT11 to IT13)</text>
+<text class="g-s g-pt" x="140" y="471" text-anchor="middle" >furar com broca</text>
+<path d="M280,250 H362 V360 H280 Z M418,250 H500 V360 H418 Z" fill="url(#hA-drm)" stroke="#1f2733" stroke-width="2"/>
+<line class="g-cl" x1="390" y1="60" x2="390" y2="375" />
+<path d="M363,70 V304 L370,318 H410 L417,304 V70 Z" fill="#c9ced8" stroke="#1f2733" stroke-width="1.8"/>
+<line class="g-thin" x1="374" y1="78" x2="374" y2="300" style="stroke-width:1.4"/>
+<line class="g-thin" x1="384" y1="78" x2="384" y2="300" style="stroke-width:1.4"/>
+<line class="g-thin" x1="394" y1="78" x2="394" y2="300" style="stroke-width:1.4"/>
+<line class="g-thin" x1="404" y1="78" x2="404" y2="300" style="stroke-width:1.4"/>
+<text class="g-b" x="390" y="395" text-anchor="middle" >Step 2: ream Ø8 H7</text>
+<text class="g-t" x="390" y="414" text-anchor="middle" >straight flutes</text>
+<text class="g-t" x="390" y="433" text-anchor="middle" >take off the last 0.2 mm</text>
+<text class="g-t" x="390" y="452" text-anchor="middle" >slow speed, with oil</text>
+<text class="g-s g-pt" x="390" y="471" text-anchor="middle" >alargar com alargador</text>
+<path d="M520,250 H602 V360 H520 Z M658,250 H740 V360 H658 Z" fill="url(#hA-drm)" stroke="#1f2733" stroke-width="2"/>
+<line class="g-cl" x1="630" y1="60" x2="630" y2="375" />
+<line class="g-thin" x1="602" y1="225" x2="602" y2="245" /><line class="g-thin" x1="658" y1="225" x2="658" y2="245" />
+<line class="g-thin" x1="602" y1="232" x2="658" y2="232" marker-start="url(#arrs-drm)" marker-end="url(#arr-drm)"/>
+<text class="g-b" x="630" y="215" text-anchor="middle" >Ø8 H7</text>
+<text class="g-b" x="630" y="395" text-anchor="middle" >Result</text>
+<text class="g-t" x="630" y="414" text-anchor="middle" >8.000 to 8.015 mm</text>
+<text class="g-t" x="630" y="433" text-anchor="middle" >smooth and round</text>
+<text class="g-t" x="630" y="452" text-anchor="middle" >the pin fits every time</text>
+<text class="g-s g-pt" x="630" y="471" text-anchor="middle" >furo pronto</text>
+<polyline class="g-thin" points="160,120 190,94 196,94" marker-start="url(#dot-drm)"/>
+<text class="g-s" x="200" y="90" text-anchor="start" >twist drill</text>
+<text class="g-s" x="200" y="106" text-anchor="start" >(broca)</text>
+<polyline class="g-thin" points="412,120 440,94 446,94" marker-start="url(#dot-drm)"/>
+<text class="g-s" x="450" y="90" text-anchor="start" >machine reamer</text>
+<text class="g-s" x="450" y="106" text-anchor="start" >(alargador)</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-dwl" viewBox="0 0 760 480" width="760" height="480" role="img" aria-label="Top view of a plate with a round dowel hole, a slot and a diamond pin option">
+<title>Top view of a plate with a round dowel hole, a slot and a diamond pin option</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-dwl" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-dwl" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-dwl" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-dwl" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-dwl" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<pattern id="hR-dwl" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-60)"><rect width="5" height="5" fill="#f4f5f7"/><line x1="0" y1="0" x2="0" y2="5" stroke="#1f2733" stroke-width="0.9"/></pattern>
+<marker id="dot-dwl" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-dwl" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-dwl" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-dwl" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-dwl" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="480" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Fixture plate from above: one round hole, one slot</text>
+<rect x="60" y="80" width="480" height="170" fill="#f7f8fa" stroke="#1f2733" stroke-width="2"/>
+<circle cx="130" cy="165" r="18" fill="#ffffff" stroke="#2f6fde" stroke-width="2.4"/>
+<circle cx="130" cy="165" r="14" fill="#d9dde4" stroke="#1f2733" stroke-width="1.6"/>
+<rect x="446" y="147" width="68" height="36" rx="18" fill="#ffffff" stroke="#2f6fde" stroke-width="2.4"/>
+<circle cx="480" cy="165" r="14" fill="#d9dde4" stroke="#1f2733" stroke-width="1.6"/>
+<line class="g-cl" x1="96" y1="165" x2="164" y2="165" />
+<line class="g-cl" x1="130" y1="131" x2="130" y2="199" />
+<line class="g-cl" x1="430" y1="165" x2="530" y2="165" />
+<line class="g-cl" x1="480" y1="131" x2="480" y2="199" />
+<circle cx="230" cy="115" r="11" fill="#ffffff" stroke="#1f2733" stroke-width="1.6"/><circle cx="230" cy="115" r="5" fill="none" stroke="#1f2733" stroke-width="1.2"/>
+<circle cx="390" cy="115" r="11" fill="#ffffff" stroke="#1f2733" stroke-width="1.6"/><circle cx="390" cy="115" r="5" fill="none" stroke="#1f2733" stroke-width="1.2"/>
+<circle cx="230" cy="215" r="11" fill="#ffffff" stroke="#1f2733" stroke-width="1.6"/><circle cx="230" cy="215" r="5" fill="none" stroke="#1f2733" stroke-width="1.2"/>
+<circle cx="390" cy="215" r="11" fill="#ffffff" stroke="#1f2733" stroke-width="1.6"/><circle cx="390" cy="215" r="5" fill="none" stroke="#1f2733" stroke-width="1.2"/>
+<line class="g-thin" x1="130" y1="199" x2="130" y2="300" /><line class="g-thin" x1="480" y1="199" x2="480" y2="300" />
+<line class="g-thin" x1="130" y1="292" x2="480" y2="292" marker-start="url(#arrs-dwl)" marker-end="url(#arr-dwl)"/>
+<text class="g-b" x="305.0" y="285" text-anchor="middle" >as far apart as you can</text>
+<polyline class="g-thin" points="142,151 180,60 200,60" marker-start="url(#dot-dwl)"/>
+<text class="g-b" x="206" y="56" text-anchor="start" >Round hole Ø8 H7: this pin locates (localiza)</text>
+<polyline class="g-thin" points="510,155 575,110 585,110" marker-start="url(#dot-dwl)"/>
+<text class="g-b" x="591" y="106" text-anchor="start" >Slot (rasgo)</text>
+<text class="g-t" x="591" y="124" text-anchor="start" >8 H7 wide, long in</text>
+<text class="g-t" x="591" y="142" text-anchor="start" >the direction of</text>
+<text class="g-t" x="591" y="160" text-anchor="start" >the other pin</text>
+<polyline class="g-thin" points="390,226 575,235 585,235" marker-start="url(#dot-dwl)"/>
+<text class="g-b" x="591" y="231" text-anchor="start" >Screws</text>
+<text class="g-t" x="591" y="249" text-anchor="start" >they clamp,</text>
+<text class="g-t" x="591" y="267" text-anchor="start" >they do not locate</text>
+<text class="g-b" x="30" y="345" text-anchor="start" >Other way: two round holes, and a diamond pin (pino losango) in the second one.</text>
+<circle cx="150" cy="420" r="40" fill="#ffffff" stroke="#2f6fde" stroke-width="2.4"/>
+<path d="M138,382 A38,38 0 0,1 162,382 L162,458 A38,38 0 0,1 138,458 Z" fill="#d9dde4" stroke="#1f2733" stroke-width="1.8"/>
+<line class="g-cl" x1="95" y1="420" x2="205" y2="420" /><line class="g-cl" x1="150" y1="365" x2="150" y2="475" />
+<polyline class="g-thin" points="162,400 250,390 262,390" marker-start="url(#dot-dwl)"/>
+<text class="g-b" x="268" y="386" text-anchor="start" >Diamond pin, seen from above</text>
+<text class="g-t" x="268" y="404" text-anchor="start" >only two narrow bands touch the hole.</text>
+<text class="g-t" x="268" y="422" text-anchor="start" >It stops turning, but it lets the</text>
+<text class="g-t" x="268" y="440" text-anchor="start" >centre distance be a little off.</text>
+</svg>

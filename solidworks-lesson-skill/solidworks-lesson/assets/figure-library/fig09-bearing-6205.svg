@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-brg" viewBox="0 0 760 615" width="760" height="615" role="img" aria-label="Bearing 6205 on a shaft and in a housing with the seat fits">
+<title>Bearing 6205 on a shaft and in a housing with the seat fits</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-brg" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-brg" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-brg" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-brg" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-brg" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<pattern id="hR-brg" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-60)"><rect width="5" height="5" fill="#f4f5f7"/><line x1="0" y1="0" x2="0" y2="5" stroke="#1f2733" stroke-width="0.9"/></pattern>
+<marker id="dot-brg" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-brg" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-brg" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-brg" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-brg" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="615" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Bearing 6205 on a conveyor drive shaft, half section (corte)</text>
+<path d="M180,160 L445,160 L445,258 L250,258 L250,275.5 L180,275.5 Z" fill="url(#hA-brg)" stroke="#1f2733" stroke-width="2"/>
+<path d="M60,440 L60,335 L250,335 L250,352.5 L560,352.5 L560,440 Z" fill="url(#hB-brg)" stroke="none"/>
+<polyline points="60,440 60,335 250,335 250,352.5 560,352.5 560,440" fill="none" stroke="#1f2733" stroke-width="2"/>
+<rect x="250" y="258" width="105" height="26.600000000000005" fill="url(#hR-brg)" stroke="#1f2733" stroke-width="2"/>
+<rect x="250" y="325.9" width="105" height="26.600000000000005" fill="url(#hR-brg)" stroke="#1f2733" stroke-width="2"/>
+<circle cx="302.5" cy="305.25" r="27.790000000000003" fill="#ffffff" stroke="#1f2733" stroke-width="2"/>
+<line class="g-cl" x1="40" y1="440" x2="590" y2="440" style="stroke-width:1.4"/>
+<text class="g-s" x="596" y="445" text-anchor="start" >axis (eixo de giro)</text>
+<polyline class="g-thin" points="405,258 590,120 600,120" marker-start="url(#dot-brg)"/>
+<text class="g-b" x="606" y="110" text-anchor="start" >Housing bore</text>
+<text class="g-b" x="606" y="129" text-anchor="start" >Ø52 H7</text>
+<text class="g-t" x="606" y="148" text-anchor="start" >52.000 to 52.030</text>
+<text class="g-s g-pt" x="606" y="167" text-anchor="start" >furo do mancal</text>
+<polyline class="g-thin" points="310.5,299.25 590,250 600,250" marker-start="url(#dot-brg)"/>
+<text class="g-b" x="606" y="245" text-anchor="start" >Bearing 6205</text>
+<text class="g-t" x="606" y="264" text-anchor="start" >25 x 52 x 15 mm</text>
+<text class="g-s g-pt" x="606" y="283" text-anchor="start" >rolamento</text>
+<polyline class="g-thin" points="470,372.5 520,490 600,490" marker-start="url(#dot-brg)"/>
+<text class="g-b" x="606" y="485" text-anchor="start" >Shaft seat Ø25 k5</text>
+<text class="g-t" x="606" y="504" text-anchor="start" >25.002 to 25.011</text>
+<text class="g-s g-pt" x="606" y="523" text-anchor="start" >assento do eixo</text>
+<polyline class="g-thin" points="150,355 200,490 250,490" marker-start="url(#dot-brg)"/>
+<text class="g-b" x="30" y="485" text-anchor="start" >Shaft shoulder Ø30</text>
+<text class="g-t" x="30" y="504" text-anchor="start" >at least da min = 30</text>
+<text class="g-s g-pt" x="30" y="523" text-anchor="start" >encosto do eixo</text>
+<polyline class="g-thin" points="215,265.5 215,120 200,120" marker-start="url(#dot-brg)"/>
+<text class="g-b" x="30" y="115" text-anchor="start" >Housing shoulder</text>
+<text class="g-t" x="30" y="134" text-anchor="start" >at most Da max = 47</text>
+<text class="g-s g-pt" x="30" y="153" text-anchor="start" >encosto do mancal</text>
+<text class="g-s" x="30" y="580" text-anchor="start" >Hatching = cut metal. The two shoulders touch only the bearing rings, never the seals.</text>
+<text class="g-s" x="30" y="600" text-anchor="start" >Only the upper half is drawn. The lower half is the mirror image. Leaders below the axis point up to the shaft.</text>
+</svg>
