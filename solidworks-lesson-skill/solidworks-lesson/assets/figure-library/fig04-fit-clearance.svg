@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-fclr" viewBox="0 0 760 390" width="760" height="390" role="img" aria-label="Clearance fit: shaft inside hole with a gap">
+<title>Clearance fit: shaft inside hole with a gap</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-fclr" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-fclr" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-fclr" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-fclr" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-fclr" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<pattern id="hR-fclr" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-60)"><rect width="5" height="5" fill="#f4f5f7"/><line x1="0" y1="0" x2="0" y2="5" stroke="#1f2733" stroke-width="0.9"/></pattern>
+<marker id="dot-fclr" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-fclr" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-fclr" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-fclr" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-fclr" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="390" fill="#ffffff"/>
+<text class="g-h" x="40" y="36" text-anchor="start" >Clearance fit, H7/g6 at Ø10</text>
+<text class="g-s g-pt" x="40" y="58" text-anchor="start" >ajuste com folga: the shaft is always smaller than the hole</text>
+<path d="M75,80 h250 v250 h-250 Z M100,205 a100,100 0 1,0 200,0 a100,100 0 1,0 -200,0 Z" fill="url(#hA-fclr)" fill-rule="evenodd" stroke="#1f2733" stroke-width="2"/>
+<circle cx="200" cy="205" r="100" fill="#fff1b8" stroke="#2f6fde" stroke-width="2.4"/>
+<circle cx="200" cy="205" r="82" fill="url(#hS-fclr)" stroke="#1f8a4c" stroke-width="2.4"/>
+<line class="g-cl" x1="60" y1="205" x2="340" y2="205" /><line class="g-cl" x1="200" y1="65" x2="200" y2="345" />
+<polyline class="g-thin" points="300,105 400,105 410,105" marker-start="url(#dot-fclr)"/>
+<text class="g-b" x="418" y="100" text-anchor="start" >Plate or hub, cut</text>
+<text class="g-s g-pt" x="418" y="119" text-anchor="start" >peça em corte</text>
+<polyline class="g-thin" points="276.6,140.7 400,150 410,150" marker-start="url(#dot-fclr)"/>
+<text class="g-b" x="418" y="155" text-anchor="start" >Hole Ø10 H7</text>
+<text class="g-t" x="418" y="174" text-anchor="start" >10.000 to 10.015 mm</text>
+<text class="g-s g-pt" x="418" y="193" text-anchor="start" >furo</text>
+<polyline class="g-thin" points="240,235 400,245 410,245" marker-start="url(#dot-fclr)"/>
+<text class="g-b" x="418" y="240" text-anchor="start" >Shaft Ø10 g6</text>
+<text class="g-t" x="418" y="259" text-anchor="start" >9.986 to 9.995 mm</text>
+<text class="g-s g-pt" x="418" y="278" text-anchor="start" >eixo</text>
+<polyline class="g-thin" points="274.5,257.2 400,320 410,320" marker-start="url(#dot-fclr)"/>
+<text class="g-b" x="418" y="318" text-anchor="start" >Gap, always there</text>
+<text class="g-t" x="418" y="337" text-anchor="start" >5 to 29 µm</text>
+<text class="g-s g-pt" x="418" y="356" text-anchor="start" >folga</text>
+<text class="g-s" x="40" y="372" text-anchor="start" >The gap is drawn hundreds of times bigger than real, so you can see it.</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-shd" viewBox="0 0 760 440" width="760" height="440" role="img" aria-label="Bearing shoulder corner: small fillet, undercut, and a fillet that is too big">
+<title>Bearing shoulder corner: small fillet, undercut, and a fillet that is too big</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-shd" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-shd" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-shd" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-shd" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-shd" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<pattern id="hR-shd" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-60)"><rect width="5" height="5" fill="#f4f5f7"/><line x1="0" y1="0" x2="0" y2="5" stroke="#1f2733" stroke-width="0.9"/></pattern>
+<marker id="dot-shd" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-shd" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-shd" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-shd" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-shd" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="440" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Close-up of the shoulder corner (canto do encosto), about 25 times real size</text>
+<path d="M50,320 L50,130 L140,130 L140,234 A16,16 0 0,0 156,250 L270,250 L270,320 Z" fill="url(#hB-shd)" stroke="#1f2733" stroke-width="2"/>
+<path d="M165,250 L270,250 L270,120 L140,120 L140,225 A25,25 0 0,0 165,250 Z" fill="url(#hG-shd)" stroke="#1f2733" stroke-width="2"/>
+<path d="M310,320 L310,130 L400,130 L400,228 L391,228 L391,252 A14,14 0 0,0 405,266 L422,266 L434,250 L530,250 L530,320 Z" fill="url(#hB-shd)" stroke="#1f2733" stroke-width="2"/>
+<path d="M425,250 L530,250 L530,120 L400,120 L400,225 A25,25 0 0,0 425,250 Z" fill="url(#hG-shd)" stroke="#1f2733" stroke-width="2"/>
+<path d="M560,320 L560,130 L650,130 L650,208 A42,42 0 0,0 692,250 L780,250 L780,320 Z" fill="url(#hB-shd)" stroke="#1f2733" stroke-width="2"/>
+<path d="M697,250 L780,250 L780,120 L672,120 L672,225 A25,25 0 0,0 697,250 Z" fill="url(#hG-shd)" stroke="#c0392b" stroke-width="2"/>
+<text class="g-b" x="150" y="360" text-anchor="middle" >OK: small fillet</text>
+<text class="g-t" x="150" y="379" text-anchor="middle" >shaft radius 1.0 mm max,</text>
+<text class="g-t" x="150" y="398" text-anchor="middle" >smaller than the ring corner</text>
+<text class="g-s g-pt" x="150" y="417" text-anchor="middle" >raio de concordância</text>
+<text class="g-b" x="410" y="360" text-anchor="middle" >OK: undercut</text>
+<text class="g-t" x="410" y="379" text-anchor="middle" >a small groove in the corner.</text>
+<text class="g-t" x="410" y="398" text-anchor="middle" >Best when the seat is ground.</text>
+<text class="g-s g-pt" x="410" y="417" text-anchor="middle" >rebaixo / canal de alívio</text>
+<text class="g-b" x="645" y="360" text-anchor="middle" >WRONG: fillet too big</text>
+<text class="g-t" x="645" y="379" text-anchor="middle" >the ring sits on the radius,</text>
+<text class="g-t" x="645" y="398" text-anchor="middle" >not against the shoulder</text>
+<text class="g-s g-pt" x="645" y="417" text-anchor="middle" >rolamento fora do lugar</text>
+<polyline class="g-thin" points="175,180 230,90 250,90" marker-start="url(#dot-shd)"/>
+<text class="g-s" x="170" y="72" text-anchor="start" >bearing inner ring</text>
+<polyline class="g-thin" points="95,280 40,330" marker-start="url(#dot-shd)"/>
+<text class="g-s" x="30" y="345" text-anchor="start" >shaft</text>
+<polyline class="g-thin" points="652,228 700,110" marker-start="url(#dot-shd)"/>
+<text class="g-b" x="646" y="100" text-anchor="start" style="fill:#c0392b">gap here</text>
+</svg>
