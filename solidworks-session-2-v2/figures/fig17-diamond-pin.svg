@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-dia" viewBox="0 0 760 485" width="760" height="485" role="img" aria-label="Diamond pin in side view and top view">
+<title>Diamond pin in side view and top view</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-dia" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-dia" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-dia" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-dia" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-dia" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<marker id="dot-dia" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-dia" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-dia" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-dia" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-dia" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="485" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Diamond pin (pino losango): side view and top view</text>
+<rect x="130" y="250" width="120" height="30" fill="#d9dde4" stroke="#1f2733" stroke-width="2"/>
+<rect x="150" y="280" width="80" height="110" fill="#d9dde4" stroke="#1f2733" stroke-width="2"/>
+<path d="M150,250 V110 L158,96 H222 L230,110 V250" fill="#d9dde4" stroke="#1f2733" stroke-width="2"/>
+<rect x="156" y="120" width="68" height="100" fill="#eef0f3" stroke="#1f2733" stroke-width="1.4"/>
+<line class="g-cl" x1="190" y1="80" x2="190" y2="405" />
+<polyline class="g-thin" points="227,170 300,120 318,120" marker-start="url(#dot-dia)"/>
+<text class="g-b" x="324" y="116" text-anchor="start" >Narrow round band</text>
+<text class="g-t" x="324" y="134" text-anchor="start" >(left and right edges): the</text>
+<text class="g-t" x="324" y="152" text-anchor="start" >only part that touches the hole</text>
+<polyline class="g-thin" points="180,160 80,80 60,80" marker-start="url(#dot-dia)"/>
+<text class="g-b" x="30" y="66" text-anchor="start" >Flat face, ground away</text>
+<polyline class="g-thin" points="245,265 300,290 318,290" marker-start="url(#dot-dia)"/>
+<text class="g-b" x="324" y="286" text-anchor="start" >Collar</text>
+<text class="g-t" x="324" y="304" text-anchor="start" >stops at the plate</text>
+<polyline class="g-thin" points="220,350 300,370 318,370" marker-start="url(#dot-dia)"/>
+<text class="g-b" x="324" y="366" text-anchor="start" >Press-fit shank</text>
+<text class="g-t" x="324" y="384" text-anchor="start" >goes into the base</text>
+<text class="g-b" x="190" y="440" text-anchor="middle" >Side view, looking at a flat</text>
+<circle cx="610" cy="240" r="70" fill="#ffffff" stroke="#2f6fde" stroke-width="2.4"/>
+<path d="M584,175 A70,70 0 0,1 636,175 L636,305 A70,70 0 0,1 584,305 Z" fill="#d9dde4" stroke="#1f2733" stroke-width="2"/>
+<line class="g-cl" x1="520" y1="240" x2="700" y2="240" /><line class="g-cl" x1="610" y1="150" x2="610" y2="330" />
+<line class="g-thin" x1="500" y1="350" x2="720" y2="350" marker-start="url(#arrs-dia)" marker-end="url(#arr-dia)"/>
+<text class="g-s" x="610" y="372" text-anchor="middle" >free: this way</text>
+<text class="g-b" x="610" y="440" text-anchor="middle" >Top view, pin in its hole</text>
+<text class="g-s" x="30" y="470" text-anchor="start" >The band touches the hole only at top and bottom, so the pin stops turning, but allows small errors in the other direction.</text>
+</svg>

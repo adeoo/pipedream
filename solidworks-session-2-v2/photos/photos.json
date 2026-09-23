@@ -1,0 +1,12 @@
+{
+ "drillreamer": {"images": [
+   {"file": "twist-drill.jpg", "alt": "A gold coloured twist drill with spiral flutes", "credit": "andersen_mrjh, CC BY-SA 2.0, Wikimedia Commons (Twist Drill Bit (6954956907).jpg)"},
+   {"file": "reamers.jpg", "alt": "Three reamers with straight flutes", "credit": "Krakuspm, CC BY-SA 3.0, Wikimedia Commons (Rozwiertak pilot.jpg)"}]},
+ "measure": {"images": [
+   {"file": "micrometer.jpg", "alt": "An outside micrometer, 0 to 25 mm", "credit": "Lucasbosch, CC BY-SA 3.0, Wikimedia Commons (Mahr Micromar 40A 0–25 mm Micrometer.jpg)"},
+   {"file": "inside-micrometer.jpg", "alt": "A three-point inside micrometer, 17 to 20 mm", "credit": "Rrudzik, CC0, Wikimedia Commons (3 point micrometer.jpg)"}]},
+ "dowels": {"caption": "Hardened and ground dowel pins. They are shiny because they are ground to size. The ends are chamfered so they start easily into the hole.",
+   "images": [{"file": "dowel-pins.jpg", "alt": "Six shiny steel dowel pins with chamfered ends", "credit": "David J. Fred, CC BY-SA 2.5, Wikimedia Commons (Steel-Dowel-Pins.jpg)"}]},
+ "bushing": {"caption": "A solid bronze bushing from a motorcycle gearbox, seen from two sides. You can see the oil grooves inside and a slot in one end.",
+   "images": [{"file": "bronze-bushing.jpg", "alt": "A bronze bushing seen from two sides", "credit": "A7N8X, CC BY-SA 4.0, Wikimedia Commons (Boccola Minarelli AM345.jpg)"}]}
+}
