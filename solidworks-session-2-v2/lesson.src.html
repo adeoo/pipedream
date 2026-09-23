@@ -56,7 +56,9 @@ header .sub{color:var(--muted);margin:0 0 10px;font-size:.93rem}
 .num{font-variant-numeric:tabular-nums;font-weight:700}
 figure{margin:0 0 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
 figure .pic{background:var(--paper);border-radius:8px;overflow-x:auto}
-figure .pic svg{display:block;width:100%;height:auto;min-width:560px}
+figure .pic svg{display:block;width:100%;height:auto;min-width:540px}
+.swipe{display:none;font-size:.78rem;color:var(--muted);margin-top:4px}
+@media (max-width:600px){.pic.sv + .swipe{display:block}}
 figure img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .pair img{width:100%;height:220px;object-fit:contain;background:var(--paper)}
@@ -131,7 +133,8 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 1.1, the three pieces of the code">
-    <div class="pic">{{fig:fig01-code-anatomy}}</div>
+    <div class="pic sv">{{fig:fig01-code-anatomy}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 1.1. A fit code has three pieces: the size, a letter and a number.</figcaption>
   </figure>
 
@@ -151,7 +154,8 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 1.2, 15 µm next to a hair">
-    <div class="pic">{{fig:fig02-micron-scale}}</div>
+    <div class="pic sv">{{fig:fig02-micron-scale}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 1.2. A sheet of paper, a hair, a whole H7 band, and the smallest gap in an H7/g6 fit, all at the same scale.</figcaption>
   </figure>
 
@@ -188,7 +192,8 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 1.3, the five bands at Ø10">
-    <div class="pic">{{fig:fig03-tolerance-zones}}</div>
+    <div class="pic sv">{{fig:fig03-tolerance-zones}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 1.3. The same Ø10 with one hole band and four shaft bands. Where the shaft band sits, compared to the hole band, decides the fit. Part 2 explains this.</figcaption>
   </figure>
 
@@ -203,13 +208,13 @@ a{color:var(--accent)}
   <figure data-box="Photo 1.4, drill and reamer">
     {{photo:drillreamer}}
     <figcaption>Photo 1.4. Left: a twist drill <span class="pt">(broca helicoidal)</span> has spiral flutes and a pointed tip. It cuts fast but not exact.
-    Right: reamers <span class="pt">(alargadores)</span> have straight flutes. It follows a drilled hole and takes off only a few tenths of a millimetre, so the hole comes out round, smooth and on size.
+    Right: reamers <span class="pt">(alargadores)</span> have straight flutes. A reamer follows a drilled hole and takes off only a few tenths of a millimetre, so the hole comes out round, smooth and on size.
     {{credit:drillreamer}}</figcaption>
   </figure>
 
   <div class="warn"><span class="lbl">Watch out: H7 is not free</span>
-    A drill alone holds about IT11 to IT13. At Ø10 that is 90 µm or more, about 6 to 20 times wider than H7.
-    If you write H7, the shop must drill and then ream, bore or grind the hole. That is a real extra step and real extra money.
+    A drill alone holds about IT11 to IT13. At Ø10 that is 90 µm or more, about 6 to 15 times wider than H7.
+    If you write H7, the shop must drill and then ream, bore or grind <span class="pt">(retificar)</span> the hole. That is a real extra step and real extra money.
     Write H7 only where a part must fit.</div>
 
   <figure data-box="Photo 1.5, how the shop measures">
@@ -220,7 +225,7 @@ a{color:var(--accent)}
   </figure>
 
   <div class="ex"><span class="lbl">Worked example: the bore of a conveyor pulley</span>
-    <p><b>The part.</b> A drive pulley <span class="pt">(polia)</span> for a small conveyor. It sits on a Ø20 shaft with a key. The pulley must sit centred on the shaft, or the belt runs unevenly.</p>
+    <p><b>The part.</b> A drive pulley <span class="pt">(polia)</span> for a small conveyor. It sits on a Ø20 shaft with a key <span class="pt">(chaveta)</span>, a small steel block that carries the turning force. The pulley must sit centred on the shaft, or the belt runs unevenly.</p>
     <h4>Step 1. What you write</h4>
     <p>On the pulley drawing you write <b>Ø20 H7</b> on the bore.</p>
     <h4>Step 2. Read the code</h4>
@@ -232,7 +237,7 @@ a{color:var(--accent)}
     <h4>Step 3. The two limits</h4>
     <p>Smallest bore <span class="num">20.000 mm</span>. Biggest bore <span class="num">20.021 mm</span>. Anything in between is a good part.</p>
     <h4>Step 4. What the shop does</h4>
-    <p>The turner bores the hole on the lathe, or drills and reams it. Then they check it with a bore gauge or a plug gauge.</p>
+    <p>The turner <span class="pt">(torneiro)</span> bores the hole on the lathe <span class="pt">(mandrila no torno)</span>, or drills and reams it. Then they check it with a bore gauge or a plug gauge.</p>
     <h4>What goes wrong if you skip it</h4>
     <p>You write only "Ø20". The shop may just drill it. The bore can come out at 20.10 mm. Now the pulley sits 0.1 mm loose on the shaft.
     It wobbles, the key takes all the load, the key seat wears, and the belt runs to one side.</p>
@@ -282,7 +287,8 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 2.1, clearance fit">
-    <div class="pic">{{fig:fig04-fit-clearance}}</div>
+    <div class="pic sv">{{fig:fig04-fit-clearance}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 2.1. Clearance fit H7/g6 at Ø10, cut across. The yellow ring is the gap. It is always there.</figcaption>
   </figure>
 
@@ -296,11 +302,12 @@ a{color:var(--accent)}
     </ul>
     <p>You do not know which case you get until you measure. That is why Brazilian shops call it <i>incerto</i>, "uncertain".</p>
     <p><b>What you feel:</b> the parts go together with a light tap of a plastic hammer <span class="pt">(martelo de nylon)</span>, or a small press. They come apart with a light pull or a puller.</p>
-    <p><b>Where you use it:</b> a part that must sit exactly in place but must still come off for service. A gear or pulley hub on a shaft, a dowel pin in a plate.</p>
+    <p><b>Where you use it:</b> a part that must sit exactly in place but must still come off for service. A gear or pulley hub <span class="pt">(cubo)</span> on a shaft, a dowel pin in a plate.</p>
   </div>
 
   <figure data-box="Figure 2.2, transition fit">
-    <div class="pic">{{fig:fig05-fit-transition}}</div>
+    <div class="pic sv">{{fig:fig05-fit-transition}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 2.2. Transition fit H7/k6 at Ø10. Case A has a tiny gap. Case B has a tiny press. Both are good parts.</figcaption>
   </figure>
 
@@ -315,7 +322,8 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 2.3, interference fit">
-    <div class="pic">{{fig:fig06-fit-interference}}</div>
+    <div class="pic sv">{{fig:fig06-fit-interference}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 2.3. Interference fit H7/p6 at Ø10. The dashed green line is the shaft before pressing. The red ring is metal that has to squeeze.</figcaption>
   </figure>
 
@@ -346,7 +354,7 @@ a{color:var(--accent)}
   </div>
 
   <div class="ex"><span class="lbl">Worked example: an index pin in a welding fixture</span>
-    <p><b>The part.</b> A welding fixture has a Ø10 index pin <span class="pt">(pino de indexação)</span>.
+    <p><b>The part.</b> A welding fixture <span class="pt">(dispositivo de solda)</span> has a Ø10 index pin <span class="pt">(pino de indexação)</span>.
     The operator pushes the pin into a hole to hold a swing plate in position, then pulls it out by hand to release it. This happens hundreds of times a day.</p>
     <h4>Step 1. Pick the family</h4>
     <p>The pin must go in and out by hand, so it must slide: <b>clearance</b>. But it must also locate well, with almost no play.</p>
@@ -407,7 +415,8 @@ a{color:var(--accent)}
     You never open a table book.</div>
 
   <figure data-box="Figure 3.1, the Tolerance/Precision box">
-    <div class="pic">{{fig:fig07-sw-tolerance-panel}}</div>
+    <div class="pic sv">{{fig:fig07-sw-tolerance-panel}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 3.1. A simplified drawing of the Tolerance/Precision box in the Dimension PropertyManager, with every field named. Your screen shows icons in some places, but the order is the same.</figcaption>
   </figure>
 
@@ -514,7 +523,7 @@ a{color:var(--accent)}
     Inside, small steel balls roll between two rings.</p>
     <ul>
       <li>The <b>inner ring</b> <span class="pt">(anel interno)</span> sits on the shaft.</li>
-      <li>The <b>outer ring</b> <span class="pt">(anel externo)</span> sits in the housing.</li>
+      <li>The <b>outer ring</b> <span class="pt">(anel externo)</span> sits in the housing <span class="pt">(mancal)</span>, the part that holds the bearing.</li>
       <li>The <b>balls</b> <span class="pt">(esferas)</span> roll between them. A <b>cage</b> <span class="pt">(gaiola)</span> keeps the balls apart.</li>
       <li>Many bearings also have <b>seals or shields</b> <span class="pt">(vedações)</span> on the sides to keep grease in and dirt out.</li>
     </ul>
@@ -523,12 +532,13 @@ a{color:var(--accent)}
 
   <figure data-box="Photo 4.1, a ball bearing">
     {{photo:bearings}}
-    <figcaption>Photo 4.1. A deep groove ball bearing with no seals, so you can see inside: the outer ring, the inner ring, the balls and the steel cage between them.
+    <figcaption>Photo 4.1. A deep groove ball bearing with no seals, so you can see inside. You can see the outer ring, the inner ring, the balls and the steel cage.
     {{credit:bearings}}</figcaption>
   </figure>
 
   <figure data-box="Figure 4.2, the parts of a bearing">
-    <div class="pic">{{fig:fig19-bearing-parts}}</div>
+    <div class="pic sv">{{fig:fig19-bearing-parts}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 4.2. The same parts with their names. Right: the bearing cut in half, the way it appears in a section view on your drawing.</figcaption>
   </figure>
 
@@ -553,7 +563,7 @@ a{color:var(--accent)}
   <div class="card">
     <h3>The big rule: which ring gets the tight fit?</h3>
     <p><b>The ring that turns against the load direction needs the tight fit.</b> The other ring can have a normal, easier fit.</p>
-    <p>Why? Picture a belt that pulls the shaft down. The load always points down. The inner ring turns with the shaft.
+    <p>Why? Picture a belt that pulls on the shaft. The load always points the same way. The inner ring turns with the shaft.
     So every point of the inner ring passes under the load, again and again, every turn.
     If the inner ring is loose on the shaft, it slowly rolls around the shaft, like a loose ring on your finger. This is called <b>creep</b>.
     Creep polishes and wears the shaft seat. The shop will find a shiny, worn seat and a bearing that makes noise.</p>
@@ -561,7 +571,8 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 4.3, which ring turns against the load">
-    <div class="pic">{{fig:fig08-rotating-load}}</div>
+    <div class="pic sv">{{fig:fig08-rotating-load}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 4.3. Case 1 is almost every machine you design. Case 2 is a wheel or an idler that turns on a fixed pin.</figcaption>
   </figure>
 
@@ -593,12 +604,13 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 4.4, bearing 6205 in a housing">
-    <div class="pic">{{fig:fig09-bearing-6205}}</div>
+    <div class="pic sv">{{fig:fig09-bearing-6205}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 4.4. A 6205 on a shaft, in a housing, cut in half. Only the two seats and the two shoulders are yours to design.</figcaption>
   </figure>
 
   <div class="ex"><span class="lbl">Worked example: the bearing block of a conveyor drive shaft</span>
-    <p><b>The part.</b> A conveyor drive shaft turns in two 6205 bearings. Each bearing sits in a machined steel block, the housing <span class="pt">(mancal)</span>. The belt pulls the shaft down.</p>
+    <p><b>The part.</b> A conveyor drive shaft turns in two 6205 bearings. Each bearing sits in a machined steel block, the housing <span class="pt">(mancal)</span>. The belt pulls on the shaft, always in the same direction.</p>
     <h4>Step 1. Which ring turns against the load?</h4>
     <p>The shaft turns and the belt load always points the same way. So the <b>inner ring</b> turns against the load. That is Case 1.</p>
     <h4>Step 2. Pick the classes</h4>
@@ -626,9 +638,10 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 4.5, pillow block unit">
-    <div class="pic">{{fig:fig20-pillow-block}}</div>
+    <div class="pic sv">{{fig:fig20-pillow-block}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 4.5. A pillow block unit <span class="pt">(mancal com rolamento, or mancal UCP)</span>. The housing is cast iron and the bearing insert is already inside. You bolt it to the frame. Many conveyors use these instead of a machined block.
-    With these units, the maker's catalogue gives the shaft tolerance. Do not use the k5 rule for them: most inserts lock to the shaft with a set screw or a collar, not with a press fit.</figcaption>
+    With these units, the maker's catalogue gives the shaft tolerance. Do not use the k5 rule for them: most inserts lock to the shaft with a set screw <span class="pt">(parafuso de fixação)</span> or a collar <span class="pt">(anel de fixação)</span>. They do not use a press fit.</figcaption>
   </figure>
 
   <figure data-box="Photo 4.6, a split housing cut open">
@@ -649,7 +662,8 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 4.7, the shoulder corner">
-    <div class="pic">{{fig:fig10-shoulder-detail}}</div>
+    <div class="pic sv">{{fig:fig10-shoulder-detail}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 4.7. The inside corner of the shaft shoulder, drawn very big. Left and middle are correct. Right: the shaft radius is too big, so the bearing cannot touch the shoulder.</figcaption>
   </figure>
 
@@ -663,7 +677,7 @@ a{color:var(--accent)}
     <h3>Surface finish on the seat</h3>
     <p><b>Ra</b> <span class="pt">(rugosidade média)</span> is the average roughness of a surface in µm. A smaller number is a smoother surface.
     Ask for <b>Ra 0.8</b> on a bearing seat, and <b>Ra 0.4</b> on a press fit seat.
-    Also ask for the seat to be round and straight within about half of its size tolerance. Session 3 shows how to write that with GD&amp;T.</p>
+    The seat must also be round and straight. The bearing maker's page gives the exact values. Session 3 shows how to write them with GD&amp;T.</p>
   </div>
 
   <div class="tip"><span class="lbl">Free models with real dimensions</span>
@@ -716,12 +730,14 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 5.2, drill then ream">
-    <div class="pic">{{fig:fig13-drill-then-ream}}</div>
+    <div class="pic sv">{{fig:fig13-drill-then-ream}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 5.2. Two steps for one exact hole. The drill makes the hole fast. The reamer makes it exact.</figcaption>
   </figure>
 
   <figure data-box="Figure 5.3, pin engagement">
-    <div class="pic">{{fig:fig11-dowel-section}}</div>
+    <div class="pic sv">{{fig:fig11-dowel-section}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 5.3. A Ø8 pin, cut in half along its length. It goes about 1 to 1.5 times its diameter into each part. That is 8 to 12 mm for a Ø8 pin.</figcaption>
   </figure>
 
@@ -732,17 +748,19 @@ a{color:var(--accent)}
     There are two standard fixes:</p>
     <ol>
       <li>One round hole, and one <b>slot</b> <span class="pt">(rasgo)</span> in the second place. The slot points toward the first pin. The pin can move along the slot, but not across it.</li>
-      <li>Two round holes, and a <b>diamond pin</b> <span class="pt">(pino losango, or pino com rebaixo)</span> in the second hole. This pin has two flats ground on it, so it touches the hole on two narrow bands only.</li>
+      <li>Two round holes, and a <b>diamond pin</b> <span class="pt">(pino losango, or pino com rebaixo)</span> in the second hole. This pin has two flats ground on it, so it touches the hole on two narrow bands only. Turn it so the flats face the first pin. Then the round bands stop the turning, and the pin is free along the line between the pins.</li>
     </ol>
   </div>
 
   <figure data-box="Figure 5.4, round hole, slot and diamond pin">
-    <div class="pic">{{fig:fig12-dowel-layout}}</div>
+    <div class="pic sv">{{fig:fig12-dowel-layout}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 5.4. One pin locates. The second pin, in a slot or as a diamond pin, only stops the part from turning.</figcaption>
   </figure>
 
   <figure data-box="Figure 5.5, a diamond pin">
-    <div class="pic">{{fig:fig17-diamond-pin}}</div>
+    <div class="pic sv">{{fig:fig17-diamond-pin}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 5.5. A diamond pin. I could not find a free photo of one, so here is a drawing. You buy these ready made from fixture suppliers.</figcaption>
   </figure>
 
@@ -761,8 +779,8 @@ a{color:var(--accent)}
     <h4>Step 4. Length and depth</h4>
     <p>Engagement 1 to 1.5 x 8 = 8 to 12 mm in each part. The plate is 12 mm thick, so a 20 mm pin gives 10 mm in each part.</p>
     <h4>Step 5. The note for the shop</h4>
-    <p><code>DRILL Ø7.8, REAM Ø8 H7. REAM THE PLATE AND BASE CLAMPED TOGETHER.</code>
-    Reaming both parts together makes the hole positions match perfectly.</p>
+    <p><code>DRILL Ø7.8, REAM Ø8 H7. REAM THE ROUND HOLE IN PLATE AND BASE CLAMPED TOGETHER. SLOT 8 H7 WIDE, ON THE LINE BETWEEN THE TWO PINS.</code></p>
+    <p>Reaming the round hole through both parts together makes the positions match perfectly. The slot takes up any small error in the distance.</p>
     <h4>What goes wrong on the shop floor</h4>
     <ul>
       <li><b>Only drilled holes:</b> the pins are loose. The plate shifts 0.1 mm or more each time you put it back.</li>
@@ -778,8 +796,9 @@ a{color:var(--accent)}
   <div class="card">
     <h3>In SolidWorks</h3>
     <p>Hole Wizard has a hole type made for pins, since SolidWorks 2013.</p>
-    <span class="path">Hole Wizard &gt; Type tab &gt; hole type: Dowel Hole, then pick the pin size</span>
-    <p>Set the tolerance to H7 in the same panel, so the hole callout shows it. The pins are in the Design Library, under <b>Toolbox</b>, in the ISO pins folder.</p>
+    <span class="path">Hole Wizard &gt; Type tab &gt; Hole Type: Hole &gt; Standard: ISO &gt; Type: the dowel hole option, then pick the pin size</span>
+    <p class="pt">The exact name in the Type list can change a little between versions. Look for the word "Dowel".</p>
+    <p>Set the tolerance to H7 in the same panel, so the hole callout shows it. The pins are in the Design Library, under <b>Toolbox &gt; ISO</b>, in the pins folder.</p>
   </div>
 
   <div class="prac"><span class="lbl">Practice, 10 minutes in SolidWorks</span>
@@ -788,7 +807,7 @@ a{color:var(--accent)}
       <li>Add two Ø8 Dowel Holes, far apart, H7, in both plates.</li>
       <li>In the top plate, change the second hole to a slot, 8 mm wide and 10 mm long, pointing toward the first hole.</li>
       <li>Add two ISO 8734 pins from Toolbox and mate them.</li>
-      <li>On the drawing, add the note: "Drill Ø7.8, ream Ø8 H7 with plates clamped together".</li>
+      <li>On the drawing, add the note: "Drill Ø7.8, ream Ø8 H7. Ream the round hole with the plates clamped together. Slot 8 H7 wide, on the line between the pins".</li>
     </ol></div>
 </section>
 
@@ -832,11 +851,12 @@ a{color:var(--accent)}
 
   <div class="warn"><span class="lbl">The trap: the bore closes in</span>
     When you press a bushing into a housing, the housing squeezes it. The outside gets smaller, and so does the <b>inside</b>.
-    If you plan the shaft clearance with the "as bought" bore, your shaft may not fit after pressing, or it may seize when it warms up.
+    Maybe you plan the shaft clearance with the "as bought" bore. Then the shaft may not fit after pressing, or it may seize when it warms up.
     <br><b>Fix:</b> use the maker's <b>after-press</b> bore size, or ream the bore after pressing.</div>
 
   <figure data-box="Figure 6.2, bushing before and after pressing">
-    <div class="pic">{{fig:fig14-bushing-press}}</div>
+    <div class="pic sv">{{fig:fig14-bushing-press}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 6.2. Before and after pressing, cut in half. The housing squeezes the bushing, so its bore gets smaller. Drawn much bigger than real.</figcaption>
   </figure>
 
@@ -877,12 +897,13 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 6.3, a linear ball bushing">
-    <div class="pic">{{fig:fig18-linear-bushing}}</div>
+    <div class="pic sv">{{fig:fig18-linear-bushing}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 6.3. A linear ball bushing on its shaft, cut in half. I could not find a free photo of one, so here is a drawing. The balls roll along the shaft, then turn at the end and come back in a return row.</figcaption>
   </figure>
 
   <div class="ex"><span class="lbl">Worked example 2: a guide shaft in a linear bushing</span>
-    <p><b>The part.</b> A pick and place axis has a carriage on two Ø20 guide shafts. Each side of the carriage holds an LM20UU linear bushing, which is 20 mm inside and 32 mm outside.</p>
+    <p><b>The part.</b> A pick and place axis has a carriage <span class="pt">(carro)</span> on two Ø20 guide shafts. Each side of the carriage holds an LM20UU linear bushing, which is 20 mm inside and 32 mm outside.</p>
     <h4>Step 1. The shaft</h4>
     <p>Buy a hardened, ground shaft in <b>g6</b>. Ø20 g6 = <span class="num">19.980 to 19.993 mm</span>.</p>
     <h4>Step 2. The carriage bore for the bushing</h4>
@@ -900,7 +921,7 @@ a{color:var(--accent)}
   <div class="card">
     <h3>Job 3: parts that must come apart for service</h3>
     <ul>
-      <li><b>H7/h6</b>: goes together by hand, comes apart by hand, almost no play. Use it for covers, spacers and centring rings.</li>
+      <li><b>H7/h6</b>: goes together by hand, comes apart by hand, almost no play. Use it for covers, spacers <span class="pt">(espaçadores)</span> and centring rings.</li>
       <li><b>H7/k6</b>: a light tap to fit, a light pull or a puller to remove. Use it for a gear or a pulley hub that must sit true but still come off.</li>
       <li><b>Never</b> use p6, s6 or u6 on something you open often. You will not get it apart without damage.</li>
     </ul>
@@ -966,20 +987,21 @@ a{color:var(--accent)}
   </div>
 
   <figure data-box="Figure 7.1, the note on the drawing">
-    <div class="pic">{{fig:fig15-drawing-note}}</div>
+    <div class="pic sv">{{fig:fig15-drawing-note}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 7.1. Where the notes go. The fit size keeps its own tolerance. The plain "100" gets ±0.3 from the note.</figcaption>
   </figure>
 
   <div class="card">
     <h3>Edge breaks, in the same note</h3>
-    <p>A <b>sharp edge</b> <span class="pt">(canto vivo)</span> cuts hands and gets damaged. The shop can break it with a small chamfer or file, but only if you ask.
+    <p>A <b>sharp edge</b> <span class="pt">(canto vivo)</span> cuts hands and gets damaged. The shop can break it with a small chamfer <span class="pt">(chanfro)</span> or a file, but only if you ask.
     You said you do not add edge break notes. Add this line:</p>
     <span class="path">BREAK ALL SHARP EDGES 0.3 MAX (QUEBRAR CANTOS VIVOS)</span>
-    <p>For chamfers and radii that you do draw, ISO 2768 class m allows ±0.2 mm up to 3 mm, ±0.5 mm from 3 to 6 mm, and ±1.0 mm above 6 mm.</p>
+    <p>For chamfers and radii that you draw, ISO 2768 class m allows ±0.2 mm up to 3 mm. It allows ±0.5 mm from 3 to 6 mm, and ±1.0 mm above 6 mm.</p>
   </div>
 
   <div class="ex"><span class="lbl">Worked example: a sheet metal cover</span>
-    <p><b>The part.</b> A 2 mm steel cover <span class="pt">(tampa de chapa)</span>, 250 x 180 mm, with four Ø6.6 holes for M6 screws and a 15 mm bent flange.</p>
+    <p><b>The part.</b> A 2 mm steel cover <span class="pt">(tampa de chapa)</span>, 250 x 180 mm, with four Ø6.6 holes for M6 screws and a 15 mm bent flange <span class="pt">(aba dobrada)</span>.</p>
     <h4>Step 1. Which sizes need a fit?</h4>
     <p>None. No bearing, no pin, no shaft touches this part. The screws go through clearance holes. So the general note covers every size.</p>
     <h4>Step 2. What the note gives each size</h4>
@@ -1028,7 +1050,8 @@ a{color:var(--accent)}
   <p class="mins">Reading about 5 minutes. Keep this part open at work.</p>
 
   <figure data-box="Figure 8.1, which fit, four questions">
-    <div class="pic">{{fig:fig16-which-fit}}</div>
+    <div class="pic sv">{{fig:fig16-which-fit}}</div>
+    <div class="swipe">Swipe sideways to see the whole drawing.</div>
     <figcaption>Figure 8.1. Ask the four questions in order. Most sizes end in the orange box: no fit, just the general note.</figcaption>
   </figure>
 
@@ -1142,7 +1165,7 @@ a{color:var(--accent)}
     bar.style.width = Math.round((i + 1) / parts.length * 100) + "%";
     back.disabled = i === 0;
     next.disabled = i === parts.length - 1;
-    next.textContent = i === parts.length - 2 ? "Last part" : "Next";
+    next.textContent = i === parts.length - 2 ? "Next: last part" : "Next";
     window.scrollTo(0, 0);
   }
   back.onclick = function(){ go(cur - 1); };

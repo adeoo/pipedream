@@ -19,6 +19,7 @@ def defs(f):
 <pattern id="hS-{f}" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="{GREEN}" stroke-width="1.1"/></pattern>
 <pattern id="hC-{f}" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="{BRONZE}" stroke-width="1.2"/></pattern>
 <pattern id="hG-{f}" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="{INK}" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="{INK}" stroke-width="0.5"/></pattern>
+<pattern id="hR-{f}" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-60)"><rect width="5" height="5" fill="#f4f5f7"/><line x1="0" y1="0" x2="0" y2="5" stroke="{INK}" stroke-width="0.9"/></pattern>
 <marker id="dot-{f}" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="{INK}"/></marker>
 <marker id="arr-{f}" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="{INK}"/></marker>
 <marker id="arrs-{f}" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="{INK}"/></marker>

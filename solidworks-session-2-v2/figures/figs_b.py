@@ -28,7 +28,7 @@ rows = [(146, "Tolerance Type", "Fit with tolerance"),
 for y, lab, val in rows:
     b.append(dropdown(y, lab, val))
 # show parenthesis
-b.append('<rect x="52" y="344" width="16" height="16" rx="2" fill="#fff" stroke="#8a93a3"/>')
+b.append('<rect x="52" y="344" width="16" height="16" rx="2" fill="#2f6fde" stroke="#2f6fde"/><path d="M55,352 l4,4 l7,-8" stroke="#fff" stroke-width="2" fill="none"/>')
 b.append(text(76, 357, "Show parenthesis", "g-t"))
 # fit tolerance display buttons
 b.append(text(52, 382, "Fit Tolerance Display", "g-s"))
@@ -38,7 +38,7 @@ b.append('<text x="70" y="401" text-anchor="middle" style="font:9px Arial">H7</t
 b.append('<text x="114" y="401" text-anchor="middle" style="font:9px Arial">H7</text><text x="114" y="414" text-anchor="middle" style="font:9px Arial">g6</text>')
 b.append('<text x="158" y="407" text-anchor="middle" style="font:9px Arial">H7/g6</text>')
 # precision
-b.append(text(196, 382, "Precision", "g-s"))
+b.append(text(196, 382, "Tolerance precision", "g-s"))
 b.append('<rect x="196" y="388" width="112" height="30" rx="3" fill="#fff" stroke="#8a93a3"/>')
 b.append(text(206, 408, ".123", "g-t"))
 b.append('<path d="M290,400 l5,6 l5,-6" stroke="#4a5566" stroke-width="2" fill="none"/>')
@@ -48,8 +48,8 @@ calls = [(160, "1", "Tolerance Type", ["Pick Fit with tolerance."]),
          (212, "2", "Classification", ["Clearance, Transitional or Press.", "It shortens the two lists below."]),
          (264, "3", "Hole Fit", ["On a hole: pick H7 here."]),
          (316, "4", "Shaft Fit", ["On a shaft: pick g6, k6 and so on.", "On a hole, you can leave it empty."]),
-         (352, "5", "Show parenthesis", ["Puts ( ) around the numbers."]),
-         (403, "6", "Fit Tolerance Display / Precision", ["Stacked or in one line.", "Set 3 decimals so you see 0.015."])]
+         (352, "5", "Show parenthesis", ["Ticked here: puts ( ) around", "the two numbers."]),
+         (403, "6", "Display / Tolerance precision", ["Stacked or in one line.", "Set 3 decimals so you see 0.015."])]
 ly = 70
 for yy, n, head, lines in calls:
     b.append(leader(f, [(200 if n == "5" else 308, yy), (372, ly + 4)], dot=True))
@@ -97,14 +97,14 @@ cx, cy = 190, 205
 b.append(bearing_end(cx, cy, False))
 b.append(turn_arrow(cx, cy, 34, RED))
 b.append(line(cx, cy + 150, cx, cy + 190, "g-ink", f'style="stroke-width:3" marker-start="url(#arrs-{f})"'))
-b.append(text(cx + 10, cy + 186, "load", "g-b"))
+b.append(text(cx + 10, cy + 186, "load, always this way", "g-b"))
 b.append(text(cx, 440, [("g-b", "Case 1: the shaft turns"), "conveyor roller shaft, gearbox shaft", "inner ring turns, load stays still", ("g-b", "inner ring tight: shaft k5"), "outer ring normal: housing H7"], anchor="middle"))
 # right: outer ring turns
 cx, cy = 570, 205
 b.append(bearing_end(cx, cy, True))
 b.append(turn_arrow(cx, cy, 124, RED))
 b.append(line(cx, cy + 150, cx, cy + 190, "g-ink", f'style="stroke-width:3" marker-start="url(#arrs-{f})"'))
-b.append(text(cx + 10, cy + 186, "load", "g-b"))
+b.append(text(cx + 10, cy + 186, "load, always this way", "g-b"))
 b.append(text(cx, 440, [("g-b", "Case 2: the outer ring turns"), "idler pulley or wheel on a fixed pin", "outer ring turns, load stays still", ("g-b", "outer ring tight: bore K7"), "inner ring normal: pin h6 or g6"], anchor="middle"))
 # legend
 b.append(f'<rect x="300" y="530" width="18" height="12" fill="{RED}" fill-opacity=".4" stroke="{RED}"/>')
@@ -122,7 +122,7 @@ def R(mm):
 x0 = 250                     # left face of bearing (against shaft shoulder)
 W = 15 * S
 b = []
-b.append(text(30, 30, "Bearing 6205 on a conveyor roller shaft, half section (corte)", "g-h"))
+b.append(text(30, 30, "Bearing 6205 on a conveyor drive shaft, half section (corte)", "g-h"))
 # housing (upper part), with housing shoulder on the left
 hx1, hx2 = x0 - 70, x0 + W + 90
 hpath = (f"M{hx1},{R(40)} L{hx2},{R(40)} L{hx2},{R(26)} L{x0},{R(26)} L{x0},{R(23.5)} L{hx1},{R(23.5)} Z")
@@ -130,10 +130,11 @@ b.append(f'<path d="{hpath}" fill="url(#hA-{f})" stroke="{INK}" stroke-width="2"
 # shaft
 sx1, sx2 = 60, 560
 spath = (f"M{sx1},{AX} L{sx1},{R(15)} L{x0},{R(15)} L{x0},{R(12.5)} L{sx2},{R(12.5)} L{sx2},{AX} Z")
-b.append(f'<path d="{spath}" fill="url(#hB-{f})" stroke="{INK}" stroke-width="2"/>')
+b.append(f'<path d="{spath}" fill="url(#hB-{f})" stroke="none"/>')
+b.append(f'<polyline points="{sx1},{AX} {sx1},{R(15)} {x0},{R(15)} {x0},{R(12.5)} {sx2},{R(12.5)} {sx2},{AX}" fill="none" stroke="{INK}" stroke-width="2"/>')
 # bearing rings
-b.append(f'<rect x="{x0}" y="{R(26)}" width="{W}" height="{(26 - 22.2) * S}" fill="url(#hG-{f})" stroke="{INK}" stroke-width="2"/>')
-b.append(f'<rect x="{x0}" y="{R(16.3)}" width="{W}" height="{(16.3 - 12.5) * S}" fill="url(#hG-{f})" stroke="{INK}" stroke-width="2"/>')
+b.append(f'<rect x="{x0}" y="{R(26)}" width="{W}" height="{(26 - 22.2) * S}" fill="url(#hR-{f})" stroke="{INK}" stroke-width="2"/>')
+b.append(f'<rect x="{x0}" y="{R(16.3)}" width="{W}" height="{(16.3 - 12.5) * S}" fill="url(#hR-{f})" stroke="{INK}" stroke-width="2"/>')
 b.append(f'<circle cx="{x0 + W / 2}" cy="{R(19.25)}" r="{3.97 * S}" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
 # axis
 b.append(line(40, AX, 590, AX, "g-cl", 'style="stroke-width:1.4"'))

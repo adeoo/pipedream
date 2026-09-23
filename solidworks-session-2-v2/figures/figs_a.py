@@ -71,9 +71,9 @@ for name, x, lo, hi, col, mx, mn in zones:
     b.append(text(x + 33, 372, [("g-b", name), ("g-s", "max " + mx), ("g-s", "min " + mn)], anchor="middle", dy=18))
 # legend
 b.append(line(632, 120, 632, 80, "g-thin", f'marker-end="url(#arr-{f})"'))
-b.append(text(642, 100, ["up =", "more metal"], "g-s"))
+b.append(text(642, 100, ["up =", "bigger size"], "g-s"))
 b.append(line(632, 300, 632, 340, "g-thin", f'marker-end="url(#arr-{f})"'))
-b.append(text(642, 318, ["down =", "less metal"], "g-s"))
+b.append(text(642, 318, ["down =", "smaller size"], "g-s"))
 b.append(leader(f, [(600, Z), (640, 200)], dot=True))
 b.append(text(646, 196, ["dash-dot line =", "10.000 exactly"], "g-s"))
 write("fig03-tolerance-zones.svg", svg(f, 760, 430, "Tolerance bands of H7, g6, h6, k6 and p6 at 10 mm", "\n".join(b)))

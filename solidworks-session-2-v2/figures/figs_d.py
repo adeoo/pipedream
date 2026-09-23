@@ -39,10 +39,10 @@ top, bot = 130, 330
 b.append(f'<rect x="40" y="200" width="550" height="60" fill="#dfe3ea" stroke="{INK}" stroke-width="2"/>')
 b.append(line(20, 230, 605, 230, "g-cl"))
 # outer sleeve, upper and lower, hatched
-for y0, y1 in ((top, top + 34), (bot - 34, bot)):
+for y0, y1 in ((143, 177), (283, 317)):
     b.append(f'<rect x="{L}" y="{y0}" width="{R_-L}" height="{y1-y0}" fill="url(#hA-{f})" stroke="{INK}" stroke-width="2"/>')
 # ball rows: loaded row touching shaft, return row higher
-for yl, yr in ((188, 176 - 20), (272, 284 + 20)):
+for yl, yr in ((188, 160), (272, 300)):
     for k in range(13):
         x = L + 22 + k * 26
         b.append(f'<circle cx="{x}" cy="{yl}" r="11" fill="#ffffff" stroke="{INK}" stroke-width="1.6"/>')
@@ -50,13 +50,13 @@ for yl, yr in ((188, 176 - 20), (272, 284 + 20)):
         x = L + 48 + k * 26
         b.append(f'<circle cx="{x}" cy="{yr}" r="8" fill="#eef0f3" stroke="{INK}" stroke-width="1.2"/>')
 # recirculation arrows
-b.append(f'<path d="M{R_-10},{188} C{R_+30},188 {R_+30},156 {R_-20},156" fill="none" stroke="{RED}" stroke-width="2.2" marker-end="url(#arrR-{f})"/>')
-b.append(f'<path d="M{L+30},156 C{L-20},156 {L-20},188 {L+10},188" fill="none" stroke="{RED}" stroke-width="2.2" marker-end="url(#arrR-{f})"/>')
+b.append(f'<path d="M{R_-10},{188} C{R_+30},188 {R_+30},160 {R_-20},160" fill="none" stroke="{RED}" stroke-width="2.2" marker-end="url(#arrR-{f})"/>')
+b.append(f'<path d="M{L+30},160 C{L-20},160 {L-20},188 {L+10},188" fill="none" stroke="{RED}" stroke-width="2.2" marker-end="url(#arrR-{f})"/>')
 # carriage motion arrow
 b.append(line(300, 95, 420, 95, "g-ink", f'style="stroke-width:3" marker-end="url(#arr-{f})"'))
 b.append(text(360, 82, "the bushing slides", "g-b", "middle"))
 # labels
-b.append(leader(f, [(470, 140), (600, 110), (612, 110)]))
+b.append(leader(f, [(480, 150), (600, 110), (612, 110)]))
 b.append(text(618, 106, [("g-b", "Outer sleeve"), "sits in an H7 bore"], dy=18))
 b.append(leader(f, [(410, 188), (600, 170), (612, 170)]))
 b.append(text(618, 166, [("g-b", "Loaded balls"), "roll on the shaft"], dy=18))

@@ -121,9 +121,10 @@ b.append(line(cx - 28, 225, cx - 28, 245, "g-thin") + line(cx + 28, 225, cx + 28
 b.append(dimh(f, 232, cx - 28, cx + 28))
 b.append(text(cx, 215, "Ø8 H7", "g-b", "middle"))
 b.append(text(cx, 395, [("g-b", "Result"), "8.000 to 8.015 mm", "smooth and round", "the pin fits every time", ("g-s g-pt", "furo pronto")], anchor="middle"))
-b.append(text(140 + 32, 90, "twist drill (broca)", "g-s"))
-b.append(text(390 + 34, 90, "machine reamer", "g-s"))
-b.append(text(390 + 34, 106, "(alargador)", "g-s g-pt"))
+b.append(leader(f, [(160, 120), (190, 94), (196, 94)]))
+b.append(text(200, 90, ["twist drill", "(broca)"], "g-s", dy=16))
+b.append(leader(f, [(412, 120), (440, 94), (446, 94)]))
+b.append(text(450, 90, ["machine reamer", "(alargador)"], "g-s", dy=16))
 write("fig13-drill-then-ream.svg", svg(f, 760, 500, "Drill undersize, then ream to H7", "\n".join(b)))
 
 # ---------- 14 bronze bushing before and after pressing ----------
@@ -136,7 +137,7 @@ def housing(cx, bore_half, top=230, bot=380):
 # before
 cx = 190
 b.append(housing(cx, 60))
-b.append(f'<path d="M{cx - 66},70 H{cx - 42} V200 H{cx - 66} Z M{cx + 42},70 H{cx + 66} V200 H{cx + 42} Z" fill="url(#hC-{f})" stroke="{BRONZE}" stroke-width="2"/>')
+b.append(f'<path d="M{cx - 64},70 H{cx - 42} V200 H{cx - 64} Z M{cx + 42},70 H{cx + 64} V200 H{cx + 42} Z" fill="url(#hC-{f})" stroke="{BRONZE}" stroke-width="2"/>')
 b.append(line(cx, 55, cx, 395, "g-cl"))
 b.append(line(cx, 206, cx, 226, "g-ink", f'style="stroke-width:3" marker-end="url(#arr-{f})"'))
 b.append(text(cx + 10, 222, "press", "g-b"))
@@ -195,11 +196,11 @@ b.append('<text x="548" y="428" style="font:11px Arial;fill:#4a5566">MATERIAL</t
 b.append('<text x="648" y="428" style="font:11px Arial;fill:#4a5566">SCALE</text><text x="648" y="444" style="font:12px Arial;fill:#1f2733">1:1</text>')
 b.append('<text x="548" y="465" style="font:11px Arial;fill:#4a5566">DRAWN: ADEL</text><text x="648" y="465" style="font:11px Arial;fill:#4a5566">SHEET 1/1  A4</text>')
 # explanations outside the sheet
-b.append(leader(f, [(452, 73), (440, 62), (230, 62)], dot=True))
+b.append(leader(f, [(436, 80), (420, 62), (230, 62)], dot=True))
 b.append(text(30, 66, [("g-b", "Fit written on the size"), "the note does not apply here"], dy=18))
 b.append(leader(f, [(340, 228), (230, 170)], dot=True))
 b.append(text(30, 166, [("g-b", "No tolerance written"), "the note gives it: ±0.3", "(30 to 120 mm, class m)"], dy=18))
-b.append(leader(f, [(282, 330), (230, 300)], dot=True))
+b.append(leader(f, [(276, 318), (230, 300)], dot=True))
 b.append(text(30, 296, [("g-b", "General tolerance note"), "covers every size with", "no tolerance of its own", ("g-s g-pt", "nota de tolerância geral")], dy=18))
 b.append(leader(f, [(540, 450), (500, 500), (230, 500)], dot=True))
 b.append(text(30, 496, [("g-b", "Title block (legenda)"), "put the notes near it"], dy=18))
