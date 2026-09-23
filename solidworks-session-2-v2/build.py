@@ -6,7 +6,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "lesson.src.html")
 OUT = os.path.join(HERE, "Session-2-Hole-Tolerances-and-Fits-v2.html")
 FIG = os.path.join(HERE, "figures")
-PHOTOS = json.load(open(os.path.join(HERE, "photos", "photos.json")))
+import sys
+DRAFT = "--draft" in sys.argv
+PJ = os.path.join(HERE, "photos", "photos.json")
+PHOTOS = {} if DRAFT else json.load(open(PJ))
+if DRAFT:
+    OUT = os.path.join(HERE, "Session-2-v2-DRAFT-no-photos-yet.html")
 
 
 def svg_inline(name):
@@ -26,6 +31,9 @@ def img_data(path, width=640, quality=70):
 
 
 def photo_block(key):
+    if DRAFT:
+        return ('<div class="pic" style="padding:18px;text-align:center;color:#5f6b7d;border:1px dashed #b8bfcb">'
+                'Draft: the photo goes here. It is still being found.</div>')
     p = PHOTOS[key]
     items = p["images"]
     if len(items) == 1:
@@ -37,6 +45,8 @@ def photo_block(key):
 
 
 def credit(key):
+    if DRAFT:
+        return ""
     parts = [f'{it["credit"]}' for it in PHOTOS[key]["images"]]
     return '<span class="credit">Photo: ' + " | ".join(parts) + "</span>"
 
@@ -45,7 +55,7 @@ html = open(SRC).read()
 html = re.sub(r"\{\{fig:([\w-]+)\}\}", lambda m: svg_inline(m.group(1)), html)
 html = re.sub(r"\{\{photo:(\w+)\}\}", lambda m: photo_block(m.group(1)), html)
 html = re.sub(r"\{\{credit:(\w+)\}\}", lambda m: credit(m.group(1)), html)
-html = re.sub(r"\{\{caption:(\w+)\}\}", lambda m: PHOTOS[m.group(1)]["caption"], html)
+html = re.sub(r"\{\{caption:(\w+)\}\}", lambda m: "" if DRAFT else PHOTOS[m.group(1)]["caption"], html)
 left = re.findall(r"\{\{[^}]+\}\}", html)
 assert not left, left
 assert "—" not in html, "em dash found"
