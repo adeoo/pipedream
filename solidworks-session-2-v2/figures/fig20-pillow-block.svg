@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-ucp" viewBox="0 0 760 460" width="760" height="460" role="img" aria-label="UCP pillow block unit with its parts named">
+<title>UCP pillow block unit with its parts named</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-ucp" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-ucp" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-ucp" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-ucp" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-ucp" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<marker id="dot-ucp" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-ucp" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-ucp" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-ucp" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-ucp" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="460" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Pillow block unit, UCP type (mancal com rolamento)</text>
+<path d="M60,330 H460 V300 H380 L350,290 H170 L140,300 H60 Z" fill="#b9c0cb" stroke="#1f2733" stroke-width="2"/>
+<path d="M150,300 C150,160 170,95 260,95 C350,95 370,160 370,300 Z" fill="#b9c0cb" stroke="#1f2733" stroke-width="2"/>
+<rect x="84" y="304" width="32" height="18" rx="9" fill="#ffffff" stroke="#1f2733" stroke-width="1.6"/>
+<rect x="404" y="304" width="32" height="18" rx="9" fill="#ffffff" stroke="#1f2733" stroke-width="1.6"/>
+<circle cx="260" cy="200" r="70" fill="#dfe3ea" stroke="#1f2733" stroke-width="2"/>
+<circle cx="260" cy="200" r="44" fill="#eef0f3" stroke="#1f2733" stroke-width="1.6"/>
+<circle cx="260" cy="200" r="28" fill="#ffffff" stroke="#1f8a4c" stroke-width="2"/>
+<circle cx="260" cy="200" r="24" fill="url(#hS-ucp)" stroke="#1f8a4c" stroke-width="1.6"/>
+<rect x="254" y="72" width="12" height="24" fill="#8a93a3" stroke="#1f2733"/><circle cx="260" cy="68" r="7" fill="#8a93a3" stroke="#1f2733"/>
+<rect x="290" y="160" width="12" height="14" transform="rotate(35 296 167)" fill="#1f2733"/>
+<line class="g-cl" x1="150" y1="200" x2="370" y2="200" /><line class="g-cl" x1="260" y1="50" x2="260" y2="350" />
+<polyline class="g-thin" points="260,66 430,60 500,60" marker-start="url(#dot-ucp)"/>
+<text class="g-b" x="506" y="56" text-anchor="start" >Grease nipple</text>
+<text class="g-s g-pt" x="506" y="74" text-anchor="start" >graxeira</text>
+<polyline class="g-thin" points="300,166 440,135 500,135" marker-start="url(#dot-ucp)"/>
+<text class="g-b" x="506" y="131" text-anchor="start" >Set screw</text>
+<text class="g-t" x="506" y="149" text-anchor="start" >locks the insert to the shaft</text>
+<text class="g-s g-pt" x="506" y="167" text-anchor="start" >parafuso de fixação</text>
+<polyline class="g-thin" points="318,240 440,225 500,225" marker-start="url(#dot-ucp)"/>
+<text class="g-b" x="506" y="221" text-anchor="start" >Bearing insert</text>
+<text class="g-t" x="506" y="239" text-anchor="start" >a ball bearing with a</text>
+<text class="g-t" x="506" y="257" text-anchor="start" >round outside</text>
+<text class="g-s g-pt" x="506" y="275" text-anchor="start" >rolamento de inserção</text>
+<polyline class="g-thin" points="248,210 170,400 150,400" marker-start="url(#dot-ucp)"/>
+<text class="g-b" x="30" y="396" text-anchor="start" >Shaft</text>
+<text class="g-t" x="30" y="414" text-anchor="start" >tolerance from</text>
+<text class="g-t" x="30" y="432" text-anchor="start" >the maker</text>
+<polyline class="g-thin" points="362,280 440,311 500,311" marker-start="url(#dot-ucp)"/>
+<text class="g-b" x="506" y="316" text-anchor="start" >Cast iron housing</text>
+<text class="g-t" x="506" y="334" text-anchor="start" >bolted to the frame</text>
+<text class="g-s g-pt" x="506" y="352" text-anchor="start" >caixa de ferro fundido</text>
+</svg>
