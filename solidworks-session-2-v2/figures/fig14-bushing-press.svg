@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-bsh" viewBox="0 0 760 505" width="760" height="505" role="img" aria-label="Bronze bushing before and after pressing, the bore gets smaller">
+<title>Bronze bushing before and after pressing, the bore gets smaller</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-bsh" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-bsh" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-bsh" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-bsh" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-bsh" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<marker id="dot-bsh" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-bsh" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-bsh" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-bsh" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-bsh" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="505" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Bronze bushing (bucha de bronze): before and after pressing, section</text>
+<path d="M40,230 H130 V380 H40 Z M250,230 H340 V380 H250 Z" fill="url(#hA-bsh)" stroke="#1f2733" stroke-width="2"/>
+<path d="M124,70 H148 V200 H124 Z M232,70 H256 V200 H232 Z" fill="url(#hC-bsh)" stroke="#a86b2d" stroke-width="2"/>
+<line class="g-cl" x1="190" y1="55" x2="190" y2="395" />
+<line class="g-ink" x1="190" y1="206" x2="190" y2="226" style="stroke-width:3" marker-end="url(#arr-bsh)"/>
+<text class="g-b" x="200" y="222" text-anchor="start" >press</text>
+<line class="g-thin" x1="148" y1="60" x2="148" y2="44" /><line class="g-thin" x1="232" y1="60" x2="232" y2="44" />
+<line class="g-thin" x1="148" y1="52" x2="232" y2="52" marker-start="url(#arrs-bsh)" marker-end="url(#arr-bsh)"/>
+<text class="g-s" x="240" y="57" text-anchor="start" >bore as bought</text>
+<text class="g-b" x="190" y="420" text-anchor="middle" >Before</text>
+<text class="g-t" x="190" y="439" text-anchor="middle" >the outside of the bushing is a</text>
+<text class="g-t" x="190" y="458" text-anchor="middle" >little bigger than the housing bore</text>
+<path d="M410,230 H500 V380 H410 Z M620,230 H710 V380 H620 Z" fill="url(#hA-bsh)" stroke="#1f2733" stroke-width="2"/>
+<path d="M500,240 H526 V370 H500 Z M594,240 H620 V370 H594 Z" fill="url(#hC-bsh)" stroke="#a86b2d" stroke-width="2"/>
+<line class="g-hid" x1="518" y1="225" x2="518" y2="385" /><line class="g-hid" x1="602" y1="225" x2="602" y2="385" />
+<line class="g-cl" x1="560" y1="55" x2="560" y2="395" />
+<line class="g-ink" x1="550" y1="275" x2="530" y2="275" style="stroke:#c0392b;stroke-width:2.6" marker-end="url(#arrR-bsh)"/>
+<line class="g-ink" x1="570" y1="275" x2="590" y2="275" style="stroke:#c0392b;stroke-width:2.6" marker-end="url(#arrR-bsh)"/>
+<line class="g-ink" x1="550" y1="335" x2="530" y2="335" style="stroke:#c0392b;stroke-width:2.6" marker-end="url(#arrR-bsh)"/>
+<line class="g-ink" x1="570" y1="335" x2="590" y2="335" style="stroke:#c0392b;stroke-width:2.6" marker-end="url(#arrR-bsh)"/>
+<polyline class="g-thin" points="602,232 602,200 608,110 616,110" marker-start="url(#dot-bsh)"/>
+<text class="g-b" x="622" y="100" text-anchor="start" >dashed line =</text>
+<text class="g-t" x="622" y="118" text-anchor="start" >bore before</text>
+<text class="g-t" x="622" y="136" text-anchor="start" >pressing</text>
+<polyline class="g-thin" points="594,300 580,215 608,190 616,190" marker-start="url(#dot-bsh)"/>
+<text class="g-b" x="622" y="186" text-anchor="start" style="fill:#c0392b">bore now</text>
+<text class="g-t" x="622" y="204" text-anchor="start" style="fill:#c0392b">smaller</text>
+<polyline class="g-thin" points="450,260 470,120 460,120" marker-start="url(#dot-bsh)"/>
+<text class="g-b" x="370" y="100" text-anchor="start" >Housing</text>
+<text class="g-t" x="370" y="118" text-anchor="start" >bore H7</text>
+<text class="g-s g-pt" x="370" y="136" text-anchor="start" >mancal</text>
+<text class="g-b" x="560" y="420" text-anchor="middle" >After</text>
+<text class="g-t" x="560" y="439" text-anchor="middle" >the housing squeezes the bushing,</text>
+<text class="g-t" x="560" y="458" text-anchor="middle" >so the bore closes in (fecha)</text>
+<text class="g-s" x="30" y="490" text-anchor="start" >Sizes drawn much bigger than real. Fix: use the maker's after-press bore size, or ream the bore after pressing.</text>
+</svg>

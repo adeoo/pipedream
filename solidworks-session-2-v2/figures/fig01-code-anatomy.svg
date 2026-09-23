@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-code" viewBox="0 0 760 330" width="760" height="330" role="img" aria-label="Anatomy of the fit code Ø10 H7">
+<title>Anatomy of the fit code Ø10 H7</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-code" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-code" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-code" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-code" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-code" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<marker id="dot-code" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-code" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-code" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-code" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-code" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="330" fill="#ffffff"/>
+<text class="g-h" x="380" y="44" text-anchor="middle" >A fit code on a drawing has three pieces</text>
+<text x="232" y="150" style="font-family:Arial,Helvetica,sans-serif;font-size:72px;font-weight:700;fill:#1f2733">Ø10</text>
+<text x="400" y="150" style="font-family:Arial,Helvetica,sans-serif;font-size:72px;font-weight:700;fill:#2f6fde">H</text>
+<text x="458" y="150" style="font-family:Arial,Helvetica,sans-serif;font-size:72px;font-weight:700;fill:#c8761a">7</text>
+<polyline class="g-thin" points="232,170 232,178 372,178 372,170"/>
+<polyline class="g-thin" points="400,170 400,178 450,178 450,170"/>
+<polyline class="g-thin" points="458,170 458,178 498,178 498,170"/>
+<polyline class="g-thin" points="302,178 302,200 130,222"/>
+<polyline class="g-thin" points="425,178 425,200 390,222"/>
+<polyline class="g-thin" points="478,178 478,200 640,222"/>
+<text class="g-b" x="130" y="242" text-anchor="middle" >Ø10 = nominal size</text>
+<text class="g-t" x="130" y="261" text-anchor="middle" >the round number</text>
+<text class="g-t" x="130" y="280" text-anchor="middle" >you draw in the model</text>
+<text class="g-s g-pt" x="130" y="299" text-anchor="middle" >medida nominal</text>
+<text class="g-b" x="390" y="242" text-anchor="middle" >H = where the band sits</text>
+<text class="g-t" x="390" y="261" text-anchor="middle" >capital letter = hole</text>
+<text class="g-t" x="390" y="280" text-anchor="middle" >small letter = shaft</text>
+<text class="g-s g-pt" x="390" y="299" text-anchor="middle" >posição / afastamento</text>
+<text class="g-b" x="640" y="242" text-anchor="middle" >7 = how wide the band is</text>
+<text class="g-t" x="640" y="261" text-anchor="middle" >the IT grade</text>
+<text class="g-t" x="640" y="280" text-anchor="middle" >small number = tight</text>
+<text class="g-s g-pt" x="640" y="299" text-anchor="middle" >qualidade IT</text>
+</svg>

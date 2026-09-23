@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 2: Hole Tolerances and Fits (v2)</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --text:#1d2330; --muted:#5f6b7d; --line:#dde2ea;
+  --accent:#2f6fde; --accent-soft:#e7efff; --ok:#1f8a4c; --ok-soft:#e8f6ee;
+  --warn:#b4600a; --warn-soft:#fdf1e0; --ex:#7a3fc4; --ex-soft:#f3ecfc;
+  --chip:#f0f3f8; --code:#eef1f6; --paper:#ffffff;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12151b; --card:#1b2029; --text:#e6e9ef; --muted:#9aa6b8; --line:#2c3440;
+    --accent:#6b9cff; --accent-soft:#1f2c47; --ok:#4cc783; --ok-soft:#16301f;
+    --warn:#e0a35c; --warn-soft:#2e2313; --ex:#b58cf0; --ex-soft:#2a2040;
+    --chip:#232a35; --code:#222936; --paper:#f4f5f7;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:840px;margin:0 auto;padding:16px 16px 60px}
+header h1{font-size:1.35rem;margin:6px 0 2px}
+header .sub{color:var(--muted);margin:0 0 10px;font-size:.93rem}
+.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.progress div{height:100%;width:0;background:var(--accent);transition:width .25s}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+.steps button{font-size:.78rem;padding:5px 10px;border-radius:99px;background:var(--chip);
+  color:var(--muted);border:0;cursor:pointer;font-weight:600}
+.steps button.on{background:var(--accent);color:#fff}
+.steps button.done{background:var(--accent-soft);color:var(--accent)}
+.cbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:8px 12px;margin:0 0 18px;font-size:.9rem}
+.cbar .count{font-weight:700}
+.cbar .msg{color:var(--ok);font-weight:600}
+.part{display:none}
+.part.show{display:block}
+.part h2{font-size:1.25rem;margin:0 0 2px}
+.part .mins{color:var(--muted);font-size:.88rem;margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 14px}
+.card h3{font-size:1.02rem;margin:0 0 6px}
+.key,.tip,.warn,.ex{border-radius:12px;padding:12px 14px;margin:0 0 14px;border:1px solid var(--line)}
+.key{background:var(--accent-soft);border-color:var(--accent)}
+.tip{background:var(--ok-soft);border-color:var(--ok)}
+.warn{background:var(--warn-soft);border-color:var(--warn)}
+.ex{background:var(--ex-soft);border-color:var(--ex)}
+.lbl{display:block;margin-bottom:4px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.key .lbl{color:var(--accent)} .tip .lbl{color:var(--ok)} .warn .lbl{color:var(--warn)} .ex .lbl{color:var(--ex)}
+.prac{background:var(--card);border:2px dashed var(--accent);border-radius:12px;padding:14px 16px;margin:0 0 14px}
+.prac .lbl{color:var(--accent)}
+.ex h4{margin:12px 0 2px;font-size:.95rem}
+.ex ol,.ex ul{margin-top:2px}
+.num{font-variant-numeric:tabular-nums;font-weight:700}
+figure{margin:0 0 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+figure .pic{background:var(--paper);border-radius:8px;overflow-x:auto}
+figure .pic svg{display:block;width:100%;height:auto;min-width:560px}
+figure img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair img{width:100%;height:220px;object-fit:contain;background:var(--paper)}
+@media (max-width:600px){.pair{grid-template-columns:1fr}.pair img{height:auto}}
+figcaption{color:var(--muted);font-size:.88rem;margin-top:8px}
+.credit{display:block;font-size:.74rem;color:var(--muted);margin-top:3px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 14px}
+details summary{cursor:pointer;font-weight:600;color:var(--accent)}
+details summary::marker{content:"+ "}
+details[open] summary::marker{content:"- "}
+details .in{padding-top:8px}
+code,.path{background:var(--code);border-radius:6px;font-size:.9em}
+code{padding:1px 5px}
+.path{display:block;padding:8px 10px;margin:6px 0;font-family:ui-monospace,Consolas,monospace}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--chip)}
+.scroll{overflow-x:auto}
+ol,ul{padding-left:22px;margin:6px 0}
+li{margin:4px 0}
+.pt{color:var(--muted);font-style:italic}
+.word{background:var(--chip);border-radius:6px;padding:0 5px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
+button.b{font:inherit;font-weight:600;border:0;border-radius:10px;padding:11px 18px;cursor:pointer}
+.primary{background:var(--accent);color:#fff}
+.ghost{background:var(--chip);color:var(--text)}
+button.b:disabled{opacity:.4;cursor:default}
+button.sm{font:inherit;font-size:.85rem;font-weight:600;border:0;border-radius:8px;padding:6px 12px;cursor:pointer}
+.cbtn{display:inline-block;margin-top:8px;font:inherit;font-size:.78rem;font-weight:600;color:var(--muted);
+  background:transparent;border:1px solid var(--line);border-radius:99px;padding:2px 10px;cursor:pointer}
+.cbtn.has{color:var(--accent);border-color:var(--accent)}
+.cbox{display:none;margin-top:8px}
+.cbox.open{display:block}
+.cbox textarea{width:100%;min-height:70px;font:inherit;font-size:.92rem;padding:8px;border-radius:8px;
+  border:1px solid var(--accent);background:var(--card);color:var(--text)}
+.cbox .hint{font-size:.78rem;color:var(--muted)}
+#copyout{display:none;width:100%;min-height:160px;margin-top:8px;font:inherit;font-size:.85rem;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px}
+a{color:var(--accent)}
+.sources{font-size:.88rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Session 2: hole tolerances and fits (version 2)</h1>
+  <p class="sub">8 parts. Honest time: about 75 minutes of reading and about 60 minutes of practice in SolidWorks.
+  That is more than one sitting. Do Parts 1 to 4 one day and Parts 5 to 8 the next day.</p>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="steps" id="steps"></div>
+</header>
+<div class="cbar">
+  <span>My comments: <span class="count" id="ccount">0</span></span>
+  <button class="sm primary" type="button" id="copyTop">Copy my comments</button>
+  <span class="msg" id="cmsg"></span>
+  <span class="pt" style="font-size:.8rem">Every box has a Comment button. Write what is not clear, then copy and paste it into the chat.</span>
+</div>
+<textarea id="copyout" readonly></textarea>
+<main id="main">
+
+<!-- ======================================================= PART 1 -->
+<section class="part" data-title="1. Read the code">
+  <h2>1. Read the code: what "Ø10 H7" means</h2>
+  <p class="mins">Reading about 10 minutes. Practice 5 minutes.</p>
+
+  <div class="card">
+    <h3>Why this part matters</h3>
+    <p>No machine makes a part at exactly 10.000 mm. Every real part comes out a little bigger or a little smaller.
+    So on the drawing you must say how far from 10 the part may go.
+    That allowed range is the <b>tolerance</b> <span class="pt">(tolerância)</span>.</p>
+    <p>For most sizes, a simple range is enough. But where a part must fit into another part, the range must be exact.
+    Engineers write that range with a short code, like <b>Ø10 H7</b>. This part teaches you to read it.</p>
+  </div>
+
+  <figure data-box="Figure 1.1, the three pieces of the code">
+    <div class="pic">{{fig:fig01-code-anatomy}}</div>
+    <figcaption>Figure 1.1. A fit code has three pieces: the size, a letter and a number.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Piece 1: the nominal size</h3>
+    <p>The <b>nominal size</b> <span class="pt">(medida nominal)</span> is the round number you draw in the model. Here it is 10 mm.
+    The symbol <b>Ø</b> means diameter.
+    The letter and the number that come after it say how far the real part may be from 10.</p>
+  </div>
+
+  <div class="card">
+    <h3>First, how small are these numbers?</h3>
+    <p>Fit tolerances are very small. We measure them in <b>µm</b>, called micrometre or <i>mícron</i>.
+    One µm is 0.001 mm. So 15 µm is 0.015 mm.</p>
+    <p>Look at Figure 1.2. A whole H7 band at Ø10 is 15 µm. That is about one fifth of a human hair.
+    Your shop can hold this, but only with the right tools. You will see those tools below.</p>
+  </div>
+
+  <figure data-box="Figure 1.2, 15 µm next to a hair">
+    <div class="pic">{{fig:fig02-micron-scale}}</div>
+    <figcaption>Figure 1.2. A sheet of paper, a hair, a whole H7 band, and the smallest gap in an H7/g6 fit, all at the same scale.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Piece 2: the letter says where the band sits</h3>
+    <p>Think of the allowed range as a <b>band</b> <span class="pt">(campo de tolerância)</span>. The letter says where this band sits, compared to the nominal size.</p>
+    <ul>
+      <li><b>Capital letter = a hole</b> <span class="pt">(furo)</span>. <b>Small letter = a shaft</b> <span class="pt">(eixo)</span>.
+      "Shaft" means any round outside surface: a pin, a shaft, the outside of a bushing.</li>
+      <li><b>H</b> (a hole): the band starts exactly at 10.000 and goes up. An H hole is never smaller than the nominal size.</li>
+      <li><b>f, g</b> (a shaft): the band sits below 10.000. The shaft is always a little smaller.</li>
+      <li><b>h</b> (a shaft): the band ends exactly at 10.000 and goes down.</li>
+      <li><b>k, m, n, p, s</b> (a shaft): the band sits above 10.000. The shaft is a little bigger. Letters later in the alphabet are bigger.</li>
+      <li><b>js</b>: the band sits half above and half below. At Ø10, js5 is 10.000 ±0.003 mm.</li>
+    </ul>
+    <p>The distance from the nominal size to the edge of the band is called the <b>deviation</b> <span class="pt">(afastamento)</span>.
+    For Ø10 H7 the deviations are +0.015 and 0.</p>
+  </div>
+
+  <div class="card">
+    <h3>Piece 3: the number says how wide the band is</h3>
+    <p>The number is the <b>IT grade</b> <span class="pt">(qualidade IT, or grau de tolerância)</span>. A smaller number is a narrower band.
+    A narrower band is harder to make, so it costs more.
+    The band also gets wider on bigger parts, because big parts are harder to hold exactly.</p>
+    <div class="scroll"><table>
+      <tr><th>Size range</th><th>IT6</th><th>IT7</th><th>IT8</th><th>IT9</th><th>IT11</th></tr>
+      <tr><td>6 to 10 mm</td><td>9 µm</td><td>15 µm</td><td>22 µm</td><td>36 µm</td><td>90 µm</td></tr>
+      <tr><td>10 to 18 mm</td><td>11 µm</td><td>18 µm</td><td>27 µm</td><td>43 µm</td><td>110 µm</td></tr>
+      <tr><td>18 to 30 mm</td><td>13 µm</td><td>21 µm</td><td>33 µm</td><td>52 µm</td><td>130 µm</td></tr>
+      <tr><td>30 to 50 mm</td><td>16 µm</td><td>25 µm</td><td>39 µm</td><td>62 µm</td><td>160 µm</td></tr>
+    </table></div>
+    <p>Put the pieces together: H starts at 10.000, and IT7 at 10 mm is 15 µm wide.
+    So <b>Ø10 H7 = 10.000 to 10.015 mm</b>.</p>
+  </div>
+
+  <figure data-box="Figure 1.3, the five bands at Ø10">
+    <div class="pic">{{fig:fig03-tolerance-zones}}</div>
+    <figcaption>Figure 1.3. The same Ø10 with one hole band and four shaft bands. Where the shaft band sits, compared to the hole band, decides the fit. Part 2 explains this.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Why the hole gets the H</h3>
+    <p>A hole is finished with a tool of one fixed size, like a reamer <span class="pt">(alargador)</span>. You cannot adjust a reamer to a new size.
+    A shaft is turned on a lathe <span class="pt">(torno)</span>, so the machinist can simply take off a little more metal.</p>
+    <p>So the normal way is: always make the hole <b>H</b>, and pick the shaft letter to get the fit you want.
+    This is called the <b>hole basis system</b> <span class="pt">(sistema furo-base)</span>. It keeps the shop on standard tools.</p>
+  </div>
+
+  <figure data-box="Photo 1.4, drill and reamer">
+    {{photo:drillreamer}}
+    <figcaption>Photo 1.4. A twist drill <span class="pt">(broca helicoidal)</span> has spiral flutes and a pointed tip. It cuts fast but not exact.
+    A machine reamer <span class="pt">(alargador de máquina)</span> has straight flutes. It follows a drilled hole and takes off only a few tenths of a millimetre, so the hole comes out round, smooth and on size.
+    {{credit:drillreamer}}</figcaption>
+  </figure>
+
+  <div class="warn"><span class="lbl">Watch out: H7 is not free</span>
+    A drill alone holds about IT11 to IT13. At Ø10 that is 90 µm or more, about 6 to 20 times wider than H7.
+    If you write H7, the shop must drill and then ream, bore or grind the hole. That is a real extra step and real extra money.
+    Write H7 only where a part must fit.</div>
+
+  <figure data-box="Photo 1.5, how the shop measures">
+    {{photo:measure}}
+    <figcaption>Photo 1.5. How the shop checks your tolerance. Left: an outside micrometer <span class="pt">(micrômetro externo)</span> measures a shaft or a pin to 0.001 mm.
+    Right: a bore gauge <span class="pt">(súbito, or relógio de diâmetro interno)</span> measures inside a hole. For many holes of the same size, shops also use a go/no-go plug gauge <span class="pt">(calibrador tampão passa/não passa)</span>.
+    {{credit:measure}}</figcaption>
+  </figure>
+
+  <div class="ex"><span class="lbl">Worked example: the bore of a conveyor pulley</span>
+    <p><b>The part.</b> A drive pulley <span class="pt">(polia)</span> for a small conveyor. It sits on a Ø20 shaft with a key. The pulley must sit centred on the shaft, or the belt runs unevenly.</p>
+    <h4>Step 1. What you write</h4>
+    <p>On the pulley drawing you write <b>Ø20 H7</b> on the bore.</p>
+    <h4>Step 2. Read the code</h4>
+    <ul>
+      <li>Ø20 = nominal size 20 mm.</li>
+      <li>H = the band starts at 20.000 and goes up.</li>
+      <li>7 = IT7. The size 20 is in the "18 to 30 mm" row, so IT7 = 21 µm = 0.021 mm.</li>
+    </ul>
+    <h4>Step 3. The two limits</h4>
+    <p>Smallest bore <span class="num">20.000 mm</span>. Biggest bore <span class="num">20.021 mm</span>. Anything in between is a good part.</p>
+    <h4>Step 4. What the shop does</h4>
+    <p>The turner bores the hole on the lathe, or drills and reams it. Then they check it with a bore gauge or a plug gauge.</p>
+    <h4>What goes wrong if you skip it</h4>
+    <p>You write only "Ø20". The shop may just drill it. The bore can come out at 20.10 mm. Now the pulley sits 0.1 mm loose on the shaft.
+    It wobbles, the key takes all the load, the key seat wears, and the belt runs to one side.</p>
+  </div>
+
+  <div class="key"><span class="lbl">Key idea</span>
+    Ø10 H7 = size 10, band starts at 10.000 (H), band is 15 µm wide (7). So the hole is 10.000 to 10.015 mm.
+    Capital letter for holes, small letter for shafts.</div>
+
+  <div class="prac"><span class="lbl">Practice, 5 minutes (paper, no SolidWorks yet)</span>
+    Use the IT table above. Write down the two limits for:
+    <ol>
+      <li>a Ø20 H7 hole</li>
+      <li>a Ø35 H7 hole</li>
+      <li>a Ø10 h6 shaft (hint: h ends at 10.000 and goes down)</li>
+    </ol>
+    <details><summary>Show the answers</summary><div class="in">
+      1. 20.000 to 20.021 mm. 2. 35.000 to 35.025 mm. 3. 9.991 to 10.000 mm.
+    </div></details>
+  </div>
+</section>
+
+<!-- ======================================================= PART 2 -->
+<section class="part" data-title="2. Three families">
+  <h2>2. The three families of fits</h2>
+  <p class="mins">Reading about 12 minutes. Practice 5 minutes.</p>
+
+  <div class="card">
+    <h3>What a fit is</h3>
+    <p>A <b>fit</b> <span class="pt">(ajuste)</span> is what happens when one part goes inside another part.
+    A shaft in a hole. A pin in a plate. A bearing on a shaft.</p>
+    <p>You never choose a fit by one number. You choose two bands: the hole band and the shaft band.
+    What matters is how the two bands sit next to each other. There are only three possible results. We call them the three families.</p>
+  </div>
+
+  <div class="key"><span class="lbl">Key idea</span>
+    First ask what the parts must <b>do</b>: slide, sit exactly, or never move. That gives you the family.
+    Only after that do you pick the exact code.</div>
+
+  <div class="card">
+    <h3>Family 1: clearance fit, the parts always slide</h3>
+    <p><span class="word">ajuste com folga</span></p>
+    <p>The shaft is <b>always</b> smaller than the hole. Even the biggest shaft is smaller than the smallest hole.
+    So there is always a small gap, called <b>clearance</b> <span class="pt">(folga)</span>.</p>
+    <p><b>What you feel:</b> the parts go together by hand. They can turn or slide.</p>
+    <p><b>Where you use it:</b> a shaft that turns in a bushing, a guide rod that slides, a pin you pull out by hand, a hinge.</p>
+  </div>
+
+  <figure data-box="Figure 2.1, clearance fit">
+    <div class="pic">{{fig:fig04-fit-clearance}}</div>
+    <figcaption>Figure 2.1. Clearance fit H7/g6 at Ø10, cut across. The yellow ring is the gap. It is always there.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Family 2: transition fit, "maybe a gap, maybe tight"</h3>
+    <p><span class="word">ajuste incerto</span></p>
+    <p>The two bands overlap a little. So it depends on which parts you get:</p>
+    <ul>
+      <li>A big hole with a small shaft: a tiny gap.</li>
+      <li>A small hole with a big shaft: a tiny press.</li>
+    </ul>
+    <p>You do not know which case you get until you measure. That is why Brazilian shops call it <i>incerto</i>, "uncertain".</p>
+    <p><b>What you feel:</b> the parts go together with a light tap of a plastic hammer <span class="pt">(martelo de nylon)</span>, or a small press. They come apart with a light pull or a puller.</p>
+    <p><b>Where you use it:</b> a part that must sit exactly in place but must still come off for service. A gear or pulley hub on a shaft, a dowel pin in a plate.</p>
+  </div>
+
+  <figure data-box="Figure 2.2, transition fit">
+    <div class="pic">{{fig:fig05-fit-transition}}</div>
+    <figcaption>Figure 2.2. Transition fit H7/k6 at Ø10. Case A has a tiny gap. Case B has a tiny press. Both are good parts.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Family 3: interference fit, the parts are pressed</h3>
+    <p><span class="word">ajuste com interferência, or ajuste prensado</span></p>
+    <p>The shaft is <b>always</b> bigger than the hole. The extra metal is called the <b>interference</b> <span class="pt">(interferência)</span>.
+    When you push the shaft in, both parts squeeze. That squeeze grips the shaft very hard.</p>
+    <p><b>How the shop assembles it:</b> with a hydraulic press <span class="pt">(prensa)</span>. For bigger interference, they heat the outer part so it grows, or cool the shaft so it shrinks.</p>
+    <p><b>Where you use it:</b> a part that must never move and never come apart. A bushing pressed into a frame, a pin that must stay, a gear pressed on a shaft for good.</p>
+    <p><b>The price:</b> you cannot get it apart without a puller <span class="pt">(saca-polia)</span> or a press, and often you damage it.</p>
+  </div>
+
+  <figure data-box="Figure 2.3, interference fit">
+    <div class="pic">{{fig:fig06-fit-interference}}</div>
+    <figcaption>Figure 2.3. Interference fit H7/p6 at Ø10. The dashed green line is the shaft before pressing. The red ring is metal that has to squeeze.</figcaption>
+  </figure>
+
+  <div class="tip"><span class="lbl">Three questions to pick the family</span>
+    <ol>
+      <li>Must it slide or turn? <b>Clearance.</b></li>
+      <li>Must it sit exactly, and still come apart for service? <b>Transition.</b></li>
+      <li>Must it never move and never come apart? <b>Interference.</b></li>
+    </ol></div>
+
+  <div class="card">
+    <h3>The short list you can trust</h3>
+    <p>ISO 286 has hundreds of possible codes. You only need the ten <b>preferred fits</b>.
+    Use them and the shop stays on normal tools and normal gauges. The hole is always H, so only the shaft letter changes.</p>
+    <div class="scroll"><table>
+      <tr><th>Fit</th><th>Family</th><th>What it feels like</th><th>Use it for</th></tr>
+      <tr><td>H11/c11</td><td>Clearance</td><td>Very loose</td><td>Rough parts, welded frames, big clearance holes.</td></tr>
+      <tr><td>H9/d9</td><td>Clearance</td><td>Loose, turns freely</td><td>Hot parts, dirty places, low accuracy.</td></tr>
+      <tr><td>H8/f7</td><td>Clearance</td><td>Turns easily</td><td>A shaft that turns in a bushing.</td></tr>
+      <tr><td>H7/g6</td><td>Clearance</td><td>Slides, almost no play</td><td>Guide pins and rods that slide and still locate.</td></tr>
+      <tr><td>H7/h6</td><td>Clearance</td><td>Push together by hand</td><td>Parts that locate well and come apart by hand.</td></tr>
+      <tr><td>H7/k6</td><td>Transition</td><td>Light tap to fit</td><td>Accurate location that still comes apart.</td></tr>
+      <tr><td>H7/n6</td><td>Transition</td><td>Press to fit</td><td>Tighter location. Comes out with a press.</td></tr>
+      <tr><td>H7/p6</td><td>Interference</td><td>Light press</td><td>A part that stays where you put it.</td></tr>
+      <tr><td>H7/s6</td><td>Interference</td><td>Strong press or heat</td><td>Medium drive fit.</td></tr>
+      <tr><td>H7/u6</td><td>Interference</td><td>Heavy press or heat</td><td>Force fit, high load.</td></tr>
+    </table></div>
+  </div>
+
+  <div class="ex"><span class="lbl">Worked example: an index pin in a welding fixture</span>
+    <p><b>The part.</b> A welding fixture has a Ø10 index pin <span class="pt">(pino de indexação)</span>.
+    The operator pushes the pin into a hole to hold a swing plate in position, then pulls it out by hand to release it. This happens hundreds of times a day.</p>
+    <h4>Step 1. Pick the family</h4>
+    <p>The pin must go in and out by hand, so it must slide: <b>clearance</b>. But it must also locate well, with almost no play.</p>
+    <h4>Step 2. Pick the fit</h4>
+    <p>From the short list: slides and still locates = <b>H7/g6</b>.</p>
+    <h4>Step 3. The limits</h4>
+    <ul>
+      <li>Hole Ø10 H7 = <span class="num">10.000 to 10.015 mm</span></li>
+      <li>Pin Ø10 g6 = <span class="num">9.986 to 9.995 mm</span></li>
+    </ul>
+    <h4>Step 4. Check the gap</h4>
+    <ul>
+      <li>Smallest gap = smallest hole minus biggest pin = 10.000 − 9.995 = <span class="num">0.005 mm (5 µm)</span></li>
+      <li>Biggest gap = biggest hole minus smallest pin = 10.015 − 9.986 = <span class="num">0.029 mm (29 µm)</span></li>
+    </ul>
+    <p>There is always a gap, so it always slides. The gap is at most 0.029 mm, so the swing plate sits within a few hundredths.</p>
+    <h4>What goes wrong with the other families</h4>
+    <ul>
+      <li><b>With p6</b> (interference), the pin is 10.015 to 10.024. The operator cannot push it in by hand at all.</li>
+      <li><b>With no fit</b>, the shop drills the hole to maybe 10.10. The pin rattles with 0.1 mm of play. Your weld parts come out 0.1 mm off every time.</li>
+    </ul>
+  </div>
+
+  <details data-box="Plus box, four fits at Ø10"><summary>See the four main fits at Ø10 side by side</summary>
+  <div class="in">
+    <div class="scroll"><table>
+      <tr><th>Fit</th><th>Hole (mm)</th><th>Shaft (mm)</th><th>Result</th></tr>
+      <tr><td>H7/g6</td><td>10.000 to 10.015</td><td>9.986 to 9.995</td><td>5 to 29 µm clearance</td></tr>
+      <tr><td>H7/h6</td><td>10.000 to 10.015</td><td>9.991 to 10.000</td><td>0 to 24 µm clearance</td></tr>
+      <tr><td>H7/k6</td><td>10.000 to 10.015</td><td>10.001 to 10.010</td><td>14 µm clearance to 10 µm interference</td></tr>
+      <tr><td>H7/p6</td><td>10.000 to 10.015</td><td>10.015 to 10.024</td><td>0 to 24 µm interference</td></tr>
+    </table></div>
+    <p>The rule is always the same. Smallest hole minus biggest shaft gives one end. Biggest hole minus smallest shaft gives the other end.
+    A minus result means interference. You do not have to do this by hand every time. Part 3 shows the tool that does it.</p>
+  </div></details>
+
+  <div class="prac"><span class="lbl">Practice, 5 minutes (paper)</span>
+    Pick the family for each case. Then pick a fit from the short list.
+    <ol>
+      <li>A hinge pin on a machine guard door.</li>
+      <li>A gear on a gearbox shaft that you remove once a year.</li>
+      <li>A steel bushing pressed into a welded frame for good.</li>
+      <li>A guide rod that a slide block runs along.</li>
+    </ol>
+    <details><summary>Show the answers</summary><div class="in">
+      1. Clearance, H9/d9 or H8/f7 (loose is fine, it may get dirty). 2. Transition, H7/k6. 3. Interference, H7/p6 or H7/s6. 4. Clearance, H7/g6.
+    </div></details>
+  </div>
+</section>
+
+<!-- ======================================================= PART 3 -->
+<section class="part" data-title="3. The SolidWorks Fit tool">
+  <h2>3. The SolidWorks tool that finds the numbers for you</h2>
+  <p class="mins">Reading about 8 minutes. Practice 12 minutes.</p>
+
+  <div class="key"><span class="lbl">Key idea</span>
+    SolidWorks has the ISO 286 tables inside it. You pick the fit code. SolidWorks calculates the numbers and writes them on the dimension.
+    You never open a table book.</div>
+
+  <figure data-box="Figure 3.1, the Tolerance/Precision box">
+    <div class="pic">{{fig:fig07-sw-tolerance-panel}}</div>
+    <figcaption>Figure 3.1. A simplified drawing of the Tolerance/Precision box in the Dimension PropertyManager, with every field named. Your screen shows icons in some places, but the order is the same.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Step by step: an H7 hole</h3>
+    <ol>
+      <li>Click the diameter dimension of the hole. This works in a part and in a drawing.</li>
+      <li>The <b>PropertyManager</b> opens on the left. This is the panel with the settings of the thing you clicked.</li>
+      <li>Open the <b>Tolerance/Precision</b> box.</li>
+      <li>Set <b>Tolerance Type</b> to <b>Fit with tolerance</b>.</li>
+      <li>Set <b>Classification</b> to <b>Clearance</b>, <b>Transitional</b> or <b>Press</b>. This shortens the two lists to fits of that family.</li>
+      <li>Open the <b>Hole Fit</b> list and pick <b>H7</b>.</li>
+      <li>Set the precision to 3 decimals, so you see 0.015 and not 0.02.</li>
+      <li>Click the green check.</li>
+    </ol>
+    <p>For a shaft, do the same, but use the <b>Shaft Fit</b> list, for example <b>g6</b>. On a single part you fill only one list.</p>
+  </div>
+
+  <div class="card">
+    <h3>What the dimension shows</h3>
+    <p>With <b>Fit with tolerance</b>, the dimension shows the code and the two deviations, for example <b>Ø10 H7 (+0.015 / +0.000)</b>.
+    The deviations are how far each limit is from the nominal size.
+    To get the real limits, add them to the nominal size: 10 + 0.015 = 10.015, and 10 + 0.000 = 10.000.</p>
+    <div class="scroll"><table>
+      <tr><th>Tolerance Type</th><th>What the drawing shows</th><th>When to use it</th></tr>
+      <tr><td>Fit</td><td>Only the code, Ø10 H7</td><td>Shops that read fit codes every day.</td></tr>
+      <tr><td>Fit with tolerance</td><td>The code and the two deviations</td><td><b>Your default.</b> Nobody can read it wrong.</td></tr>
+      <tr><td>Fit (tolerance only)</td><td>Only the two deviations, no code</td><td>Shops that do not use ISO codes.</td></tr>
+    </table></div>
+    <p class="pt">If SolidWorks shows 0 for a fit, the size is outside the range the standard covers for that code. Pick another code.</p>
+  </div>
+
+  <div class="tip"><span class="lbl">Your new habit</span>
+    Old habit: no tolerance on holes where parts fit, and the same ±0.1 on everything.
+    New rule: every hole that touches a bearing, a pin, a bushing or a shaft gets a fit from this tool.
+    The general note in Part 7 covers every other size. Nothing gets a hand typed ±0.1 any more.</div>
+
+  <div class="card">
+    <h3>Even better: put the fit in the Hole Wizard</h3>
+    <p>The <b>Hole Wizard</b> is the SolidWorks tool that makes standard holes. Since SolidWorks 2019 it can also carry the tolerance.
+    Then the drawing callout fills itself in.</p>
+    <span class="path">Hole Wizard &gt; Type tab &gt; Tolerance/Precision panel</span>
+    <p>Then, in the drawing:</p>
+    <span class="path">Insert &gt; Annotations &gt; Hole Callout, then click the hole</span>
+    <p>A <b>hole callout</b> is the note with a leader that describes the hole: size, depth and tolerance.
+    It comes out with the fit already in it. This kills the habit of typing hole notes by hand. Session 3 goes deeper into callouts.</p>
+  </div>
+
+  <div class="ex"><span class="lbl">Worked example: the index pin from Part 2, now in SolidWorks</span>
+    <p><b>The part.</b> The fixture plate with the Ø10 hole for the index pin, and the pin itself.</p>
+    <h4>Step 1. The plate</h4>
+    <p>Hole Wizard, hole type <b>Hole</b>, size Ø10, Through All. In the Tolerance/Precision panel: Tolerance Type <b>Fit with tolerance</b>, Classification <b>Clearance</b>, Hole Fit <b>H7</b>.</p>
+    <h4>Step 2. The pin</h4>
+    <p>Click the Ø10 diameter of the pin. Tolerance Type <b>Fit with tolerance</b>, Classification <b>Clearance</b>, Shaft Fit <b>g6</b>.</p>
+    <h4>Step 3. Read what SolidWorks gives</h4>
+    <ul>
+      <li>Plate: Ø10 H7 (+0.015 / 0). Limits <span class="num">10.000 to 10.015</span>.</li>
+      <li>Pin: Ø10 g6 (−0.005 / −0.014). Limits <span class="num">9.986 to 9.995</span>.</li>
+    </ul>
+    <p>These are the same numbers you worked out by hand in Part 2. Good, the tool agrees with you.</p>
+    <h4>What goes wrong if you type it by hand</h4>
+    <p>You change the hole to Ø12 next month. A typed "+0.015" stays the same, but Ø12 H7 is +0.018. Now the drawing is wrong.
+    With the Fit tool, SolidWorks updates the numbers when the size changes.</p>
+  </div>
+
+  <details data-box="Plus box, Hole Wizard favorites"><summary>Save it once: Hole Wizard favorites</summary>
+  <div class="in">
+    <p>At the top of the Hole Wizard PropertyManager there is a <b>Favorites</b> box. Set up your hole once, with the size, the end condition and the tolerance.
+    Then click <b>Add or Update Favorite</b> and give it a name, for example "Dowel 8 H7 reamed".
+    Next time, pick the favorite and the tolerance comes with it.</p>
+  </div></details>
+
+  <details data-box="Plus box, DimXpert, TolAnalyst and Toolbox"><summary>What about DimXpert, TolAnalyst and Toolbox?</summary>
+  <div class="in">
+    <ul>
+      <li><b>DimXpert</b> (the DimXpertManager tab, called MBD Dimensions since 2019) can put a fit on a hole, but it cannot tell you which fit to choose.</li>
+      <li><b>TolAnalyst</b> adds up tolerance chains in an assembly. It is in SolidWorks Premium only.</li>
+      <li><b>Toolbox</b> holds ISO dowel pins and simple bearings. It is not in SolidWorks Standard, but your Education Edition includes it. Look for <b>Toolbox</b> in the Design Library tab on the right side.</li>
+    </ul>
+  </div></details>
+
+  <div class="warn"><span class="lbl">About your license</span>
+    The Education Edition puts "SOLIDWORKS Educational Product. For Instructional Use Only" on your drawings. A commercial seat can refuse to open its files.
+    The license is for learning, not for paid work. Practice on it, and do company work on a company seat.</div>
+
+  <div class="prac"><span class="lbl">Practice, 12 minutes in SolidWorks</span>
+    <ol>
+      <li>Make a plate 60 x 60 x 12 mm.</li>
+      <li>Put one Ø10 hole through it with Hole Wizard, hole type <b>Hole</b>. Set the Tolerance/Precision to Fit with tolerance, <b>H7</b>.</li>
+      <li>Make a drawing of the plate. Add a Hole Callout on the hole. Check that it shows H7 and +0.015 / 0.</li>
+      <li>Make a Ø10 pin part, 40 mm long. Set its diameter to <b>g6</b>. Check that you get −0.005 / −0.014.</li>
+      <li>Change the hole to Ø12 and watch the numbers update to +0.018 / 0.</li>
+    </ol></div>
+</section>
+
+<!-- ======================================================= PART 4 -->
+<section class="part" data-title="4. Bearings">
+  <h2>4. Bearings: the two seats you design</h2>
+  <p class="mins">Reading about 15 minutes. Practice 12 minutes.</p>
+
+  <div class="card">
+    <h3>What a bearing does</h3>
+    <p>A <b>rolling bearing</b> <span class="pt">(rolamento)</span> lets a shaft turn with very little friction, and it carries the load of the shaft.
+    Inside, small steel balls roll between two rings.</p>
+    <ul>
+      <li>The <b>inner ring</b> <span class="pt">(anel interno)</span> sits on the shaft.</li>
+      <li>The <b>outer ring</b> <span class="pt">(anel externo)</span> sits in the housing.</li>
+      <li>The <b>balls</b> <span class="pt">(esferas)</span> roll between them. A <b>cage</b> <span class="pt">(gaiola)</span> keeps the balls apart.</li>
+      <li>Many bearings also have <b>seals or shields</b> <span class="pt">(vedações)</span> on the sides to keep grease in and dirt out.</li>
+    </ul>
+    <p>The most common type is the <b>deep groove ball bearing</b> <span class="pt">(rolamento rígido de esferas)</span>. Its number starts with 6, like 6205.</p>
+  </div>
+
+  <figure data-box="Photo 4.1, a ball bearing and a cut bearing">
+    {{photo:bearings}}
+    <figcaption>Photo 4.1. Left: a deep groove ball bearing as you buy it. Right: a bearing cut open, so you can see the inner ring, the outer ring and the balls.
+    {{credit:bearings}}</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>How to read a bearing number</h3>
+    <p>Take <b>6205</b>. The "62" is the series, a light size family. The "05" is the bore code. For bore codes 04 and up, multiply by 5: 05 x 5 = <b>25 mm bore</b>.</p>
+    <p>A 6205 is <b>25 mm bore, 52 mm outside, 15 mm wide</b>.</p>
+  </div>
+
+  <div class="key"><span class="lbl">Key idea</span>
+    A bearing is a bought part. Its bore and its outside are already made. You do not choose them.
+    You only choose two things: the <b>shaft seat</b> <span class="pt">(assento do eixo)</span> and the <b>housing bore</b> <span class="pt">(furo do mancal)</span>.</div>
+
+  <div class="card">
+    <h3>The bearing comes a little under size</h3>
+    <p>Bearing makers follow ISO 492. For a normal 6205, the bore comes <b>24.990 to 25.000 mm</b>. It is never above 25.000.
+    The outside is also a hair under 52.000.</p>
+    <p>That is why bearing seats do not use the normal tables in the obvious way. A shaft marked "k5" gives a light press on a bearing, even though k is "transition" for a normal hole.
+    The bearing bore is already a little small, so the fit comes out tighter.</p>
+  </div>
+
+  <div class="card">
+    <h3>The big rule: which ring gets the tight fit?</h3>
+    <p><b>The ring that turns against the load direction needs the tight fit.</b> The other ring can have a normal, easier fit.</p>
+    <p>Why? Picture a belt that pulls the shaft down. The load always points down. The inner ring turns with the shaft.
+    So every point of the inner ring passes under the load, again and again, every turn.
+    If the inner ring is loose on the shaft, it slowly rolls around the shaft, like a loose ring on your finger. This is called <b>creep</b>.
+    Creep polishes and wears the shaft seat. The shop will find a shiny, worn seat and a bearing that makes noise.</p>
+    <p>The outer ring does not turn. The load always presses on the same spot. So it does not creep, and it can have a normal fit.</p>
+  </div>
+
+  <figure data-box="Figure 4.2, which ring turns against the load">
+    <div class="pic">{{fig:fig08-rotating-load}}</div>
+    <figcaption>Figure 4.2. Case 1 is almost every machine you design. Case 2 is a wheel or an idler that turns on a fixed pin.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Case 1: the shaft turns (the normal case)</h3>
+    <p>This is almost every conveyor roller, drive shaft and gearbox shaft. The load comes from one direction and stays there, like belt pull or weight.</p>
+    <div class="scroll"><table>
+      <tr><th>Seat</th><th>Shaft size</th><th>Class</th></tr>
+      <tr><td>Shaft seat, normal load</td><td>up to 10 mm</td><td>js5</td></tr>
+      <tr><td>Shaft seat, normal load</td><td>10 to 17 mm</td><td>j5</td></tr>
+      <tr><td>Shaft seat, normal load</td><td>17 to 100 mm</td><td>k5</td></tr>
+      <tr><td>Shaft seat, heavy or shock load</td><td>17 to 100 mm</td><td>m5 or m6</td></tr>
+      <tr><td>Housing bore, outer ring does not turn</td><td>any</td><td>H7</td></tr>
+      <tr><td>Housing bore, high accuracy</td><td>any</td><td>H6</td></tr>
+      <tr><td>Housing bore, the bearing runs hot</td><td>any</td><td>G7</td></tr>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>Case 2: the outer ring turns</h3>
+    <p>This happens in a wheel, a roller that turns on a fixed pin, or an idler pulley <span class="pt">(polia esticadora)</span>. Now the outer ring turns against the load, so the outer ring needs the tight fit.</p>
+    <div class="scroll"><table>
+      <tr><th>Seat</th><th>Class</th></tr>
+      <tr><td>Housing bore, outer ring turns, normal load</td><td>K7</td></tr>
+      <tr><td>Housing bore, heavy shock or thin wall</td><td>M7 or N7</td></tr>
+      <tr><td>Fixed pin, inner ring does not turn</td><td>h6, or g6 if it must slide on</td></tr>
+    </table></div>
+    <p class="sources">These two tables are the short form of the SKF seat table. The maker page for your exact bearing has the full table. Check it before you release a drawing.</p>
+  </div>
+
+  <figure data-box="Figure 4.3, bearing 6205 in a housing">
+    <div class="pic">{{fig:fig09-bearing-6205}}</div>
+    <figcaption>Figure 4.3. A 6205 on a shaft, in a housing, cut in half. Only the two seats and the two shoulders are yours to design.</figcaption>
+  </figure>
+
+  <div class="ex"><span class="lbl">Worked example: the bearing block of a conveyor drive shaft</span>
+    <p><b>The part.</b> A conveyor drive shaft turns in two 6205 bearings. Each bearing sits in a machined steel block, the housing <span class="pt">(mancal)</span>. The belt pulls the shaft down.</p>
+    <h4>Step 1. Which ring turns against the load?</h4>
+    <p>The shaft turns and the belt load always points the same way. So the <b>inner ring</b> turns against the load. That is Case 1.</p>
+    <h4>Step 2. Pick the classes</h4>
+    <p>The shaft is 25 mm, in the "17 to 100 mm" row, with a normal load. Shaft seat = <b>k5</b>. Housing bore = <b>H7</b>.</p>
+    <h4>Step 3. The limits</h4>
+    <ul>
+      <li>Shaft seat Ø25 k5 = <span class="num">25.002 to 25.011 mm</span></li>
+      <li>Bearing bore, from the factory = <span class="num">24.990 to 25.000 mm</span></li>
+      <li>Housing bore Ø52 H7 = <span class="num">52.000 to 52.030 mm</span></li>
+    </ul>
+    <h4>Step 4. Check the fit on the shaft</h4>
+    <ul>
+      <li>Smallest press = smallest shaft minus biggest bore = 25.002 − 25.000 = <span class="num">2 µm</span></li>
+      <li>Biggest press = biggest shaft minus smallest bore = 25.011 − 24.990 = <span class="num">21 µm</span></li>
+    </ul>
+    <p>Always a light press. The inner ring cannot creep. In the housing, the outer ring has a small clearance, so it slides in and the bearing is not squeezed.</p>
+    <h4>Step 5. The shoulders</h4>
+    <p>From the bearing catalogue: shaft shoulder at least <b>da min = 30 mm</b>. Housing shoulder at most <b>Da max = 47 mm</b>. Corner radius 1.0 mm max. More on this below.</p>
+    <h4>What goes wrong on the shop floor</h4>
+    <ul>
+      <li><b>Shaft too loose</b> (for example h6, or just "Ø25"): the inner ring creeps. After some weeks the seat is worn and shiny, the bearing rattles, and the shaft must be replaced.</li>
+      <li><b>Housing too tight</b> (for example a press fit): the outer ring is squeezed smaller. The balls lose their small internal gap. The bearing runs hot and fails early.</li>
+      <li><b>Both tight</b>: you cannot mount it without heat, and it may be damaged when you try.</li>
+    </ul>
+  </div>
+
+  <figure data-box="Photo 4.4, pillow block unit">
+    {{photo:pillow}}
+    <figcaption>Photo 4.4. A pillow block unit <span class="pt">(mancal com rolamento, or mancal UCP)</span>. The housing is cast iron and the bearing insert is already inside. You bolt it to the frame. Many conveyors use these instead of a machined block.
+    With these units, the maker's catalogue gives the shaft tolerance. Do not use the k5 rule for them: most inserts lock to the shaft with set screws or a collar, not with a press fit.
+    {{credit:pillow}}</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>The shoulder: what the bearing pushes against</h3>
+    <p>A <b>shoulder</b> <span class="pt">(encosto)</span> is a step on the shaft or in the housing. The bearing rests against it, so it cannot slide along the shaft.</p>
+    <ul>
+      <li>The shaft shoulder must be big enough to touch the inner ring well. The catalogue gives the smallest size as <b>da min</b>. For 6205, da min = 30 mm.</li>
+      <li>The housing shoulder must reach far enough inward to hold the outer ring well. So its inside diameter can be at most <b>Da max</b>. For 6205, Da max = 47 mm.</li>
+      <li>The inside corner of the shoulder needs care. The bearing ring has a rounded corner. Your shaft corner must be <b>smaller</b> than it, so the ring sits flat against the shoulder. For 6205 the shaft corner radius is 1.0 mm max.</li>
+      <li>Instead of a radius, you can cut a small groove in the corner, called an <b>undercut</b> <span class="pt">(rebaixo, or canal de alívio)</span>. It also lets the grinding wheel finish the seat right up to the shoulder.</li>
+    </ul>
+  </div>
+
+  <figure data-box="Figure 4.5, the shoulder corner">
+    <div class="pic">{{fig:fig10-shoulder-detail}}</div>
+    <figcaption>Figure 4.5. The inside corner of the shaft shoulder, drawn very big. Left and middle are correct. Right: the shaft radius is too big, so the bearing cannot touch the shoulder.</figcaption>
+  </figure>
+
+  <figure data-box="Photo 4.6, a stepped shaft">
+    {{photo:shaft}}
+    <figcaption>Photo 4.6. {{caption:shaft}}
+    {{credit:shaft}}</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Surface finish on the seat</h3>
+    <p><b>Ra</b> <span class="pt">(rugosidade média)</span> is the average roughness of a surface in µm. A smaller number is a smoother surface.
+    Ask for <b>Ra 0.8</b> on a bearing seat, and <b>Ra 0.4</b> on a press fit seat.
+    Also ask for the seat to be round and straight within about half of its size tolerance. Session 3 shows how to write that with GD&amp;T.</p>
+  </div>
+
+  <div class="tip"><span class="lbl">Free models with real dimensions</span>
+    Do not draw bearings by hand. SKF, Schaeffler, NSK, igus and Misumi give free CAD models, in native SolidWorks format, after you make an account.
+    The product page also gives you da min, Da max and the corner radius.</div>
+
+  <div class="prac"><span class="lbl">Practice, 12 minutes in SolidWorks</span>
+    <ol>
+      <li>Download a 6205 model from SKF or Schaeffler, or take the 6205 from Toolbox.</li>
+      <li>Model a housing block with a Ø52 bore, and a housing shoulder of Ø47.</li>
+      <li>Model a shaft with a Ø25 seat and a Ø30 shoulder. Put a 0.8 mm fillet in the shoulder corner.</li>
+      <li>Give the bore <b>H7</b> and the seat <b>k5</b> with the Fit tool.</li>
+      <li>Put both on one drawing sheet and check the numbers against the worked example.</li>
+    </ol></div>
+</section>
+
+<!-- ======================================================= PART 5 -->
+<section class="part" data-title="5. Dowel pins">
+  <h2>5. Dowel pins: the cheap way to put parts back in the same place</h2>
+  <p class="mins">Reading about 10 minutes. Practice 10 minutes.</p>
+
+  <div class="card">
+    <h3>What a dowel pin does</h3>
+    <p>A <b>dowel pin</b> <span class="pt">(pino de guia, or pino cilíndrico)</span> is a short, exact steel cylinder.
+    You put two of them between two parts, like a fixture plate and a base.</p>
+    <p>Screws hold the parts together, but screws do not <b>locate</b> them. A screw goes through a clearance hole. For an M8 screw that hole is about Ø9, so the part can shift up to half a millimetre.</p>
+    <p>Two dowel pins in exact holes fix the position. When you take the fixture off for service and put it back, it goes to the same place, within hundredths of a millimetre.</p>
+  </div>
+
+  <figure data-box="Photo 5.1, dowel pins">
+    {{photo:dowels}}
+    <figcaption>Photo 5.1. {{caption:dowels}}
+    {{credit:dowels}}</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Which pin to buy</h3>
+    <ul>
+      <li><b>ISO 8734</b>: hardened and ground, tolerance <b>m6</b>. Use these for fixtures and machine parts.</li>
+      <li><b>ISO 2338</b>: plain steel, not hardened, also <b>m6</b>. Cheaper. Good enough for covers and brackets.</li>
+      <li><b>ISO 8735</b>: hardened, with a thread inside one end. Use it in blind holes, and to pull the pin out later with a screw.</li>
+    </ul>
+    <p>You do not make pins. You buy them. Your job is the <b>hole</b>.</p>
+  </div>
+
+  <div class="card">
+    <h3>The hole: H7, reamed</h3>
+    <p>Give the pin hole <b>H7</b>. With an m6 pin this is a <b>transition fit</b>: sometimes a tiny gap, sometimes a tiny press. The pin goes in with a light press and stays.</p>
+    <p>An H7 hole cannot be made with a drill alone. Tell the shop how: <b>drill 0.2 to 0.5 mm under size, then ream to H7</b>.</p>
+  </div>
+
+  <figure data-box="Figure 5.2, drill then ream">
+    <div class="pic">{{fig:fig13-drill-then-ream}}</div>
+    <figcaption>Figure 5.2. Two steps for one exact hole. The drill makes the hole fast. The reamer makes it exact.</figcaption>
+  </figure>
+
+  <figure data-box="Figure 5.3, pin engagement">
+    <div class="pic">{{fig:fig11-dowel-section}}</div>
+    <figcaption>Figure 5.3. A Ø8 pin, cut in half along its length. It goes about 1 to 1.5 times its diameter into each part. That is 8 to 12 mm for a Ø8 pin.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Two pins, far apart, one of them free in one direction</h3>
+    <p>One pin stops the part from sliding, but the part can still turn around it. So you use <b>two</b> pins. Put them as far apart as you can. The further apart, the less the part can twist.</p>
+    <p>But two round, exact holes in both parts can jam. If the distance between the holes is off by only 0.02 mm in one part, the pins fight each other.
+    There are two standard fixes:</p>
+    <ol>
+      <li>One round hole, and one <b>slot</b> <span class="pt">(rasgo)</span> in the second place. The slot points toward the first pin. The pin can move along the slot, but not across it.</li>
+      <li>Two round holes, and a <b>diamond pin</b> <span class="pt">(pino losango, or pino com rebaixo)</span> in the second hole. This pin has two flats ground on it, so it touches the hole on two narrow bands only.</li>
+    </ol>
+  </div>
+
+  <figure data-box="Figure 5.4, round hole, slot and diamond pin">
+    <div class="pic">{{fig:fig12-dowel-layout}}</div>
+    <figcaption>Figure 5.4. One pin locates. The second pin, in a slot or as a diamond pin, only stops the part from turning.</figcaption>
+  </figure>
+
+  <figure data-box="Photo 5.5, a diamond pin">
+    {{photo:diamond}}
+    <figcaption>Photo 5.5. {{caption:diamond}}
+    {{credit:diamond}}</figcaption>
+  </figure>
+
+  <div class="ex"><span class="lbl">Worked example: a fixture plate on a machine base</span>
+    <p><b>The part.</b> A 400 mm long fixture plate is screwed to a machine base with four M8 screws. It must go back in the same place after every tool change. You add two Ø8 pins, 300 mm apart.</p>
+    <h4>Step 1. Pick the pin</h4>
+    <p>A machine fixture, so hardened pins: <b>ISO 8734, Ø8 m6</b>. The pin is <span class="num">8.006 to 8.015 mm</span>.</p>
+    <h4>Step 2. The holes</h4>
+    <p><b>Ø8 H7</b> = <span class="num">8.000 to 8.015 mm</span>, reamed. In the plate: one round hole and one 8 H7 slot. In the base: two round holes.</p>
+    <h4>Step 3. Check the fit</h4>
+    <ul>
+      <li>Biggest hole minus smallest pin = 8.015 − 8.006 = <span class="num">9 µm gap</span></li>
+      <li>Smallest hole minus biggest pin = 8.000 − 8.015 = <span class="num">−15 µm, so 15 µm press</span></li>
+    </ul>
+    <p>From 9 µm gap to 15 µm press: a transition fit, as planned.</p>
+    <h4>Step 4. Length and depth</h4>
+    <p>Engagement 1 to 1.5 x 8 = 8 to 12 mm in each part. The plate is 12 mm thick, so a 20 mm pin gives 10 mm in each part.</p>
+    <h4>Step 5. The note for the shop</h4>
+    <p><code>DRILL Ø7.8, REAM Ø8 H7. REAM THE PLATE AND BASE CLAMPED TOGETHER.</code>
+    Reaming both parts together makes the hole positions match perfectly.</p>
+    <h4>What goes wrong on the shop floor</h4>
+    <ul>
+      <li><b>Only drilled holes:</b> the pins are loose. The plate shifts 0.1 mm or more each time you put it back.</li>
+      <li><b>Two round holes in both parts, drilled separately:</b> the pins jam, and the maintenance team hammers the plate on. Soon the holes are damaged.</li>
+      <li><b>Pins too close together:</b> the plate can still twist a little around them.</li>
+    </ul>
+  </div>
+
+  <div class="warn"><span class="lbl">Blind holes</span>
+    A <b>blind hole</b> <span class="pt">(furo cego)</span> does not go all the way through. A pin in a blind hole traps air and oil, so it will not go down. And you cannot push it out from below.
+    Use an <b>ISO 8735</b> pin with an internal thread. Or make the hole a through hole when you can.</div>
+
+  <div class="card">
+    <h3>In SolidWorks</h3>
+    <p>Hole Wizard has a hole type made for pins, since SolidWorks 2013.</p>
+    <span class="path">Hole Wizard &gt; Type tab &gt; hole type: Dowel Hole, then pick the pin size</span>
+    <p>Set the tolerance to H7 in the same panel, so the hole callout shows it. The pins are in the Design Library, under <b>Toolbox</b>, in the ISO pins folder.</p>
+  </div>
+
+  <div class="prac"><span class="lbl">Practice, 10 minutes in SolidWorks</span>
+    Take any two plate parts you already have.
+    <ol>
+      <li>Add two Ø8 Dowel Holes, far apart, H7, in both plates.</li>
+      <li>In the top plate, change the second hole to a slot, 8 mm wide and 10 mm long, pointing toward the first hole.</li>
+      <li>Add two ISO 8734 pins from Toolbox and mate them.</li>
+      <li>On the drawing, add the note: "Drill Ø7.8, ream Ø8 H7 with plates clamped together".</li>
+    </ol></div>
+</section>
+
+<!-- ======================================================= PART 6 -->
+<section class="part" data-title="6. Bushings and shafts">
+  <h2>6. Bushings, sliding shafts and parts you take apart</h2>
+  <p class="mins">Reading about 14 minutes. Practice 10 minutes.</p>
+
+  <div class="card">
+    <h3>Three jobs in this part</h3>
+    <ol>
+      <li>A shaft that <b>turns</b> slowly in a bronze bushing.</li>
+      <li>A shaft that <b>slides</b> in a linear ball bushing.</li>
+      <li>A part that must <b>come apart</b> for service, like a pulley.</li>
+    </ol>
+    <p>Each job needs a different fit. We go through them one at a time.</p>
+  </div>
+
+  <!-- 6a bronze -->
+  <div class="card">
+    <h3>Job 1: the bronze bushing, a simple bearing</h3>
+    <p>A <b>bushing</b> <span class="pt">(bucha)</span> is a tube. A <b>bronze bushing</b> <span class="pt">(bucha de bronze)</span> is a tube of bronze that works as a simple bearing.
+    The shaft turns inside it, with grease or oil. There are no balls.</p>
+    <p>Use it for slow or small movements: a pivot arm, a hinge, a swing clamp, a lever. It is cheap, small, and it takes shock well.</p>
+    <p>The bushing is <b>pressed</b> into its housing, so it never turns in the housing. The shaft turns inside the bushing.</p>
+  </div>
+
+  <figure data-box="Photo 6.1, a bronze bushing">
+    {{photo:bushing}}
+    <figcaption>Photo 6.1. {{caption:bushing}}
+    {{credit:bushing}}</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>The fits for a bronze bushing</h3>
+    <ul>
+      <li><b>Housing bore: H7.</b> The bushing's outside comes a little bigger from the maker, so it presses in.</li>
+      <li><b>Shaft: f7</b>, for a normal running clearance. Use <b>e7</b> if it runs fast or hot, because it needs more gap.</li>
+    </ul>
+  </div>
+
+  <div class="warn"><span class="lbl">The trap: the bore closes in</span>
+    When you press a bushing into a housing, the housing squeezes it. The outside gets smaller, and so does the <b>inside</b>.
+    If you plan the shaft clearance with the "as bought" bore, your shaft may not fit after pressing, or it may seize when it warms up.
+    <br><b>Fix:</b> use the maker's <b>after-press</b> bore size, or ream the bore after pressing.</div>
+
+  <figure data-box="Figure 6.2, bushing before and after pressing">
+    <div class="pic">{{fig:fig14-bushing-press}}</div>
+    <figcaption>Figure 6.2. Before and after pressing, cut in half. The housing squeezes the bushing, so its bore gets smaller. Drawn much bigger than real.</figcaption>
+  </figure>
+
+  <div class="ex"><span class="lbl">Worked example 1: the pivot of a swing arm</span>
+    <p><b>The part.</b> A swing arm <span class="pt">(braço basculante)</span> on a packing machine turns about 90° and back, slowly. The pivot is a Ø20 shaft in a pressed bronze bushing.</p>
+    <h4>Step 1. Pick the fits</h4>
+    <p>Housing bore for the bushing: <b>H7</b>, at the bushing's outside size from the catalogue. Shaft: slow and cool, so <b>f7</b>.</p>
+    <h4>Step 2. The shaft limits</h4>
+    <p>Ø20 f7 = <span class="num">19.959 to 19.980 mm</span>.</p>
+    <h4>Step 3. The bore after pressing</h4>
+    <p>Look in the catalogue for the bore <b>after pressing</b>. Say the maker gives 20.000 to 20.033 mm after pressing into an H7 housing. That is an H8 band.</p>
+    <h4>Step 4. Check the clearance</h4>
+    <ul>
+      <li>Smallest gap = 20.000 − 19.980 = <span class="num">20 µm</span></li>
+      <li>Biggest gap = 20.033 − 19.959 = <span class="num">74 µm</span></li>
+    </ul>
+    <p>Always a running gap, big enough for grease. This is the H8/f7 "close running" fit from Part 2.</p>
+    <h4>What goes wrong on the shop floor</h4>
+    <p>You use the "as bought" bore and give the shaft h6. After pressing, the bore has closed in. The fitter cannot push the shaft in, and has to sand or ream the bushing by hand.
+    Or it goes in tight and seizes <span class="pt">(engripa)</span> after an hour of running.</p>
+  </div>
+
+  <!-- 6b linear -->
+  <div class="card">
+    <h3>Job 2: sliding shafts and linear ball bushings</h3>
+    <p>For a plain sliding shaft, two fits cover almost everything:</p>
+    <ul>
+      <li><b>H7/g6</b>: it slides and still locates well. Guide rods, sliding pins.</li>
+      <li><b>H8/f7</b>: it runs. More clearance, less friction, less accuracy.</li>
+    </ul>
+    <p>For smooth, long movement you use a <b>linear ball bushing</b> <span class="pt">(bucha linear, or rolamento linear)</span>.
+    It is a bushing with rows of balls inside. The balls roll on the shaft and go round in a loop. It needs a hardened, ground shaft <span class="pt">(eixo temperado e retificado)</span>, which you usually buy ready made.</p>
+    <ul>
+      <li><b>Shaft: g6</b> for normal clearance.</li>
+      <li><b>Housing bore for the bushing: H7.</b></li>
+      <li>Linear bushings come with their own numbers. Check the maker page.</li>
+    </ul>
+  </div>
+
+  <figure data-box="Photo 6.3, a linear ball bushing">
+    {{photo:linear}}
+    <figcaption>Photo 6.3. {{caption:linear}}
+    {{credit:linear}}</figcaption>
+  </figure>
+
+  <div class="ex"><span class="lbl">Worked example 2: a guide shaft in a linear bushing</span>
+    <p><b>The part.</b> A pick and place axis has a carriage on two Ø20 guide shafts. Each side of the carriage holds an LM20UU linear bushing, which is 20 mm inside and 32 mm outside.</p>
+    <h4>Step 1. The shaft</h4>
+    <p>Buy a hardened, ground shaft in <b>g6</b>. Ø20 g6 = <span class="num">19.980 to 19.993 mm</span>.</p>
+    <h4>Step 2. The carriage bore for the bushing</h4>
+    <p><b>Ø32 H7</b>. The size 32 is in the "30 to 50 mm" row, IT7 = 25 µm. So <span class="num">32.000 to 32.025 mm</span>.</p>
+    <h4>Step 3. Check with the maker</h4>
+    <p>Open the maker's page for the bushing. If it asks for other values, use theirs.</p>
+    <h4>What goes wrong on the shop floor</h4>
+    <ul>
+      <li><b>Carriage bore too tight:</b> it squeezes the bushing. The balls lose their gap, the carriage feels stiff and rough.</li>
+      <li><b>A soft, turned shaft instead of a hardened one:</b> the balls dig grooves into it within weeks.</li>
+    </ul>
+  </div>
+
+  <!-- 6c come apart -->
+  <div class="card">
+    <h3>Job 3: parts that must come apart for service</h3>
+    <ul>
+      <li><b>H7/h6</b>: goes together by hand, comes apart by hand, almost no play. Use it for covers, spacers and centring rings.</li>
+      <li><b>H7/k6</b>: a light tap to fit, a light pull or a puller to remove. Use it for a gear or a pulley hub that must sit true but still come off.</li>
+      <li><b>Never</b> use p6, s6 or u6 on something you open often. You will not get it apart without damage.</li>
+    </ul>
+  </div>
+
+  <div class="ex"><span class="lbl">Worked example 3: a pulley you change with the belt</span>
+    <p><b>The part.</b> A timing belt pulley on a Ø20 motor side shaft, with a key <span class="pt">(chaveta)</span> for the torque. Maintenance changes the pulley once a year.</p>
+    <h4>Step 1. Pick the fit</h4>
+    <p>It must run true, so no play. It must come off, so no press fit. That is <b>H7/k6</b>.</p>
+    <h4>Step 2. The limits</h4>
+    <ul>
+      <li>Pulley bore Ø20 H7 = <span class="num">20.000 to 20.021 mm</span></li>
+      <li>Shaft Ø20 k6 = <span class="num">20.002 to 20.015 mm</span></li>
+    </ul>
+    <h4>Step 3. Check the fit</h4>
+    <ul>
+      <li>Biggest gap = 20.021 − 20.002 = <span class="num">19 µm</span></li>
+      <li>Biggest press = 20.015 − 20.000 = <span class="num">15 µm</span></li>
+    </ul>
+    <p>A transition fit. The key carries the torque. The fit only centres the pulley.</p>
+    <h4>What goes wrong on the shop floor</h4>
+    <ul>
+      <li><b>With p6:</b> maintenance needs a puller and heat, and bends the pulley flange.</li>
+      <li><b>With a loose drilled bore:</b> the pulley wobbles, the belt wears on one side, and the key seat hammers out.</li>
+    </ul>
+  </div>
+
+  <div class="prac"><span class="lbl">Practice, 10 minutes in SolidWorks</span>
+    <ol>
+      <li>Model a swing arm with a Ø26 bore for a bronze bushing. Give the bore H7.</li>
+      <li>Model a Ø20 pivot shaft. Give it f7 with the Fit tool.</li>
+      <li>Model a pulley hub with a Ø20 bore, H7, and a Ø20 shaft end, k6.</li>
+      <li>Read the numbers SolidWorks gives, and compare them with worked examples 1 and 3.</li>
+    </ol></div>
+</section>
+
+<!-- ======================================================= PART 7 -->
+<section class="part" data-title="7. The general note">
+  <h2>7. Stop writing ±0.1 on everything</h2>
+  <p class="mins">Reading about 8 minutes. Practice 5 minutes.</p>
+
+  <div class="key"><span class="lbl">Key idea</span>
+    One note near the title block covers every size that has no tolerance of its own.
+    Then you write a tolerance only where the part really needs one.
+    This fixes two of your habits at once, and it makes your parts cheaper.</div>
+
+  <figure data-box="Photo 7.1, a real technical drawing">
+    {{photo:drawing}}
+    <figcaption>Photo 7.1. {{caption:drawing}}
+    {{credit:drawing}}</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>What the note says</h3>
+    <p>Put this note on the drawing, near the <b>title block</b> <span class="pt">(legenda)</span>:</p>
+    <span class="path">UNLESS OTHERWISE STATED: GENERAL TOLERANCES ISO 2768-m</span>
+    <p>"Unless otherwise stated" means: every size with no tolerance written next to it gets the tolerance from ISO 2768, class m.
+    Class <b>m</b> (medium) is the normal choice for machined parts. Class <b>f</b> (fine) is tighter. Class <b>c</b> (coarse) is looser.</p>
+    <div class="scroll"><table>
+      <tr><th>Size</th><th>Class f</th><th>Class m</th><th>Class c</th></tr>
+      <tr><td>0.5 to 6 mm</td><td>±0.05</td><td>±0.1</td><td>±0.2 to 0.3</td></tr>
+      <tr><td>6 to 30 mm</td><td>±0.1</td><td>±0.2</td><td>±0.5</td></tr>
+      <tr><td>30 to 120 mm</td><td>±0.15</td><td>±0.3</td><td>±0.8</td></tr>
+      <tr><td>120 to 400 mm</td><td>±0.2</td><td>±0.5</td><td>±1.2</td></tr>
+      <tr><td>400 to 1000 mm</td><td>±0.3</td><td>±0.8</td><td>±2.0</td></tr>
+    </table></div>
+    <p>So a 100 mm edge with no tolerance is ±0.3 mm. That is normal shop work, and it costs nothing extra.
+    Your old ±0.1 on the same edge asked for finer work and more money, for no reason.</p>
+  </div>
+
+  <figure data-box="Figure 7.2, the note on the drawing">
+    <div class="pic">{{fig:fig15-drawing-note}}</div>
+    <figcaption>Figure 7.2. Where the notes go. The fit size keeps its own tolerance. The plain "100" gets ±0.3 from the note.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Edge breaks, in the same note</h3>
+    <p>A <b>sharp edge</b> <span class="pt">(canto vivo)</span> cuts hands and gets damaged. The shop can break it with a small chamfer or file, but only if you ask.
+    You said you do not add edge break notes. Add this line:</p>
+    <span class="path">BREAK ALL SHARP EDGES 0.3 MAX (QUEBRAR CANTOS VIVOS)</span>
+    <p>For chamfers and radii that you do draw, ISO 2768 class m allows ±0.2 mm up to 3 mm, ±0.5 mm from 3 to 6 mm, and ±1.0 mm above 6 mm.</p>
+  </div>
+
+  <div class="ex"><span class="lbl">Worked example: a sheet metal cover</span>
+    <p><b>The part.</b> A 2 mm steel cover <span class="pt">(tampa de chapa)</span>, 250 x 180 mm, with four Ø6.6 holes for M6 screws and a 15 mm bent flange.</p>
+    <h4>Step 1. Which sizes need a fit?</h4>
+    <p>None. No bearing, no pin, no shaft touches this part. The screws go through clearance holes. So the general note covers every size.</p>
+    <h4>Step 2. What the note gives each size</h4>
+    <ul>
+      <li>250 mm length: 120 to 400 mm row, so <span class="num">±0.5</span>.</li>
+      <li>180 mm width: same row, <span class="num">±0.5</span>.</li>
+      <li>15 mm flange: 6 to 30 mm row, <span class="num">±0.2</span>.</li>
+      <li>Ø6.6 holes: 6 to 30 mm row, <span class="num">±0.2</span>. An M6 screw is 6 mm, so it still passes.</li>
+    </ul>
+    <h4>Step 3. Write nothing else</h4>
+    <p>No hand typed tolerances. The drawing is clean, and the shop knows every limit.</p>
+    <h4>What goes wrong on the shop floor</h4>
+    <ul>
+      <li><b>No note at all:</b> the shop guesses, or calls you, or uses its own rule. You cannot reject a bad part, because you never said what "good" is.</li>
+      <li><b>±0.1 on everything:</b> bent sheet metal cannot hold ±0.1 on a flange at normal cost. The shop quotes more, or rejects the job.</li>
+    </ul>
+    <p class="pt">Bends have their own tricks. Many sheet metal shops ask for class c on bent sizes. Ask yours. Session 5 covers sheet metal.</p>
+  </div>
+
+  <details data-box="Plus box, the small print on ISO 2768"><summary>The small print on ISO 2768</summary>
+  <div class="in">
+    <p>ISO 2768-1 (sizes and angles) is still current. Brazil has it as ABNT NBR ISO 2768-1.
+    ISO 22081:2021 took the place of ISO 2768-2, which covered form and position with the old classes H, K and L.
+    Many shops still write "ISO 2768-mK", and everybody understands it.
+    Write "ISO 2768-m" for sizes. When you later add form and position control, use ISO 22081 or normal GD&amp;T. That is Session 3.</p>
+  </div></details>
+
+  <div class="card">
+    <h3>In SolidWorks: put it in the template once</h3>
+    <p>Open your drawing template. Add the notes with:</p>
+    <span class="path">Insert &gt; Annotations &gt; Note</span>
+    <p>Place them just above or next to the title block. Then save the template, so every new drawing starts with the notes.</p>
+  </div>
+
+  <div class="prac"><span class="lbl">Practice, 5 minutes in SolidWorks</span>
+    <ol>
+      <li>Open one of your drawing templates.</li>
+      <li>Add the two notes near the title block. Save the template.</li>
+      <li>Open an old drawing. Find every hand typed ±0.1. Delete the ones the general note now covers.</li>
+    </ol></div>
+</section>
+
+<!-- ======================================================= PART 8 -->
+<section class="part" data-title="8. Cheat sheet">
+  <h2>8. Cheat sheet: which fit do I use?</h2>
+  <p class="mins">Reading about 5 minutes. Keep this part open at work.</p>
+
+  <figure data-box="Figure 8.1, which fit, four questions">
+    <div class="pic">{{fig:fig16-which-fit}}</div>
+    <figcaption>Figure 8.1. Ask the four questions in order. Most sizes end in the orange box: no fit, just the general note.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>Pick from this table first</h3>
+    <div class="scroll"><table>
+      <tr><th>The job</th><th>Hole or bore</th><th>Shaft or pin</th></tr>
+      <tr><td>Bearing in a housing, outer ring does not turn</td><td>H7</td><td>bought part</td></tr>
+      <tr><td>Bearing on a shaft, shaft turns, normal load</td><td>bought part</td><td>js5 up to 10 mm, j5 10 to 17 mm, k5 17 to 100 mm</td></tr>
+      <tr><td>Bearing in a wheel or idler, outer ring turns</td><td>K7</td><td>h6 on the fixed pin</td></tr>
+      <tr><td>Dowel pin</td><td>H7 reamed</td><td>m6 pin, bought</td></tr>
+      <tr><td>Shaft that slides and locates</td><td>H7</td><td>g6</td></tr>
+      <tr><td>Linear ball bushing</td><td>H7 for the bushing</td><td>g6 hardened shaft</td></tr>
+      <tr><td>Shaft that turns in a bushing</td><td>H8, or the after-press bushing bore</td><td>f7 (e7 if fast or hot)</td></tr>
+      <tr><td>Bushing pressed into a housing</td><td>H7</td><td>bought part</td></tr>
+      <tr><td>Part that must come apart by hand</td><td>H7</td><td>h6</td></tr>
+      <tr><td>Hub or pulley, true but removable</td><td>H7</td><td>k6</td></tr>
+      <tr><td>Press fit that must never move</td><td>H7</td><td>p6, or s6 for more grip</td></tr>
+      <tr><td>Everything else</td><td colspan="2">No fit class. The ISO 2768-m note covers it.</td></tr>
+    </table></div>
+  </div>
+
+  <div class="ex"><span class="lbl">Worked example: one conveyor roller, start to finish</span>
+    <p><b>The part.</b> A conveyor roller: a tube with two 6205 bearings, turning on a fixed Ø25 axle. The tube turns, the axle stays still.</p>
+    <ol>
+      <li><b>Bearings in the tube:</b> the outer ring turns with the tube, and the load stays down. Row "outer ring turns": tube bore <b>Ø52 K7</b>.</li>
+      <li><b>Bearings on the axle:</b> the inner ring stands still. Axle seat <b>Ø25 h6</b>, or g6 if you want it to slide on easily.</li>
+      <li><b>End caps</b> that come off for service: <b>H7/h6</b>.</li>
+      <li><b>Tube length, cap sizes, bolt holes:</b> no fit, the <b>ISO 2768-m</b> note covers them.</li>
+    </ol>
+    <p>Put each fit in with the SolidWorks Fit tool, and let SolidWorks write the numbers.
+    Then check the bearing maker's page, because the roller is a Case 2 bearing.</p>
+  </div>
+
+  <div class="card">
+    <h3>Free tools, so you never open a table book</h3>
+    <ul>
+      <li>SolidWorks itself, the Fit tolerance type. First choice, because the numbers land on the drawing.</li>
+      <li><b>amesweb.info</b> ISO fits calculator. Free, no login, works on a phone.</li>
+      <li><b>xometry.pro</b> ISO 286 calculator. Free.</li>
+      <li>Android app <b>"ISO Fits"</b> by tss.in. Free. Good for the shop floor.</li>
+      <li><b>stefanelli.eng.br</b>. Free tables and a simulator from a Brazilian engineer. It follows NBR 6158, in Portuguese and English.</li>
+      <li>Free models with real dimensions: <b>3D ContentCentral</b>, <b>TraceParts</b>, <b>SKF</b>, <b>Schaeffler</b>, <b>NSK</b>, <b>igus</b>, <b>Misumi</b>.</li>
+      <li>MITCalc is a paid Excel tool. You do not need it.</li>
+    </ul>
+  </div>
+
+  <div class="tip"><span class="lbl">Your three new habits</span>
+    <ol>
+      <li>Any hole that touches a bought part gets a fit class from the table above.</li>
+      <li>Every drawing gets the ISO 2768-m note and the edge break note.</li>
+      <li>No hand typed tolerances and no hand typed hole notes. Let the Fit tool, Hole Wizard and Hole Callout write them.</li>
+    </ol></div>
+
+  <div class="card">
+    <h3>Next session</h3>
+    <p>Session 3 is drawings the shop can read: hole callouts, tolerances on the drawing, edge break notes, and your first GD&amp;T (flatness, position and datums).
+    Bring one of your own drawings and we will fix it together.</p>
+  </div>
+
+  <div class="card sources">
+    <h3>Where the numbers come from</h3>
+    <ul>
+      <li>ISO 286-1 and ISO 286-2 tolerance values.</li>
+      <li>ISO 2768-1 general tolerances. ISO 2768-2 replaced by ISO 22081:2021.</li>
+      <li>Bearing seats: short form of the SKF table "Seat tolerances for standard conditions". Bearing tolerances: ISO 492 normal class.</li>
+      <li>Dowel pins: ISO 2338, ISO 8734, ISO 8735.</li>
+      <li>SolidWorks: help.solidworks.com pages for Fit Tolerances, Hole Wizard tolerances (2019), Dowel Holes (2013) and Hole Callout.</li>
+      <li>Photos: Wikimedia Commons, with the author and license under each photo.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+<div class="nav">
+  <button class="b ghost" id="back" type="button">Back</button>
+  <button class="b primary" id="next" type="button">Next</button>
+</div>
+<div class="cbar" style="margin-top:18px">
+  <span>My comments: <span class="count" id="ccount2">0</span></span>
+  <button class="sm primary" type="button" id="copyBottom">Copy my comments</button>
+  <span class="msg" id="cmsg2"></span>
+</div>
+</div>
+
+<script>
+(function(){
+  var parts = Array.prototype.slice.call(document.querySelectorAll(".part"));
+  var stepsEl = document.getElementById("steps");
+  var bar = document.getElementById("bar");
+  var back = document.getElementById("back");
+  var next = document.getElementById("next");
+  var cur = 0;
+
+  parts.forEach(function(p, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = p.getAttribute("data-title");
+    b.onclick = function(){ go(i); };
+    stepsEl.appendChild(b);
+  });
+
+  function go(i){
+    if(i < 0 || i >= parts.length) return;
+    cur = i;
+    parts.forEach(function(p, k){ p.classList.toggle("show", k === i); });
+    var chips = stepsEl.children;
+    for(var j = 0; j < chips.length; j++){
+      chips[j].className = j === i ? "on" : (j < i ? "done" : "");
+    }
+    bar.style.width = Math.round((i + 1) / parts.length * 100) + "%";
+    back.disabled = i === 0;
+    next.disabled = i === parts.length - 1;
+    next.textContent = i === parts.length - 2 ? "Last part" : "Next";
+    window.scrollTo(0, 0);
+  }
+  back.onclick = function(){ go(cur - 1); };
+  next.onclick = function(){ go(cur + 1); };
+
+  /* ---------- comments: kept in page memory only ---------- */
+  var boxes = [];
+  function words(s, n){
+    s = s.replace(/\s+/g, " ").trim();
+    var w = s.split(" ");
+    return w.slice(0, n).join(" ") + (w.length > n ? "..." : "");
+  }
+  function boxName(el){
+    if(el.getAttribute("data-box")) return el.getAttribute("data-box");
+    var h = el.querySelector("h3");
+    if(h) return h.textContent.trim();
+    var l = el.querySelector(".lbl");
+    if(l) return l.textContent.trim();
+    return words(el.textContent, 6);
+  }
+  parts.forEach(function(p){
+    var partName = p.getAttribute("data-title");
+    var els = p.querySelectorAll(".card, .key, .tip, .warn, .ex, .prac, figure, details");
+    Array.prototype.forEach.call(els, function(el){
+      if(el.parentElement.closest(".card, .key, .tip, .warn, .ex, .prac, figure, details")) return;
+      var rec = {part: partName, box: boxName(el), text: ""};
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "cbtn"; btn.textContent = "Comment";
+      var wrap = document.createElement("div"); wrap.className = "cbox";
+      var ta = document.createElement("textarea");
+      ta.placeholder = "Write your question or comment about this box...";
+      var hint = document.createElement("div"); hint.className = "hint";
+      hint.textContent = "Saved in this page while it is open. Use Copy my comments before you close the page.";
+      wrap.appendChild(ta); wrap.appendChild(hint);
+      btn.onclick = function(e){
+        e.preventDefault(); e.stopPropagation();
+        wrap.classList.toggle("open");
+        if(wrap.classList.contains("open")) ta.focus();
+      };
+      ta.addEventListener("input", function(){
+        rec.text = ta.value;
+        btn.classList.toggle("has", ta.value.trim() !== "");
+        btn.textContent = ta.value.trim() ? "Comment (written)" : "Comment";
+        update();
+      });
+      if(el.tagName === "DETAILS"){
+        el.parentNode.insertBefore(btn, el.nextSibling);
+        el.parentNode.insertBefore(wrap, btn.nextSibling);
+        btn.style.margin = "-8px 0 14px";
+      } else {
+        el.appendChild(btn); el.appendChild(wrap);
+      }
+      boxes.push(rec);
+    });
+  });
+
+  function update(){
+    var n = boxes.filter(function(r){ return r.text.trim() !== ""; }).length;
+    document.getElementById("ccount").textContent = n;
+    document.getElementById("ccount2").textContent = n;
+  }
+  function buildText(){
+    var out = [];
+    boxes.forEach(function(r){
+      if(r.text.trim() === "") return;
+      out.push("[" + r.part + " > " + r.box + "]\n" + r.text.trim());
+    });
+    if(!out.length) return "";
+    return "My comments on Session 2 (version 2)\n\n" + out.join("\n\n");
+  }
+  function say(msg){
+    document.getElementById("cmsg").textContent = msg;
+    document.getElementById("cmsg2").textContent = msg;
+    setTimeout(function(){
+      document.getElementById("cmsg").textContent = "";
+      document.getElementById("cmsg2").textContent = "";
+    }, 4000);
+  }
+  function fallback(t){
+    var o = document.getElementById("copyout");
+    o.value = t; o.style.display = "block";
+    o.focus(); o.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch(e) {}
+    say(ok ? "Copied. Paste it into the chat." : "Select the text in the box above and copy it.");
+    if(!ok) window.scrollTo(0, 0);
+  }
+  function copyAll(){
+    var t = buildText();
+    if(!t){ say("No comments yet. Click a Comment button first."); return; }
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(t).then(function(){ say("Copied. Paste it into the chat."); },
+        function(){ fallback(t); });
+    } else { fallback(t); }
+  }
+  document.getElementById("copyTop").onclick = copyAll;
+  document.getElementById("copyBottom").onclick = copyAll;
+
+  go(0);
+})();
+</script>
+</body>
+</html>

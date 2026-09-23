@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-swp" viewBox="0 0 760 560" width="760" height="560" role="img" aria-label="Mock-up of the SolidWorks Tolerance/Precision panel with each field named">
+<title>Mock-up of the SolidWorks Tolerance/Precision panel with each field named</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-swp" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-swp" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-swp" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-swp" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-swp" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<marker id="dot-swp" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-swp" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-swp" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-swp" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-swp" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="560" fill="#ffffff"/>
+<text class="g-s" x="30" y="30" text-anchor="start" >Mock-up of the Tolerance/Precision box (simplified drawing, not a screenshot)</text>
+<rect x="30" y="45" width="300" height="410" rx="4" fill="#f3f4f6" stroke="#8a93a3" stroke-width="1.5"/>
+<rect x="30" y="45" width="300" height="34" rx="4" fill="#dfe3ea" stroke="#8a93a3" stroke-width="1.5"/>
+<text class="g-b" x="44" y="68" text-anchor="start" >Dimension</text>
+<circle cx="276" cy="62" r="10" fill="#1f8a4c"/><path d="M271,62 l4,4 l7,-8" stroke="#fff" stroke-width="2.4" fill="none"/>
+<circle cx="304" cy="62" r="10" fill="#c0392b"/><path d="M299,57 l10,10 M309,57 l-10,10" stroke="#fff" stroke-width="2.4"/>
+<rect x="40" y="92" width="280" height="352" rx="3" fill="#ffffff" stroke="#b8bfcb"/>
+<text class="g-b" x="52" y="114" text-anchor="start" >Tolerance/Precision</text>
+<path d="M300,106 l6,6 l6,-6" stroke="#4a5566" stroke-width="2" fill="none"/>
+<text class="g-s" x="52" y="140" text-anchor="start" >Tolerance Type</text>
+<rect x="52" y="146" width="256" height="28" rx="3" fill="#fff" stroke="#8a93a3"/>
+<text class="g-t" x="62" y="165" text-anchor="start" >Fit with tolerance</text>
+<path d="M290,157 l5,6 l5,-6" stroke="#4a5566" stroke-width="2" fill="none"/>
+<text class="g-s" x="52" y="192" text-anchor="start" >Classification</text>
+<rect x="52" y="198" width="256" height="28" rx="3" fill="#fff" stroke="#8a93a3"/>
+<text class="g-t" x="62" y="217" text-anchor="start" >Clearance</text>
+<path d="M290,209 l5,6 l5,-6" stroke="#4a5566" stroke-width="2" fill="none"/>
+<text class="g-s" x="52" y="244" text-anchor="start" >Hole Fit</text>
+<rect x="52" y="250" width="256" height="28" rx="3" fill="#fff" stroke="#8a93a3"/>
+<text class="g-t" x="62" y="269" text-anchor="start" >H7</text>
+<path d="M290,261 l5,6 l5,-6" stroke="#4a5566" stroke-width="2" fill="none"/>
+<text class="g-s" x="52" y="296" text-anchor="start" >Shaft Fit</text>
+<rect x="52" y="302" width="256" height="28" rx="3" fill="#fff" stroke="#8a93a3"/>
+<text class="g-t" x="62" y="321" text-anchor="start" ></text>
+<path d="M290,313 l5,6 l5,-6" stroke="#4a5566" stroke-width="2" fill="none"/>
+<rect x="52" y="344" width="16" height="16" rx="2" fill="#fff" stroke="#8a93a3"/>
+<text class="g-t" x="76" y="357" text-anchor="start" >Show parenthesis</text>
+<text class="g-s" x="52" y="382" text-anchor="start" >Fit Tolerance Display</text>
+<rect x="52" y="388" width="36" height="30" rx="3" fill="#dce8ff" stroke="#8a93a3"/>
+<rect x="96" y="388" width="36" height="30" rx="3" fill="#fff" stroke="#8a93a3"/>
+<rect x="140" y="388" width="36" height="30" rx="3" fill="#fff" stroke="#8a93a3"/>
+<text x="70" y="401" text-anchor="middle" style="font:9px Arial">H7</text><line x1="60" y1="404" x2="80" y2="404" stroke="#1f2733"/><text x="70" y="414" text-anchor="middle" style="font:9px Arial">g6</text>
+<text x="114" y="401" text-anchor="middle" style="font:9px Arial">H7</text><text x="114" y="414" text-anchor="middle" style="font:9px Arial">g6</text>
+<text x="158" y="407" text-anchor="middle" style="font:9px Arial">H7/g6</text>
+<text class="g-s" x="196" y="382" text-anchor="start" >Precision</text>
+<rect x="196" y="388" width="112" height="30" rx="3" fill="#fff" stroke="#8a93a3"/>
+<text class="g-t" x="206" y="408" text-anchor="start" >.123</text>
+<path d="M290,400 l5,6 l5,-6" stroke="#4a5566" stroke-width="2" fill="none"/>
+<polyline class="g-thin" points="308,160 372,74" marker-start="url(#dot-swp)"/>
+<circle cx="388" cy="70" r="12" fill="#2f6fde"/>
+<text class="g-b" x="388" y="75" text-anchor="middle" style="fill:#fff">1</text>
+<text class="g-b" x="408" y="75" text-anchor="start" >Tolerance Type</text>
+<text class="g-t" x="408" y="93" text-anchor="start" >Pick Fit with tolerance.</text>
+<polyline class="g-thin" points="308,212 372,132" marker-start="url(#dot-swp)"/>
+<circle cx="388" cy="128" r="12" fill="#2f6fde"/>
+<text class="g-b" x="388" y="133" text-anchor="middle" style="fill:#fff">2</text>
+<text class="g-b" x="408" y="133" text-anchor="start" >Classification</text>
+<text class="g-t" x="408" y="151" text-anchor="start" >Clearance, Transitional or Press.</text>
+<text class="g-t" x="408" y="169" text-anchor="start" >It shortens the two lists below.</text>
+<polyline class="g-thin" points="308,264 372,208" marker-start="url(#dot-swp)"/>
+<circle cx="388" cy="204" r="12" fill="#2f6fde"/>
+<text class="g-b" x="388" y="209" text-anchor="middle" style="fill:#fff">3</text>
+<text class="g-b" x="408" y="209" text-anchor="start" >Hole Fit</text>
+<text class="g-t" x="408" y="227" text-anchor="start" >On a hole: pick H7 here.</text>
+<polyline class="g-thin" points="308,316 372,266" marker-start="url(#dot-swp)"/>
+<circle cx="388" cy="262" r="12" fill="#2f6fde"/>
+<text class="g-b" x="388" y="267" text-anchor="middle" style="fill:#fff">4</text>
+<text class="g-b" x="408" y="267" text-anchor="start" >Shaft Fit</text>
+<text class="g-t" x="408" y="285" text-anchor="start" >On a shaft: pick g6, k6 and so on.</text>
+<text class="g-t" x="408" y="303" text-anchor="start" >On a hole, you can leave it empty.</text>
+<polyline class="g-thin" points="200,352 372,342" marker-start="url(#dot-swp)"/>
+<circle cx="388" cy="338" r="12" fill="#2f6fde"/>
+<text class="g-b" x="388" y="343" text-anchor="middle" style="fill:#fff">5</text>
+<text class="g-b" x="408" y="343" text-anchor="start" >Show parenthesis</text>
+<text class="g-t" x="408" y="361" text-anchor="start" >Puts ( ) around the numbers.</text>
+<polyline class="g-thin" points="308,403 372,400" marker-start="url(#dot-swp)"/>
+<circle cx="388" cy="396" r="12" fill="#2f6fde"/>
+<text class="g-b" x="388" y="401" text-anchor="middle" style="fill:#fff">6</text>
+<text class="g-b" x="408" y="401" text-anchor="start" >Fit Tolerance Display / Precision</text>
+<text class="g-t" x="408" y="419" text-anchor="start" >Stacked or in one line.</text>
+<text class="g-t" x="408" y="437" text-anchor="start" >Set 3 decimals so you see 0.015.</text>
+<text class="g-b" x="30" y="488" text-anchor="start" >What the dimension then shows on the drawing:</text>
+<line class="g-thin" x1="40" y1="530" x2="250" y2="530" marker-start="url(#arrs-swp)" marker-end="url(#arr-swp)"/>
+<line class="g-thin" x1="40" y1="505" x2="40" y2="545" /><line class="g-thin" x1="250" y1="505" x2="250" y2="545" />
+<text x="92" y="522" style="font:700 20px Arial;fill:#1f2733">Ø10 H7</text>
+<text x="178" y="513" style="font:14px Arial;fill:#1f2733">(+0.015)</text><text x="178" y="529" style="font:14px Arial;fill:#1f2733">(+0.000)</text>
+<polyline class="g-thin" points="246,521 300,512 310,512" marker-start="url(#dot-swp)"/>
+<text class="g-t" x="318" y="506" text-anchor="start" >The code, then the two deviations (afastamentos).</text>
+<text class="g-t" x="318" y="526" text-anchor="start" >Limits: 10 + 0.015 = 10.015 and 10 + 0.000 = 10.000.</text>
+</svg>

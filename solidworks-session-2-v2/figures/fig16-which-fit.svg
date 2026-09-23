@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-dec" viewBox="0 0 760 490" width="760" height="490" role="img" aria-label="Decision path: which fit to use">
+<title>Decision path: which fit to use</title>
+<style>
+.g-ink{stroke:#1f2733;fill:none;stroke-width:2}
+.g-thin{stroke:#1f2733;fill:none;stroke-width:1.1}
+.g-cl{stroke:#1f2733;fill:none;stroke-width:1.1;stroke-dasharray:18 4 3 4}
+.g-hid{stroke:#1f2733;fill:none;stroke-width:1.5;stroke-dasharray:7 4}
+.g-t{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#1f2733}
+.g-b{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;fill:#1f2733}
+.g-s{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4a5566}
+.g-h{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#1f2733}
+.g-pt{font-style:italic}
+</style>
+<defs>
+<pattern id="hA-dec" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hB-dec" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><rect width="9" height="9" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="9" stroke="#1f2733" stroke-width="1"/></pattern>
+<pattern id="hS-dec" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#eaf5ee"/><line x1="0" y1="0" x2="0" y2="7" stroke="#1f8a4c" stroke-width="1.1"/></pattern>
+<pattern id="hC-dec" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="#f6e7d3"/><line x1="0" y1="0" x2="0" y2="7" stroke="#a86b2d" stroke-width="1.2"/></pattern>
+<pattern id="hG-dec" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="10" stroke="#1f2733" stroke-width="1"/><line x1="5" y1="0" x2="5" y2="10" stroke="#1f2733" stroke-width="0.5"/></pattern>
+<marker id="dot-dec" markerWidth="8" markerHeight="8" refX="4" refY="4" markerUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3" fill="#1f2733"/></marker>
+<marker id="arr-dec" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5 L0,10 z" fill="#1f2733"/></marker>
+<marker id="arrs-dec" markerWidth="12" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M12,0 L0,5 L12,10 z" fill="#1f2733"/></marker>
+<marker id="arrR-dec" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#c0392b"/></marker>
+<marker id="arrB-dec" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L14,6 L0,12 z" fill="#2f6fde"/></marker>
+</defs>
+<rect x="0" y="0" width="760" height="490" fill="#ffffff"/>
+<text class="g-h" x="30" y="30" text-anchor="start" >Which fit? Ask these questions in this order.</text>
+<rect x="40" y="60" width="290" height="66" rx="8" fill="#f3f6fb" stroke="#1f2733" stroke-width="1.8"/>
+<text class="g-b" x="52" y="82" text-anchor="start" >1. Does it touch a bought part?</text>
+<text class="g-t" x="52" y="100" text-anchor="start" >bearing, pin, bushing</text>
+<line class="g-ink" x1="330" y1="93" x2="420" y2="93" marker-end="url(#arr-dec)"/>
+<text class="g-b" x="360" y="86" text-anchor="middle" >yes</text>
+<rect x="424" y="60" width="300" height="66" rx="8" fill="#eaf5ee" stroke="#1f8a4c" stroke-width="1.8"/>
+<text class="g-b" x="436" y="82" text-anchor="start" >Use the maker's number,</text>
+<text class="g-t" x="436" y="100" text-anchor="start" >or the cheat sheet row.</text>
+<line class="g-ink" x1="185" y1="126" x2="185" y2="148" marker-end="url(#arr-dec)"/>
+<text class="g-s" x="195" y="143" text-anchor="start" >no</text>
+<rect x="40" y="150" width="290" height="66" rx="8" fill="#f3f6fb" stroke="#1f2733" stroke-width="1.8"/>
+<text class="g-b" x="52" y="172" text-anchor="start" >2. Must it move?</text>
+<text class="g-t" x="52" y="190" text-anchor="start" >turn or slide</text>
+<line class="g-ink" x1="330" y1="183" x2="420" y2="183" marker-end="url(#arr-dec)"/>
+<text class="g-b" x="360" y="176" text-anchor="middle" >yes</text>
+<rect x="424" y="150" width="300" height="66" rx="8" fill="#eaf5ee" stroke="#1f8a4c" stroke-width="1.8"/>
+<text class="g-b" x="436" y="172" text-anchor="start" >Clearance: H7/g6 slides,</text>
+<text class="g-t" x="436" y="190" text-anchor="start" >H8/f7 turns.</text>
+<line class="g-ink" x1="185" y1="216" x2="185" y2="238" marker-end="url(#arr-dec)"/>
+<text class="g-s" x="195" y="233" text-anchor="start" >no</text>
+<rect x="40" y="240" width="290" height="66" rx="8" fill="#f3f6fb" stroke="#1f2733" stroke-width="1.8"/>
+<text class="g-b" x="52" y="262" text-anchor="start" >3. Must it sit exactly and</text>
+<text class="g-t" x="52" y="280" text-anchor="start" >still come apart for service?</text>
+<line class="g-ink" x1="330" y1="273" x2="420" y2="273" marker-end="url(#arr-dec)"/>
+<text class="g-b" x="360" y="266" text-anchor="middle" >yes</text>
+<rect x="424" y="240" width="300" height="66" rx="8" fill="#eaf5ee" stroke="#1f8a4c" stroke-width="1.8"/>
+<text class="g-b" x="436" y="262" text-anchor="start" >H7/h6 by hand,</text>
+<text class="g-t" x="436" y="280" text-anchor="start" >H7/k6 with a light tap.</text>
+<line class="g-ink" x1="185" y1="306" x2="185" y2="328" marker-end="url(#arr-dec)"/>
+<text class="g-s" x="195" y="323" text-anchor="start" >no</text>
+<rect x="40" y="330" width="290" height="66" rx="8" fill="#f3f6fb" stroke="#1f2733" stroke-width="1.8"/>
+<text class="g-b" x="52" y="352" text-anchor="start" >4. Must it never move and</text>
+<text class="g-t" x="52" y="370" text-anchor="start" >never come apart?</text>
+<line class="g-ink" x1="330" y1="363" x2="420" y2="363" marker-end="url(#arr-dec)"/>
+<text class="g-b" x="360" y="356" text-anchor="middle" >yes</text>
+<rect x="424" y="330" width="300" height="66" rx="8" fill="#eaf5ee" stroke="#1f8a4c" stroke-width="1.8"/>
+<text class="g-b" x="436" y="352" text-anchor="start" >Interference:</text>
+<text class="g-t" x="436" y="370" text-anchor="start" >H7/p6, or H7/s6.</text>
+<line class="g-ink" x1="185" y1="396" x2="185" y2="420" marker-end="url(#arr-dec)"/>
+<text class="g-s" x="195" y="415" text-anchor="start" >no</text>
+<rect x="40" y="422" width="684" height="50" rx="8" fill="#fdf1e0" stroke="#c8761a" stroke-width="1.8"/>
+<text class="g-b" x="52" y="444" text-anchor="start" >None of these? No fit class. The general note ISO 2768-m covers it.</text>
+<text class="g-t" x="52" y="462" text-anchor="start" >Most sizes on a drawing end up here, and that keeps the part cheap.</text>
+</svg>
